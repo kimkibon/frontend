@@ -4,10 +4,10 @@ import Header from './commons/Header';
 import Footer from './commons/Footer';
 import Join from './join/Join';
 import MyPageIndex from './myPage/MyPageIndex';
-import AdminIndex from './admin/AdminIndex';
 import LoginIndex from './login/LoginIndex';
 import BoardIndex from './board/BoardIndex';
 import IndexList from './index/IndexList';
+import AdminIndex from './admin/AdminIndex';
 
 function App() {
   return (
