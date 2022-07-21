@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Modal from 'react-awesome-modal'
 
 const header = () => {
   return (
@@ -10,5 +11,6 @@ const header = () => {
     </div>
   )
 }
+
 
 export default header
