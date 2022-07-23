@@ -3,12 +3,17 @@ import { useLocation } from 'react-router-dom'
 import axios from 'axios';
 import SelectFileList from '../../commons/Files/SelectFileList';
 import BoardReview from './BoardReview';
+import DatePicker from '../../commons/datePicker/DatePicker';
+import Review from './component/Review';
+import './boardDetail.css';
+
 
 const BoardDetail = () => {
 
     const [boardDetail , setBoardDetail] = useState([]);
     const [file , setFile] = useState([]);
     const [review , setReview] = useState([]);
+    const [resDate, setResDate] = useState([]);
 
     const location = useLocation();
     let param
@@ -19,21 +24,25 @@ const BoardDetail = () => {
       param = location.state.BOARD_NO;
     }
 
-    useEffect(() => {
+    const highFunction = (text) => {
+      console.log(text);
+      setResDate(text);
+    }
 
+    useEffect(() => {
       axios({
         method :'post',
         url : '/GareBnB/board/boardDetail.do',
         params : {'BOARD_NO' : param
       }
       }).then(Response =>{
-        
+        console.log(Response.data)
         setBoardDetail(Response.data);
-        return(Response.data);
       });
-      
+
       BoardReview(param).then(Response =>{
         setReview(Response);
+        console.log(Response);
       });
 
       SelectFileList('0',param).then(Response =>{
@@ -44,21 +53,38 @@ const BoardDetail = () => {
           return a.FILE_LEVEL - b.FILE_LEVEL
         })
         setFile(Response);
+        console.log(Response);
       });
-
-    },[])
+    },[param])
 
   return (
-    <div>
-      {console.log(review)}
-      <h1>{boardDetail.BOARD_CONTENT}</h1>
-      { file.map(src =>{return(
-        <p key={src.FILE_LEVEL}>
-        <img  src={src.URL} width='100px' height='100px'/>
-        </p>
-      )})
-      }
+    <>
+<div className="row">
+  <div className="leftcolumn">
+    <div className="detailCard">
+      <h2>{boardDetail.BOARD_TITLE}</h2>
+      <h5>{boardDetail.BOARD_ADDR1}-{boardDetail.BOARD_ADDR2}</h5>
+      <div className="fakeimg">
+        {file.map(src =>{return(
+          <img className="detailImage" key={src.FILE_NUM} src={src.URL}/>
+        )})}
+      </div>
+      <div>
+        <p>{boardDetail.BOARD_PRICE}원 / 박</p>
+        <p>{boardDetail.BOARD_CONTENT}</p>
+
+      </div>
     </div>
+  
+    <div className="detailCard">
+      <DatePicker  propFunction={highFunction}/>
+    </div>
+    <div className="detailCard">
+      <Review props = {review}/>
+    </div>
+    </div>
+</div>
+</>
   )
 }
 

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import SelectOneFile from '../../commons/Files/SelectOneFile';
-import { Link } from 'react-router-dom';
 import List from '../boardDetail/component/List';
 
 const BoardList = () => {
@@ -31,6 +30,7 @@ const BoardList = () => {
   
   return (
    <div>
+    {console.log(board)}
     {List(board)}
    </div>
   )
