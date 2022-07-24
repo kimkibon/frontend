@@ -4,32 +4,49 @@ const List = (board) => {
 
   return (
 
-    <div className="container px-4 py-5" id="custom-cards">
-  {board[0]!== undefined && board.map(list=>{return(
-    <Link to='Detail' state={list}>
-      <div className="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
-        <div className="col">
-          <div className="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style={{backgroundImage: "url(" + list.URL + ")"}} >
-            <div className="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-              <h2 className="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">{list.BOARD_TITLE}</h2>
-              <ul className="d-flex list-unstyled mt-auto">
-                <li className="me-auto">
-                  <small>git</small>
-                </li>
-                <li className="d-flex align-items-center me-3">
-                  <small>Earth</small>
-                </li>
-                <li className="d-flex align-items-center">
-                  <small>3d</small>
-                </li>
-              </ul>
+    <div className="container border border-primary">
+      {board[0] !== undefined && board.map(list => {
+        return (
+
+          <div className="row">
+            <div className="col-md-7">
+              <img className="img-fluid rounded mb-3 mb-md-0" width='700px' height='300px' src={list.URL} alt="" />
+
+            </div>
+            <div className="col-md-5">
+              <h3>{list.BOARD_TITLE}</h3>
+              <p>{list.BOARD_CONTENT}</p>
+              <h5 className='text-end'>{list.BOARD_PRICE}원/박</h5>
+              <h5 className='text-end'>{list.BOARD_SCORE}</h5>
+              <Link to='Detail' state={list}>
+                <button className="btn btn-primary" href="#">자세한 정보 알아보기</button>
+              </Link>
             </div>
           </div>
+
+        )
+      })}
+
+{/* example */}
+      <div className="row">
+        <div className="col-md-7">
+          <img className="img-fluid rounded mb-3 mb-md-0" src="https://via.placeholder.com/700x300" alt="" />
+
         </div>
+        <div className="col-md-5">
+          <h3>Project One</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
+          <h5 className='text-end'>PRICE</h5>
+          <h5 className='text-end'>SCORE</h5>
+          <div className='col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0'>
+          <button className="btn btn-primary" href="#">자세한 정보 알아보기</button>
+          </div>
+        </div>
+
       </div>
-    </Link>
-    )})}
-  </div>
+{/*  */}
+
+    </div>
 
   )
 }
