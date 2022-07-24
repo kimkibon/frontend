@@ -4,9 +4,7 @@ import axios from 'axios';
 import SelectFileList from '../../commons/Files/SelectFileList';
 import BoardReview from './BoardReview';
 import DatePicker from '../../commons/datePicker/DatePicker';
-import Review from './component/Review';
-import './boardDetail.css';
-
+import Review from './boardDetailComponent/Review';
 
 const BoardDetail = () => {
 
@@ -19,7 +17,7 @@ const BoardDetail = () => {
     let param
 
     if(location.state === null){
-      window.history.back();
+      // window.history.back();
     } else {
       param = location.state.BOARD_NO;
     }
@@ -58,33 +56,16 @@ const BoardDetail = () => {
     },[param])
 
   return (
-    <>
-<div className="row">
-  <div className="leftcolumn">
-    <div className="detailCard">
-      <h2>{boardDetail.BOARD_TITLE}</h2>
-      <h5>{boardDetail.BOARD_ADDR1}-{boardDetail.BOARD_ADDR2}</h5>
-      <div className="fakeimg">
-        {file.map(src =>{return(
-          <img className="detailImage" key={src.FILE_NUM} src={src.URL}/>
-        )})}
-      </div>
-      <div>
-        <p>{boardDetail.BOARD_PRICE}원 / 박</p>
-        <p>{boardDetail.BOARD_CONTENT}</p>
+  <>
 
-      </div>
-    </div>
-  
     <div className="detailCard">
       <DatePicker  propFunction={highFunction}/>
     </div>
     <div className="detailCard">
       <Review props = {review}/>
     </div>
-    </div>
-</div>
-</>
+
+  </>
   )
 }
 
