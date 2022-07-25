@@ -9,26 +9,6 @@ const InsertReview = () => {
   const board_no = location.state.BOARD_NO;
 
 
-  //리뷰 체크
-  const [check, setCheck] = useState(0);
-  useEffect(() => {
-    axios({
-
-        method : 'post' ,
-        url : '/GareBnB/mypage/myReview.do' ,
-        contentType:"application/json;charset=UTF-8",
-        params : {
-            MEM_ID : mem_id,
-            BOARD_NO : board_no
-    
-        }
-    }).then(Response => {
-        Response.data ? setCheck(1) : setCheck(0)
-
-    });
-
-  },[]);
-
   const [inputs, setInputs] = useState({    
     score: 5,    
     review: ''  
@@ -63,13 +43,6 @@ const InsertReview = () => {
     });
   }
 
-
-  //경고 및 페이지 이동
-  const alert_to=(e)=>{
-    e.preventDefault();
-    alert("이미 리뷰를 작성했습니다.");
-    window.location.href="/myPage/memUseListPage"
-  }
   return (
     <div>
       <h3>리뷰쓰기</h3>
@@ -78,7 +51,7 @@ const InsertReview = () => {
       <br/>
       <h3>내용 : </h3>      
       <input name="review" placeholder="후기" onChange={onChange} value={review}/>
-      {check===0 ? <button onClick={inputreview}>등록하기</button> : <button onClick={alert_to}>등록하기</button>}
+      <button onClick={inputreview}>등록하기</button>
     </div>
     
   )

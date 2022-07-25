@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import reviewcheck from "../review/reviewcheck";
 import MemUseList from "./MemUseList";
 
 
@@ -19,15 +20,21 @@ const MemUseListPage = () => {
         
             }
         }).then(Response => {
-            setResComList(Response.data);
+            const list_review = Response.data.map(async list=>{
+                await reviewcheck(list.RES_CLI_ID, list.RES_BOARD_NO).then(Res=>{
+                    list['review'] = Res
+                })
+                return list
+
+            })
+            
+            Promise.all(list_review).then((data)=>{setResComList(data)});
 
         });
 
     },[]);
   
     //신고
-
-
 
 
     return (
@@ -39,6 +46,8 @@ const MemUseListPage = () => {
                 const end_date = new Date(list.RES_DATE_END);//예약마지막날짜
                 const after_date = end_date.setDate(end_date.getDate()+8);//8일 후
 
+                const review_check = list.review;
+                console.log(list);
                 return(
                 <div>
                     <MemUseList list={list }/>
@@ -48,10 +57,11 @@ const MemUseListPage = () => {
                         <button>리뷰확인</button></Link>                    
                     
                     {new Date().getTime()<after_date ?
-                     <Link to ={'InsertReview'} state={{'REVIEW_MEM_ID': list.RES_CLI_ID, 'BOARD_NO': list.RES_BOARD_NO}}>
-                        <button>리뷰쓰기</button></Link>
-                    : <input type='button' disabled value='리뷰쓰기'/>}
-
+                                                (review_check===0 ? 
+                                                                <Link to ={'InsertReview'} state={{'REVIEW_MEM_ID': list.RES_CLI_ID, 'BOARD_NO': list.RES_BOARD_NO}}>
+                                                                <button>리뷰쓰기</button></Link>
+                                                                    :<input type='button' disabled value='리뷰쓰기'/>)
+                                                    :<input type='button' disabled value='리뷰쓰기'/>}            
                 </div>
                 )
             
