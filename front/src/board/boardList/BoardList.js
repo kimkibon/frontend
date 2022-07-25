@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import SelectOneFile from '../../commons/Files/SelectOneFile';
-import List from '../boardDetail/component/List';
+import List from '../boardList/boardListComponemt/List';
 
 const BoardList = () => {
   const [board,setBoard] = useState([]);
