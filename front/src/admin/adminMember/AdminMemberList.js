@@ -12,8 +12,8 @@ const AdminMemberList = () => {
 
     useEffect(() => { // 전체 회원 리스트이므로, params 생략
         axios({ 
-        method : 'post' ,
-        url : '/GareBnB/Admin/memberList.do' , 
+        method : 'post',
+        url : '/GareBnB/Admin/memberList.do', 
         contentType:"application/json; charset=UTF-8"
         })
     .then(Response => { 

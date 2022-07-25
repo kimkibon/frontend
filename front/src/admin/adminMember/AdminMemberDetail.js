@@ -16,8 +16,8 @@ const AdminMemberList = () => {
   });
   useEffect(() => { // 해당 MEM_IDX로 나머지 정보 가져옴
         axios({ 
-        method : 'post' ,
-        url : '/GareBnB/mypage/selectMemberDetail.do' , 
+        method : 'post',
+        url : '/GareBnB/mypage/selectMemberDetail.do', 
         contentType:"application/json; charset=UTF-8",
         params : { 
             MEM_IDX : getIdx
