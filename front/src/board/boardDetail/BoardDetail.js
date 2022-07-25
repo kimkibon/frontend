@@ -30,7 +30,7 @@ const BoardDetail = () => {
   let param
 
   if (location.state === null) {
-    // window.history.back();
+    //window.history.back();
   } else {
     param = location.state.BOARD_NO;
   }
@@ -165,7 +165,8 @@ const BoardDetail = () => {
               'RES_PRICE': boardDetail.BOARD_PRICE,
               'RES_DATE_RANGE': resDate.RES_DATE_RANGE,
               'RES_BOARD_ADDR1': boardDetail.BOARD_ADDR1,
-              'RES_BOARD_ADDR2': boardDetail.BOARD_ADDR2
+              'RES_BOARD_ADDR2': boardDetail.BOARD_ADDR2,
+              'RES_BOARD_TITLE': boardDetail.BOARD_TITLE
             }}>
               <button className="btn btn-outline-dark" type="button">
                 <i className="bi-cart-fill me-1"></i>
