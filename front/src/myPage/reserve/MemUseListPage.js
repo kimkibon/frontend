@@ -53,7 +53,8 @@ const MemUseListPage = () => {
                     <MemUseList list={list }/>
                     <button>신고하기</button>
                     
-                    <Link to ={'Myreview'} state={{'CLI_ID': list.RES_CLI_ID, 'RES_BOARD_NO': list.RES_BOARD_NO,'after_date':after_date}}>
+                    <Link to ={'Myreview'} 
+                        state={{'CLI_ID': list.RES_CLI_ID, 'RES_BOARD_NO': list.RES_BOARD_NO,'after_date':after_date,'reviewcheck':review_check}}>
                         <button>리뷰확인</button></Link>                    
                     
                     {new Date().getTime()<after_date ?
