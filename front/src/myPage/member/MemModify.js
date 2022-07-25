@@ -93,6 +93,7 @@ const onChangePasswordChk = (e) => {
       
       <ul>
       <li>아이디 : {mem.MEM_ID}</li>
+      <li>이름 : <input name = "MEM_NAME" onChange={onChange} defaultValue={MEM_NAME} /> </li>
       <li>비밀번호 : {MEM_PW} <button onClick={openModal}>비밀번호 수정하기</button> </li>
       
       
@@ -106,7 +107,7 @@ const onChangePasswordChk = (e) => {
       
       </Modal>
      
-      <li>이름 : <input name = "MEM_NAME" onChange={onChange} defaultValue={MEM_NAME} /> </li>
+      
       <li>휴대폰 번호 : <input name = "MEM_PHONE" onChange={onChange} defaultValue={MEM_PHONE}/> </li>
       <button type="submit" onClick={ModifySuccess}>수정완료</button>  &emsp; &emsp; 
       <button><Link to = '../member/MemDetail'>취소</Link></button>
