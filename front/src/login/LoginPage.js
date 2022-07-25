@@ -80,6 +80,8 @@ const Login = () => {
               console.log(Response.data.MEM_ID)
               localStorage.setItem('MEM_LEVEL', Response.data.MEM_LEVEL)
               localStorage.setItem('MEM_ID', Response.data.MEM_ID)
+
+              window.location.href="/index"
             
             }
           }).catch(err => {
