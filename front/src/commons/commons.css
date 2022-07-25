@@ -1,0 +1,15 @@
+.footer {
+    padding: 20px;
+    text-align: center;
+    background: #ddd;
+    margin-top: 20px;
+  }
+
+  .header {
+    padding: 30px;
+    text-align: center;
+    background: #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
