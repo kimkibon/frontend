@@ -6,7 +6,7 @@ const ResRequest = () => {
 
  useEffect(() => {
    
-  console.log(location)
+  console.log(res)
 
 
  }, [])
