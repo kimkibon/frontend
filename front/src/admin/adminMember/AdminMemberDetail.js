@@ -30,28 +30,28 @@ const AdminMemberList = () => {
     },[]); 
 
 
-  const [memDenyModify , setMemDenyModify] = useState();
-  const adminModifySuccess = () => { // 저장 버튼 클릭 시 update sql문 실행됨 (레벨 업데이트 - 정지)
-    axios({
-    method : 'post',
-    url : '/GareBnB/Admin/memberDeny.do',
-    contentType:"apllication/json; charset=UTF-8",
-    params : {
-      MEM_IDX : getMem.MEM_IDX 
-    } })
-  .then(Response => {
-    console.log(Response.data);
-    setMemDenyModify(Response.data);
-  })
-  }
+    const [memDenyModify , setMemDenyModify] = useState();
+    const adminModifySuccess = () => { // 저장 버튼 클릭 시 update sql문 실행됨 (레벨 업데이트 - 정지)
+      axios({
+      method : 'post',
+      url : '/GareBnB/Admin/memberDeny.do',
+      contentType:"apllication/json; charset=UTF-8",
+      params : {
+        MEM_IDX : getMem.MEM_IDX 
+      } })
+    .then(Response => {
+      console.log(Response.data);
+      setMemDenyModify(Response.data);
+    })
+    }
 
-  const [checked, setChecked] = useState(false); // 체크 여부 (true : 체크, false : 해제)
+    const [checked, setChecked] = useState(false); // 체크 여부 (true : 체크, false : 해제)
 
-  const checkedHandler = () => { // !!!!!!!! 체크 박스 기능 수정해야함 !!!!!!!!
-    setChecked(!checked);
-  }
+    const checkedHandler = () => { // !!!!!!!! 체크 박스 기능 수정해야함 !!!!!!!!
+      setChecked(!checked);
+    }
 
-  // [QQQQQQQ] 정지된 회원 체크 박스 해제(레벨 업데이트(1 or 2) 기능) 추가??????
+    // [QQQQQQQ] 정지된 회원 체크 박스 해제(레벨 업데이트(1 or 2) 기능) 추가??????
 
   return (
     <article>

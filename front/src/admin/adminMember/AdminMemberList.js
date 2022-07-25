@@ -22,32 +22,32 @@ const AdminMemberList = () => {
     });
     },[]); 
   
-const onChangeSearch = (e) => { // 검색 버튼 클릭했을 때 검색 기능
-  e.preventDefault();
-  setSearch(e.target.value);
-}
-
-const onSearch = (e) => {
-  e.preventDefault();
-  if (search === null || search === '') { // 검색 단어가 null 이거나 공백이면 전체 리스트 보여줌
-    axios({ 
-      method : 'post' ,
-      url : '/GareBnB/Admin/memberList.do' , 
-      contentType:"application/json; charset=UTF-8"
-      })
-
-  .then(Response => { 
-  console.log(Response.data);
-  setMemList(Response.data);
-  });
-
-  } else { // 검색 단어가 있으면 이름에 단어 포함된 리스트를 보여줌
-    const filterData = memList.filter((list) => 
-    list.MEM_ID.includes(search) || list.MEM_NAME.includes(search) ) // [QQQQQQQQQQ] list.MEM_IDX 검색 안 됨 ㅠ_ㅠ
-    setMemList(filterData);
+  const onChangeSearch = (e) => { // 검색 버튼 클릭했을 때 검색 기능
+    e.preventDefault();
+    setSearch(e.target.value);
   }
-  setSearch('')
-}
+
+  const onSearch = (e) => {
+    e.preventDefault();
+    if (search === null || search === '') { // 검색 단어가 null 이거나 공백이면 전체 리스트 보여줌
+      axios({ 
+        method : 'post' ,
+        url : '/GareBnB/Admin/memberList.do' , 
+        contentType:"application/json; charset=UTF-8"
+        })
+
+    .then(Response => { 
+    console.log(Response.data);
+    setMemList(Response.data);
+    });
+
+    } else { // 검색 단어가 있으면 이름에 단어 포함된 리스트를 보여줌
+      const filterData = memList.filter((list) => 
+      list.MEM_ID.includes(search) || list.MEM_NAME.includes(search) ) // [QQQQQQQQQQ] list.MEM_IDX 검색 안 됨 ㅠ_ㅠ
+      setMemList(filterData);
+    }
+    setSearch('')
+  }
 
 
   return (
