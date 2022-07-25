@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Routes,Link } from 'react-router-dom';
-import Member from './member/Member';
+
 import Sidebar from '../commons/Sidebar';
 import MyPage from './MyPage';
 import QnaList from './qna/QnaList';
@@ -13,9 +13,7 @@ import MemUseList from './reserve/MemUseList';
 import HostDetail from './reserve/HostDetail';
 import InsertReview from './review/InsertReview';
 import InsertReport from './report/InsertReport';
-import MemModify from './member/MemModify';
-import MemChange from './member/MemChange';
-import MemDelete from './member/MemDelete';
+
 import ResCancel from './reserve/ResCancel';
 import ResConfirm from './reserve/ResConfirm';
 import MemUseListPage from './reserve/MemUseListPage';
@@ -23,6 +21,11 @@ import Myreview from './review/Myreview';
 import ModifyReview from './review/ModifyReview';
 import DeleteReview from './review/DeleteReview';
 
+import Member from './member/Member';
+import MemDetail from './member/MemDetail';
+import MemChange from './member/MemChange';
+import MemModify from './member/MemModify';
+import MemDelete from './member/MemDelete';
 
 const MyPageIndex = () => {
   return (
@@ -43,10 +46,11 @@ const MyPageIndex = () => {
         <Route path='/host/*' element={<HostIndex/>}/>
 
         <Route path='/member' element={<Member/>}/>
-        <Route path='/MemberModify' element={<MemModify/>}/>
-        <Route path='/MemberChange' element={<MemChange/>}/>
-        <Route path='/MemberDelete' element={<MemDelete/>}/>
-
+        <Route path='/member/MemDetail' element={<MemDetail/>}/>
+        <Route path='/member/MemChange' element={<MemChange/>}/>
+        <Route path='/member/MemModify' element={<MemModify/>}/>
+        <Route path='/member/MemDelete' element={<MemDelete/>}/>
+        
         <Route path='/report' element={<ReportList/>}/>
         <Route path='/insertReport' element={<InsertReport/>}/>
 
