@@ -8,6 +8,7 @@ const Myreview =() => {
     const board_no = location.state.RES_BOARD_NO;
     const after_date = location.state.after_date;
     const review_check = location.state.reviewcheck;
+    
 
     const [myreview, setMyreview] = useState([]);
 
