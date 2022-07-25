@@ -8,15 +8,20 @@ const List = (board) => {
       {board[0] !== undefined && board.map(list => {
         return (
 
-          <div className="row">
+          <div className="row border border-primary" key={list.BOARD_NO}>
             <div className="col-md-7">
-              <img className="img-fluid rounded mb-3 mb-md-0" width='700px' height='300px' src={list.URL} alt="" />
-
+              <img className="img-fluid rounded mb-3 mb-md-0" 
+                   width='700px'
+                   height='300px'
+                    
+                   src={list.URL} 
+                   alt="" 
+                   />
             </div>
-            <div className="col-md-5">
+            <div className="col-md-4">
               <h3>{list.BOARD_TITLE}</h3>
               <p>{list.BOARD_CONTENT}</p>
-              <h5 className='text-end'>{list.BOARD_PRICE}원/박</h5>
+              <h5 className='text-end'>{list.BOARD_PRICE}원/일</h5>
               <h5 className='text-end'>{list.BOARD_SCORE}</h5>
               <Link to='Detail' state={list}>
                 <button className="btn btn-primary" href="#">자세한 정보 알아보기</button>
