@@ -4,7 +4,7 @@ import FindId from './findInfo/FindId'
 import FindIdResult from './findInfo/FindIdResult'
 import FindPw from './findInfo/FindPw'
 import FindPwResult from './findInfo/FindPwResult'
-import Login from './Login'
+import Login from './LoginPage'
 
 const LoginIndex = () => {
   return (
