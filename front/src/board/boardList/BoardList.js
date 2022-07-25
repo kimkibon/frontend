@@ -10,8 +10,8 @@ const BoardList = () => {
     axios({
       method : 'get',
       url : '/GareBnB/board/boardList.do'
+
     }).then(Response => {
-      
       const url = Response.data.map(async list =>{
 
         await SelectOneFile('0',list.BOARD_NO).then(Res=>{
@@ -19,7 +19,8 @@ const BoardList = () => {
       })
         return list
       })
-      
+      console.log(url);
+
       Promise.all(url).then((data)=>{setBoard(data)});
 
     })
