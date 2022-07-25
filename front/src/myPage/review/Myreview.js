@@ -7,7 +7,8 @@ const Myreview =() => {
     const mem_id = location.state.CLI_ID;
     const board_no = location.state.RES_BOARD_NO;
     const after_date = location.state.after_date;
-
+    const review_check = location.state.reviewcheck;
+    
 
     const [myreview, setMyreview] = useState([]);
 
@@ -31,10 +32,13 @@ const Myreview =() => {
 
     //뒤로가기 동작
     const navigate = useNavigate();
+
+
+
     return (
         <div>
             <h1>리뷰 확인</h1>
-            {!myreview ? <h3>작성한 리뷰가 없습니다.</h3> 
+            {review_check===0 ? <h3>작성한 리뷰가 없습니다.</h3> 
             :   <div>
                     별점: {myreview.SCORE}<br/>
                     후기: {myreview.REVIEW_CONTENT}<br/>
