@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import './login.css';
+import axios from "axios";
 
 
 const LS_KEY_ID = "LS_KEY_ID"; //로컬스토리지에 저장할 ID
@@ -59,16 +60,47 @@ const Login = () => {
   const login = () => {
     console.log({ loginID, loginPassword });
 
-    if (loginID === "") {
-      alert("아이디를 입력해주세요.");
+    if (loginID !== "") {
+      
+
+      if (loginPassword !== "") {
+        axios({
+          method : 'post' ,
+          url : '/GareBnB/login/login.do' ,
+          contentType:"application/json;charset=UTF-8",
+          params : {
+              'MEM_ID' : loginID ,
+              'MEM_PW' : loginPassword 
+
+          }}).then(Response => {
+            if (Response.date = null){
+              alert("아이디나 비밀번호를 잘못 입력하셨습니다.");
+            }
+            else {
+              console.log(Response.data.MEM_ID)
+              localStorage.setItem('MEM_LEVEL', Response.data.MEM_LEVEL)
+              localStorage.setItem('MEM_ID', Response.data.MEM_ID)
+            
+            }
+          }).catch(err => {
+            console.log(err);
+          });
+
+      }
+      else alert("비밀번호를 입력하세요");
+
+      
     }
-    if (loginPassword === "") {
-      alert("비밀번호를 입력해주세요.");
-    }
+    else alert("아이디를 입력하세요");
+    
+  
+
+   
     //체크박스 v인경우 (saveIDFlag ===true) 로컬스토리지에 loginId를 set
-    if (true /* login success */) {
-      if (saveIDFlag) localStorage.setItem(LS_KEY_ID, loginID);
-    }
+    if (saveIDFlag) localStorage.setItem(LS_KEY_ID, loginID);
+
+    
+    
   };
   
   /*페이지가 최초 렌더링 될 때 checkbox확인
