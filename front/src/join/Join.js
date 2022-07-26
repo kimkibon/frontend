@@ -1,14 +1,16 @@
-import React from 'react'
+import React, { useEffect, useState }from 'react'
+import { Navigate, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Join = () => {
 
   const [JoinID, setJoinID] = useState("");
-  const [JoinIDCheck, setJoinIDCheck] = useState(""); //0: 중복체크 완료 , 1: 중복체크 미완료
+  const [JoinIDCheck, setJoinIDCheck] = useState("1"); //0: 중복체크 완료 , 1: 중복체크 미완료
   const [JoinPassword, setJoinPassword] = useState("");
   const [JoinPwCheck, setJoinPwCheck] = useState("");
   const [JoinName, setJoinName] = useState("");
   const [JoinPhone, setJoinPhone] = useState("");
- 
+  const navigate = useNavigate();
  
   const dataRuleCheckForID = (ch) => {
     let ascii = ch.charCodeAt(0);
@@ -38,12 +40,20 @@ const Join = () => {
 
   const getJoinPassword = (event) =>{
     let value = event.target.value;
-    if(dataRuleCheckForPW){
-
-    }
-
-
-  }
+    setJoinPassword(value);
+  };
+  const getJoinPwCheck = (event) =>{
+    let value = event.target.value;
+    setJoinPwCheck(value);
+  };
+  const getJoinName = (event) =>{
+    let value = event.target.value;
+    setJoinName(value);
+  };
+  const getJoinPhone = (event) =>{
+    let value = event.target.value;
+    setJoinPhone(value);
+  };
 
   
 
@@ -52,13 +62,14 @@ const Join = () => {
     if(JoinID !== ""){
       axios({
         method : 'post' ,
-        url : '/GareBnB/login/IDCheck.do' ,
+        url : '/GareBnB//confirmId.do' ,
         contentType:"application/json;charset=UTF-8",
         params : {
             'MEM_ID' : JoinID   
         }}).then(Response => {
-          if (Response.date = null){
-            alert("해당 아이디가 존재하지 않습니다.");  
+          console.log(Response.data)
+          if (Response.data == 0){
+            alert("아이디를 사용하실 수 있습니다.");  
             setJoinIDCheck(0);
           }
           else {
@@ -75,22 +86,49 @@ const Join = () => {
   }
 
   const dataRuleCheckForPW =() =>{
-    JoinPassword.length < 8 ? true : false;
+    return (JoinPassword.length >= 8 ? true : false)
   }
   const SameCheckForPW =() =>{
-    JoinPassword != JoinPwCheck ? true : false;
+    return (JoinPassword === JoinPwCheck ? true : false)
   }
 
   const Join = () => {
     console.log({JoinID, JoinPassword});
-
-    if(CheckedID !== ""){
-      
+    if(JoinIDCheck===0){
+      if(dataRuleCheckForPW()){
+        if(SameCheckForPW()){
+          if(JoinName!==""){
+            if(JoinPhone!==""){
+              axios({
+                method : 'post' ,
+                url : '/GareBnB//joinSuccess.do' ,
+                contentType:"application/json;charset=UTF-8",
+                params : {
+                    'MEM_ID' : JoinID ,
+                    'MEM_PW' : JoinPassword,
+                    'MEM_NAME' : JoinName,
+                    'MEM_PHONE' : JoinPhone  
+                }}).then(Response => {
+                  navigate('/');
+                }).catch(err => {
+                  console.log(err);
+                });
+              
+            }
+            else alert("휴대폰번호를 입력해주세요")
+          }
+          else alert("이름을 입력해주세요")
+        }
+        else alert("비밀번호가 같지 않습니다.")
+      }
+      else alert("비밀번호가 너무 짧습니다.")
     }
-
-
+    else alert("아이디를 확인해주세요")
   }
-
+  
+  const Exit = () => {
+    navigate('/');
+  };
 
   return (
     <div>
@@ -99,7 +137,6 @@ const Join = () => {
         id="ID"
         name="ID"
         placeholder="아이디"
-        className="input-id"
         value={JoinID}
         onChange={(e) => getJoinID(e)} //내용이 바뀔떄마다 ID GET
       />
@@ -108,10 +145,36 @@ const Join = () => {
         id="PW"
         name="PW"
         placeholder="비밀번호"
-        className="input-pw"
         value={JoinPassword}
-        onChange={(e) => setJoinPassword(e.target.value)} //내용이 바뀔떄마다 PW GET
+        onChange={(e) => getJoinPassword(e)} //내용이 바뀔떄마다 PW GET
       />
+      <input
+        type="text"
+        id="PWCheck"
+        name="PWCheck"
+        placeholder="비밀번호확인"
+        value={JoinPwCheck}
+        onChange={(e) => getJoinPwCheck(e)} //내용이 바뀔떄마다 PWCheck GET
+      />
+      <input
+        type="text"
+        id="NAME"
+        name="NAME"
+        placeholder="이름"
+        value={JoinName}
+        onChange={(e) => getJoinName(e)} //내용이 바뀔떄마다 Name GET
+      />
+      <input
+        type="text"
+        id="PHONE"
+        name="PHONE"
+        placeholder="전화번호확인"
+        value={JoinPhone}
+        onChange={(e) => getJoinPhone(e)} //내용이 바뀔떄마다 PWCheck GET
+      />
+      <button onClick={IDDupCheck}> 중복확인 </button>
+      <button onClick={Join}> 가입 </button>
+      <button onClick={Exit}> 취소 </button>     
     </div>
   )
 }
