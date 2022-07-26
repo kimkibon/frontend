@@ -45,13 +45,13 @@ const MyPageIndex = () => {
 
         <Route path='/host/*' element={<HostIndex/>}/>
 
-        <Route path='/member' element={<Member/>}/>
+        <Route path='/member/*' element={<Member/>}/>
         <Route path='/member/MemDetail' element={<MemDetail/>}/>
         <Route path='/member/MemChange' element={<MemChange/>}/>
         <Route path='/member/MemModify' element={<MemModify/>}/>
         <Route path='/member/MemDelete' element={<MemDelete/>}/>
         
-        <Route path='/report' element={<ReportList/>}/>
+        <Route path='/report' element={<ReportList/>}/>  
         <Route path='/insertReport' element={<InsertReport/>}/>
 
 

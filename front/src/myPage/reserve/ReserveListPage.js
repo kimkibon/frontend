@@ -2,16 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
-
-const StyledItemBoxDiv = styled.div`
-  display:flex;
-  justify-content:space-between;
-  border:1px solid black;
-  padding:10px;
-  height:150px;
-  margin:20px;
-  align-items: center;
-`;
+import Button from 'react-bootstrap/Button';
 
 //예약상태
 const ResState=(state)=>{
@@ -36,7 +27,7 @@ const ReserveListPage = () => {
         url : '/GareBnB/mypage/memReserveList.do' ,
         contentType:"application/json;charset=UTF-8",
         params : {
-          MEM_ID : 'MEM_1'
+          MEM_ID : 'MEM_10'
     
         }
     }).then(Response => {
@@ -53,7 +44,7 @@ const ReserveListPage = () => {
         let resstate = list.RES_LEVEL;
 
         return(
-        <StyledItemBoxDiv>
+        <div>
           <div>
             예약상태 : {ResState(resstate)}<br/>
             예약번호 : {list.RES_IDX}<br/>
@@ -64,19 +55,31 @@ const ReserveListPage = () => {
             {[2,3].includes(resstate) && <div>계좌번호: (관리자은행)123-1234567-1234</div>}
           </div>
           <div>
-          {[1,2,3].includes(resstate) && <Link to ={'hostDetail'} state={{'hostId': list.HOST_ID}}><button>호스트회원정보보기</button></Link>}
-          {resstate === 0 && <div><h3>요청대기</h3><Link to ={'resCancel'} state={{'res_idx': list.RES_IDX}}><button>예약취소</button></Link></div>}
+          {[1,2,3].includes(resstate) && <Link to ={'hostDetail'} state={{'hostId': list.HOST_ID}}><Button variant="success">호스트정보</Button></Link>}
+          {resstate === 0 && 
+          <div>
+            <Button variant="outline-dark" size="sm" disabled>요청대기</Button>
+            <Link to ={'resCancel'} state={{'res_idx': list.RES_IDX}}>
+              <Button variant="secondary" size="sm" active>예약취소</Button>
+            </Link>
+          </div>}
           {resstate === 1 && 
               <div>
                 <Link to ={'resConfirm'} state={{'res_idx': list.RES_IDX}}><button>예약확정</button></Link>
-                <Link to ={'resCancel'} state={{'res_idx': list.RES_IDX}}><button>예약취소</button></Link>
+                <Link to ={'resCancel'} state={{'res_idx': list.RES_IDX}}>
+                  <Button variant="secondary" size="sm" active>예약취소</Button>
+                </Link>
               </div>
           }
-          {resstate === 2 && <Link to ={'resCancel'} state={{'res_idx': list.RES_IDX}}><button>예약취소</button></Link>}
-          {resstate === 4 && (list.RES_REJ)!=null && <div><h1>예약이 거절되었습니다.</h1><button onClick={()=>{alert(list.RES_REJ)}}>거절 사유 보기</button></div>}
+          {resstate === 2 && <Link to ={'resCancel'} state={{'res_idx': list.RES_IDX}}>
+                                <Button variant="secondary" size="sm" active>예약취소</Button>
+                            </Link>}
+          {resstate === 4 && (list.RES_REJ)!=null && <div><h1>예약이 거절되었습니다.</h1>
+          <Button variant="primary" size="sm" onClick={()=>{alert(list.RES_REJ)}}>거절 사유 보기</Button>
+          </div>}
 
           </div>
-        </StyledItemBoxDiv>
+        </div>
         )
 
       })

@@ -2,7 +2,7 @@ import React from 'react'
 
 const ReportList = () => {
   return (
-    <div>ReportList</div>
+    <div>ReportList</div>   
   )
 }
 
