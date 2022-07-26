@@ -47,7 +47,7 @@ const MemUseListPage = () => {
                 const after_date = end_date.setDate(end_date.getDate()+8);//8일 후
 
                 const review_check = list.review;
-                console.log(list);
+                
                 return(
                 <div>
                     <MemUseList list={list }/>
@@ -72,3 +72,5 @@ const MemUseListPage = () => {
 }
 
 export default MemUseListPage
+
+
