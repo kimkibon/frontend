@@ -214,7 +214,7 @@ const Login = () => {
               </span>
             </li>
             <li>
-              <Link to="/signUp">
+              <Link to="/Join">
                 <span className="bold">회원가입</span>
               </Link>
             </li>
