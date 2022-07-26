@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import reviewcheck from "../review/reviewcheck";
+import Reviewcheck from "../review/Reviewcheck";
 import MemUseList from "./MemUseList";
 
 
@@ -21,7 +21,7 @@ const MemUseListPage = () => {
             }
         }).then(Response => {
             const list_review = Response.data.map(async list=>{
-                await reviewcheck(list.RES_CLI_ID, list.RES_BOARD_NO).then(Res=>{
+                await Reviewcheck(list.RES_CLI_ID, list.RES_BOARD_NO).then(Res=>{
                     list['review'] = Res
                 })
                 return list

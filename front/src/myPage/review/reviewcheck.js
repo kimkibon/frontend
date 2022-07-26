@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-async function reviewcheck(mem_id ,board_no) {
+async function Reviewcheck(mem_id ,board_no) {
 
   return( new Promise((resolve,reject)=>{
 
@@ -24,4 +24,4 @@ async function reviewcheck(mem_id ,board_no) {
 
 )}
 
-export default reviewcheck
+export default Reviewcheck

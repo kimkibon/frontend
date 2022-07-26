@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
 import Button from 'react-bootstrap/Button';
+import Payment from "./payment/Payment";
 
 //예약상태
 const ResState=(state)=>{
@@ -62,6 +63,7 @@ const ReserveListPage = () => {
             <Link to ={'resCancel'} state={{'res_idx': list.RES_IDX}}>
               <Button variant="secondary" size="sm" active>예약취소</Button>
             </Link>
+            <Payment/>
           </div>}
           {resstate === 1 && 
               <div>
