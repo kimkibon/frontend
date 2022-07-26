@@ -13,3 +13,4 @@ const MemDelete = () => {
 
 
 export default MemDelete
+
