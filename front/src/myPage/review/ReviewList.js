@@ -2,7 +2,6 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 
 const ReviewList = (props) => {
-  const board_no = props;
 
   const [reviewList, setReviewList] = useState([]);
 
@@ -12,14 +11,14 @@ const ReviewList = (props) => {
           url : '/GareBnB/board/boardReview.do' ,
           contentType:"application/json;charset=UTF-8",
           params : {
-            BOARD_NO : 'MEM_7'
+            BOARD_NO : props
       
           }
       }).then(Response => {
           //console.log(Response.data);
           setReviewList(Response.data);
       });
-  },[]);
+  },[props]);
   return (
     <div>
       <h2>후기</h2>
