@@ -12,10 +12,10 @@ const MemDetail = () => {
     useEffect(() => // 회원정보 보여주기
         { axios({ 
         method : 'post' ,
-        url : '/GareBnB/mypage/selectMemberDetail.do' , 
+        url : '/GareBnB/mypage/MemDetail.do' , 
         contentType:"application/json; charset=UTF-8",
         params : { 
-            MEM_IDX : '29' 
+            MEM_IDX : '7' 
         }})
 
     .then(Response => { 
@@ -74,7 +74,7 @@ const MemDetail = () => {
         <li>비밀번호(임시) : {memDetail.MEM_PW}</li>
         <li>휴대폰 번호 : {memDetail.MEM_PHONE}</li>
         </ul>
-        <br/><br/><br/>
+       
 
 
         <Link to = {'../member/MemModify'} state = {{mem : memDetail}}><button>수정하기</button></Link>
