@@ -93,4 +93,4 @@ const MemDetail = () => {
     )
 }
 
-    export default MemDetail
+    export default MemDetail 

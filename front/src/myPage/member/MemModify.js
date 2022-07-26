@@ -69,7 +69,7 @@ const onSubmit = (e) => {
       ...memModify, 
       'MEM_PW' : password
     });
-    return setModalOpen(false)
+    return setModalOpen(false)     
 
   }
   // password == passwordcheck면 password를 MEM_PW에 넣기
