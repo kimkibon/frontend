@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-
+import Button from 'react-bootstrap/Button';
 const Payment = ()=>{
 
     useEffect(()=>{
@@ -58,7 +58,7 @@ const Payment = ()=>{
     
       return (
         <>
-            <button onClick={onClickPayment}>결제하기</button>
+            <Button variant="danger" size="sm" onClick={onClickPayment}>결제하기</Button>
         </>
       );
 }
