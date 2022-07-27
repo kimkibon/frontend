@@ -7,26 +7,26 @@ const FindPw = () => {
   const [inputID, setInputID] = useState("");
  
 
-  const getInputName = (event) =>{
+  const getInputName = (event) =>{  //이름
     let value = event.target.value;
     setInputName(value);
   };
 
-  const getInputPhone = (event) =>{
+  const getInputPhone = (event) =>{  //핸드폰번호
     let value = event.target.value;
     setInputPhone(value);
   };
 
-  const getInputID = (event) =>{
+  const getInputID = (event) =>{  //ID
     let value = event.target.value;
     setInputID(value);
   };
 
-  const Exit = () => {
+  const Exit = () => {  //취소하기
     navigate('/');
   };
 
-  const findPw =() =>{
+  const findPw =() =>{  //PW찾기
     axios({
       method : 'post' ,
       url : '/GareBnB/login/findPw.do' ,
@@ -34,15 +34,16 @@ const FindPw = () => {
       params : {
           'MEM_ID' :  inputID ,
           'MEM_NAME'  : inputName ,
-          'MEM_PHONE' : inputPhone 
+          'MEM_PHONE' : inputPhone   //ID,이름,핸드폰 받음
           
 
       }}).then(Response => {
-        if (Response.date = null){
-          alert("아이디를 찾을 수 없습니다.");
-        }
+        if (Response.data = null){  
+          alert("아이디를 찾을 수 없습니다.");  //응답이 null일시 아이디 없는 상태
+        } 
         else {
           console.log(Response.data.MEM_ID)
+          alert(Response.data.MEM_ID)
 
           navigate('/');
         }
