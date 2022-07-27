@@ -2,7 +2,7 @@ import React from 'react'
 
 const FindPwResult = () => {
   return (
-    <div>FindPwResult</div>
+    <div>안쓰는화면2</div>
   )
 }
 
