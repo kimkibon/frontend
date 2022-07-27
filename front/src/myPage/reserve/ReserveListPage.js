@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import styled from 'styled-components';
 import Button from 'react-bootstrap/Button';
 import Payment from "./payment/Payment";
 
@@ -17,6 +16,8 @@ const ResState=(state)=>{
 
 }
 
+const mem_id = 'MEM_1';
+const mem_idx = 1;
 
 const ReserveListPage = () => {
   const [resList, setResList] = useState([]);
@@ -28,7 +29,7 @@ const ReserveListPage = () => {
         url : '/GareBnB/mypage/memReserveList.do' ,
         contentType:"application/json;charset=UTF-8",
         params : {
-          MEM_ID : 'MEM_1'
+          MEM_ID : mem_id
     
         }
     }).then(Response => {
@@ -81,12 +82,12 @@ const ReserveListPage = () => {
 
           {/* 결제대기상태 */}
           {resstate === 2 && 
-              <Payment/>
+              <Payment price={list.PRICE} title={list.BOARD_TITLE} booker={mem_id} res_idx={list.RES_IDX}/>
           }
 
 
           {/* 예약취소상태 */}
-          {resstate === 4 && (list.RES_REJ)!=null && <div><h1>예약이 거절되었습니다.</h1>
+          {resstate === 4 && (list.RES_REJ)!=null && <div><h1>예약이 취소되었습니다.</h1>
           <Button variant="warning" size="sm" onClick={()=>{alert(list.RES_REJ)}}>거절 사유 보기</Button>
           </div>}
 
