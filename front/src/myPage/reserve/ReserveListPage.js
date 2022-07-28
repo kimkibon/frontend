@@ -33,9 +33,18 @@ const ReserveListPage = () => {
     
         }
     }).then(Response => {
-        //console.log(Response.data); 
-        setResList(Response.data);
-    });
+        const url = Response.data.map(async list =>{
+
+          await SelectOneFile('0',list.BOARD_NO).then(Res=>{
+          list['URL'] = "data:image/;base64,"+Res.URL
+        })
+          return list
+        })
+        console.log(url);
+
+        Promise.all(url).then((data)=>{setResList(data)}); 
+ 
+      });
   } ,[]);
   
   return (
@@ -50,6 +59,7 @@ const ReserveListPage = () => {
           <div>
             예약상태 : {ResState(resstate)}<br/>
             예약번호 : {list.RES_IDX}<br/>
+            <img src={list.URL}/>
             주소 : {list.ADDR1}{list.ADDR2}<br/>
             이용날짜 : {list.RES_DATE_START} ~ {list.RES_DATE_END}<br/>
             맡긴 동물 수 : {list.RES_CARE_NO}<br/>
