@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Carousel } from "react-bootstrap";
 import ImagePreview from "./ImagePreview";
 
-function ImageUploadBox({ max = 10 }) {
+function ImageUploadBox({ max = 10 },props) {
     const [uploadedImages, setUploadedImages] = useState([]);
     const [previewImages, setPreviewImages] = useState([]);
     const uploadBoxRef = useRef();
@@ -53,7 +53,7 @@ function ImageUploadBox({ max = 10 }) {
             input.removeEventListener("change", changeHandler);
         };
     }, [max]);
-
+    console.log(props);
     useEffect(() => {
         const imageJSXs = uploadedImages.map((image, index) => {
             const isDeleteImage = (element) => {
@@ -63,6 +63,7 @@ function ImageUploadBox({ max = 10 }) {
                 uploadedImages.splice(uploadedImages.findIndex(isDeleteImage), 1);
                 setUploadedImages([...uploadedImages]);
             };
+            props.getImages(uploadedImages)
             return (
                 <Carousel.Item key={index} >
                     <ImagePreview image={image} deleteFunc={deleteFunc} />
@@ -71,26 +72,38 @@ function ImageUploadBox({ max = 10 }) {
             );
         });
         setPreviewImages(imageJSXs);
-        console.log(uploadedImages);
-        console.log(previewImages);
     }, [uploadedImages]);
 
     return (
         <div className="row">
             <label className="drag_or_click" htmlFor='id' ref={uploadBoxRef}>
                 <Carousel >
-                    {previewImages[0] === undefined && <img src="" alt="" width='700px' height='400px' /> }
-                    {previewImages[0] !== undefined && previewImages}
+                    {uploadedImages[0] === undefined &&
+                        <div className="card">
+                            <img
+                                alt=""
+                                className="card-img d-block w-100"
+                                width='700px'
+                                height='400px'
+                            />
+                            <div className="card-img-overlay">
+                                <div className="row">
+                                    <div className="col-sm-9">
+                                        <h1 className="input-group-text">
+                                            드래그 또는 클릭하여 업로드
+                                        </h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>}
+                    {uploadedImages[0] !== undefined && previewImages}
                 </Carousel>
-                <div className="input-group">
-                    <h3 className="input-group-text">드래그 또는 클릭하여 업로드</h3>
-                </div>
             </label>
             <div className="input-group">
-            <input type="file" multiple accept="image/*" id='id' ref={inputRef} />
-            <div className="col-sm-9">
+                <input type="file" multiple accept="image/*" id='id' ref={inputRef} />
+                <div className="col-sm-9">
 
-            </div>
+                </div>
             </div>
         </div>
     );

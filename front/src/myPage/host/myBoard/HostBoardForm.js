@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ReactDatePicker from 'react-datepicker';
 import ImageUploadBox from './component/ImageUploadBox';
 import InsertBoard from './component/InsertBoard'
 
 const HostBoardForm = () => {
   const [insertModal, setInsertModal] = React.useState(false);
+  const [images, setImages] = useState([]);
   const [insertBoard, setInsertBoard] = useState({
     'BOARD_HOST_ID': '',     // 로컬 스토리지에서 가져오기
     'BOARD_HOST_IDX': '',    // 어디서 가져오지 ? 서버에서 ? 
@@ -53,8 +54,13 @@ const HostBoardForm = () => {
       [name]: value
     })
   };
+  
   //글 입력 내용이 변경되면 변수에 저장. 
 
+  const getImages = (image)=>{
+    setImages(image)
+  }
+  
   // 내용 입력이 없을 때 에러 띄울것 추가예정
   //파일 내용을 바이너리로 바꿔서 file_level을 설정하는 함수 추가 예정 
 
@@ -71,7 +77,7 @@ const HostBoardForm = () => {
 
                 {/* 기능추가 예정 파일을 업로드 하면 미리보기 가능하도록  조건부 출력을 통해서 기본 이미지 추가*/}
 
-                <ImageUploadBox/>
+                <ImageUploadBox getImages={getImages}/>
               </div>
 
               <div className="col-md-6">
