@@ -62,6 +62,20 @@ const Sidebar = () => {
                 <span className='title'>TOHOST</span>
               </a>
           </li>
+
+          <li>
+              <a href="/admin">
+                <span className='icon'><AiFillInteraction/></span>
+                <span className='title'>admin 메뉴들</span>
+              </a>
+          </li>
+
+          <li>
+              <a href="/myPage/host">
+                <span className='icon'><AiFillInteraction/></span>
+                <span className='title'>host 메뉴들</span>
+              </a>
+          </li>
           </ul>
         </div>
 
