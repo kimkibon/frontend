@@ -6,6 +6,8 @@ const AdminMemberList = () => {
   
   const location = useLocation();
 
+  const [mem_LEV, setMem_LEV] = useState();
+
   const mem_idx = location.state.MEM_IDX
 
   const [getMem, setGetMem] = useState({ // MEM_IDX는 list에서 넘어온 값으로 초기값 지정
@@ -30,35 +32,31 @@ const AdminMemberList = () => {
     .then(Response => {  
     console.log(Response.data);
     setGetMem(Response.data);
-   
+    setMem_LEV(Response.data.MEM_LEVEL);
   })
   },[]); 
 
 
-    // const [memDenyModify , setMemDenyModify] = useState();
-    // const adminModifySuccess = () => { // 저장 버튼 클릭 시 update sql문 실행됨 (레벨 업데이트 - 정지) // 정지는 영정 
-    //   axios({
-    //   method : 'post',
-    //   url : '/GareBnB/Admin/memberDeny.do',
-    //   contentType:"apllication/json; charset=UTF-8",
-    //   params : {
-    //     MEM_IDX : getMem.MEM_IDX 
-    //   } })
-    // .then(Response => {
-    //   console.log(Response.data);
-    //   setMemDenyModify(Response.data);
-    // })
-    // }
+    const [memDenyModify , setMemDenyModify] = useState();
+    const adminModifySuccess = () => { // 저장 버튼 클릭 시 update sql문 실행됨 (레벨 업데이트 - 정지) // 정지는 영정 
+      axios({
+      method : 'post',
+      url : '/GareBnB/Admin/memberDeny.do',
+      contentType:"apllication/json; charset=UTF-8",
+      params : {
+        MEM_IDX : getMem.MEM_IDX 
+      } })
+    .then(Response => {
+      console.log(Response.data);
+      setMemDenyModify(Response.data);
+    })
+    }
    
-
-    //  const [modifyLev, setModifyLev] = useState (getMem.MEM_LEVEL)
-    //  console.log(modifyLev)
-   
-    // const checkedHandler = () => { 
-    //   setModifyLev ({
-    //     ...modifyLev
-    //   });
-    // }
+    const checkedHandler = () => { 
+      setMem_LEV ({
+        ...mem_LEV
+      });
+    }
 
   return (
     <article>
@@ -69,9 +67,9 @@ const AdminMemberList = () => {
       <li>비밀번호 : {getMem.MEM_PW} </li>
       <li>이름 : {getMem.MEM_NAME} </li>
       <li>휴대폰 번호 : {getMem.MEM_PHONE}</li>
-      {/* <li>level(임시) : {modifyLev}</li> */}
-      {/* <button type="submit" onClick={checkedHandler}>회원 정지 업데이트</button> */}
-      {/* <button><Link to = '/admin/adminMemberList'>확인</Link></button> */}
+      <li>level(임시) : {mem_LEV} &nbsp;
+      <button type="submit" onClick={checkedHandler}> 회원 정지 업데이트 </button> </li>
+      <button><Link to = '/admin/adminMemberList'>확인</Link></button>
       <button>취소</button>
       </ul>
       </article>
