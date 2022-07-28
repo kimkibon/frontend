@@ -16,11 +16,16 @@ const Auth = (props) => {
         console.log(localStorage.getItem("MEM_LEVEL"));
         alert("권한이 없습니다");
         window.history.back();
+        return Response.data.MEM_LEVEL;
        } 
+       else return Response.data.MEM_IDX;
+       
     })
         
        
     },[])
+
+    
     
   }
 

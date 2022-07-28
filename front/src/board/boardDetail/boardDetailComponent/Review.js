@@ -1,7 +1,9 @@
 import React from 'react';
 
+//board_detail 에서 받아온 리뷰 정보를 출력하는 컴포넌트 
 
 const Review = (review) => {
+  // boardDetail 컴포넌트에서 변수를 받아옴. 
   return (
     <div className="container px-4 px-lg-5 mt-5">
       <h2 className="fw-bolder mb-4">Reviews</h2>
