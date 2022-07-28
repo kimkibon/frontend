@@ -56,15 +56,16 @@ const Login = () => {
     localStorage.setItem(LS_KEY_SAVE_ID_FLAG, !saveIDFlag);
     setSaveIDFlag(!saveIDFlag);
   };
-
+  
+  //로그인 버튼 눌렀을 때 
   const login = () => {
     console.log({ loginID, loginPassword });
-
-    if (loginID !== "") {
+    
+    if (loginID !== "") { //아이디가 비어있지 않을 때
       
 
-      if (loginPassword !== "") {
-        axios({
+      if (loginPassword !== "") { //패스워드가 비어있지 않을 때
+        axios({ //MEM_ID 와 MEM_PW로 확인하고 MEM_ID 로컬스토리지 저장
           method : 'post' ,
           url : '/GareBnB/login/login.do' ,
           contentType:"application/json;charset=UTF-8",
@@ -73,13 +74,14 @@ const Login = () => {
               'MEM_PW' : loginPassword 
 
           }}).then(Response => {
-            if (Response.date = null){
+            if (Response.date = null){ //MEM_ID와 MEM_PW가 맞지않거나 없을 때 null이 리턴됨
               alert("아이디나 비밀번호를 잘못 입력하셨습니다.");
             }
             else {
               console.log(Response.data.MEM_ID)
-              localStorage.setItem('MEM_LEVEL', Response.data.MEM_LEVEL)
-              localStorage.setItem('MEM_ID', Response.data.MEM_ID)
+              console.log(Response.data.MEM_LEVEL)
+              
+              localStorage.setItem('MEM_ID', Response.data.MEM_ID)  //MEM_ID만 로컬스토리지에 저장
 
               window.location.href="/index"
             

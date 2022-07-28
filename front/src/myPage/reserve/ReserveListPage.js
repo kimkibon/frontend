@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import styled from 'styled-components';
 import Button from 'react-bootstrap/Button';
 import Payment from "./payment/Payment";
 
@@ -17,6 +16,8 @@ const ResState=(state)=>{
 
 }
 
+const mem_id = 'MEM_1';
+const mem_idx = 1;
 
 const ReserveListPage = () => {
   const [resList, setResList] = useState([]);
@@ -28,7 +29,7 @@ const ReserveListPage = () => {
         url : '/GareBnB/mypage/memReserveList.do' ,
         contentType:"application/json;charset=UTF-8",
         params : {
-          MEM_ID : 'MEM_10'
+          MEM_ID : mem_id
     
         }
     }).then(Response => {
@@ -52,32 +53,42 @@ const ReserveListPage = () => {
             주소 : {list.ADDR1}{list.ADDR2}<br/>
             이용날짜 : {list.RES_DATE_START} ~ {list.RES_DATE_END}<br/>
             맡긴 동물 수 : {list.RES_CARE_NO}<br/>
-            결제할 가격 : {list.PRICE} 원<br/>
-            {[2,3].includes(resstate) && <div>계좌번호: (관리자은행)123-1234567-1234</div>}
+            가격 : {list.PRICE} 원<br/>
+
           </div>
           <div>
-          {[1,2,3].includes(resstate) && <Link to ={'hostDetail'} state={{'hostId': list.HOST_ID}}><Button variant="success">호스트정보</Button></Link>}
+          {[1,2,3].includes(resstate) && <Link to ={'hostDetail'} state={{'hostId': list.HOST_ID}}><Button variant="success" size="sm">호스트정보</Button></Link>}
+          {[0,1,2].includes(resstate) && 
+                              <Link to ={'resCancel'} state={{'res_idx': list.RES_IDX}}>
+                                <Button variant="secondary" size="sm" active>예약취소</Button>
+                              </Link>}
+
+          
+          {/* 예약요청상태 */}
           {resstate === 0 && 
-          <div>
-            <Button variant="outline-dark" size="sm" disabled>요청대기</Button>
-            <Link to ={'resCancel'} state={{'res_idx': list.RES_IDX}}>
-              <Button variant="secondary" size="sm" active>예약취소</Button>
-            </Link>
-            <Payment/>
-          </div>}
+            <div>
+              <Button variant="outline-dark" size="sm" disabled>요청대기</Button>
+              
+            </div>}
+
+
+          {/* 예약승인상태 */}
           {resstate === 1 && 
               <div>
                 <Link to ={'resConfirm'} state={{'res_idx': list.RES_IDX}}><button>예약확정</button></Link>
-                <Link to ={'resCancel'} state={{'res_idx': list.RES_IDX}}>
-                  <Button variant="secondary" size="sm" active>예약취소</Button>
-                </Link>
               </div>
           }
-          {resstate === 2 && <Link to ={'resCancel'} state={{'res_idx': list.RES_IDX}}>
-                                <Button variant="secondary" size="sm" active>예약취소</Button>
-                            </Link>}
-          {resstate === 4 && (list.RES_REJ)!=null && <div><h1>예약이 거절되었습니다.</h1>
-          <Button variant="primary" size="sm" onClick={()=>{alert(list.RES_REJ)}}>거절 사유 보기</Button>
+
+
+          {/* 결제대기상태 */}
+          {resstate === 2 && 
+              <Payment price={list.PRICE} title={list.BOARD_TITLE} booker={mem_id} res_idx={list.RES_IDX}/>
+          }
+
+
+          {/* 예약취소상태 */}
+          {resstate === 4 && (list.RES_REJ)!=null && <div><h1>예약이 취소되었습니다.</h1>
+          <Button variant="warning" size="sm" onClick={()=>{alert(list.RES_REJ)}}>거절 사유 보기</Button>
           </div>}
 
           </div>

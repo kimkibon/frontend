@@ -2,7 +2,7 @@ import React from 'react'
 
 const FindIdResult = () => {
   return (
-    <div>FindIdResult</div>
+    <div>안쓰는화면</div>
   )
 }
 

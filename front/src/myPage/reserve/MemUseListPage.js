@@ -46,7 +46,7 @@ const MemUseListPage = () => {
                 const end_date = new Date(list.RES_DATE_END);//예약마지막날짜
                 const after_date = end_date.setDate(end_date.getDate()+8);//8일 후
 
-                const review_check = list.review;
+                const review_check = list.review;   //리뷰 존재 유무
                 
                 return(
                 <div>

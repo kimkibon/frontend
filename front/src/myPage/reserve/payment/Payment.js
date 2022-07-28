@@ -1,6 +1,15 @@
+import axios from "axios";
 import { useEffect } from "react";
+import Button from 'react-bootstrap/Button';
 
-const Payment = ()=>{
+
+const Payment = (props)=>{
+
+  const price = props.price;
+  const title = props.title;
+  const booker = props.booker;
+  //const phone = props.phone;
+  const res_idx = props.res_idx;
 
     useEffect(()=>{
         const jquery = document.createElement("script");
@@ -25,14 +34,11 @@ const Payment = ()=>{
         const data = {
           pg: 'kakaopay',                               // PG사
           pay_method: 'card',                           // 결제수단
-          merchant_uid: `mid_${new Date().getTime()}`,   // 주문번호
-          amount: 1000,                                 // 결제금액
-          name: '아람아 안뇽!!!!!!!!!!!!!!',                  // 주문명
-          buyer_name: '홍길동',                           // 구매자 이름
-          buyer_tel: '01012341234',                     // 구매자 전화번호
-        //   buyer_email: 'example@example',               // 구매자 이메일
-        //   buyer_addr: '신사동 661-16',                    // 구매자 주소
-        //   buyer_postcode: '06018',                      // 구매자 우편번호
+          merchant_uid: `mid_${new Date().getTime()}`,   // 주문번호 = 예약번호
+          amount: price,                                // 결제금액
+          name: title,                                  // 주문명
+          buyer_name: booker,                           // 구매자 이름
+          //booker_phone: phone,                        // 구매자 전화번호
         };
     
         /* 4. 결제 창 호출하기 */
@@ -40,27 +46,48 @@ const Payment = ()=>{
       }
     
       /* 3. 콜백 함수 정의하기 */
-      function callback(response) {
-        console.log(response);
-        const {
-          success,  
-          error_msg,
+    function callback(response) {
+      console.log(response);
+      const {
+        success,  
+        error_msg,
+				paid_at,  //결제날짜
+				pg_provider,  //pg사
+				paid_amount    //결제가격
           
           
-        } = response;
+      } = response;
+
+
+      if (success) {
+        alert('결제 성공');
+        var date = new Date(paid_at * 1000);
+        axios({
+
+          method : 'post' ,
+          url : '/GareBnB/mypage/resPay.do' ,
+          contentType:"application/json;charset=UTF-8",
+          params : {
+             RES_IDX : res_idx,
+             PAY_DATE : date.toISOString().slice(0,10).replace(/-/g,"/"),
+    		 		PG : pg_provider,
+		     		PAY_PRICE : paid_amount
+           }
+         }).then(Response => {
     
-        if (success) {
-          alert('결제 성공');
-        } else {
-          alert(`결제 실패: ${error_msg}`);
-        }
+           window.location.href='/myPage/ReserveListPage';
+         });
+
+      } else {
+        alert(`결제 실패: ${error_msg}`);
       }
+    }
     
-      return (
-        <>
-            <button onClick={onClickPayment}>결제하기</button>
-        </>
-      );
+    return (
+      <>
+        <Button variant="danger" size="sm" onClick={onClickPayment}>결제하기</Button>
+      </>
+    );
 }
 
 export default Payment;
