@@ -30,8 +30,12 @@ const resApprove=(res_idx)=>{
 })
 }
 
-const mem_id = 'MEM_13';
-const mem_idx = 13;
+
+
+
+
+const mem_id = 'MEM_15';
+const mem_idx = 15;
 
 const HostReserveList = () => {
   const [resList, setResList] = useState([]);
@@ -51,6 +55,24 @@ const HostReserveList = () => {
     });
   } ,[]);
   
+
+  const reject=(rej_content,res_idx)=>{
+    axios({
+
+      method : 'post' ,
+      url : '/GareBnB/host/mypage/resRejectPut.do' ,
+      contentType:"application/json;charset=UTF-8",
+      params : {
+        RES_REJ : rej_content,
+        RES_IDX : res_idx
+      }
+  }).then(Response => {
+      window.location.href="/myPage/host/hostReserve"
+  });
+  }
+
+
+
   return (
     <div>
       <h1>예약 내역</h1>
@@ -80,7 +102,11 @@ const HostReserveList = () => {
           <div>
             <Button variant="outline-dark" size="sm" 
               onClick={()=>{resApprove(list.RES_IDX)}}>예약승인</Button>
-            <Button variant="outline-dark" size="sm" disabled>예약거절</Button>
+            <Button variant="outline-dark" size="sm" 
+            onClick={()=>{
+              const rej = prompt("거절 메세지를 입력하세요");
+              reject(rej, list.RES_IDX);
+            }}>예약거절</Button>
           </div>}
 
 
@@ -89,7 +115,7 @@ const HostReserveList = () => {
 
 
           {/* 예약취소상태 */}
-          {resstate === 4 && (list.RES_REJ)!=null && <div><h1>예약이 취소되었습니다.</h1>
+          {resstate === 4 && <div><h1>예약이 취소되었습니다.</h1>
           </div>}
 
         </div>
