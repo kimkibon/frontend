@@ -1,7 +1,6 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom';
 
-import Sidebar from '../commons/Sidebar';
 import MyPage from './MyPage';
 import QnaList from './qna/QnaList';
 import ReportList from './report/ReportList';
@@ -28,17 +27,13 @@ import MemModify from './member/MemModify';
 import MemDelete from './member/MemDelete';
 import DetailQna from './qna/DetailQna';
 import DetailReport from './report/DetailReport';
-import { Container, Col, Row } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 //import Layout from './Layout';
 
 const MyPageIndex = () => {
   return (
     <div>
-      <Container>
         <Row>
-          <Col>
-            <Sidebar/>
-          </Col>
         
         {/* <Layout>
         <Link to='host'><li>Host</li></Link>
@@ -51,7 +46,6 @@ const MyPageIndex = () => {
         <Link to='reviewList'><li>reviewList</li></Link>
         </Layout> */}
         
-        <Col xs={10}>
         <Routes>
           <Route path='/' element={<MyPage/>}/>
 
@@ -87,9 +81,7 @@ const MyPageIndex = () => {
           <Route path='/memUseListPage/insertReview' element={<InsertReview/>}/>
           <Route path='/reviewList' element={<ReviewList/>}/>
         </Routes>
-        </Col>
         </Row>
-      </Container>
     </div>
   )
 }
