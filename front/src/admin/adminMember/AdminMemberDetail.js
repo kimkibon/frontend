@@ -28,38 +28,37 @@ const AdminMemberList = () => {
         }})
 
     .then(Response => {  
-    // console.log(Response.data);
+    console.log(Response.data);
     setGetMem(Response.data);
-    const modlev = Response.data.MEM_LEVEL;
-    console.log(modlev)
+   
   })
   },[]); 
 
 
-    const [memDenyModify , setMemDenyModify] = useState();
-    const adminModifySuccess = () => { // 저장 버튼 클릭 시 update sql문 실행됨 (레벨 업데이트 - 정지) // 정지는 영정 
-      axios({
-      method : 'post',
-      url : '/GareBnB/Admin/memberDeny.do',
-      contentType:"apllication/json; charset=UTF-8",
-      params : {
-        MEM_IDX : getMem.MEM_IDX 
-      } })
-    .then(Response => {
-      console.log(Response.data);
-      setMemDenyModify(Response.data);
-    })
-    }
+    // const [memDenyModify , setMemDenyModify] = useState();
+    // const adminModifySuccess = () => { // 저장 버튼 클릭 시 update sql문 실행됨 (레벨 업데이트 - 정지) // 정지는 영정 
+    //   axios({
+    //   method : 'post',
+    //   url : '/GareBnB/Admin/memberDeny.do',
+    //   contentType:"apllication/json; charset=UTF-8",
+    //   params : {
+    //     MEM_IDX : getMem.MEM_IDX 
+    //   } })
+    // .then(Response => {
+    //   console.log(Response.data);
+    //   setMemDenyModify(Response.data);
+    // })
+    // }
    
 
-     const [modifyLev, setModifyLev] = useState (getMem.MEM_LEVEL)
-     console.log(modifyLev)
+    //  const [modifyLev, setModifyLev] = useState (getMem.MEM_LEVEL)
+    //  console.log(modifyLev)
    
-    const checkedHandler = () => { 
-      setModifyLev ({
-        ...modifyLev
-      });
-    }
+    // const checkedHandler = () => { 
+    //   setModifyLev ({
+    //     ...modifyLev
+    //   });
+    // }
 
   return (
     <article>
@@ -70,9 +69,9 @@ const AdminMemberList = () => {
       <li>비밀번호 : {getMem.MEM_PW} </li>
       <li>이름 : {getMem.MEM_NAME} </li>
       <li>휴대폰 번호 : {getMem.MEM_PHONE}</li>
-      <li>level(임시) : {modifyLev}</li>
+      {/* <li>level(임시) : {modifyLev}</li> */}
       {/* <button type="submit" onClick={checkedHandler}>회원 정지 업데이트</button> */}
-      <button><Link to = '/admin/adminMemberList'>확인</Link></button>
+      {/* <button><Link to = '/admin/adminMemberList'>확인</Link></button> */}
       <button>취소</button>
       </ul>
       </article>

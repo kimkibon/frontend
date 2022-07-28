@@ -43,7 +43,7 @@ const AdminIndex = () => {
         <Route path='/adminHostDetail' element={<AdminHostDetail/>}/>
 
         <Route path='/adminMemberList' element={<AdminMemberList/>}/>
-        <Route path='/adminMemberDetail' element={<AdminMemberDetail/>}/>
+        <Route path='/adminMemberDetail/*' element={<AdminMemberDetail/>}/>
 
         <Route path='/adminQnaList' element={<AdminQnaList/>}/>
         <Route path='/adminQnaDetail' element={<AdminQnaDetail/>}/>
