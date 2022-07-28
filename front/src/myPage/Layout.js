@@ -1,26 +1,26 @@
-import React from 'react';
-import { Layout } from 'antd';
+// import React from 'react';
+// import { Layout } from 'antd';
 
-import Sidebar from '../commons/Sidebar';
-import Header from '../commons/Header';
-import Footer from '../commons/Footer';
+// import Sidebar from '../commons/Sidebar';
+// import Header from '../commons/Header';
+// import Footer from '../commons/Footer';
 
-const Layout = () => {
+// const Layout = () => {
     
     
-    return(
-        <div>
-            <Layout>
-                <Sidebar/>
-            </Layout>
+//     return(
+//         <div>
+//             <Layout>
+//                 <Sidebar/>
+//             </Layout>
 
-            <Header/>
-            <Footer/>
+//             <Header/>
+//             <Footer/>
 
 
-        </div>
+//         </div>
 
-    );
-};
+//     );
+// };
 
-export default Layout;
+// export default Layout;
