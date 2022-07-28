@@ -1,11 +1,15 @@
 import React from 'react'
-import Modal from 'react-awesome-modal';
+
+import axios from 'axios';
+import { useState } from 'react';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const FindPw = () => {
   const [inputName, setInputName] = useState("");
   const [inputPhone, setInputPhone] = useState("");
   const [inputID, setInputID] = useState("");
  
+  const navigate = useNavigate();
 
   const getInputName = (event) =>{  //이름
     let value = event.target.value;
@@ -93,4 +97,4 @@ const FindPw = () => {
   )
 }
 
-export default FindId
+export default FindPw

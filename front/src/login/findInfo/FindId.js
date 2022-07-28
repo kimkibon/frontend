@@ -1,10 +1,18 @@
 import React from 'react'
-import Modal from 'react-awesome-modal';
+
+import axios from 'axios';
+import { useState } from 'react';
+import { Navigate, useNavigate } from 'react-router-dom';
+
+
+
 
 const FindId = () => {
   const [inputName, setInputName] = useState("");
   const [inputPhone, setInputPhone] = useState("");
  
+  const navigate = useNavigate();
+
 
   const getInputName = (event) =>{
     let value = event.target.value;
