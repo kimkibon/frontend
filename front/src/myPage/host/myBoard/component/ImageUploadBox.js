@@ -2,7 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { Carousel } from "react-bootstrap";
 import ImagePreview from "./ImagePreview";
 
-function ImageUploadBox({ max = 10 },props) {
+function ImageUploadBox(props) {
+    const max = 10;
     const [uploadedImages, setUploadedImages] = useState([]);
     const [previewImages, setPreviewImages] = useState([]);
     const uploadBoxRef = useRef();
@@ -53,7 +54,7 @@ function ImageUploadBox({ max = 10 },props) {
             input.removeEventListener("change", changeHandler);
         };
     }, [max]);
-    console.log(props);
+
     useEffect(() => {
         const imageJSXs = uploadedImages.map((image, index) => {
             const isDeleteImage = (element) => {
@@ -68,7 +69,6 @@ function ImageUploadBox({ max = 10 },props) {
                 <Carousel.Item key={index} >
                     <ImagePreview image={image} deleteFunc={deleteFunc} />
                 </Carousel.Item>
-
             );
         });
         setPreviewImages(imageJSXs);
@@ -77,7 +77,7 @@ function ImageUploadBox({ max = 10 },props) {
     return (
         <div className="row">
             <label className="drag_or_click" htmlFor='id' ref={uploadBoxRef}>
-                <Carousel >
+                <Carousel>
                     {uploadedImages[0] === undefined &&
                         <div className="card">
                             <img
@@ -101,9 +101,6 @@ function ImageUploadBox({ max = 10 },props) {
             </label>
             <div className="input-group">
                 <input type="file" multiple accept="image/*" id='id' ref={inputRef} />
-                <div className="col-sm-9">
-
-                </div>
             </div>
         </div>
     );
