@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import Payment from "./payment/Payment";
+import SelectOneFile from "../../commons/Files/SelectOneFile";
 
 //예약상태
 const ResState=(state)=>{
@@ -16,8 +17,8 @@ const ResState=(state)=>{
 
 }
 
-const mem_id = 'MEM_1';
-const mem_idx = 1;
+const mem_id = 'MEM_8';
+const mem_idx = 8;
 
 const ReserveListPage = () => {
   const [resList, setResList] = useState([]);
@@ -35,14 +36,15 @@ const ReserveListPage = () => {
     }).then(Response => {
         const url = Response.data.map(async list =>{
 
-          await SelectOneFile('0',list.BOARD_NO).then(Res=>{
-          list['URL'] = "data:image/;base64,"+Res.URL
-        })
-          return list
+          await SelectOneFile('0',list.RES_BOARD_NO).then(Res=>{
+            list['URL'] = "data:image/;base64,"+Res.URL
+          });
+          return list;
         })
         console.log(url);
 
         Promise.all(url).then((data)=>{setResList(data)}); 
+        //setResList(Response.data);
  
       });
   } ,[]);
