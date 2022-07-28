@@ -1,9 +1,9 @@
-import React from 'react'
+// import React from 'react'
 
-const InsertReport = () => {
-  return (
-    <div>InsertReport</div>
-  )
-}
+// const InsertReport = () => {
+//   return (
+//     <div>InsertReport</div>
+//   )
+// }
 
-export default InsertReport
+// export default InsertReport
