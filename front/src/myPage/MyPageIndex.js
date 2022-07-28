@@ -86,4 +86,5 @@ const MyPageIndex = () => {
   )
 }
 
+
 export default MyPageIndex
