@@ -52,10 +52,8 @@ const AdminMemberList = () => {
     })
     }
    
-    const checkedHandler = () => { 
-      setMem_LEV ({
-        ...mem_LEV
-      });
+    const onClick = () => { // 회원 정지 업데이트 클릭하면 멤버 레벨 : 5로 띄워줌 (확인 버튼 눌러야 DB에 적용됨)
+      setMem_LEV (5)
     }
 
   return (
@@ -68,9 +66,9 @@ const AdminMemberList = () => {
       <li>이름 : {getMem.MEM_NAME} </li>
       <li>휴대폰 번호 : {getMem.MEM_PHONE}</li>
       <li>level(임시) : {mem_LEV} &nbsp;
-      <button type="submit" onClick={checkedHandler}> 회원 정지 업데이트 </button> </li>
-      <button><Link to = '/admin/adminMemberList'>확인</Link></button>
-      <button>취소</button>
+      <button type="submit" onClick={onClick}> 회원 정지 업데이트 </button> </li>
+      <Link to = '/admin/adminMemberList'><button onClick={adminModifySuccess}>확인</button></Link>
+      <Link to = '/admin/adminMemberList'><button>취소</button></Link>
       </ul>
       </article>
   );
