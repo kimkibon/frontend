@@ -39,11 +39,12 @@ const HostUseList = () => {
                         예약번호 : {list.RES_IDX}<br/>
                         게시글제목 : {list.BOARD_TITLE}<br/>
                         게시글 사진 : <br/>
-                        예약자이름 : {list.MEM_NAME}<br/>
-                        예약자전화번호 : {list.MEM_PHONE}<br/>
+                        예약자ID : {list.RES_CLI_ID}<br/>
                         이용날짜 : {list.RES_DATE_START} ~ {list.RES_DATE_END}<br/>
                         맡긴 동물 수 : {list.RES_CARE_NO}<br/>
-                        가격 : {list.PRICE} 원<br/>
+                        세부 요청 사항 : {list.RES_REQ_DETAIL}<br/>
+                        결제금액 : {list.PRICE} 원<br/>
+                        결제날짜 : {list.PAY_DATE}<br/>
                         </h4>
                     </div>
 
