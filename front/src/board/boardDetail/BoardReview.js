@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 async function BoardReview (BOARD_NO) {
-
+//호스트의 전화번호를 가져오기 위한 컴포넌트.
   return (await new Promise((resolve , reject)=>{
     
       axios({

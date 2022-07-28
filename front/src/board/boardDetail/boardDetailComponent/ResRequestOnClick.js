@@ -1,12 +1,14 @@
 import axios from "axios";
-import { async } from "q";
 import { Button, Modal } from "react-bootstrap"
 import { useNavigate } from "react-router";
+
+// 예약 요청을 보내는 컴포넌트, 모달창
+// 예약 확인을 누르면 예약 요청이 가고, 에러가 나오면 요청에 실패 했다고 나옴.
 
 function ResRequestOnClick(props) {
     const navigate = useNavigate();
     console.log(props.props);
-
+//resRequest 컴포넌트에서 받아온 변수 확인 
     async function reservation(){
        await axios({
             method : 'post',
@@ -15,10 +17,10 @@ function ResRequestOnClick(props) {
         }).then(Response =>{
 
             navigate('/board/resDetail');
+            //응답이 완료되면 페이지 이동
 
         }).catch(()=>{
             alert('예약 요청에 실패했습니다. 다시 시도해주세요.');
-            navigate('/board/resDetail');
 
             
         })
@@ -40,6 +42,7 @@ function ResRequestOnClick(props) {
           </Button>
         </Modal.Footer>
       </Modal>
+      // resRequest 컴포넌트에서 변수를 받아옴. 
   )
   
 }
