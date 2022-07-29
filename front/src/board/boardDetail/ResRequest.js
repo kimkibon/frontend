@@ -55,6 +55,8 @@ const ResRequest = (res) => {
     
   }, [ResReqShow])
 
+  //예약하기 버튼을 눌렀을 때 입력된 변수 세팅
+
   return (
     <div>
       <Modal
