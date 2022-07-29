@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect } from 'react'
 import { Button, Modal } from 'react-bootstrap';
 import { useNavigate } from 'react-router';
+import InsertFiles from './InsertFiles';
 
 const InsertBoard = (props) => {
   const navigate = useNavigate();
@@ -32,37 +33,15 @@ const InsertBoard = (props) => {
       )
     })
 
-    for (let i = 0; i < insertFiles.length; i++) {
-      formData.append(i, files[i]);
-    }
-
     await axios({
       method: 'post',
       url: '/GareBnB/host/mypage/myboardPut.do',
       params: insertBoard
 
     }).then(async Response => {
-
-      await axios({
-        method: 'post',
-        url: '/GareBnB/file/insert.do',
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-        params: {
-          'BOARD_NO': Response.data.BOARD_NO,
-          'FILE_BOARD_TYPE': '0'
-        },
-        data: formData,
-        mode: 'cors'
-
-      }).then(Response => {
-        console.log(Response.data)
-        // navigate('/')
-      }).catch(() => {
-        alert('예약 요청에 실패했습니다. 다시 시도해주세요.');
+      files.map(async (file, index) => {
+        await InsertFiles(file, Response.data.BOARD_NO , index);
       })
-
     })
 
   }

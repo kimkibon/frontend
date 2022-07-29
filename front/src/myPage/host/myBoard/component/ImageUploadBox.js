@@ -111,7 +111,15 @@ function ImageUploadBox(props) {
                 </Carousel>
             </label>
             <div className="input-group">
-                <input type="file" multiple="multiple" accept="image/*" id='id' ref={inputRef} files={imageFile} />
+                <input
+                    className="d-lg-none"
+                    type="file"
+                    multiple="multiple"
+                    accept="image/*"
+                    id='id'
+                    ref={inputRef}
+                    files={imageFile}
+                />
             </div>
         </div>
     );
