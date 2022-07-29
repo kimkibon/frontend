@@ -7,7 +7,7 @@ import MemUseList from "./MemUseList";
 
 const MemUseListPage = () => {
     const [resComList, setResComList] = useState([]);
-
+    const mem_id = 'MEM_10';
     //이용내역
     useEffect(() => {
         axios({
@@ -16,7 +16,7 @@ const MemUseListPage = () => {
             url : '/GareBnB/mypage/memuseList.do' ,
             contentType:"application/json;charset=UTF-8",
             params : {
-                MEM_ID : 'MEM_7'
+                MEM_ID : mem_id
         
             }
         }).then(Response => {
