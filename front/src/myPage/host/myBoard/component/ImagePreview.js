@@ -1,6 +1,6 @@
 import React from "react";
 
-
+//이미지 프리뷰 하기 위한 컴포넌트 
 function ImagePreview({ image, deleteFunc }) {
     return (
         <div className="card">

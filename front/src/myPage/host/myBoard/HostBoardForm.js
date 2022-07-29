@@ -234,7 +234,7 @@ const HostBoardForm = () => {
           onHide={() => setInsertModal(false)}
           insert={{ "insertBoard": insertBoard, "insertFiles": insertFiles }}
         />
-
+        {/* 입력확인창 모달로 띄우기 !  */}
 
       </div>
     </>)

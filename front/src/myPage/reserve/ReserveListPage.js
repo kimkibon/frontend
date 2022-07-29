@@ -34,17 +34,17 @@ const ReserveListPage = () => {
     
         }
     }).then(Response => {
-        // const url = Response.data.map(async list =>{
+         const url = Response.data.map(async list =>{
 
-        //   await SelectOneFile('0',list.RES_BOARD_NO).then(Res=>{
-        //     list['URL'] = "data:image/;base64,"+Res.URL
-        //   });
-        //   return list;
-        // })
-        // console.log(url);
+           await SelectOneFile('0',list.RES_BOARD_NO).then(Res=>{
+             list['URL'] = "data:image/;base64,"+Res.URL
+           });
+           return list;
+        })
+        console.log(url);
 
-        // Promise.all(url).then((data)=>{setResList(data)}); 
-        setResList(Response.data);
+        Promise.all(url).then((data)=>{setResList(data)}); 
+        //setResList(Response.data);
  
       });
   } ,[]);
@@ -61,8 +61,16 @@ const ReserveListPage = () => {
             <div class="d-flex justify-content-center row">
                 <div class="col-md-10">
                     <div class="row p-2 bg-white border rounded">
-                        <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="https://i.imgur.com/QpjAiHq.jpg"/></div>
+                        <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src={list.URL}/><p/>
+                          {resstate === 4 && (list.RES_REJ)!=null && 
+                              <div>
+                               <button type="button" class="btn btn-warning" onClick={()=>{alert(list.RES_REJ)}}>거절사유보기</button>
+                              </div>}
+                          {[1,2,3].includes(resstate) && <Link to ={'hostDetail'} state={{'hostId': list.HOST_ID}}><button type="button" class="btn btn-success">호스트정보</button></Link>}
+
+                        </div>
                         <div class="col-md-6 mt-1">
+                        예약상태 : {ResState(resstate)}<br/>
                             <h5>예약번호  {list.RES_IDX}</h5>
                             주소 : {list.ADDR1}{list.ADDR2}<br/>
                             이용날짜 : {list.RES_DATE_START} ~ {list.RES_DATE_END}<br/>
@@ -71,10 +79,9 @@ const ReserveListPage = () => {
                         </div>
                         <div class="align-items-center align-content-center col-md-3 border-left mt-1">
                           <div class="d-flex flex-column mt-4">
-                            {[1,2,3].includes(resstate) && <Link to ={'hostDetail'} state={{'hostId': list.HOST_ID}}><button type="button" class="btn btn-success">호스트정보</button></Link>}
                             {[0,1,2].includes(resstate) && 
                                                 <Link to ={'resCancel'} state={{'res_idx': list.RES_IDX}}>
-                                                  <button type="button" class="button1">예약취소</button>
+                                                  <button type="button" class="btn btn-primary">예약취소</button>
                                                 </Link>}
 
                             
@@ -102,7 +109,6 @@ const ReserveListPage = () => {
 
                             {/* 예약취소상태 */}
                             {resstate === 4 && (list.RES_REJ)!=null && <div>예약이 취소되었습니다.<p/>
-                            <button type="button" class="btn btn-warning" onClick={()=>{alert(list.RES_REJ)}}>거절 사유 보기</button>
                             </div>}
 
                           </div>

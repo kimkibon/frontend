@@ -3,6 +3,7 @@ import React from 'react'
 import axios from 'axios';
 import { useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
+import Modal from 'bootstrap/js/dist/modal';
 
 
 
@@ -12,6 +13,7 @@ const FindId = () => {
   const [inputPhone, setInputPhone] = useState("");
  
   const navigate = useNavigate();
+  const [modalIsOpen, setModalIsOpen] = useState(false)
 
 
   const getInputName = (event) =>{
@@ -54,7 +56,12 @@ const FindId = () => {
 
 
   return (
-    <div>
+    <div className='findId'>
+      <button onClick={() => setModalIsOpen(true)}>Open modal</button>
+      <Modal isOpen={modalIsOpen}>
+        <h2>Modal title</h2>
+        <p>Modal Body</p>
+      </Modal>
       <input
         type="text"
         id="find_id_name"
