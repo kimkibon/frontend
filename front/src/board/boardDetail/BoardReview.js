@@ -8,10 +8,13 @@ async function BoardReview (BOARD_NO) {
         method : 'post',
         url : '/GareBnB/board/boardReview.do',
         params : {'BOARD_NO' : BOARD_NO}
+
       }).then(Response=>{
         resolve(Response.data);
+
       }).catch(err => {
         reject(err);
+        
       });
 
     })

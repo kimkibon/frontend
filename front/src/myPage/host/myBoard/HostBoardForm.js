@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react'
+import { Modal } from 'react-bootstrap';
 import ReactDatePicker from 'react-datepicker';
+import Address from './Address';
 import ImageUploadBox from './component/ImageUploadBox';
 import InsertBoard from './component/InsertBoard'
 
 const HostBoardForm = () => {
   const [insertModal, setInsertModal] = React.useState(false);
+  const [showAddrModal, setShowAddrModal] = React.useState(false);
   const [insertFiles, setInsertFiles] = useState([]);
   const [insertBoard, setInsertBoard] = useState({
     'BOARD_HOST_ID': 'test_id',     // 로컬 스토리지에서 가져오기 테스트 코드 나중에 수정해야함
@@ -16,7 +19,7 @@ const HostBoardForm = () => {
     'BOARD_POST': '',        //우편번호인가? 어디서 가져오지? 카카오 api 위치 정하기 ?
     'BOARD_PRICE': '',       // 입력 받음
     'BOARD_CARE_NO': '1',     //입력 받음
-    'BOARD_MODIFY_NO' : '0', // 인서트 보드 초기값 
+    'BOARD_MODIFY_NO': '0', // 인서트 보드 초기값 
     'BOARD_DATE_START': new Date().toISOString().slice(0, 10).replace(/-/g, "/"),  //모달 데이트 피커?
     'BOARD_DATE_END': new Date().toISOString().slice(0, 10).replace(/-/g, "/"),    //모달 데이트 피커 ? 
   });
@@ -38,6 +41,16 @@ const HostBoardForm = () => {
     BOARD_DATE_END
   } = insertBoard;
   //변수 초기화 
+
+  const setAddrInfo = (data) => {
+    setInsertBoard({
+      ...insertBoard,
+      'BOARD_ADDR1': data.BOARD_ADDR1,
+      'BOARD_POST': data.BOARD_POST
+    })
+    setShowAddrModal(false)
+  }
+
   const onChange = (dates) => {
     setStartDate(dates[0]);
     setEndDate(dates[1]);
@@ -75,14 +88,14 @@ const HostBoardForm = () => {
 
         <section className="row border border-primary">
           <div className="container px-4 px-lg-5 my-5">
-            <div className="row gx-4 gx-lg-5 align-items-top">
+            <div className="row gx-4 gx-lg-5">
               <div className="col-md-6">
+                <div className='row'>
+                  {/* 기능추가 예정 파일을 업로드 하면 미리보기 가능하도록  조건부 출력을 통해서 기본 이미지 추가*/}
 
-                {/* 기능추가 예정 파일을 업로드 하면 미리보기 가능하도록  조건부 출력을 통해서 기본 이미지 추가*/}
-
-                <ImageUploadBox getImages={getImages} />
+                  <ImageUploadBox getImages={getImages} />
+                </div>
               </div>
-
               <div className="col-md-6">
                 <div className='row'>
 
@@ -154,14 +167,15 @@ const HostBoardForm = () => {
                         className="form-control"
                         name='BOARD_POST'
                         value={BOARD_POST}
-                        onChange={(e) => setItems(e)}
-                        
+                        readOnly
                       />
-                      
+
                       <button
                         className="btn btn-outline-secondary"
                         type="button"
-                        id="button-addon">
+                        id="button-addon"
+                        onClick={() => setShowAddrModal(true)}
+                      >
                         우편번호 찾기
                       </button>
 
@@ -169,15 +183,18 @@ const HostBoardForm = () => {
                   </div>
 
                   <div className="input-group mb-3">
+                    <span className='input-group-text'>주소</span>
                     <input
                       type="text"
                       className="form-control"
                       placeholder="주소"
                       value={BOARD_ADDR1}
                       name="BOARD_ADDR1"
-                      onChange={(e) => setItems(e)}
+                      readOnly
                     />
-                    <span className="input-group-text">-</span>
+                  </div>
+
+                  <div className="input-group mb-3">
                     <input
                       type="text"
                       className="form-control"
@@ -235,7 +252,14 @@ const HostBoardForm = () => {
           insert={{ "insertBoard": insertBoard, "insertFiles": insertFiles }}
         />
         {/* 입력확인창 모달로 띄우기 !  */}
-
+        <Modal
+          show={showAddrModal}
+          onHide={() => setShowAddrModal(false)}
+        >
+          <Address
+            setAddrInfo={setAddrInfo}
+          />
+        </Modal>
       </div>
     </>)
 }

@@ -122,7 +122,7 @@ function ImageUploadBox(props) {
                     </Carousel.Item>
                 </Carousel>
             </label>
-            <div className="input-group">
+            <div className="input-group d-none">
                 <input
                     className="d-lg-none"
                     type="file"
