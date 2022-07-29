@@ -1,20 +1,39 @@
 import axios from 'axios';
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Button, Modal } from 'react-bootstrap';
 import { useNavigate } from 'react-router';
 
 const InsertBoard = (props) => {
   const navigate = useNavigate();
   const insertBoard = props.insert.insertBoard;
-  const insertFiles = props.insert.insertFiles.map(file => { return (file.split(',')[1]) })
+  const insertFiles = props.insert.insertFiles;
 
-  console.log(insertBoard);
-  console.log(insertFiles);
 
-  async function InsertBoard() {
+
+
+
+  const InsertBoard = async (e) => {
+    e.preventDefault();
+    e.persist();
+
     let formData = new FormData();
+    const files = insertFiles.map(file => {
+      let arr = file.url.split(','),
+        mime = arr[0].match(/:(.*?);/)[1],
+        bstr = atob(arr[1]),
+        n = bstr.length,
+        u8arr = new Uint8Array(n);
+
+      while (n--) {
+        u8arr[n] = bstr.charCodeAt(n);
+      }
+      return (
+        new File([u8arr], file.fileName, { type: mime })
+      )
+    })
+
     for (let i = 0; i < insertFiles.length; i++) {
-      formData.append("files", insertFiles[i]);
+      formData.append(i, files[i]);
     }
 
     await axios({
@@ -22,26 +41,28 @@ const InsertBoard = (props) => {
       url: '/GareBnB/host/mypage/myboardPut.do',
       params: insertBoard
 
-    }).then(Response => {
+    }).then(async Response => {
 
-      axios({
+      await axios({
         method: 'post',
         url: '/GareBnB/file/insert.do',
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
         params: {
           'BOARD_NO': Response.data.BOARD_NO,
-          'FILE_BOARD_TYPE': '0',
+          'FILE_BOARD_TYPE': '0'
         },
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-        data: formData
+        data: formData,
+        mode: 'cors'
 
       }).then(Response => {
-        navigate('/')
+        console.log(Response.data)
+        // navigate('/')
+      }).catch(() => {
+        alert('예약 요청에 실패했습니다. 다시 시도해주세요.');
       })
 
-    }).catch(() => {
-      alert('예약 요청에 실패했습니다. 다시 시도해주세요.');
     })
 
   }
@@ -57,7 +78,7 @@ const InsertBoard = (props) => {
         <Button variant="secondary" onClick={props.onHide}>
           취소
         </Button>
-        <Button variant="primary" onClick={async () => { await InsertBoard() }}>
+        <Button type='submit' variant="primary" onClick={async (e) => { InsertBoard(e) }}>
           등록
         </Button>
       </Modal.Footer>

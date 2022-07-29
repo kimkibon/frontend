@@ -7,8 +7,8 @@ const HostBoardForm = () => {
   const [insertModal, setInsertModal] = React.useState(false);
   const [insertFiles, setInsertFiles] = useState([]);
   const [insertBoard, setInsertBoard] = useState({
-    'BOARD_HOST_ID': 'test_id',     // 로컬 스토리지에서 가져오기
-    'BOARD_HOST_IDX': '314',    // 어디서 가져오지 ? 서버에서 ? 
+    'BOARD_HOST_ID': 'test_id',     // 로컬 스토리지에서 가져오기 테스트 코드 나중에 수정해야함
+    'BOARD_HOST_IDX': '314',    // 어디서 가져오지 ? 서버에서 ? 테스트 코드 나중에 수정해야함
     'BOARD_TITLE': '',       // 입력 받음
     'BOARD_CONTENT': '',     // 입력 받음 
     'BOARD_ADDR1': '',       //입력 받음
@@ -16,6 +16,7 @@ const HostBoardForm = () => {
     'BOARD_POST': '',        //우편번호인가? 어디서 가져오지? 카카오 api 위치 정하기 ?
     'BOARD_PRICE': '',       // 입력 받음
     'BOARD_CARE_NO': '1',     //입력 받음
+    'BOARD_MODIFY_NO' : '0', // 인서트 보드 초기값 
     'BOARD_DATE_START': new Date().toISOString().slice(0, 10).replace(/-/g, "/"),  //모달 데이트 피커?
     'BOARD_DATE_END': new Date().toISOString().slice(0, 10).replace(/-/g, "/"),    //모달 데이트 피커 ? 
   });

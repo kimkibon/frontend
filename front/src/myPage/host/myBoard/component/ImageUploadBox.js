@@ -6,8 +6,10 @@ function ImageUploadBox(props) {
     const max = 10;
     const [uploadedImages, setUploadedImages] = useState([]);
     const [previewImages, setPreviewImages] = useState([]);
+    const [imageFile, setImageFile] = useState([]);
     const uploadBoxRef = useRef();
     const inputRef = useRef();
+    const formData = new FormData();
 
     useEffect(() => {
         const uploadBox = uploadBoxRef.current;
@@ -15,11 +17,14 @@ function ImageUploadBox(props) {
 
         const handleFiles = (files) => {
             for (const file of files) {
+                const fileName = file.name.toString();
                 if (!file.type.startsWith("image/")) continue;
                 const reader = new FileReader();
                 reader.onloadend = (e) => {
                     const result = e.target.result;
                     if (result) {
+                        const resultSet = { fileName: fileName, url: result }
+                        setImageFile((imageFile) => [...imageFile, resultSet]);
                         setUploadedImages((state) => [...state, result].slice(0, max));
                     }
                 };
@@ -30,6 +35,7 @@ function ImageUploadBox(props) {
         const changeHandler = (event) => {
             const files = event.target.files;
             handleFiles(files);
+
         };
 
         const dropHandler = (event) => {
@@ -61,10 +67,13 @@ function ImageUploadBox(props) {
                 return element === image;
             };
             const deleteFunc = () => {
-                uploadedImages.splice(uploadedImages.findIndex(isDeleteImage), 1);
+                const DeleteIndex = uploadedImages.findIndex(isDeleteImage)
+                uploadedImages.splice(DeleteIndex, 1);
+                imageFile.splice(DeleteIndex, 1);
                 setUploadedImages([...uploadedImages]);
+                setImageFile([...imageFile]);
             };
-            props.getImages(uploadedImages)
+            props.getImages(imageFile)
             return (
                 <Carousel.Item key={index} >
                     <ImagePreview image={image} deleteFunc={deleteFunc} />
@@ -74,11 +83,13 @@ function ImageUploadBox(props) {
         setPreviewImages(imageJSXs);
     }, [uploadedImages]);
 
+
     return (
         <div className="row">
             <label className="drag_or_click" htmlFor='id' ref={uploadBoxRef}>
                 <Carousel>
-                    {uploadedImages[0] === undefined &&
+                    {uploadedImages[0] !== undefined && previewImages}
+                    <Carousel.Item>
                         <div className="card">
                             <img
                                 alt=""
@@ -88,19 +99,19 @@ function ImageUploadBox(props) {
                             />
                             <div className="card-img-overlay">
                                 <div className="row">
-                                    <div className="col-sm-9">
+                                    <div className="col-sm-12 text-center">
                                         <h1 className="input-group-text">
                                             드래그 또는 클릭하여 업로드
                                         </h1>
                                     </div>
                                 </div>
                             </div>
-                        </div>}
-                    {uploadedImages[0] !== undefined && previewImages}
+                        </div>
+                    </Carousel.Item>
                 </Carousel>
             </label>
             <div className="input-group">
-                <input type="file" multiple accept="image/*" id='id' ref={inputRef} />
+                <input type="file" multiple="multiple" accept="image/*" id='id' ref={inputRef} files={imageFile} />
             </div>
         </div>
     );
