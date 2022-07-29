@@ -1,24 +1,27 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ReactDatePicker from 'react-datepicker';
 import ImageUploadBox from './component/ImageUploadBox';
 import InsertBoard from './component/InsertBoard'
 
 const HostBoardForm = () => {
   const [insertModal, setInsertModal] = React.useState(false);
+  const [insertFiles, setInsertFiles] = useState([]);
   const [insertBoard, setInsertBoard] = useState({
-    'BOARD_HOST_ID': '',     // 로컬 스토리지에서 가져오기
-    'BOARD_HOST_IDX': '',    // 어디서 가져오지 ? 서버에서 ? 
+    'BOARD_HOST_ID': 'test_id',     // 로컬 스토리지에서 가져오기 테스트 코드 나중에 수정해야함
+    'BOARD_HOST_IDX': '314',    // 어디서 가져오지 ? 서버에서 ? 테스트 코드 나중에 수정해야함
     'BOARD_TITLE': '',       // 입력 받음
     'BOARD_CONTENT': '',     // 입력 받음 
     'BOARD_ADDR1': '',       //입력 받음
     'BOARD_ADDR2': '',       //입력 받음
     'BOARD_POST': '',        //우편번호인가? 어디서 가져오지? 카카오 api 위치 정하기 ?
     'BOARD_PRICE': '',       // 입력 받음
-    'BOARD_CARE_NO': '',     //입력 받음
-    'BOARD_DATE_START': new Date(),  //모달 데이트 피커?
-    'BOARD_DATE_END': new Date(),    //모달 데이트 피커 ? 
+    'BOARD_CARE_NO': '1',     //입력 받음
+    'BOARD_MODIFY_NO' : '0', // 인서트 보드 초기값 
+    'BOARD_DATE_START': new Date().toISOString().slice(0, 10).replace(/-/g, "/"),  //모달 데이트 피커?
+    'BOARD_DATE_END': new Date().toISOString().slice(0, 10).replace(/-/g, "/"),    //모달 데이트 피커 ? 
   });
-  const [insertFiles, setInsertFiles] = useState({});
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
 
   // 일단 호스트 아이디로 호스트 정보를 가져온다?
   const {
@@ -36,11 +39,12 @@ const HostBoardForm = () => {
   } = insertBoard;
   //변수 초기화 
   const onChange = (dates) => {
-    console.log(dates)
+    setStartDate(dates[0]);
+    setEndDate(dates[1]);
     setInsertBoard({
       ...insertBoard,
-      'BOARD_DATE_START': dates[0],
-      'BOARD_DATE_END': dates[1]
+      'BOARD_DATE_START': dates[0].toISOString().slice(0, 10).replace(/-/g, "/"),
+      'BOARD_DATE_END': dates[1].toISOString().slice(0, 10).replace(/-/g, "/")
     })
 
   };
@@ -53,7 +57,12 @@ const HostBoardForm = () => {
       [name]: value
     })
   };
+
   //글 입력 내용이 변경되면 변수에 저장. 
+
+  const getImages = (image) => {
+    setInsertFiles(image)
+  }
 
   // 내용 입력이 없을 때 에러 띄울것 추가예정
   //파일 내용을 바이너리로 바꿔서 file_level을 설정하는 함수 추가 예정 
@@ -71,7 +80,7 @@ const HostBoardForm = () => {
 
                 {/* 기능추가 예정 파일을 업로드 하면 미리보기 가능하도록  조건부 출력을 통해서 기본 이미지 추가*/}
 
-                <ImageUploadBox/>
+                <ImageUploadBox getImages={getImages} />
               </div>
 
               <div className="col-md-6">
@@ -97,15 +106,15 @@ const HostBoardForm = () => {
                       {<ReactDatePicker
                         className='col-sm-12 btn btn-outline-secondary'
                         minDate={new Date()}
-                        selected={BOARD_DATE_START}
+                        selected={startDate}
                         onChange={onChange}
-                        startDate={BOARD_DATE_START}
-                        endDate={BOARD_DATE_END}
+                        startDate={startDate}
+                        endDate={endDate}
                         selectsRange
                       />}
                     </div>
                   </div>
-                  
+
                   <div className='col-sm-6'>
                     <div className='input-group mb-2'>
                       <span className='input-group-text'>최대 케어링 수</span>
@@ -119,10 +128,13 @@ const HostBoardForm = () => {
                         type="number"
                         aria-label="First name"
                         className="form-control"
+                        name='BOARD_CARE_NO'
+                        value={BOARD_CARE_NO}
+                        onChange={(e) => setItems(e)}
                       />
                       <span className='input-group-text'>마리</span>
 
-                      
+
 
                     </div>
                   </div>
@@ -140,15 +152,12 @@ const HostBoardForm = () => {
                         type="text"
                         aria-label="First name"
                         className="form-control"
+                        name='BOARD_POST'
+                        value={BOARD_POST}
+                        onChange={(e) => setItems(e)}
+                        
                       />
-                      <span className='input-group-text'>-</span>
-
-                      <input
-                        type="text"
-                        aria-label="Last name"
-                        className="form-control"
-                        aria-describedby="button-addon"
-                      />
+                      
                       <button
                         className="btn btn-outline-secondary"
                         type="button"
@@ -188,6 +197,7 @@ const HostBoardForm = () => {
                       value={BOARD_PRICE}
                       onChange={(e) => setItems(e)}
                     />
+
                     <span className="input-group-text">원/ 1일</span>
                   </div>
                   <div className="form-floating">
@@ -219,11 +229,10 @@ const HostBoardForm = () => {
           </div>
         </div>
 
-        {/* 예약창 모달 */}
         <InsertBoard
           show={insertModal}
           onHide={() => setInsertModal(false)}
-          props={insertBoard}
+          insert={{ "insertBoard": insertBoard, "insertFiles": insertFiles }}
         />
 
 

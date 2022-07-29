@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 
 const AdminMemberList = () => {
 
-
   const [memList, setMemList] = useState([]); // 전체 회원 리스트 db에서 가져오기 
 
   const [search, setSearch] = useState(""); // 검색 단어
@@ -17,7 +16,7 @@ const AdminMemberList = () => {
         contentType:"application/json; charset=UTF-8"
         })
     .then(Response => { 
-    // console.log(Response.data);
+    console.log(Response.data);
     setMemList(Response.data);
     });
     },[]); 
@@ -48,7 +47,6 @@ const AdminMemberList = () => {
     }
     setSearch('')
   }
-
 
   return (
     <div>
@@ -85,8 +83,6 @@ const AdminMemberList = () => {
        })}
        </table>
     </div>
- 
- 
   );
 }
 
