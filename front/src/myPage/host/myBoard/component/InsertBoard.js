@@ -1,23 +1,18 @@
 import axios from 'axios';
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Button, Modal } from 'react-bootstrap';
-import { useNavigate } from 'react-router';
 import InsertFiles from './InsertFiles';
 
 const InsertBoard = (props) => {
-  const navigate = useNavigate();
   const insertBoard = props.insert.insertBoard;
   const insertFiles = props.insert.insertFiles;
 
-
-
-
+  //변수 초기 세팅
 
   const InsertBoard = async (e) => {
     e.preventDefault();
     e.persist();
 
-    let formData = new FormData();
     const files = insertFiles.map(file => {
       let arr = file.url.split(','),
         mime = arr[0].match(/:(.*?);/)[1],
@@ -33,17 +28,19 @@ const InsertBoard = (props) => {
       )
     })
 
+    //문자열로 변환된 이미지를 다시 file객체로 변환
+
     await axios({
       method: 'post',
       url: '/GareBnB/host/mypage/myboardPut.do',
       params: insertBoard
-
+      //보드 인서트 리턴으로 보드 넘버를 받아옴
     }).then(async Response => {
       files.map(async (file, index) => {
         await InsertFiles(file, Response.data.BOARD_NO , index);
       })
     })
-
+    // 받아온 보드 넘버로 이미지 파일을 업로드
   }
   return (
     <Modal

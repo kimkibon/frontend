@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 const List = (board) => {
 
+//상위 컴포넌트에서 받아온 데이터를 표시 
+
   return (
 
     <div className="container border border-primary">
@@ -10,7 +12,7 @@ const List = (board) => {
 
           <div className="row border border-primary" key={list.BOARD_NO}>
             <div className="col-md-7">
-              <img className="img-fluid rounded mb-3 mb-md-0" 
+              <img className="d-block w-100" 
                    width='700px'
                    height='300px'
                     
@@ -35,7 +37,7 @@ const List = (board) => {
 {/* example */}
       <div className="row">
         <div className="col-md-7">
-          <img className="img-fluid rounded mb-3 mb-md-0" src="https://via.placeholder.com/700x300" alt="" />
+          <img className="d-block w-100" src="https://via.placeholder.com/700x300" alt="" />
 
         </div>
         <div className="col-md-5">

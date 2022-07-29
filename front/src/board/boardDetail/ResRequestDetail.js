@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 
+//테스트용 파일입니다. 
+
 const ResRequestDetail = () => {
     
   const onSubmit = async (e) => {
@@ -44,3 +46,4 @@ const ResRequestDetail = () => {
 };
 
 export default ResRequestDetail;
+

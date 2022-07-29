@@ -4,10 +4,12 @@ import './login.css';
 import axios from "axios";
 
 
+
+
 const LS_KEY_ID = "LS_KEY_ID"; //로컬스토리지에 저장할 ID
 const LS_KEY_SAVE_ID_FLAG = "LS_KEY_SAVE_ID_FLAG"; //로컬스토리지에 저장 checkbox여부
 
-const Login = () => {
+const Logintest = () => {
   const [loginID, setLoginID] = useState(""); //LoginID를 Input에서 사용하고 OnChange에서 변경
   const [loginPassword, setLoginPassword] = useState(""); //비밀번호 입력을 위한 선언
   const [saveIDFlag, setSaveIDFlag] = useState(false); //ID저장 checkbox
@@ -23,6 +25,8 @@ const Login = () => {
     let capsLock = e.getModifierState("CapsLock");
     setCapsLockFlag(capsLock);
   };
+  const [passwordError, setpasswordError] = useState("");
+  const [emailError, setemailError] = useState("");
   
   //ID에 한글입력불가능
   const dataRuleCheckForID = (ch) => {
@@ -134,100 +138,85 @@ const Login = () => {
       });
   }, [passwordOption]);
 
+  const handleValidation = (event) => {
+    let formIsValid = true;
+
+    if (!loginID.match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)) {
+      formIsValid = false;
+      setemailError("Email Not Valid");
+      return false;
+    } else {
+      setemailError("");
+      formIsValid = true;
+    }
+
+    if (!loginPassword.match(/^[a-zA-Z]{8,22}$/)) {
+      formIsValid = false;
+      setpasswordError(
+        "Only Letters and length must best min 8 Chracters and Max 22 Chracters"
+      );
+      return false;
+    } else {
+      setpasswordError("");
+      formIsValid = true;
+    }
+
+    return formIsValid;
+  };
+
   return (
-    <div className="login-form">
-      <div className="login-wrapper">
-        <div className="login-container">
-          <div className="login-logo">
-            <span className="logo-image">LOGO</span>
-          </div>
-          <form id="loginForm">
-            <div className="form-group">
-              {/* ID 인풋 */}
-                <input
-                type="text"
-                id="email"
-                name="email"
-                placeholder="아이디"
-                className="input-id"
-                onKeyDown={(e) => checkCapsLock(e)} //캡스락 확인
-                value={loginID}
-                onChange={(e) => getLoginID(e)} //내용이 바뀔떄마다 ID GET
-              />
-              </div>
-              {/* 비밀번호 인풋 */}
+    <div className="App">
+      <div className="container">
+        <div className="row d-flex justify-content-center">
+          <div className="col-md-4">
+            <form id="loginform" onSubmit={loginClick}>
               <div className="form-group">
-              <label for="exampleInputPassword1">비밀번호   </label>
-              <input
-                type={passwordInputType.type}
-                id="password"
-                name="password"
-                placeholder="비밀번호"
-                className="input-pw"
-                autoComplete={passwordInputType.autoComplete}
-                onKeyDown={(e) => checkCapsLock(e)} //캡스락 확인
-                value={loginPassword}
-                onChange={(e) => setLoginPassword(e.target.value)}
-              />
-            </div>
-            <div className="checkbox-wrapper">
-              <span className="checkbox-item">
-              {/* 아이디저장 input */}
-              <input
-                type="checkbox"
-                name="saveEmail"
-                id="saveEmail"
-                checked={saveIDFlag}
-                onChange={handleSaveIDFlag}
-              />
-              <label>
-                <span>아이디 저장</span>
-              </label>
-              </span>
-              {/* 비밀번호 표시 input box */}
-              <span className="checkbox-item">
+                <label>Email address</label>
+                <input
+                  type="email"
+                  className="form-control"
+                  id="EmailInput"
+                  name="EmailInput"
+                  aria-describedby="emailHelp"
+                  placeholder="Enter email"
+                  onChange={(event) => getLoginID(event.target.value)}
+                />
+                <small id="emailHelp" className="text-danger form-text">
+                  {emailError}
+                </small>
+              </div>
+              <div className="form-group">
+                <label>Password</label>
+                <input
+                  type="password"
+                  className="form-control"
+                  id="exampleInputPassword1"
+                  placeholder="Password"
+                  onChange={(event) => setLoginPassword(event.target.value)}
+                />
+                <small id="passworderror" className="text-danger form-text">
+                  {passwordError}
+                </small>
+              </div>
+              <div className="form-group form-check">
                 <input
                   type="checkbox"
-                  checked={passwordOption}
-                  onChange={() => setPasswordOption(!passwordOption)}
+                  className="form-check-input"
+                  id="exampleCheck1"
                 />
-                <label>
-                  <span>비밀번호 표시</span>
-                </label>
-              </span>
-            {/* capsLockFlag에 따라 className과 Caps Lock On/Off로 변경되게 한다. */}
-            <span
-              className={
-                capsLockFlag ? "caps-lock caps-lock-on" : "caps-lock"
-              }
-            >
-              {capsLockFlag ? "Caps Lock On" : "Caps Lock Off"}
-            </span>
-            </div>
-
-          <span className="login-button" onClick={loginClick}>
-            로그인
-          </span>
-          </form>
-          <ul className="login-li-group">
-            <li>
-              <span onClick={() => alert("잘 기억해보세요.")}>아이디 찾기</span>
-            </li>
-            <li>
-              <span onClick={() => alert("잘 기억해보세요.")}>
-                비밀번호 찾기
-              </span>
-            </li>
-            <li>
-              <Link to="/Join">
-                <span className="bold">회원가입</span>
-              </Link>
-            </li>
-          </ul>
+                <label className="form-check-label">Check me out</label>
+              </div>
+              <button onClick={loginClick} className="btn btn-primary">
+                Submit
+              </button>
+            </form>
+          </div>
+          Source: <a href="https://askavy.com/react-form/">React Form</a>
         </div>
       </div>
     </div>
   );
+
 };
 
-export default Login;
+export default Logintest;
