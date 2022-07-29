@@ -1,32 +1,34 @@
 import axios from "axios";
-import React, { useEffect } from "react"
 
-const Auth = (props) => {
-    useEffect(() => {
-        console.log(props.LEVEL);
-        // 페이지레벨이 멤버레벨보다 낮으면 빠꾸 높거나 같으면 통과
+async function Auth(BOARD_LEVEL) {
+
+    return (await new Promise((resolve, reject) => {
         const id = localStorage.getItem("MEM_ID");
+
         axios({
-            method : 'post',
-            url : "/GareBnB/Auth.do",
-            params : {'MEM_ID' : id}
+            method: 'post',
+            url: "/GareBnB/Auth.do",
+            params: { 'MEM_ID': id }
         }).then(Response => {
-        console.log(Response.data);
-       if(Response.data.MEM_LEVEL > props.LEVEL ){
-        console.log(localStorage.getItem("MEM_LEVEL"));
-        alert("권한이 없습니다");
-        window.history.back();
-        return Response.data.MEM_LEVEL;
-       } 
-       else return Response.data.MEM_IDX;
-       
+            if (Response.data.MEM_LEVEL > BOARD_LEVEL) {
+                alert("권한이 없습니다.");
+                window.history.back();
+            } else {
+                return ({
+                    'MEM_LEVEL' : Response.data.MEM_LEVEL,
+                    'MEM_IDX' : Response.data.MEM_IDX
+                })
+            }
+        }).then(data => {
+            resolve(data);
+        }).catch(err =>{
+            
+            window.history.push('/login');
+            alert("로그인을  해주세요")
+        })
     })
-        
-       
-    },[])
 
-    
-    
-  }
+    )
+}
 
-  export default Auth;
+export default Auth;
