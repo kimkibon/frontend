@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useEffect } from "react";
-import Button from 'react-bootstrap/Button';
 
 
 const Payment = (props)=>{
@@ -53,7 +52,8 @@ const Payment = (props)=>{
         error_msg,
 				paid_at,  //결제날짜
 				pg_provider,  //pg사
-				paid_amount    //결제가격
+				paid_amount,    //결제가격
+        pay_method
           
           
       } = response;
@@ -68,10 +68,11 @@ const Payment = (props)=>{
           url : '/GareBnB/mypage/resPay.do' ,
           contentType:"application/json;charset=UTF-8",
           params : {
-             RES_IDX : res_idx,
-             PAY_DATE : date.toISOString().slice(0,10).replace(/-/g,"/"),
+            RES_IDX : res_idx,
+            PAY_DATE : date.toISOString().slice(0,10).replace(/-/g,"/"),
     		 		PG : pg_provider,
-		     		PAY_PRICE : paid_amount
+		     		PAY_PRICE : paid_amount,
+            PAY_METHOD : pay_method
            }
          }).then(Response => {
     

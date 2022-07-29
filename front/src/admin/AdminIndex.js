@@ -11,6 +11,8 @@ import AdminQnaDetail from './adminQna/AdminQnaDetail'
 import AdminQnaList from './adminQna/AdminQnaList'
 import AdminReportDetail from './adminReport/AdminReportDetail'
 import AdminReportList from './adminReport/AdminReportList'
+import AdminAllResList from './adminResList/AdminAllResList'
+
 
 const AdminIndex = () => {
   return (
@@ -33,6 +35,10 @@ const AdminIndex = () => {
       <Link to='adminReportList'><li>adminReportList</li></Link>
       <Link to='adminReportDetail'><li>adminReportDetail</li></Link>
 
+      <Link to='adminAllResList'><li>adminAllResList</li></Link>
+
+      
+
       <Routes>
         <Route path='/admin' element={<AdminIndex/>}/>
         <Route path='/adminBoardReview' element={<AdminBoardReview/>}/>
@@ -50,6 +56,9 @@ const AdminIndex = () => {
 
         <Route path='/adminReportList' element={<AdminReportList/>}/>
         <Route path='/adminReportDetail' element={<AdminReportDetail/>}/>
+
+        <Route path='/adminAllResList' element={<AdminAllResList/>}/> 
+    
 
       </Routes>
       

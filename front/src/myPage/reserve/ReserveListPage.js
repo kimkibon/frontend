@@ -34,17 +34,17 @@ const ReserveListPage = () => {
     
         }
     }).then(Response => {
-        // const url = Response.data.map(async list =>{
+         const url = Response.data.map(async list =>{
 
-        //   await SelectOneFile('0',list.RES_BOARD_NO).then(Res=>{
-        //     list['URL'] = "data:image/;base64,"+Res.URL
-        //   });
-        //   return list;
-        // })
-        // console.log(url);
+           await SelectOneFile('0',list.RES_BOARD_NO).then(Res=>{
+             list['URL'] = "data:image/;base64,"+Res.URL
+           });
+           return list;
+        })
+        console.log(url);
 
-        // Promise.all(url).then((data)=>{setResList(data)}); 
-        setResList(Response.data);
+        Promise.all(url).then((data)=>{setResList(data)}); 
+        //setResList(Response.data);
  
       });
   } ,[]);
@@ -61,7 +61,7 @@ const ReserveListPage = () => {
             <div class="d-flex justify-content-center row">
                 <div class="col-md-10">
                     <div class="row p-2 bg-white border rounded">
-                        <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="https://i.imgur.com/QpjAiHq.jpg"/><p/>
+                        <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src={list.URL}/><p/>
                           {resstate === 4 && (list.RES_REJ)!=null && 
                               <div>
                                <button type="button" class="btn btn-warning" onClick={()=>{alert(list.RES_REJ)}}>거절사유보기</button>
@@ -70,6 +70,7 @@ const ReserveListPage = () => {
 
                         </div>
                         <div class="col-md-6 mt-1">
+                        예약상태 : {ResState(resstate)}<br/>
                             <h5>예약번호  {list.RES_IDX}</h5>
                             주소 : {list.ADDR1}{list.ADDR2}<br/>
                             이용날짜 : {list.RES_DATE_START} ~ {list.RES_DATE_END}<br/>
