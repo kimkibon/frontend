@@ -7,7 +7,7 @@ const MemChange = () => {
   // MEM_IDX 불러오는 기능있어야함
 
   const [inputs, setInputs] = useState({    
-    MEM_IDX : 2,
+    MEM_IDX : 3,
     HOST_EMAIL : '',
     HOST_POST : '',
     HOST_ADDR1 : '',

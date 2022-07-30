@@ -7,7 +7,7 @@ import MemUseList from "./MemUseList";
 
 const MemUseListPage = () => {
     const [resComList, setResComList] = useState([]);
-    const mem_id = 'MEM_10';
+    const mem_id = 'MEM_7';
     //이용내역
     useEffect(() => {
         axios({
