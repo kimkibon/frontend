@@ -1,5 +1,4 @@
 {
-  "proxy": "http://localhost:9000/",
   "name": "front",
   "version": "0.1.0",
   "private": true,
@@ -10,6 +9,7 @@
     "antd": "^4.22.1",
     "axios": "^0.27.2",
     "bootstrap": "^5.2.0",
+    "http-proxy-middleware": "^2.0.6",
     "qs": "^6.11.0",
     "query-string": "^7.1.1",
     "react": "^18.2.0",
