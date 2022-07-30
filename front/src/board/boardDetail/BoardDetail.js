@@ -9,6 +9,8 @@ import 'bootstrap/js/dist/dropdown'
 import Carousel from 'react-bootstrap/Carousel';
 import ResRequest from './ResRequest';
 import Detail from './boardDetailComponent/Detail';
+import Refuse from './boardDetailComponent/Refuse';
+import BoardDelete from './boardDetailComponent/BoardDelete';
 
 
 const BoardDetail = () => {
@@ -19,6 +21,7 @@ const BoardDetail = () => {
   const [host, setHost] = useState([]);
   const [modalShow, setModalShow] = React.useState(false);
   const [deleteModal, setDeleteModal] = React.useState(false);
+  const [refuseModal, setRefuseModal] = React.useState(false);
   const [author, setauthor] = useState({});
 
   const location = useLocation();
@@ -131,7 +134,7 @@ const BoardDetail = () => {
             {/* 모달창 온오프 */}
 
             {/* 호스트 게시글 수정 */}
-            {(boardDetail.BOARD_HOST_ID === localStorage.getItem('MEM_ID')&& (author.MEM_LEVEL <= 1)) &&
+            {(boardDetail.BOARD_HOST_ID === localStorage.getItem('MEM_ID') && (author.MEM_LEVEL <= 1)) &&
               <Link to='/myPage/host/hostBoardModify' boardDetail={boardDetail} file={file}>
                 <button className="btn btn-outline-dark" type="button">
                   수정하기
@@ -140,25 +143,28 @@ const BoardDetail = () => {
             }
             {/* 게시글 수정 링크 */}
 
-            {((author.MEM_LEVEL === 0) && (author.MEM_LEVEL !== undefined)) && 
-            <div>
-            <button className="btn btn-danger" type="button" onClick={() => setModalShow(true)}>
-              등록 거절
-            </button>
-            
-            <Link to='' state={boardDetail.BOARD_NO}>
-              <button className="btn btn-primary" type="button">
-                등록 승인
-              </button>
-            </Link>
-            </div>
-           }
+            {/* 어드민 확인 */}
+            {((author.MEM_LEVEL === 0) && (author.MEM_LEVEL !== undefined)) &&
+              <div>
+                <button className="btn btn-danger" type="button" onClick={() => setRefuseModal(true)}>
+                  등록 거절
+                </button>
+
+                <Link to='' state={boardDetail.BOARD_NO}>
+                  <button className="btn btn-primary" type="button">
+                    등록 승인
+                  </button>
+                </Link>
+              </div>
+            }
 
             {/* 게시글 삭제 버튼 */}
-            <button className="btn btn-danger" type="button" onClick={() => setDeleteModal(true)}>
-              게시글 삭제
-            </button>
-            {/* 링크 */}
+
+            {((author.MEM_LEVEL === 0) || (localStorage.getItem('MEM_ID') === boardDetail.BOARD_HOST_ID)) &&
+              <button className="btn btn-danger" type="button" onClick={() => setDeleteModal(true)}>
+                게시글 삭제
+              </button>
+            }
           </div>
         </div>
 
@@ -169,10 +175,18 @@ const BoardDetail = () => {
         />
         {/* 예약창을 모달로 띄움. */}
 
-        <div></div>
+        <BoardDelete
+          show={deleteModal}
+          onHide={() => setDeleteModal(false)}
+          state={boardDetail.BOARD_NO}
+        />
         {/* 삭제 버튼 모달창 */}
 
-        <div></div>
+        <Refuse
+          show={refuseModal}
+          onHide={() => setRefuseModal(false)}
+          state={boardDetail.BOARD_NO}
+        />
         {/* 등록 거절 모달창 */}
 
         <div className="row">
