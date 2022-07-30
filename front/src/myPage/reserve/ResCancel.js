@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useLocation} from 'react-router-dom';
 
+//예약취소
 const ReserveCancel =() => {
 
     const location = useLocation();
@@ -14,7 +15,7 @@ const ReserveCancel =() => {
                 RES_IDX : location.state.res_idx
             }
         }).then(Response => {
-            window.location.href="/myPage/ReserveListPage"
+            window.location.href="./"
         })
         
         

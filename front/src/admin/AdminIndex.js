@@ -12,7 +12,8 @@ import AdminQnaList from './adminQna/AdminQnaList'
 import AdminReportDetail from './adminReport/AdminReportDetail'
 import AdminReportList from './adminReport/AdminReportList'
 import AdminAllResList from './adminResList/AdminAllResList'
-
+import AdminResInfo from './adminResList/AdminResInfo'
+import ResCancel from '../myPage/reserve/ResCancel';
 
 const AdminIndex = () => {
   return (
@@ -57,7 +58,9 @@ const AdminIndex = () => {
         <Route path='/adminReportList' element={<AdminReportList/>}/>
         <Route path='/adminReportDetail' element={<AdminReportDetail/>}/>
 
-        <Route path='/adminAllResList' element={<AdminAllResList/>}/> 
+        <Route path='/adminAllResList' element={<AdminAllResList/>}/>
+        <Route path='/adminAllResList/adminResInfo/:RES_IDX' element={<AdminResInfo/>}/>
+        <Route path='/adminAllResList/adminResInfo/:RES_IDX/resCancel' element={<ResCancel/>}/>
     
 
       </Routes>

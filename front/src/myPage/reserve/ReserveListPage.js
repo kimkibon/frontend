@@ -18,7 +18,7 @@ const ResState=(state)=>{
 }
 
 const mem_id = 'MEM_2';
-const mem_idx = 10;
+const mem_idx = 2;
 
 const ReserveListPage = () => {
   const [resList, setResList] = useState([]);
@@ -108,7 +108,7 @@ const ReserveListPage = () => {
 
 
                             {/* 예약취소상태 */}
-                            {resstate === 4 && (list.RES_REJ)!=null && <div>예약이 취소되었습니다.<p/>
+                            {resstate === 4 && <div>예약이 취소되었습니다.<p/>
                             </div>}
 
                           </div>

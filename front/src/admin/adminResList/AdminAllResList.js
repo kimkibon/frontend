@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 
 //예약상태
@@ -12,8 +13,7 @@ const ResState=(state)=>{
       case 4: return '예약취소'
       case 5: return '이용완료'
     }
-  
-  }
+}
 
 const AdminAllResList =() => {
     const [resList, setResList] = useState([]);
@@ -33,11 +33,11 @@ const AdminAllResList =() => {
             <table class="table">
                 <thead>
                     <tr>
-                    <th scope="col">예약번호</th>
-                    <th scope="col">예약자ID</th>
-                    <th scope="col">호스트ID</th>
-                    <th scope="col">게시글번호</th>
-                    <th scope="col">예약상태</th>
+                        <th scope="col">예약번호</th>
+                        <th scope="col">예약자ID</th>
+                        <th scope="col">호스트ID</th>
+                        <th scope="col">게시글번호</th>
+                        <th scope="col">예약상태</th>
                     </tr>
                 </thead>
 
@@ -45,14 +45,14 @@ const AdminAllResList =() => {
             {resList[0] !==undefined && resList.map((list)=>{
                 return(
                     <tbody>
-                    <tr>
-                    <td>{list.RES_IDX}</td>
-                    <td>{list.RES_CLI_ID}</td>
-                    <td>{list.RES_HOST_ID}</td>
-                    <td>{list.RES_BOARD_NO}_{list.RES_BOARD_MODIFY_NO}</td>
-                    <td>{ResState(list.RES_LEVEL)}</td>
-                    </tr>
-                </tbody>                    
+                        <tr>
+                            <td><Link to={"./adminResInfo/"+list.RES_IDX}>{list.RES_IDX}</Link></td>
+                            <td>{list.RES_CLI_ID}</td>
+                            <td>{list.RES_HOST_ID}</td>
+                            <td>{list.RES_BOARD_NO}_{list.RES_BOARD_MODIFY_NO}</td>
+                            <td>{ResState(list.RES_LEVEL)}</td>
+                        </tr>
+                    </tbody>                    
                 )
             })}
 
