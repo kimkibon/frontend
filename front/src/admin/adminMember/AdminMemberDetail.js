@@ -71,7 +71,7 @@ const AdminMemberDetail = () => {
       <h3>호스트 회원 정보</h3>
       <li>호스트프로필사진: </li>
       <li>이메일 : {getMem.HOST_EMAIL}</li>
-      <li>우편번호 : {getMem.HOST_POSTCODE}</li>
+      <li>우편번호 : {getMem.HOST_POST}</li>
       <li>주소 : {getMem.HOST_ADDR1}</li>
       <li>상세주소 : {getMem.HOST_ADDR2}</li>
       <li>주민번호 : {getMem.HOST_JUMIN1}-{getMem.HOST_JUMIN2}</li>
