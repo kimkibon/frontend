@@ -8,6 +8,7 @@ const InsertBoard = (props) => {
   const insertFiles = props.insert.insertFiles;
 
   //변수 초기 세팅
+  
 
   const InsertBoard = async (e) => {
     e.preventDefault();
