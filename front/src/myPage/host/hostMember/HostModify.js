@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, Link, renderMatches } from 'react-router-dom';
 
 
 // 회원정보 보기 - 수정
@@ -9,7 +9,7 @@ const HostModify = () => {
 
   const location = useLocation();
   const mem = location.state.mem;   // HostInfo의 member 정보를 HostModify로 넘겨줌 (mem)
-console.log(mem)
+
 
   const [hostModify , setHostModify] = useState ({ // hostModify 초기값으로 mem의 값 지정
     MEM_ID : mem.MEM_ID,
@@ -33,7 +33,7 @@ console.log(mem)
   const HostModifySuccess= () => { // 수정완료 버튼 클릭 시 update sql문 실행됨
     axios({
     method : 'post',
-    url : '/GareBnB/mypage/hostModify.do',
+    url : '/GareBnB/host/myPage/hostModify.do',
     contentType:"apllication/json; charset=UTF-8",
     params : {
       MEM_IDX : MEM_IDX,
@@ -47,7 +47,7 @@ console.log(mem)
     } })
   .then(Response => {
     alert('수정완료 성공');
-    window.location.href = '../hostInfo'; // 수정완료 성공 알림창 확인 버튼 클릭 시 회원정보 보기 페이지로 이동됨
+    window.location.href = '../host/hostInfo'; // 수정완료 성공 알림창 확인 버튼 클릭 시 회원정보 보기 페이지로 이동됨
   })
   }
 
@@ -57,7 +57,6 @@ console.log(mem)
       ...hostModify, 
       [name] : value
     });
-    console.log(hostModify)
   };
 
 
