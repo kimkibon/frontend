@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useLocation } from 'react-router-dom';
 
-const AdminMemberList = () => {
+const AdminMemberDetail = () => {
   
   const location = useLocation();
 
-  const [mem_LEV, setMem_LEV] = useState();
+  const [mem_LEV, setMem_LEV] = useState('');
 
   const mem_idx = location.state.MEM_IDX
 
@@ -18,7 +18,6 @@ const AdminMemberList = () => {
     MEM_NAME : '',
     MEM_PHONE : ''
   });
-
 
  useEffect(() =>{ // 해당 MEM_IDX로 나머지 정보 가져옴
         axios({ 
@@ -90,5 +89,5 @@ const AdminMemberList = () => {
   );
     }
 
-export default AdminMemberList
+export default AdminMemberDetail
 
