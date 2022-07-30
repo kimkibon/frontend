@@ -49,6 +49,7 @@ const HostBoardForm = () => {
       'BOARD_POST': data.BOARD_POST
     })
     setShowAddrModal(false)
+    console.log(insertBoard)
   }
 
   const onChange = (dates) => {
@@ -59,7 +60,6 @@ const HostBoardForm = () => {
       'BOARD_DATE_START': dates[0].toISOString().slice(0, 10).replace(/-/g, "/"),
       'BOARD_DATE_END': dates[1].toISOString().slice(0, 10).replace(/-/g, "/")
     })
-
   };
   //데이트피커 내용이 바뀌면 변수에 저장 
 
@@ -69,6 +69,7 @@ const HostBoardForm = () => {
       ...insertBoard,
       [name]: value
     })
+    console.log(insertBoard)
   };
 
   //글 입력 내용이 변경되면 변수에 저장. 
@@ -76,9 +77,41 @@ const HostBoardForm = () => {
   const getImages = (image) => {
     setInsertFiles(image)
   }
+  // 미리보기로 만들어진 이미지를 저장 
 
-  // 내용 입력이 없을 때 에러 띄울것 추가예정
-  //파일 내용을 바이너리로 바꿔서 file_level을 설정하는 함수 추가 예정 
+  const insertOnClick = () => {
+
+    if (insertBoard.BOARD_TITLE === '') {
+      alert('제목을 입력해주세요.')
+    } else {
+      if (insertBoard.BOARD_POST === '') {
+        alert('우편번호를 입력해주세요..')
+      } else {
+        if (insertBoard.BOARD_ADDR1 === '') {
+          alert('주소를 입력해주세요.')
+        } else {
+          if (insertBoard.BOARD_ADDR2 === '') {
+            alert('상세주소를 입력해주세요.')
+          } else {
+            if (insertBoard.BOARD_PRICE === '') {
+              alert('가격을 입력해주세요.')
+            } else {
+              if (insertBoard.BOARD_CONTENT === '') {
+                alert('소개글을 입력해주세요.')
+              } else {
+                if (insertFiles[1] === undefined) {
+                  alert('사진을 두 장 이상 입력해주세요')
+                } else {
+                  setInsertModal(true);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  // 글 유효성 검사  
 
   return (
     <>
@@ -239,7 +272,7 @@ const HostBoardForm = () => {
             <button
               className="btn btn-outline-dark"
               type="button"
-              onClick={() => setInsertModal(true)}>
+              onClick={() => insertOnClick()}>
               <i className="bi-cart-fill me-1"></i>
               등록하기
             </button>
@@ -260,6 +293,7 @@ const HostBoardForm = () => {
             setAddrInfo={setAddrInfo}
           />
         </Modal>
+        {/* 주소 검색 모달 */}
       </div>
     </>)
 }

@@ -8,6 +8,7 @@ const InsertBoard = (props) => {
   const insertFiles = props.insert.insertFiles;
 
   //변수 초기 세팅
+  
 
   const InsertBoard = async (e) => {
     e.preventDefault();
@@ -30,7 +31,7 @@ const InsertBoard = (props) => {
 
     //문자열로 변환된 이미지를 다시 file객체로 변환
 
-    await axios({
+    axios({
       method: 'post',
       url: '/GareBnB/host/mypage/myboardPut.do',
       params: insertBoard
@@ -39,6 +40,7 @@ const InsertBoard = (props) => {
       files.map(async (file, index) => {
         await InsertFiles(file, Response.data.BOARD_NO , index);
       })
+      
     })
     // 받아온 보드 넘버로 이미지 파일을 업로드
   }
