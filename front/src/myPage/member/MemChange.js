@@ -2,60 +2,53 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
+import InsertHost from './InsertHost';
+import ImageUploadBox from '../host/myBoard/component/ImageUploadBox';
 
 const MemChange = () => {
+  const [insertModal, setInsertModal] = React.useState(false);
+  
+  const [insertHostFiles, setInsertHostFiles] = useState([]);
+  const [insertHost, setInsertHost] = useState({
+    'MEM_IDX' : '2',
+    'HOST_EMAIL' : '',
+    'HOST_POSTCODE' : '',
+    'HOST_ADDR1' : '',
+    'HOST_ADDR2' : '',
+    'HOST_JUMIN1' : '',
+		'HOST_JUMIN2' : '',
+		'HOST_INTRO' : '',
+		'HOST_ACCOUNT' : '',
+		'HOST_BANK' : ''
+  });
 
-  const [host_email, setHost_email] = useState(''); // 이메일
-  const [host_postcode, setHost_postcode] = useState(''); // 우편번호
-  const [host_addr1, setHost_addr1] = useState(''); // 기본 주소
-  const [host_addr2, setHost_addr2] = useState(''); // 상세 주소
-  const [host_jumin1, setHost_jumin1] = useState(''); // 주민등록번호 앞자리
-  const [host_jumin2, setHost_jumin2] = useState(''); // 주민등록번호 뒷자리
-  const [host_intro, setHost_intro] = useState(''); // 호스트 소개글
-  const [host_account, setHost_account] = useState(''); // 호스트 계좌번호
-  const [host_bank, setHost_bank] = useState(''); // 호스트 은행명
+  const {
+    MEM_IDX,
+    HOST_EMAIL,
+    HOST_POSTCODE,
+    HOST_ADDR1,
+    HOST_ADDR2,
+    HOST_JUMIN1,
+    HOST_JUMIN2,
+    HOST_INTRO,
+    HOST_ACCOUNT,
+    HOST_BANK
+  } = insertHost;
 
-  const JoinHost = (e) => { // HOST DB에 input 
-    e.preventDefault();
-    
-    if(host_email!=="") {
-      if(host_postcode!=="") {
-        if(host_addr1!=="") {
-          if(host_addr2!=="") {
-            if(host_jumin1!=="") {
-              if(host_jumin2!=="") {
-                if(host_intro!=="") {
-                  if(host_account!=="") {
-                    if(host_bank!=="") {
-    axios({ 
-      method : 'post' ,
-      url : '/GareBnB/mypage/memChange.do' , 
-      contentType:"application/json; charset=UTF-8",
-      params : { 
-        MEM_IDX : 1,
-        HOST_EMAIL : host_email,
-        HOST_POSTCODE : host_postcode,
-        HOST_ADDR1 : host_addr1,
-        HOST_ADDR2 : host_addr2,
-        HOST_JUMIN1 : host_jumin1,
-        HOST_JUMIN2 : host_jumin2,
-        HOST_INTRO : host_intro,
-        HOST_ACCOUNT : host_account,
-        HOST_BANK: host_bank
-      }}).then(Response => { 
-        Navigate('/mypage');
-  })
-                    } else alert("은행명을 선택해주세요")
-                  } else alert("계좌번호를 입력해주세요")
-                } else alert("호스트 소개를 입력해주세요")
-              } else alert("주민등록번호 뒷자리를 입력해주세요")
-            } else alert("주민등록번호 앞자리를 입력해주세요")
-          } else alert("상세주소를 입력해주세요")
-        } else alert("기본주소를 입력해주세요")
-      } else alert("우편번호를 입력해주세요")
-    } else alert("이메일을 입력해주세요")
-}
+  const setItems = (e) => {
+    const { name, value } = e.target;
+    setInsertHost({
+      ...insertHost,
+      [name]: value
+    })
+    console.log(insertHost)
+  };
+  
+
+  const getImages = (image) => {
+    setInsertHostFiles(image)
+  }
 
   return (
     <div>
@@ -64,7 +57,7 @@ const MemChange = () => {
 
       <Form.Group className="mb-3">
         <Form.Label>이메일 주소</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" value={host_email} onChange={(e)=> setHost_email(e.target.value)} />
+        <Form.Control type="email" placeholder="Enter email" value={HOST_EMAIL} onChange={(e)=> setItems(e)} />
         <Form.Text className="text-muted">
           We'll never share your email with anyone else.
         </Form.Text>
@@ -72,33 +65,50 @@ const MemChange = () => {
 
       <Form.Group className="mb-3">
         <Form.Label>우편번호 <button>검색</button></Form.Label>
-        <Form.Control type="number" placeholder="12345" value={host_postcode} onChange={(e)=> setHost_postcode(e.target.value)} />
+        <Form.Control type="number" placeholder="12345" value={HOST_POSTCODE} onChange={(e)=>setItems(e)} />
       </Form.Group>
 
       <Form.Group className="mb-3">
         <Form.Label>기본주소</Form.Label>
-        <Form.Control type="text" placeholder="기본 주소" value={host_addr1} onChange={(e)=> setHost_addr1(e.target.value)} />
+        <Form.Control type="text" placeholder="기본 주소" value={HOST_ADDR1} onChange={(e)=> setItems(e)} />
       </Form.Group>
 
       <Form.Group className="mb-3">
         <Form.Label>상세주소</Form.Label>
-        <Form.Control type="text" placeholder="상세 주소" value={host_addr2} onChange={(e)=> setHost_addr2(e.target.value)} />
+        <Form.Control type="text" placeholder="상세 주소" value={HOST_ADDR2} onChange={(e)=> setItems(e)} />
       </Form.Group>
 
       <Form.Group className="mb-3">
         <Form.Label>주민 등록 번호</Form.Label>
-        <Form.Control type="number" placeholder="주민등록번호 앞자리" value={host_jumin1} onChange={(e)=> setHost_jumin1(e.target.value)} /> -
-        <Form.Control type="number" placeholder="1" value={host_jumin2} onChange={(e)=> setHost_jumin2(e.target.value)} /> ******
+        <Form.Control type="number" placeholder="주민등록번호 앞자리" value={HOST_JUMIN1} onChange={(e)=> setItems(e)} /> -
+        <Form.Control type="number" placeholder="1" value={HOST_JUMIN2} onChange={(e)=> setItems(e)} /> ******
+      </Form.Group>
+
+      <Form.Group className="mb-3">
+        <Form.Label>본인 사진</Form.Label> <br/>
+        <Form.Text className="text-muted">
+         본인을 확인할 수 있는 사진 첨부 부탁드립니다. (예 : 증명 사진)
+        </Form.Text>
+        <ImageUploadBox getImages={getImages} />
       </Form.Group>
 
       <Form.Group className="mb-3">
         <Form.Label>본인 소개</Form.Label>
-        <Form.Control as="textarea" placeholder="경력, 자격증, 포부, 자기소개" value={host_intro} onChange={(e)=> setHost_intro(e.target.value)} />
+        <Form.Control as="textarea" placeholder="경력, 자격증, 포부, 자기소개" value={HOST_INTRO} onChange={(e)=> setItems(e)} />
       </Form.Group>
 
       <Form.Group className="mb-3">
+        <Form.Label>사진 첨부</Form.Label> <br/>
+        <Form.Text className="text-muted">
+         본인 소개글에 대한 증명 자료로 사진이 있으시다면, 호스트 전환에 도움이 될 수 있으므로 추가 부탁드립니다.
+        </Form.Text>
+        <ImageUploadBox getImages={getImages} />
+      </Form.Group>
+
+
+      <Form.Group className="mb-3">
       <Form.Label>은행</Form.Label>
-      <Form.Select defaultValue={host_bank} onChange={(e)=> setHost_bank(e.target.value)}>
+      <Form.Select defaultValue={HOST_BANK} onChange={(e)=> setItems(e)}>
       <option value="default">은행을 선택하여 주세요</option>
       <option value="신한은행">신한은행</option>
       <option value="하나은행">하나은행</option>
@@ -108,12 +118,19 @@ const MemChange = () => {
 
     <Form.Group className="mb-3">
         <Form.Label>계좌번호</Form.Label>
-        <Form.Control type="text" placeholder="계좌 번호" defaultValue={host_account} onChange={(e)=> setHost_account(e.target.value)} />
+        <Form.Control type="text" placeholder="계좌 번호" defaultValue={HOST_ACCOUNT} onChange={(e)=> setItems(e)} />
       </Form.Group>
 
     </Form>
-      <Button variant="primary" onClick={JoinHost}>전환하기</Button> &nbsp;
+      <Button variant="primary" onClick={() => setInsertModal(true)}>전환하기</Button> &nbsp;
       <Button href="/mypage" variant="primary">취소</Button>
+
+      <InsertHost
+          show={insertModal}
+          onHide={() => setInsertModal(false)}
+          insert={{ "insertHost": insertHost, "insertHostFiles": insertHostFiles }}
+        />
+        {/* 입력확인창 모달로 띄우기 !  */}
     </div>
     )}
   
