@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import axios from 'axios';
 import SelectFileList from '../../commons/Files/SelectFileList';
 import BoardReview from './BoardReview';
@@ -18,6 +18,8 @@ const BoardDetail = () => {
   const [review, setReview] = useState([]);
   const [host, setHost] = useState([]);
   const [modalShow, setModalShow] = React.useState(false);
+  const [deleteModal, setDeleteModal] = React.useState(false);
+  const [author, setauthor] = useState({});
 
   const location = useLocation();
 
@@ -120,16 +122,44 @@ const BoardDetail = () => {
             </div>
           </div>
         </section>
-        <div className='row align-items-end'>
-                  
-          <div className='col-lg col-sm-12 text-lg-end text-center'>
+        <div className='row'>
+          {/* 클라이언트 예약 */}
+          <div className='col-lg-12'>
             <button className="btn btn-outline-dark" type="button" onClick={() => setModalShow(true)}>
-              <i className="bi-cart-fill me-1"></i>
               예약하기
             </button>
             {/* 모달창 온오프 */}
-          </div>
 
+            {/* 호스트 게시글 수정 */}
+            {(boardDetail.BOARD_HOST_ID === localStorage.getItem('MEM_ID')&& (author.MEM_LEVEL <= 1)) &&
+              <Link to='/myPage/host/hostBoardModify' boardDetail={boardDetail} file={file}>
+                <button className="btn btn-outline-dark" type="button">
+                  수정하기
+                </button>
+              </Link>
+            }
+            {/* 게시글 수정 링크 */}
+
+            {((author.MEM_LEVEL === 0) && (author.MEM_LEVEL !== undefined)) && 
+            <div>
+            <button className="btn btn-danger" type="button" onClick={() => setModalShow(true)}>
+              등록 거절
+            </button>
+            
+            <Link to='' state={boardDetail.BOARD_NO}>
+              <button className="btn btn-primary" type="button">
+                등록 승인
+              </button>
+            </Link>
+            </div>
+           }
+
+            {/* 게시글 삭제 버튼 */}
+            <button className="btn btn-danger" type="button" onClick={() => setDeleteModal(true)}>
+              게시글 삭제
+            </button>
+            {/* 링크 */}
+          </div>
         </div>
 
         <ResRequest
@@ -137,8 +167,13 @@ const BoardDetail = () => {
           onHide={() => setModalShow(false)}
           state={state}
         />
-
         {/* 예약창을 모달로 띄움. */}
+
+        <div></div>
+        {/* 삭제 버튼 모달창 */}
+
+        <div></div>
+        {/* 등록 거절 모달창 */}
 
         <div className="row">
           <Review prop={review} />
