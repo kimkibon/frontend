@@ -13,10 +13,10 @@ import Detail from './boardDetailComponent/Detail';
 
 const BoardDetail = () => {
 
-  const [boardDetail, setBoardDetail] = useState([]); 
+  const [boardDetail, setBoardDetail] = useState([]);
   const [file, setFile] = useState([]);
   const [review, setReview] = useState([]);
-  const [host,setHost] = useState([]);
+  const [host, setHost] = useState([]);
   const [modalShow, setModalShow] = React.useState(false);
 
   const location = useLocation();
@@ -39,10 +39,10 @@ const BoardDetail = () => {
     'RES_BOARD_ADDR1': boardDetail.BOARD_ADDR1,
     'RES_BOARD_ADDR2': boardDetail.BOARD_ADDR2,
     'RES_BOARD_TITLE': boardDetail.BOARD_TITLE,
-    'RES_HOST_PHONE' : host.MEM_PHONE,
-    'RES_HOST_NAME' : host.MEM_NAME
-    }
-    //resRequest 컴포넌트로 전달할 정보 초기화 밑 저장. 
+    'RES_HOST_PHONE': host.MEM_PHONE,
+    'RES_HOST_NAME': host.MEM_NAME
+  }
+  //resRequest 컴포넌트로 전달할 정보 초기화 밑 저장. 
 
   useEffect(() => {
     axios({
@@ -70,7 +70,7 @@ const BoardDetail = () => {
       setFile(Response);
     });
     //서버에서 파일을 받아와서 파일 레벨 순서로 정렬하고 저장
-    Detail(param).then(Response=>{
+    Detail(param).then(Response => {
       setHost(Response);
     })
     //서버에서 호스트의 전화번호를 리턴받음. 
@@ -81,7 +81,7 @@ const BoardDetail = () => {
       <div className="container">
 
 
-        <section className="row border border-primary">
+        <section className="row">
           <div className="container px-4 px-lg-5 my-5">
             <div className="row gx-4 gx-lg-5 align-items-top">
               <div className="col-md-6">
@@ -102,7 +102,7 @@ const BoardDetail = () => {
                     )
                   })}
                 </Carousel>
-{/* 캐러셀 */}
+                {/* 캐러셀 */}
               </div>
 
               <div className="col-md-6 text-end">
@@ -121,13 +121,15 @@ const BoardDetail = () => {
           </div>
         </section>
         <div className='row align-items-end'>
-          <div className='col'>
-          <button className="btn btn-outline-dark" type="button" onClick={() => setModalShow(true)}>
-            <i className="bi-cart-fill me-1"></i>
-            예약하기
-          </button>
-          {/* 모달창 온오프 */}
+                  
+          <div className='col-lg col-sm-12 text-lg-end text-center'>
+            <button className="btn btn-outline-dark" type="button" onClick={() => setModalShow(true)}>
+              <i className="bi-cart-fill me-1"></i>
+              예약하기
+            </button>
+            {/* 모달창 온오프 */}
           </div>
+
         </div>
 
         <ResRequest
@@ -138,11 +140,10 @@ const BoardDetail = () => {
 
         {/* 예약창을 모달로 띄움. */}
 
-        {/* 예약창은 대충 된거같음 */}
         <div className="row">
           <Review prop={review} />
         </div>
-        {/* 예약 */}
+        {/* 리뷰 리스트 출력 */}
       </div>
     </>
   )
