@@ -31,8 +31,6 @@ const MemModify = () => {
       MEM_PHONE : MEM_PHONE
     } })
   .then(Response => {
-    console.log(Response.data); // [QQQQQQQQQQ] 왜 콘솔에 안 뜨지????????
-    setMemModify(Response.data);
     alert('수정완료 성공');
     window.location.href = '../member/MemDetail'; // 수정완료 성공 알림창 확인 버튼 클릭 시 회원정보 보기 페이지로 이동됨
   })

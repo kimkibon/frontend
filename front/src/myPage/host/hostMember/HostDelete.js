@@ -2,7 +2,7 @@ import React from 'react'
 
 const HostDelete = () => {
   return (
-    <div>HostDelete</div>
+    <div>호스트 탈퇴 없음!</div>
   )
 }
 

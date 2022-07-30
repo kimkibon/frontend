@@ -85,6 +85,7 @@ const AdminHostDetail = () => {
 
     <Link to = '/admin/adminHostConfirmList'><button onClick={hostResSuccess}>승인</button></Link> 
     <Link to = '/admin/adminHostConfirmList'><button onClick={hostResFail}>거절</button></Link>
+    <Link to = '/admin/adminHostConfirmList'><button>취소</button></Link>
     </ul>
     </article>
 );
