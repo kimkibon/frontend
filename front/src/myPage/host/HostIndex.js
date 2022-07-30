@@ -6,6 +6,7 @@ import HostReserveList from './hostReserve/HostReserveList'
 import HostUseList from './hostReserve/HostUseList'
 import HostBoardForm from './myBoard/HostBoardForm'
 import HostBoardList from './myBoard/HostBoardList'
+import HostBoardModifyForm from './myBoard/HostBoardModifyForm'
 
 const HostIndex = () => {
   return (
@@ -17,6 +18,7 @@ const HostIndex = () => {
         <Link to='hostUseList'><li>host이용내역</li></Link>
         <Link to='hostBoardList'><li>host BoardList</li></Link>
         <Link to='hostBoardForm'><li>host BoardForm</li></Link>
+        <Link to='hostBoardModify'><li>hostBoardModify</li></Link>
         
 
         <Routes>
@@ -27,6 +29,7 @@ const HostIndex = () => {
             <Route path='/hostUseList' element={<HostUseList/>}/>
             <Route path='/hostBoardList' element={<HostBoardList/>}/>
             <Route path='/hostBoardForm' element={<HostBoardForm/>}/>
+            <Route path='/hostBoardModify' element={<HostBoardModifyForm/>}/>
         </Routes>
     </div>
   )

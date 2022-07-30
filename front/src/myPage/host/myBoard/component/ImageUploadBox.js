@@ -9,7 +9,15 @@ function ImageUploadBox(props) {
     const [imageFile, setImageFile] = useState([]);
     const uploadBoxRef = useRef();
     const inputRef = useRef();
-// 기본 변수 초기화 
+    // 기본 변수 초기화 
+
+    useEffect(() => {
+        if (props.beforeImage !== undefined) {
+            props.beforeImage.map(file => {
+                setImageFile((imageFile) => [...imageFile, file]);
+            })
+        }
+    }, [props])
 
     useEffect(() => {
         const uploadBox = uploadBoxRef.current;
@@ -31,14 +39,14 @@ function ImageUploadBox(props) {
                 reader.readAsDataURL(file);
             }
         };
-//블로그 보고 가져온거라서 정확한 작동방법은 잘 모르겠습니다....
+        //블로그 보고 가져온거라서 정확한 작동방법은 잘 모르겠습니다....
 
         const changeHandler = (event) => {
             const files = event.target.files;
             handleFiles(files);
         };
 
-// onChange() 이벤트 발생시 handleFiles를 호출 
+        // onChange() 이벤트 발생시 handleFiles를 호출 
 
         const dropHandler = (event) => {
             event.preventDefault();
@@ -65,6 +73,7 @@ function ImageUploadBox(props) {
             uploadBox.removeEventListener("dragover", dragOverHandler);
             input.removeEventListener("change", changeHandler);
         };
+
     }, [max]);
 
     useEffect(() => {
@@ -90,7 +99,7 @@ function ImageUploadBox(props) {
             );
 
             //변환된 이미지를 화면에 표시 
-            
+
         });
         setPreviewImages(imageJSXs);
     }, [uploadedImages]);
