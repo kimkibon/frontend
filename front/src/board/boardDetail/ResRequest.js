@@ -15,10 +15,12 @@ const ResRequest = (res) => {
   const [resRequest, setResRequest] = useState([]);  //입력 변수 저장
   const [cliRequest, setCliRequest] = useState(''); //클라이언트 요청사항 초기화
   const [ResReqShow, setResReqShow] = React.useState(false); // 모달창 온오프 변수 
-
+  const resData = res.state.resData;
+  const resDate = res.state.resDate;
 
   const onChange = (dates) => {
     const [start, end] = dates;
+
     setStartDate(start);
     setEndDate(end);
   };
@@ -41,10 +43,11 @@ const ResRequest = (res) => {
   }, [endDate])
 
   useEffect(() => {
+
     const request = {
       'RES_CLI_ID': 'MEM_ID',
-      'MEM_ID': res.state.RES_HOST_ID,
-      'BOARD_NO': res.state.RES_BOARD_NO,
+      'MEM_ID': resData.RES_HOST_ID,
+      'BOARD_NO': resData.RES_BOARD_NO,
       'RES_DATE_START': startDate.toISOString().slice(0,10).replace(/-/g,"/"),
       'RES_DATE_END': endDate.toISOString().slice(0,10).replace(/-/g,"/"),
       'RES_CARE_NO': care,
@@ -67,7 +70,7 @@ const ResRequest = (res) => {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            {res.state.RES_BOARD_TITLE}
+            {resData.RES_BOARD_TITLE}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -86,7 +89,7 @@ const ResRequest = (res) => {
                       <div className='col-sm-9'>
                         <div className='text-end'>
                           <br />
-                          <span>{res.state.RES_HOST_NAME}</span>
+                          <span>{resData.RES_HOST_NAME}</span>
                         </div>
                       </div>
                     </div>
@@ -100,7 +103,7 @@ const ResRequest = (res) => {
                       <div className='col-sm-9'>
                         <div className='text-end'>
                           <br />
-                          <span>{res.state.RES_HOST_PHONE}</span>
+                          <span>{resData.RES_HOST_PHONE}</span>
                         </div>
                       </div>
                     </div>
@@ -114,7 +117,7 @@ const ResRequest = (res) => {
                       <div className='col-sm-9'>
                         <div className='text-end'>
                           <br />
-                          <span>{res.state.RES_BOARD_ADDR1}<br/>{res.state.RES_BOARD_ADDR2}</span>
+                          <span>{resData.RES_BOARD_ADDR1}<br/>{resData.RES_BOARD_ADDR2}</span>
                         </div>
                       </div>
                     </div>
@@ -137,6 +140,8 @@ const ResRequest = (res) => {
                               startDate={startDate}
                               endDate={endDate}
                               selectsRange
+                              excludeDateIntervals={res.state.resDate}
+                              dateFormat = {'yyyy년 MM월 dd일'}
                             />}
                           </span>
                         </div>
@@ -158,7 +163,7 @@ const ResRequest = (res) => {
                                 {care} 마리
                               </Dropdown.Toggle>
                               <Dropdown.Menu>
-                                {[...Array(res.state)][0] !== undefined && [...Array(res.state.RES_CARE_NO)].map((n, index) => {
+                                {[...Array(resData)][0] !== undefined && [...Array(resData.RES_CARE_NO)].map((n, index) => {
                                   return (
                                     <Dropdown.Item onClick={() => setCare(index + 1)} key={index}>{index + 1}마리</Dropdown.Item>
                                   )
@@ -180,7 +185,7 @@ const ResRequest = (res) => {
                       <div className='col-sm-9'>
                         <div className='text-end'>
                           <br />
-                          <span>{(res.state.RES_PRICE) * (range)} 원</span>
+                          <span>{(resData.RES_PRICE) * (range)} 원</span>
                         </div>
                       </div>
                     </div>
