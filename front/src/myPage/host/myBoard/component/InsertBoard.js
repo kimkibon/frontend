@@ -8,17 +8,9 @@ const InsertBoard = (props) => {
   const insertFiles = props.insertFiles;
   const FILE_BOARD_TYPE = props.fileType;
   const postUrl = props.postUrl;
-  let BOARD_NO = ''
-  let FILE_MODIFY_NO = ''
+  let BOARD_NO , FILE_MODIFY_NO
 
-  if(insertBoard.MEM_IDX !== undefined) {
-    BOARD_NO = insertBoard.MEM_IDX
-    FILE_MODIFY_NO = '0'
-  }
 
-  if(insertBoard.BOARD_NO !== undefined){
-    BOARD_NO = insertBoard.BOARD_NO
-  }
 
   //변수 초기 세팅
 
@@ -50,14 +42,15 @@ const InsertBoard = (props) => {
       //보드 인서트 리턴으로 보드 넘버를 받아옴
     }).then(async Response => {
 
-      if(Response.data.BOARD_NO !== undefined) {
-        BOARD_NO = Response.data.BOARD_NO
-        FILE_MODIFY_NO = '0'
-      } else if(Response.data.BOARD_MODIFY_NO !== undefined){
-        FILE_MODIFY_NO = Response.data.BOARD_MODIFY_NO
-      }
-
       files.map(async (file, index) => {
+
+        if(postUrl === '/GareBnB/host/mypage/myboardPut.do'){
+          FILE_MODIFY_NO = '0'
+          BOARD_NO = Response.data.BOARD_NO
+        } else {
+          BOARD_NO = insertBoard.BOARD_NO
+          FILE_MODIFY_NO = Response.data.BOARD_MODIFY_NO
+        }
 
         await InsertFiles(file, index , BOARD_NO , FILE_MODIFY_NO , FILE_BOARD_TYPE);
 
