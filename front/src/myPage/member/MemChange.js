@@ -1,13 +1,19 @@
 import React, { useState } from 'react'
 import InsertHost from './InsertHost';
+import { Modal } from 'react-bootstrap';
 import ImageUploadBox from '../host/myBoard/component/ImageUploadBox';
+import HostAddress from './HostAddress';
 
 const MemChange = () => {
 
   // MEM_IDX 불러오는 기능있어야함
 
-  const [inputs, setInputs] = useState({    
-    MEM_IDX : 3,
+  const [insertModal, setInsertModal] = React.useState(false);
+  const [showAddrModal, setShowAddrModal] = React.useState(false);
+  const [insertHostFiles, setInsertHostFiles] = useState([]);
+
+  const [insertHost, setInsertHost] = useState({    
+    MEM_IDX : 5,
     HOST_EMAIL : '',
     HOST_POST : '',
     HOST_ADDR1 : '',
@@ -29,16 +35,76 @@ const MemChange = () => {
     HOST_JUMIN2,
     HOST_INTRO,
     HOST_ACCOUNT,
-    HOST_BANK } = inputs;
+    HOST_BANK } = insertHost;
+
+    const setAddrInfo = (data) => {
+      setInsertHost({
+        ...insertHost,
+        'HOST_ADDR1': data.HOST_ADDR1,
+        'HOST_POST': data.HOST_POST
+      })
+      setShowAddrModal(false)
+      console.log(insertHost)
+    }
+  
 
   const onChange = (e) => {    
     const { value, name } = e.target;  
-    setInputs({      
-      ...inputs, // 기존의 input 객체를 복사한 뒤      
+    setInsertHost({      
+      ...insertHost, // 기존의 input 객체를 복사한 뒤      
       [name]: value // name 키를 가진 값을 value 로 설정    
     });  
   };
+  const getImages = (image) => {
+    setInsertHostFiles(image)
+  }
+   // 미리보기로 만들어진 이미지를 저장 
 
+   const insertOnClick = () => {
+
+    if (insertHost.HOST_EMAIL === '') {
+      alert('제목을 입력해주세요.')
+    } else {
+      if (insertHost.HOST_POST === '') {
+        alert('우편번호를 입력해주세요..')
+      } else {
+        if (insertHost.HOST_ADDR1 === '') {
+          alert('주소를 입력해주세요.')
+        } else {
+          if (insertHost.HOST_ADDR2 === '') {
+            alert('상세주소를 입력해주세요.')
+          } else {
+            if (insertHost.HOST_JUMIN1 === '') {
+              alert('가격을 입력해주세요.')
+            } else {
+              if (insertHost.HOST_JUMIN2 === '') {
+                alert('소개글을 입력해주세요.')
+              } else {
+                if (insertHost.HOST_INTRO === '') {
+                  alert('소개글을 입력해주세요.')
+                } else {
+                  if (insertHost.HOST_BANK === '') {
+                    alert('소개글을 입력해주세요.')
+                  } else {
+                    if (insertHost.HOST_ACCOUNT === '') {
+                      alert('소개글을 입력해주세요.')
+                    } else {
+                if (insertHostFiles[1] === undefined) {
+                  alert('사진을 두 장 이상 입력해주세요')
+                } else {
+                  setInsertModal(true);
+                }
+              }
+            }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+  // 글 유효성 검사  
 
   return (
     <div>
@@ -46,9 +112,15 @@ const MemChange = () => {
       <h3>이메일주소 : </h3>
       <input name="HOST_EMAIL" placeholder="Enter email" onChange={onChange} value={HOST_EMAIL} />
       <br/>
-      <h3>우편번호 : </h3>
-      <input name="HOST_POST" placeholder="Enter email" onChange={onChange} value={HOST_POST} />
-      <br/>
+          <button
+                        className="btn btn-outline-secondary"
+                        type="button"
+                        id="button-addon"
+                        onClick={() => setShowAddrModal(true)}
+                      >
+                        우편번호 찾기
+                      </button>
+
       <h3>기본주소 : </h3>
       <input name="HOST_ADDR1" placeholder="Enter email" onChange={onChange} value={HOST_ADDR1} />
       <br/>
@@ -63,7 +135,24 @@ const MemChange = () => {
       <h3>본인 소개 : </h3>
       <input name="HOST_INTRO" placeholder="Enter email" onChange={onChange} value={HOST_INTRO} />
       <br/>
+      <ImageUploadBox getImages={getImages} />
       
+      <InsertHost
+          show={insertModal}
+          onHide={() => setInsertModal(false)}
+          insert={{ "insertHost": insertHost, "insertHostFiles": insertHostFiles }}
+        />
+
+        {/* 입력확인창 모달로 띄우기 !  */}
+        <Modal
+          show={showAddrModal}
+          onHide={() => setShowAddrModal(false)}
+        >
+          <HostAddress
+            setAddrInfo={setAddrInfo}
+          />
+        </Modal>
+        {/* 주소 검색 모달 */}
 
       {/* 사진 첨부 */}
 
@@ -74,7 +163,7 @@ const MemChange = () => {
       <input name="HOST_ACCOUNT" placeholder="Enter email" onChange={onChange} value={HOST_ACCOUNT} />
       <br/>
 
-      <button onClick={(e)=>{e.preventDefault();InsertHost(inputs);}}>등록하기</button>
+      <button onClick={(e)=>{e.preventDefault();insertHost(insertHost);}}>등록하기</button>
     
     </div>
     
