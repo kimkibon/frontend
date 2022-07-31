@@ -1,12 +1,12 @@
 import axios from 'axios';
 import React from 'react'
 import { Button, Modal } from 'react-bootstrap';
-import InsertHostFiles from './InsertHostFiles';
+import InsertFiles from '../host/myBoard/component/InsertFiles';
 
 
 const InsertHost = (props) => {
   const insertHost = props.insert.insertHost;
-  const insertHostFiles = props.insert.insertHostFiles;
+  const insertFiles = props.insert.insertFiles;
 
   //변수 초기 세팅
 
@@ -14,7 +14,7 @@ const InsertHost = (props) => {
     e.preventDefault();
     e.persist();
 
-    const files = insertHostFiles.map(file => {
+    const files = insertFiles.map(file => {
       let arr = file.url.split(','),
         mime = arr[0].match(/:(.*?);/)[1],
         bstr = atob(arr[1]),
@@ -39,7 +39,7 @@ const InsertHost = (props) => {
     //insertHost 리턴으로 MEM_IDX를 받아옴
     }).then(async Response => {
       files.map(async (file, index) => {
-        await insertHostFiles(file, Response.data.MEM_IDX , index);
+        await InsertFiles(file, Response.data.BOARD_NO , index);
     })
   
 })

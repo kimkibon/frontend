@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useLocation } from 'react-router-dom';
+import SelectOneFile from '../../commons/Files/SelectOneFile';
 
 const AdminHostConfirmDetail = () => {
+
+  const [url, setUrl] = useState();
 
   const location = useLocation();
 
@@ -21,6 +24,21 @@ const AdminHostConfirmDetail = () => {
     HOST_ACCOUNT : '',  
     HOST_INTRO : ''
   });
+
+  // 이미지 *************
+  useEffect(()=>{
+
+    SelectOneFile('0',getHostMem.RES_BOARD_NO).then(Res=>{
+      setUrl("data:image/;base64,"+Res.URL);
+      // setUrl(url);
+    });
+
+  },[])
+
+  getHostMem['URL'] = url;
+
+   // 이미지 *************
+
  
   useEffect(() =>{ // 해당 MEM_IDX로 나머지 정보 가져옴
     axios({ 
@@ -75,6 +93,8 @@ const AdminHostConfirmDetail = () => {
     <article>
     <h1>호스트 회원 등록요청 상세보기</h1>
     <ul>
+
+    <li>호스트 사진 : <img src={getHostMem.URL}></img></li>
     <li>번호(IDX) : {getHostMem.MEM_IDX}</li>
     <li>아이디 :{getHostMem.MEM_ID} </li>
     <li>이름 : {getHostMem.MEM_NAME} </li>
@@ -82,6 +102,7 @@ const AdminHostConfirmDetail = () => {
     <li>이메일 : {getHostMem.HOST_EMAIL}</li>
     <li>주소 : {getHostMem.HOST_ADDR1} {getHostMem.HOST_ADDR2}</li>
     <li>계좌번호 : {getHostMem.HOST_BANK} {getHostMem.HOST_ACCOUNT}</li>
+   
 
     <Link to = '/admin/adminHostConfirmList'><button onClick={hostResSuccess}>승인</button></Link> 
     <Link to = '/admin/adminHostConfirmList'><button onClick={hostResFail}>거절</button></Link>
