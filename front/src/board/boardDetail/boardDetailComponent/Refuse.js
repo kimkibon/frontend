@@ -8,12 +8,11 @@ const Refuse = (props) => {
     const navigate = useNavigate();
 
     const onClick = () => {
-
         axios({
             method :'post',
             url : '/GareBnB/Admin/hostBoardDeny',
             params : {
-                'BOARD_NO' : props
+                'BOARD_NO' : props.state
             }
         }).then(()=> {
             // navigate('/')
@@ -35,7 +34,7 @@ const Refuse = (props) => {
                 <Button variant="secondary" onClick={props.onHide}>
                     취소
                 </Button>
-                <Button type='submit' variant="primary" onClick={async () => { await onClick() }}>
+                <Button type='submit' variant="primary" onClick={async () => { onClick() }}>
                     등록
                 </Button>
             </Modal.Footer>

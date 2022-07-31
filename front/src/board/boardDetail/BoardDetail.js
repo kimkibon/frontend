@@ -11,6 +11,7 @@ import ResRequest from './ResRequest';
 import Detail from './boardDetailComponent/Detail';
 import Refuse from './boardDetailComponent/Refuse';
 import BoardDelete from './boardDetailComponent/BoardDelete';
+import ConfirmBoard from './boardDetailComponent/ConfirmBoard';
 
 
 const BoardDetail = () => {
@@ -22,6 +23,7 @@ const BoardDetail = () => {
   const [modalShow, setModalShow] = React.useState(false);
   const [deleteModal, setDeleteModal] = React.useState(false);
   const [refuseModal, setRefuseModal] = React.useState(false);
+  const [confirmModal, setConfirmModal] = React.useState(false);
   const [author, setauthor] = useState({});
 
   const location = useLocation();
@@ -187,11 +189,9 @@ const BoardDetail = () => {
             등록 거절
           </button>
 
-          <Link to='' state={boardDetail.BOARD_NO}>
-            <button className="btn btn-primary" type="button">
+            <button className="btn btn-primary" type="button" onClick={() => setConfirmModal(true)}>
               등록 승인
             </button>
-          </Link>
         </div>
 
 
@@ -211,12 +211,21 @@ const BoardDetail = () => {
         />
         {/* 삭제 버튼 모달창 */}
 
+        <ConfirmBoard
+          show={confirmModal}
+          onHide={()=> setConfirmModal(false)}
+          state={boardDetail.BOARD_NO}
+            />
+          {/* 등록 승인 모달창 */}
+
         <Refuse
           show={refuseModal}
           onHide={() => setRefuseModal(false)}
           state={boardDetail.BOARD_NO}
         />
         {/* 등록 거절 모달창 */}
+
+        
 
         <div className="row">
           <Review prop={review} />
