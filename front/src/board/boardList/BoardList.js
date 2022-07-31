@@ -12,10 +12,10 @@ const BoardList = () => {
       url: '/GareBnB/board/boardList.do'
       //서버에서 리스트 요청
     }).then(Response => {
-
+      
       const url = Response.data.map(async list => {
 
-        await SelectOneFile('0', list.BOARD_NO).then(Res => {
+        await SelectOneFile('0', list.BOARD_NO, list.BOARD_MODIFY_NO).then(Res => {
           //요청된 리스트의 게시글 넘버로 메인 이미지 요청
 
           list['URL'] = "data:image/;base64," + Res.URL
