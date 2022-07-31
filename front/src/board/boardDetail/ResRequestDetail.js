@@ -29,7 +29,6 @@ const ResRequestDetail = () => {
       }
     });
 
-    console.log(postSurvey);
   };
 
   return (

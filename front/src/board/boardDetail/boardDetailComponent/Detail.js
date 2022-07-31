@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-async function Detail(BOARD_NO) {
+async function Detail(BOARD_NO, BOARD_MODIFY_NO) {
     
   return (await new Promise((resolve,reject)=>{
 
@@ -8,7 +8,8 @@ async function Detail(BOARD_NO) {
       method : 'post',
       url : '/GareBnB/mypage/resRequestDetail.do',
       params : {
-        'BOARD_NO' : BOARD_NO
+        'BOARD_NO' : BOARD_NO,
+        'BOARD_MODIFY_NO' : BOARD_MODIFY_NO
       }
     }).then(Response => {
       resolve(Response.data);

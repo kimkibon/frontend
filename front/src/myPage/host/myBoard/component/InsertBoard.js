@@ -4,13 +4,11 @@ import { Button, Modal } from 'react-bootstrap';
 import InsertFiles from './InsertFiles';
 
 const InsertBoard = (props) => {
-  const insertBoard = props.insertBoard;
-  const insertFiles = props.insertFiles;
-  const FILE_BOARD_TYPE = props.fileType;
-  const postUrl = props.postUrl;
+  const insertBoard = props.props.insertBoard;
+  const insertFiles = props.props.insertFiles;
+  const FILE_BOARD_TYPE = props.props.fileType;
+  const postUrl = props.props.postUrl;
   let BOARD_NO , FILE_MODIFY_NO
-
-
 
   //변수 초기 세팅
 
@@ -42,6 +40,8 @@ const InsertBoard = (props) => {
       //보드 인서트 리턴으로 보드 넘버를 받아옴
     }).then(async Response => {
 
+      console.log(Response)
+
       files.map(async (file, index) => {
 
         if(postUrl === '/GareBnB/host/mypage/myboardPut.do'){
@@ -52,7 +52,7 @@ const InsertBoard = (props) => {
           FILE_MODIFY_NO = Response.data.BOARD_MODIFY_NO
         }
 
-        await InsertFiles(file, index , BOARD_NO , FILE_MODIFY_NO , FILE_BOARD_TYPE);
+        await InsertFiles(file, BOARD_NO  , index , FILE_MODIFY_NO , FILE_BOARD_TYPE);
 
       })
       

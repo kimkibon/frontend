@@ -8,13 +8,13 @@ import InsertBoard from './component/InsertBoard'
 
 const HostBoardModifyForm = () => {
     const location = useLocation();
-    const boardDetail = location.boardDetail;
-    const file = location.file;
+    const boardDetail = location.state.boardDetail;
+    const file = location.state.file;
     const [insertModal, setInsertModal] = React.useState(false);
     const [showAddrModal, setShowAddrModal] = React.useState(false);
     const [insertFiles, setInsertFiles] = useState([]);
     const [insertBoard, setInsertBoard] = useState({
-        'BOARD_NO' : '',
+        'BOARD_NO': '',
         'BOARD_HOST_ID': '',     // 로컬 스토리지에서 가져오기 테스트 코드 나중에 수정해야함
         'BOARD_HOST_IDX': '',    // 어디서 가져오지 ? 서버에서 ? 테스트 코드 나중에 수정해야함
         'BOARD_TITLE': '',       // 입력 받음
@@ -26,7 +26,6 @@ const HostBoardModifyForm = () => {
         'BOARD_CARE_NO': '1',     //입력 받음
         'BOARD_DATE_START': new Date().toISOString().slice(0, 10).replace(/-/g, "/"),  //모달 데이트 피커?
         'BOARD_DATE_END': new Date().toISOString().slice(0, 10).replace(/-/g, "/"),    //모달 데이트 피커 ? 
-     
     });
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
@@ -48,11 +47,12 @@ const HostBoardModifyForm = () => {
     } = insertBoard;
     //변수 초기화 
 
-    useEffect(()=>{
+    useEffect(() => {
 
         setInsertBoard(boardDetail)
-
-    },location)
+        console.log(boardDetail)
+        console.log(file)
+    }, location)
 
     //초기값 부여
 
@@ -296,7 +296,12 @@ const HostBoardModifyForm = () => {
                 <InsertBoard
                     show={insertModal}
                     onHide={() => setInsertModal(false)}
-                    insert={{ "insertBoard": insertBoard, "insertFiles": insertFiles }}
+                    props={{
+                        'insertBoard' : insertBoard,
+                        'insertFiles' : insertFiles,
+                        'fileType' : '0',
+                        'postUrl' : '/GareBnB/host/mypage/myboardModify.do'
+                    }}
                 />
                 {/* 입력확인창 모달로 띄우기 !  */}
                 <Modal

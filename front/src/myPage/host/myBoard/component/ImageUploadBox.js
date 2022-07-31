@@ -12,12 +12,14 @@ function ImageUploadBox(props) {
     // 기본 변수 초기화 
 
     useEffect(() => {
-        if (props.beforeImage !== undefined) {
-            props.beforeImage.map(file => {
-                setImageFile((imageFile) => [...imageFile, file]);
+        if (props.beforeImages !== undefined) {
+            console.log(props)
+            props.beforeImages.map(file => {
+                setImageFile((imageFile) => [...imageFile, file.URL]);
+                setUploadedImages((uploadedImages) => [...uploadedImages, file.URL]);
             })
         }
-    }, [props])
+    }, [props.beforeImages])
 
     useEffect(() => {
         const uploadBox = uploadBoxRef.current;
@@ -87,6 +89,8 @@ function ImageUploadBox(props) {
                 imageFile.splice(DeleteIndex, 1);
                 setUploadedImages([...uploadedImages]);
                 setImageFile([...imageFile]);
+                console.log(uploadedImages)
+                console.log(imageFile)
             };
 
             //삭제 버튼을 눌렀을 경우 작동하는 이벤트 추가
