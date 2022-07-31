@@ -36,7 +36,7 @@ const ReserveListPage = () => {
     }).then(Response => {
          const url = Response.data.map(async list =>{
 
-           await SelectOneFile('0',list.RES_BOARD_NO).then(Res=>{
+           await SelectOneFile('0',list.RES_BOARD_NO,list.RES_BOARD_MODIFY_NO).then(Res=>{
              list['URL'] = "data:image/;base64,"+Res.URL
            });
            return list;

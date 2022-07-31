@@ -12,7 +12,7 @@ const MemUseList = (props) => {
 
   useEffect(()=>{
 
-    SelectOneFile('0',list.RES_BOARD_NO).then(Res=>{
+    SelectOneFile('0',list.RES_BOARD_NO, list.RES_BOARD_MODIFY_NO).then(Res=>{
       setUrl("data:image/;base64,"+Res.URL);
       // setUrl(url);
     });
