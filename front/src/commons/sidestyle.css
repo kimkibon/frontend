@@ -31,7 +31,7 @@ body
 .navigation:hover,
 .navigation.active
 {
-    width: 300px;
+    width: 250px;
 }
 
 .navigation ul

@@ -14,53 +14,32 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        <div className='row'>
+        <header>
           <Header />
-        </div>
-        <div className='row'>
-          <div className='col col-sm-3'>
-            <Sidebar />
-          </div>
-          <div className='col col-sm-9'>
-            <Routes>
-              <Route path='/' element={<Main />} />
-              <Route path='/join/*' element={<Join />} />
-              <Route path='/login/*' element={<LoginIndex />} />
-              <Route path='/myPage/*' element={<MyPageIndex />} />
-              <Route path='/board/*' element={<BoardIndex />} />
-              <Route path='/admin/*' element={<AdminIndex />} />
-            </Routes>
+        </header>
+  
+        <div class="container-fluid min-vh-100">
+          <div class="row">        
+              <Routes>
+                <Route path='/' element={<Main />} />
+                <Route path='/join/*' element={<Join />} />
+                <Route path='/login/*' element={<LoginIndex />} />
+                <Route path='/myPage/*' element={<MyPageIndex />} />
+                <Route path='/board/*' element={<BoardIndex />} />
+                <Route path='/admin/*' element={<AdminIndex />} />
+              </Routes>      
           </div>
         </div>
-
-
-        <div className='row'>
-          <div className='col'>
-            <Footer />
-          </div>
-        </div>
-
-        {/* <Col>
-            <Sidebar/>
-            </Col> */}
-
-
+ 
+ 
+        <footer>
+          <Footer />
+        </footer>
       </BrowserRouter>
 
-
-
-
-      {/* <Col>1 of 2</Col>
-        <Col>2 of 2</Col>
-      </Row>
-      <Row>
-        <Col>1 of 3</Col>
-        <Col>2 of 3</Col>
-        <Col>3 of 3</Col>
-      </Row>*/}
+    
 
     </div>
-
   );
 }
 
