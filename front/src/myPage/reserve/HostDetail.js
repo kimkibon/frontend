@@ -35,7 +35,7 @@ const HostDetail = () => {
         //console.log(Response.data); 
         setHostDetail(Response.data);
 
-        SelectOneFile('0',166).then(Res=>{
+        SelectOneFile('1',Response.data.MEM_IDX).then(Res=>{
           setUrl("data:image/;base64,"+Res.URL);
         }); 
 
