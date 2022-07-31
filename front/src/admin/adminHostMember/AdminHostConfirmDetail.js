@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useLocation } from 'react-router-dom';
 
-const AdminHostDetail = () => {
+const AdminHostConfirmDetail = () => {
 
   const location = useLocation();
 
@@ -91,4 +91,4 @@ const AdminHostDetail = () => {
 );
   }
 
-export default AdminHostDetail
+export default AdminHostConfirmDetail

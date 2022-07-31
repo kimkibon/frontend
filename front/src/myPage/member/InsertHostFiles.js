@@ -1,11 +1,7 @@
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-
 
 //파일 인서트 컴포넌트 
-async function InsertHostFiles(file, MEM_IDX, index) {
-
-    const navigate = useNavigate();
+async function InsertHostFiles(file,MEM_IDX, index) {
 
     return (await new Promise((reject) => {
 
@@ -27,12 +23,10 @@ async function InsertHostFiles(file, MEM_IDX, index) {
 
         }).then(Response => {
             console.log(Response.data)
-            navigate('/') // 메인 화면으로 이동
         }).catch((err) => {
             alert('호스트 전환에 실패했습니다. 다시 시도해주세요.');
             reject(err);
         })
-
 
 
     })
