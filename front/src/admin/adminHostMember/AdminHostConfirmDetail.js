@@ -28,7 +28,7 @@ const AdminHostConfirmDetail = () => {
   // 이미지 *************
   useEffect(()=>{
 
-    SelectOneFile('0',getHostMem.RES_BOARD_NO).then(Res=>{
+    SelectOneFile('1', getHostMem.MEM_IDX).then(Res=>{
       setUrl("data:image/;base64,"+Res.URL);
       // setUrl(url);
     });

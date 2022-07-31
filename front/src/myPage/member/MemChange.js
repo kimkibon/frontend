@@ -3,7 +3,7 @@ import { Modal } from 'react-bootstrap';
 import ImageUploadBox from '../host/myBoard/component/ImageUploadBox';
 import HostAddress from './HostAddress';
 import axios from 'axios';
-import { Form } from 'react-bootstrap';
+
 
 const MemChange = () => {
 
