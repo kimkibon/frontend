@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-async function SelectFileList(BOARD_TYPE, BOARD_NO) {
+async function SelectFileList(BOARD_TYPE, BOARD_NO , BOARD_MODIFY_NO) {
     
   return (await new Promise((resolve,reject)=>{
 
@@ -10,6 +10,7 @@ async function SelectFileList(BOARD_TYPE, BOARD_NO) {
       params : {
         'FILE_BOARD_TYPE' : BOARD_TYPE,
         'FILE_BOARD_IDX' : BOARD_NO,
+        'FILE_MODIFY_NO' : BOARD_MODIFY_NO
       }
     }).then(Response => {
       resolve(Response.data);

@@ -282,7 +282,13 @@ const HostBoardForm = () => {
         <InsertBoard
           show={insertModal}
           onHide={() => setInsertModal(false)}
-          insert={{ "insertBoard": insertBoard, "insertFiles": insertFiles }}
+          props={{
+            'insertBoard': insertBoard,
+            'insertFiles': insertFiles,
+            'fileType': '0',
+            'postUrl': '/GareBnB/host/mypage/myboardPut.do'
+          }}
+
         />
         {/* 입력확인창 모달로 띄우기 !  */}
         <Modal

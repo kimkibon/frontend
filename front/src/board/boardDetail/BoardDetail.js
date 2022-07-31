@@ -31,9 +31,11 @@ const BoardDetail = () => {
   if (location.state === null) {
     //리스트에서 받아온 정보가 없을 경우 (url을 직접 입력해서 들어온 경우 리턴. auth 로 대체)
   } else {
-    param = location.state.BOARD_NO;
+    param = {
+      'BOARD_NO': location.state.BOARD_NO,
+      'BOARD_MODIFY_NO': location.state.BOARD_MODIFY_NO
+    }
   }
-  console.log('로드')
   const state = {
     'RES_CLI_ID': '',
     'RES_CARE_NO': boardDetail.BOARD_CARE_NO,
@@ -54,18 +56,19 @@ const BoardDetail = () => {
       method: 'post',
       url: '/GareBnB/board/boardDetail.do',
       params: {
-        'BOARD_NO': param
+        'BOARD_NO': param.BOARD_NO,
+        'BOARD_MODIFY_NO': param.BOARD_MODIFY_NO
       }
     }).then(Response => {
       setBoardDetail(Response.data);
     });
     //리스트에서 보드 넘버를 받아와서 보드디테일에 대한 기본 정보를 저장. 
 
-    BoardReview(param).then(Response => {
+    BoardReview(param.BOARD_NO).then(Response => {
       setReview(Response);
     }); //리뷰 정보를 받아와서 저장.
 
-    SelectFileList('0', param).then(Response => {
+    SelectFileList('0', param.BOARD_NO, param.BOARD_MODIFY_NO).then(Response => {
       Response.map(base64 => {
         base64.URL = "data:image/;base64," + base64.URL //바이너리 변환된 이미지를 출력하기 위해 주석을 달아줌
       })
@@ -75,11 +78,11 @@ const BoardDetail = () => {
       setFile(Response);
     });
     //서버에서 파일을 받아와서 파일 레벨 순서로 정렬하고 저장
-    Detail(param).then(Response => {
+    Detail(param.BOARD_NO , param.BOARD_MODIFY_NO).then(Response => {
       setHost(Response);
     })
     //서버에서 호스트의 전화번호를 리턴받음. 
-  }, [param]) // param이 바뀔 때 마다 실행되도록 설정해서 무의미한 재실행을 막음. 
+  }, []) // param이 바뀔 때 마다 실행되도록 설정해서 무의미한 재실행을 막음. 
   return (
     <>
 
@@ -135,12 +138,13 @@ const BoardDetail = () => {
 
             {/* 호스트 게시글 수정 */}
             {(boardDetail.BOARD_HOST_ID === localStorage.getItem('MEM_ID') && (author.MEM_LEVEL <= 1)) &&
-              <Link to='/myPage/host/hostBoardModify' boardDetail={boardDetail} file={file}>
+              <Link to='/myPage/host/hostBoardModify' state={{ 'boardDetail': boardDetail, 'file': file }}>
                 <button className="btn btn-outline-dark" type="button">
                   수정하기
                 </button>
               </Link>
             }
+
             {/* 게시글 수정 링크 */}
 
             {/* 어드민 확인 */}
@@ -167,6 +171,31 @@ const BoardDetail = () => {
             }
           </div>
         </div>
+
+        {/* 테스트 코드 입니다.  */}
+        <div className='col-sm-6'>
+          <Link to='/myPage/host/hostBoardModify' state={{ 'boardDetail': boardDetail, 'file': file }}>
+            <button className="btn btn-outline-dark" type="button">
+              수정하기
+            </button>
+          </Link>
+
+          <button className="btn btn-danger" type="button" onClick={() => setDeleteModal(true)}>
+            게시글 삭제
+          </button>
+          <button className="btn btn-danger" type="button" onClick={() => setRefuseModal(true)}>
+            등록 거절
+          </button>
+
+          <Link to='' state={boardDetail.BOARD_NO}>
+            <button className="btn btn-primary" type="button">
+              등록 승인
+            </button>
+          </Link>
+        </div>
+
+
+        {/* 여기까지 테스트 코드 입니다. */}
 
         <ResRequest
           show={modalShow}

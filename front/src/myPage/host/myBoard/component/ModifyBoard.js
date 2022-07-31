@@ -3,14 +3,12 @@ import React from 'react'
 import { Button, Modal } from 'react-bootstrap';
 import InsertFiles from './InsertFiles';
 
-const InsertBoard = (props) => {
-  const insertBoard = props.props.insertBoard;
-  const insertFiles = props.props.insertFiles;
-  const FILE_BOARD_TYPE = props.props.fileType;
-  const postUrl = props.props.postUrl;
-  let BOARD_NO , FILE_MODIFY_NO
+const ModifyBoard = (props) => {
+  const insertBoard = props.insert.insertBoard;
+  const insertFiles = props.insert.insertFiles;
 
   //변수 초기 세팅
+  
 
   const InsertBoard = async (e) => {
     e.preventDefault();
@@ -35,25 +33,12 @@ const InsertBoard = (props) => {
 
     axios({
       method: 'post',
-      url: postUrl,
+      url: '/GareBnB/host/mypage/myboardModify.do',
       params: insertBoard
       //보드 인서트 리턴으로 보드 넘버를 받아옴
     }).then(async Response => {
-
-      console.log(Response)
-
       files.map(async (file, index) => {
-
-        if(postUrl === '/GareBnB/host/mypage/myboardPut.do'){
-          FILE_MODIFY_NO = '0'
-          BOARD_NO = Response.data.BOARD_NO
-        } else {
-          BOARD_NO = insertBoard.BOARD_NO
-          FILE_MODIFY_NO = Response.data.BOARD_MODIFY_NO
-        }
-
-        await InsertFiles(file, BOARD_NO  , index , FILE_MODIFY_NO , FILE_BOARD_TYPE);
-
+        await InsertFiles(file, Response.data.BOARD_NO , index , Response.data.BOARD_MODOFY_NO);
       })
       
     })
@@ -79,4 +64,4 @@ const InsertBoard = (props) => {
   )
 }
 
-export default InsertBoard
+export default ModifyBoard

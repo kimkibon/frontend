@@ -7,8 +7,7 @@ import { useNavigate } from "react-router";
 
 function ResRequestOnClick(props) {
     const navigate = useNavigate();
-    console.log(props.props);
-//resRequest 컴포넌트에서 받아온 변수 확인 
+    
     async function reservation(){
        await axios({
             method : 'post',
