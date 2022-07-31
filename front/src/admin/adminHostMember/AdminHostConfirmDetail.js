@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useLocation } from 'react-router-dom';
-import SelectOneFile from '../../commons/Files/SelectOneFile';
+import SelectFileList from '../../commons/Files/SelectFileList';
 
 const AdminHostConfirmDetail = () => {
 
@@ -28,14 +28,10 @@ const AdminHostConfirmDetail = () => {
   // 이미지 *************
   useEffect(()=>{
 
-    SelectOneFile('1', getHostMem.MEM_IDX).then(Res=>{
+    SelectFileList(0, 201, 0).then(Res=>{
       setUrl("data:image/;base64,"+Res.URL);
-      // setUrl(url);
     });
-
   },[])
-
-  getHostMem['URL'] = url;
 
    // 이미지 *************
 
@@ -87,7 +83,7 @@ const AdminHostConfirmDetail = () => {
       alert("거절")
     })
     }
-   
+    getHostMem['URL'] = url;
 
   return (
     <article>

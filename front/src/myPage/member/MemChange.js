@@ -14,7 +14,7 @@ const MemChange = () => {
   const [showAddrModal, setShowAddrModal] = React.useState(false);
   const [insertFiles, setInsertFiles] = useState([]);
   const [insertHost, setInsertHost] = useState({    
-    MEM_IDX : '9',
+    MEM_IDX : '8',
     HOST_EMAIL : '',
     HOST_POST : '',
     HOST_ADDR1 : '',
@@ -76,9 +76,8 @@ const MemChange = () => {
                 method : 'post' ,
                 url : '/GareBnB/mypage/memChange.do' ,
                 contentType:"application/json;charset=UTF-8",
-                params : {
-                  insertHost
-                }}).then(Response => {
+                params : insertHost
+                }).then(Response => {
                   alert("성공")
                   // 메인으로 나가든가 어디로든 나가든가 
                 }).catch(err => {
