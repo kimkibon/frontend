@@ -3,26 +3,20 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import Modal from '../../member/Modal';
+import Carousel from 'react-bootstrap/Carousel';
+import SelectFileList from '../../../commons/Files/SelectFileList';
+
 
 const HostInfo = () => { 
 
     const [hostDetail, sethostDetail] = useState([]);
-
-    useEffect(() => // 회원정보 보여주기
-        { axios({ 
-        method : 'post' ,
-        url : '/GareBnB/host/myPage/hostInfo.do' , 
-        contentType:"application/json; charset=UTF-8",
-        params : { 
-            MEM_ID : 'MEM_13',
-            MEM_IDX : '13'
-        }})
-
-    .then(Response => { 
-    console.log(Response.data);
-    sethostDetail(Response.data);
-    })
-    },[]); 
+    const [url, setUrl] = useState();
+    const [file, setFile] = useState([]);
+    
+    let param = {
+        MEM_IDX : hostDetail.MEM_IDX,
+        MEM_ID : hostDetail.MEM_ID
+    }
 
     const [memDelete, setmemDelete] = useState([]); // 탈퇴 회원으로 레벨 업데이트 
     const onDeleteMem = (mem_id) => {
@@ -62,11 +56,59 @@ const HostInfo = () => {
         }
     }
 
+   // 회원정보 보여주기
+   useEffect(() => {
+        axios({ 
+        method : 'post' ,
+        url : '/GareBnB/host/myPage/hostInfo.do' , 
+        contentType:"application/json; charset=UTF-8",
+        params : { 
+            MEM_ID : 'MEM_18',
+            MEM_IDX : '18'
+        }})
+
+    .then(Response => { 
+    console.log(Response.data);
+    sethostDetail(Response.data);
+    })
+    
+    // 이미지 ************* // 무한 반복중!!!!!!!!!!!!!!!!!!
+    SelectFileList('1', param.MEM_IDX, '0').then(Response => {
+    Response.map(base64 => {
+      base64.URL = "data:image/;base64," + base64.URL //바이너리 변환된 이미지를 출력하기 위해 주석을 달아줌
+    })
+    Response.sort(function (a, b) {
+      return a.FILE_LEVEL - b.FILE_LEVEL
+    })
+    setFile(Response);
+     });
+    },[]); 
+ 
+   hostDetail['URL'] = url;
+
 
     return ( 
         <article>
         <h1>회원정보 보기(HOST)</h1>
         <ul>
+        <li>호스트 사진</li>  {/* 캐러셀 */}
+                <Carousel>
+                  {file.map(url => {
+                    return (
+                      <Carousel.Item key={url.FILE_LEVEL}>
+                        <img
+                          className="d-block w-100"
+                          src={url.URL}
+                          width='700px'
+                          height='400px'
+                          alt=""
+                        />
+                        {/* fileList 에서 받아온 정보를 표시.  */}
+                      </Carousel.Item>
+                    )
+                  })}
+                </Carousel>
+
         <li>아이디 : {hostDetail.MEM_ID}</li>
         <li>이름 : {hostDetail.MEM_NAME}</li>
         <li>비밀번호(임시) : {hostDetail.MEM_PW}</li>
