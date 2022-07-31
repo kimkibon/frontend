@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Modal } from 'react-bootstrap';
 import ReactDatePicker from 'react-datepicker';
 import { useLocation } from 'react-router-dom';
@@ -14,6 +14,7 @@ const HostBoardModifyForm = () => {
     const [showAddrModal, setShowAddrModal] = React.useState(false);
     const [insertFiles, setInsertFiles] = useState([]);
     const [insertBoard, setInsertBoard] = useState({
+        'BOARD_NO' : '',
         'BOARD_HOST_ID': '',     // 로컬 스토리지에서 가져오기 테스트 코드 나중에 수정해야함
         'BOARD_HOST_IDX': '',    // 어디서 가져오지 ? 서버에서 ? 테스트 코드 나중에 수정해야함
         'BOARD_TITLE': '',       // 입력 받음
@@ -23,7 +24,6 @@ const HostBoardModifyForm = () => {
         'BOARD_POST': '',        //우편번호인가? 어디서 가져오지? 카카오 api 위치 정하기 ?
         'BOARD_PRICE': '',       // 입력 받음
         'BOARD_CARE_NO': '1',     //입력 받음
-        'BOARD_MODIFY_NO': '0', // 인서트 보드 초기값 
         'BOARD_DATE_START': new Date().toISOString().slice(0, 10).replace(/-/g, "/"),  //모달 데이트 피커?
         'BOARD_DATE_END': new Date().toISOString().slice(0, 10).replace(/-/g, "/"),    //모달 데이트 피커 ? 
      
@@ -33,6 +33,7 @@ const HostBoardModifyForm = () => {
     //변경 내용 저장 확인
     // 일단 호스트 아이디로 호스트 정보를 가져온다?
     const {
+        BOARD_NO,
         BOARD_HOST_ID,
         BOARD_HOST_IDX,
         BOARD_TITLE,
@@ -46,6 +47,14 @@ const HostBoardModifyForm = () => {
         BOARD_DATE_END
     } = insertBoard;
     //변수 초기화 
+
+    useEffect(()=>{
+
+        setInsertBoard(boardDetail)
+
+    },location)
+
+    //초기값 부여
 
     const setAddrInfo = (data) => {
         setInsertBoard({

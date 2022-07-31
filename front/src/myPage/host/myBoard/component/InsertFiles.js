@@ -2,7 +2,7 @@ import axios from 'axios';
 
 
 //파일 인서트 컴포넌트 
-async function InsertFiles(file, BOARD_NO, index) {
+async function InsertFiles(file, BOARD_NO, index, BOARD_MODIFY_NO) {
 
     return (await new Promise((reject) => {
 
@@ -17,7 +17,8 @@ async function InsertFiles(file, BOARD_NO, index) {
             params: {
                 'BOARD_NO': BOARD_NO,
                 'FILE_BOARD_TYPE': '0',
-                'FILE_LEVEL': index
+                'FILE_LEVEL': index,
+                'BOARD_MODIFY_NO' : BOARD_MODIFY_NO
             },
             data: formData,
             mode: 'cors'
