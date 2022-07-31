@@ -2,7 +2,7 @@ import React, { useState , useEffect} from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-const AdminHostList = () => {
+const AdminHostConfirmList = () => {
 
   const [hostResList, setHostResList] = useState([]); // 전체 회원 리스트 db에서 가져오기 
 
@@ -50,4 +50,4 @@ const AdminHostList = () => {
   )
 }
 
-export default AdminHostList
+export default AdminHostConfirmList
