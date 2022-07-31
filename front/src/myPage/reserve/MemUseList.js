@@ -1,20 +1,25 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import SelectOneFile from '../../commons/Files/SelectOneFile';
 
 
 //하나의 이용내역 정보
 const MemUseList = (props) => {
-  const {list}=props;
+ 
+  const list = props.list;
+
+  const [url,setUrl] = useState();
+
 
   useEffect(()=>{
-    
-      SelectOneFile('0',166).then(Res=>{
-        list['URL'] = "data:image/;base64,"+Res.URL
-      });
+
+    SelectOneFile('0',list.RES_BOARD_NO).then(Res=>{
+      setUrl("data:image/;base64,"+Res.URL);
+      // setUrl(url);
+    });
 
   },[])
-
-  console.log(list);
+ 
+  list['URL'] = url;
   return (
           
           <div class="border border-success p-2 mb-2">

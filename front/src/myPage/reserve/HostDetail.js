@@ -1,10 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import SelectOneFile from '../../commons/Files/SelectOneFile';
 
 
 const HostDetail = () => {
   const [hostDetail, setHostDetail] = useState([]);
+  const [url,setUrl] = useState(); //이미지파일 불러오기
 
   const location = useLocation();
 
@@ -30,18 +32,27 @@ const HostDetail = () => {
     
         }
     }).then(Response => {
-        console.log(Response.data); 
+        //console.log(Response.data); 
         setHostDetail(Response.data);
-    });
-  } ,[]);
 
+        SelectOneFile('0',166).then(Res=>{
+          setUrl("data:image/;base64,"+Res.URL);
+        }); 
+
+    });
+
+
+  } ,[]);
+  hostDetail['URL'] = url;
+
+  console.log(hostDetail);
   return (
     <div>
       <h1>{hostDetail.MEM_ID} 호스트의 정보</h1>
+      <img src={hostDetail.URL}/>
       <h3>이름 : {hostDetail.MEM_NAME}<br/>
           전화번호 : {hostDetail.MEM_PHONE}<br/>
           호스트 성별 : {gender(hostDetail.HOST_JUMIN2)}<br/>
-          호스트 사진
       </h3>
       <button onClick={()=> navigate(-1)}>확인</button>
     </div>

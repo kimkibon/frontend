@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import SelectOneFile from "../../../commons/Files/SelectOneFile";
 
 const HostUseList = () => {
     const [resComList, setResComList] = useState([]);
@@ -18,7 +19,17 @@ const HostUseList = () => {
         
             }
         }).then(Response => {
-            setResComList(Response.data);
+            
+            //파일 불러오기
+            const url = Response.data.map(async list =>{
+
+                await SelectOneFile('0',list.RES_BOARD_NO).then(Res=>{
+                list['URL'] = "data:image/;base64,"+Res.URL
+                });
+                return list;
+            })
+            Promise.all(url).then((data)=>{setResComList(data)}); 
+            //setResComList(Response.data);
         });
 
     },[]);
@@ -38,7 +49,7 @@ const HostUseList = () => {
                         <h4>
                         예약번호 : {list.RES_IDX}<br/>
                         게시글제목 : {list.BOARD_TITLE}<br/>
-                        게시글 사진 : <br/>
+                        게시글 사진 : <img src={list.URL}/><br/>
                         예약자ID : {list.RES_CLI_ID}<br/>
                         이용날짜 : {list.RES_DATE_START} ~ {list.RES_DATE_END}<br/>
                         맡긴 동물 수 : {list.RES_CARE_NO}<br/>

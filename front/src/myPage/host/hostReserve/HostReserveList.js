@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Button from 'react-bootstrap/Button';
+import SelectOneFile from "../../../commons/Files/SelectOneFile";
 
 
 //예약상태
@@ -50,8 +51,16 @@ const HostReserveList = () => {
           MEM_ID : mem_id
         }
     }).then(Response => {
-        //console.log(Response.data); 
-        setResList(Response.data);
+      
+      //파일 불러오기
+        const url = Response.data.map(async list =>{
+
+          await SelectOneFile('0',list.RES_BOARD_NO).then(Res=>{
+            list['URL'] = "data:image/;base64,"+Res.URL
+          });
+          return list;
+        })
+        Promise.all(url).then((data)=>{setResList(data)}); 
     });
   } ,[]);
   
@@ -86,7 +95,7 @@ const HostReserveList = () => {
             예약상태 : {ResState(resstate)}<br/>
             예약번호 : {list.RES_IDX}<br/>
             게시글제목 : {list.BOARD_TITLE}<br/>
-            게시글 사진 : <br/>
+            게시글 사진 : <img src={list.URL}/><br/>
             예약자이름 : {list.MEM_NAME}<br/>
             예약자전화번호 : {list.MEM_PHONE}<br/>
             이용날짜 : {list.RES_DATE_START} ~ {list.RES_DATE_END}<br/>
