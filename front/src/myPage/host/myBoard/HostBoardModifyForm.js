@@ -30,7 +30,7 @@ const HostBoardModifyForm = () => {
     });
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
-
+    //변경 내용 저장 확인
     // 일단 호스트 아이디로 호스트 정보를 가져온다?
     const {
         BOARD_HOST_ID,

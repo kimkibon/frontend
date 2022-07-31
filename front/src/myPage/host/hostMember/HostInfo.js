@@ -14,7 +14,7 @@ const HostInfo = () => {
         url : '/GareBnB/host/myPage/hostInfo.do' , 
         contentType:"application/json; charset=UTF-8",
         params : { 
-            MEM_IDX : '12' 
+            MEM_IDX : '13' 
         }})
 
     .then(Response => { 
