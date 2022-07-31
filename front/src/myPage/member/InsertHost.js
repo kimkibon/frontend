@@ -5,11 +5,10 @@ import InsertFiles from '../host/myBoard/component/InsertFiles';
 
 
 const InsertHost = (props) => {
-  const insertHost = props.insert.insertHost;
-  const insertFiles = props.insert.insertFiles;
-
+  const insertHost = props.props.insertHost;
+  const insertFiles = props.props.insertFiles;
+ 
   //변수 초기 세팅
-
   const InsertHost = async (e) => {
     e.preventDefault();
     e.persist();
@@ -31,21 +30,34 @@ const InsertHost = (props) => {
 
     //문자열로 변환된 이미지를 다시 file객체로 변환
 
-    axios({
+    axios({ // 호스트 DB 에 정보 insert
       method : 'post' ,
-      url : '/GareBnB/mypage/memChange.do' ,
+      url : '/GareBnB/mypage/memChange.do' , 
       contentType:"application/json;charset=UTF-8",
       params : insertHost
-    //insertHost 리턴으로 MEM_IDX를 받아옴
-    }).then(async Response => {
-      files.map(async (file, index) => {
-        await InsertFiles(file, Response.data.BOARD_NO , index);
-    })
-  
-})
+      }).then(Response => {
+      }).catch(err => {
+        console.log(err);
+      });
 
- // 받아온 보드 넘버로 이미지 파일을 업로드
-}
+      
+    axios({ // 호스트 등록 요청했으므로, 레벨을 2(일반) -> 3(호스트 대기)로 update
+      method : 'post' ,
+      url : '/GareBnB/mypage/updateHostMem.do' ,
+      contentType:"application/json;charset=UTF-8",
+      params : {
+          MEM_IDX : insertHost.MEM_IDX
+          }}).then(Response => {
+          }).catch(err => {
+            console.log(err);
+          });
+   
+          // 파일 DB에 파일 정보 저장하려고 InsertFiles로 정보 보내기
+      files.map(async (file, index) => {  
+      await InsertFiles(file , insertHost.MEM_IDX , index , '0' , '1'); 
+                      // file, BOARD_NO , index , FILE_MODIFY_NO , FILE_BOARD_TYPE
+      })}
+
 return (
   <Modal
     {...props}
