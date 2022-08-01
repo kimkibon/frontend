@@ -12,8 +12,10 @@ async function Auth(BOARD_LEVEL , navigate) {
     // 6 = 정지된 회원 
 
     return (await new Promise((resolve, reject) => {
-        const id = localStorage.getItem("MEM_ID");
-
+        if(localStorage.getItem("MEM_ID") === undefined){
+            navigate('/login/loginPage')
+        } else {
+            const id = localStorage.getItem("MEM_ID")
         axios({
             method: 'post',
             url: "/GareBnB/Auth.do",
@@ -34,6 +36,7 @@ async function Auth(BOARD_LEVEL , navigate) {
             navigate('/login/loginPage')
             alert("로그인을  해주세요")
         })
+    }
     })
 
     )
