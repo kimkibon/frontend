@@ -63,7 +63,7 @@ const MyPageIndex = () => {
             <Route path='/member/MemDelete' element={<MemDelete/>}/>
             
             <Route path='/report' element={<ReportList/>}/>  
-            <Route path='/insertReport' element={<InsertReport/>}/>
+            <Route path='/memUseListPage/insertReport' element={<InsertReport/>}/>
             <Route path='/report/DetailReport/:REPORT_IDX' element={<DetailReport/>}/>
 
 

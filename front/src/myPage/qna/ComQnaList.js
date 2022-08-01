@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Table from 'react-bootstrap/Table';
+import {Button} from 'react-bootstrap';
 
 const ComQnaList = (props) => {
     const {QNA_COMMENT, QNA_CONTENT, QNA_DATE, QNA_ID, QNA_IDX, QNA_STATE, QNA_TITLE} = props.list;
@@ -34,18 +35,16 @@ const ComQnaList = (props) => {
                         <tr>
                         {/* onClick={handleDetail} */}
                         <td width="50px">{QNA_IDX}</td>
-                        <td width="50px">{QNA_ID}</td>
-                        <td width="200px">
+                        <td width="70px">{QNA_ID}</td>
+                        <td width="200px"> 
                             <Link to ={"./DetailQna/"+QNA_IDX} >
                                  {QNA_TITLE}
                                 </Link>
                         </td>
-                        <td width="200px">{QNA_CONTENT}</td>
                         <td width="100px">{QNA_DATE}</td>
                         <td width="70px">{QNA_STATE}</td>
-                        <td width="200px">{QNA_COMMENT}</td>
-                        <td width="50px">
-                            <button onClick={handleRemove}> 삭제 </button>
+                        <td width="70px">
+                            <Button onClick={handleRemove}> 삭제 </Button>
                         </td>
                         </tr>
                     </tbody>

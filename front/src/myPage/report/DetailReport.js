@@ -25,7 +25,7 @@ const DetailReport = () => {
             //응답이 들어왔을 때 SetQnaList 함수를 사용해서 
             //response의 data를 detail의 정보로 변경
         });
-      },[]);
+      },[REPORT_IDX]);
 
         
         
