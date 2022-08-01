@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import Payment from "./payment/Payment";
 import SelectOneFile from "../../commons/Files/SelectOneFile";
@@ -21,9 +21,18 @@ const mem_id = 'MEM_2';
 const mem_idx = 2;
 
 const ReserveListPage = () => {
-  const [resList, setResList] = useState([]);
+  const [resList, setResList] = useState([]); //에약리스트 받아오는 변수
+
+  //auth
+  const [author, setAuthor] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
+
+    //로그인한 계정의 ID, LEVEL, IDX 가져오기
+    //Auth(4 , navigate).then(Response => {
+
+    //예약리스트가져오기
     axios({
 
         method : 'post' ,
@@ -35,13 +44,14 @@ const ReserveListPage = () => {
         }
     }).then(Response => {
          const url = Response.data.map(async list =>{
-
-           await SelectOneFile('0',list.RES_BOARD_NO,list.RES_BOARD_MODIFY_NO).then(Res=>{
-             list['URL'] = "data:image/;base64,"+Res.URL
-           });
+          
+          //예약-게시글 메인 이미지 가져오기
+          await SelectOneFile('0',list.RES_BOARD_NO,list.RES_BOARD_MODIFY_NO).then(Res=>{
+            list['URL'] = "data:image/;base64,"+Res.URL
+          });
            return list;
         })
-        console.log(url);
+        //console.log(url);
 
         Promise.all(url).then((data)=>{setResList(data)}); 
         //setResList(Response.data);
