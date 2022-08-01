@@ -40,7 +40,7 @@ const ComReportList = (props) => {
                         </td>
                         <td width="200px">{REPORT_CONTENT}</td>
                         <td width="100px">{REPORT_DATE}</td>
-                        <td width="80px">
+                        <td width="90px">
                             <Button onClick={handleRemove}> 삭제 </Button>
                         </td>
                         </tr>
