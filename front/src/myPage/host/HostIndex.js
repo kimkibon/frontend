@@ -4,6 +4,8 @@ import HostDelete from './hostMember/HostDelete'
 import HostInfo from './hostMember/HostInfo'
 import HostModify from './hostMember/HostModify'
 import HostReport from './hostReport/HostReport'
+import HostDetailReport from './hostReport/HostDetailReport'
+import HostInsertReport from './hostReport/HostInsertReport'
 import HostReserveList from './hostReserve/HostReserveList'
 import HostUseList from './hostReserve/HostUseList'
 import HostBoardForm from './myBoard/HostBoardForm'
@@ -31,6 +33,8 @@ const HostIndex = () => {
             <Route path='/hostInfo' element={<HostInfo/>}/>
             <Route path='/hostModify' element={<HostModify/>}/>
             <Route path='/hostReport' element={<HostReport/>}/>
+            <Route path='/hostReport/HostDetailReport/:REPORT_IDX' element={<HostDetailReport/>}/>
+            <Route path='/hostUseList/HostInsertReport' element={<HostInsertReport/>}/>
             <Route path='/hostReserve' element={<HostReserveList/>}/>
             <Route path='/hostUseList' element={<HostUseList/>}/>
             <Route path='/hostBoardList' element={<HostBoardList/>}/>

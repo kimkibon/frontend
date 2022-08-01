@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useLocation } from 'react-router-dom';
 import SelectFileList from '../../commons/Files/SelectFileList';
+import Carousel from 'react-bootstrap/Carousel';
+
+
 
 const AdminHostConfirmDetail = () => {
 
   const [url, setUrl] = useState();
-
+  const [file, setFile] = useState([]);
   const location = useLocation();
 
   const host_mem_idx = location.state.MEM_IDX
@@ -25,14 +28,16 @@ const AdminHostConfirmDetail = () => {
     HOST_INTRO : ''
   });
 
-  // 이미지 *************
-  useEffect(()=>{
-
-    SelectFileList(0, 201, 0).then(Res=>{
-      setUrl("data:image/;base64,"+Res.URL);
-    });
-  },[])
-
+  // SelectFileList에서 여러 개의 파일을 map으로 가져와서 1개씩 보여줌
+  SelectFileList('1', getHostMem.MEM_IDX, '0').then(Response => {
+    Response.map(base64 => {
+      base64.URL = "data:image/;base64," + base64.URL //바이너리 변환된 이미지를 출력하기 위해 주석을 달아줌
+    })
+    Response.sort(function (a, b) {
+      return a.FILE_LEVEL - b.FILE_LEVEL
+    })
+    setFile(Response);
+  });
    // 이미지 *************
 
  
@@ -89,8 +94,25 @@ const AdminHostConfirmDetail = () => {
     <article>
     <h1>호스트 회원 등록요청 상세보기</h1>
     <ul>
-
-    <li>호스트 사진 : <img src={getHostMem.URL}></img></li>
+    <li>호스트 사진</li>
+    {/* 캐러셀 */}
+                <Carousel>
+                  {file.map(url => {
+                    return (
+                      <Carousel.Item key={url.FILE_LEVEL}>
+                        <img
+                          className="d-block w-100"
+                          src={url.URL}
+                          width='700px'
+                          height='400px'
+                          alt=""
+                        />
+                        {/* fileList 에서 받아온 정보를 표시.  */}
+                      </Carousel.Item>
+                    )
+                  })}
+                </Carousel>
+                
     <li>번호(IDX) : {getHostMem.MEM_IDX}</li>
     <li>아이디 :{getHostMem.MEM_ID} </li>
     <li>이름 : {getHostMem.MEM_NAME} </li>

@@ -6,15 +6,14 @@ import { useNavigate } from 'react-router-dom';
 const BoardDelete = (props) => {
 
     const navigate = useNavigate();
-
-
+    
     const onClick = () => {
 
         axios({
             method :'post',
-            url : '/GareBnB/host/mypage/myboardList.do',
+            url : '/GareBnB/host/mypage/myboardDelete.do',
             params : {
-                'BOARD_NO' : props
+                'BOARD_NO' : props.state
             }
         }).then(()=> {
             // navigate('/')

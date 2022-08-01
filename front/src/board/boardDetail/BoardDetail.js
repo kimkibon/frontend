@@ -11,6 +11,8 @@ import ResRequest from './ResRequest';
 import Detail from './boardDetailComponent/Detail';
 import Refuse from './boardDetailComponent/Refuse';
 import BoardDelete from './boardDetailComponent/BoardDelete';
+import ConfirmBoard from './boardDetailComponent/ConfirmBoard';
+import resDate from './boardDetailComponent/resDate';
 
 
 const BoardDetail = () => {
@@ -19,10 +21,12 @@ const BoardDetail = () => {
   const [file, setFile] = useState([]);
   const [review, setReview] = useState([]);
   const [host, setHost] = useState([]);
+  const [resDates , setResDates] = useState([]);
   const [modalShow, setModalShow] = React.useState(false);
   const [deleteModal, setDeleteModal] = React.useState(false);
   const [refuseModal, setRefuseModal] = React.useState(false);
-  const [author, setauthor] = useState({});
+  const [confirmModal, setConfirmModal] = React.useState(false);
+  const [author, setAuthor] = useState({});
 
   const location = useLocation();
 
@@ -82,6 +86,13 @@ const BoardDetail = () => {
       setHost(Response);
     })
     //서버에서 호스트의 전화번호를 리턴받음. 
+
+    resDate(param.BOARD_NO).then(Response => {
+      setResDates(Response);
+      console.log(Response)
+    })
+    // 서버에서 예약 내역 시간을 리턴 받음
+
   }, []) // param이 바뀔 때 마다 실행되도록 설정해서 무의미한 재실행을 막음. 
   return (
     <>
@@ -187,11 +198,9 @@ const BoardDetail = () => {
             등록 거절
           </button>
 
-          <Link to='' state={boardDetail.BOARD_NO}>
-            <button className="btn btn-primary" type="button">
+            <button className="btn btn-primary" type="button" onClick={() => setConfirmModal(true)}>
               등록 승인
             </button>
-          </Link>
         </div>
 
 
@@ -200,7 +209,7 @@ const BoardDetail = () => {
         <ResRequest
           show={modalShow}
           onHide={() => setModalShow(false)}
-          state={state}
+          state={{'resData' : state , 'resDate' : resDates}}
         />
         {/* 예약창을 모달로 띄움. */}
 
@@ -211,12 +220,21 @@ const BoardDetail = () => {
         />
         {/* 삭제 버튼 모달창 */}
 
+        <ConfirmBoard
+          show={confirmModal}
+          onHide={()=> setConfirmModal(false)}
+          state={boardDetail.BOARD_NO}
+            />
+          {/* 등록 승인 모달창 */}
+
         <Refuse
           show={refuseModal}
           onHide={() => setRefuseModal(false)}
           state={boardDetail.BOARD_NO}
         />
         {/* 등록 거절 모달창 */}
+
+        
 
         <div className="row">
           <Review prop={review} />
