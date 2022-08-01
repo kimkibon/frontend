@@ -59,7 +59,9 @@ const HostUseList = () => {
                         </h4>
                     </div>
 
-                    <button>신고하기</button>
+                    <Link to ={'HostInsertReport'} 
+                        state={{'REPORT_ID': mem_id, 'REPORT_RES_NO': list.RES_IDX,'REPORT_MEM_IDX':list.RES_CLI_ID}}>
+                        <button>신고하기</button></Link>
                            
                 </div>
                 )
