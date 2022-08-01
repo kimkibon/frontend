@@ -15,7 +15,7 @@ const ReportList = () => {
             url : '/GareBnB/mypage/memReportList.do' ,
             contentType:"application/json;charset=UTF-8",
             params : {
-                MEM_ID : 'MEM_2'
+                MEM_ID : 'MEM_7'
             }
         }).then(Response => {
             console.log(Response.data);
