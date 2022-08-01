@@ -1,6 +1,6 @@
 import axios from "axios";
 
-async function Auth(BOARD_LEVEL) {
+async function Auth(BOARD_LEVEL , navigate) {
 
     return (await new Promise((resolve, reject) => {
         const id = localStorage.getItem("MEM_ID");
@@ -12,7 +12,7 @@ async function Auth(BOARD_LEVEL) {
         }).then(Response => {
             if (Response.data.MEM_LEVEL > BOARD_LEVEL) {
                 alert("권한이 없습니다.");
-                window.history.back();
+                navigate(-1);
             } else {
                 return ({
                     'MEM_LEVEL' : Response.data.MEM_LEVEL,
@@ -22,8 +22,7 @@ async function Auth(BOARD_LEVEL) {
         }).then(data => {
             resolve(data);
         }).catch(err =>{
-            
-            window.history.push('/login');
+            navigate('/login/loginPage')
             alert("로그인을  해주세요")
         })
     })
