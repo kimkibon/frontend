@@ -7,6 +7,8 @@ import InsertFiles from '../host/myBoard/component/InsertFiles';
 const InsertHost = (props) => {
   const insertHost = props.props.insertHost;
   const insertFiles = props.props.insertFiles;
+
+  
  
   //변수 초기 세팅
   const InsertHost = async (e) => {
@@ -25,8 +27,11 @@ const InsertHost = (props) => {
       }
       return (
         new File([u8arr], file.fileName, { type: mime })
+       
       )
+
     })
+
 
     //문자열로 변환된 이미지를 다시 file객체로 변환
 
