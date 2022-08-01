@@ -70,19 +70,22 @@ const HostInfo = () => {
     .then(Response => { 
     console.log(Response.data);
     sethostDetail(Response.data);
+    SelectFileList('1', Response.data.MEM_IDX, '0').then(Response => {
+      Response.map(base64 => {
+        base64.URL = "data:image/;base64," + base64.URL //바이너리 변환된 이미지를 출력하기 위해 주석을 달아줌
+      })
+      Response.sort(function (a, b) {
+        return a.FILE_LEVEL - b.FILE_LEVEL
+      })
+      setFile(Response);
+       });
     })
-    
+
+ 
+  },[]); 
     // 이미지 ************* // 무한 반복중!!!!!!!!!!!!!!!!!!
-    SelectFileList('1', param.MEM_IDX, '0').then(Response => {
-    Response.map(base64 => {
-      base64.URL = "data:image/;base64," + base64.URL //바이너리 변환된 이미지를 출력하기 위해 주석을 달아줌
-    })
-    Response.sort(function (a, b) {
-      return a.FILE_LEVEL - b.FILE_LEVEL
-    })
-    setFile(Response);
-     });
-    },[]); 
+    
+   
  
    hostDetail['URL'] = url;
 

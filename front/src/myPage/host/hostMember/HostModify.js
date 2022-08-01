@@ -75,6 +75,13 @@ const HostModify = () => {
     console.log(hostModify)
   }
 
+
+  // 미리보기로 만들어진 이미지를 저장 
+  const getImages = (image) => {
+    setUpdateFiles(image)
+   }
+
+
   const files = updateFiles.map(file => {
     let arr = file.url.split(','),
       mime = arr[0].match(/:(.*?);/)[1],
@@ -89,19 +96,15 @@ const HostModify = () => {
       new File([u8arr], file.fileName, { type: mime })
     )
   })
-
-  // 미리보기로 만들어진 이미지를 저장 
-  const getImages = (image) => {
-    setUpdateFiles(image)
-   }
-   
+ 
+  
   // 파일 DB에 파일 정보 저장하려고 UpdateFiles 정보 보내기
-   files.map(async (file, index) => {  
-    await UpdateFiles(file , hostModify.MEM_IDX , index , '1'); 
-                  // file, BOARD_NO , index , FILE_BOARD_TYPE
+  files.map(async (file, index) => {  
+    await UpdateFiles(file , MEM_IDX , index , '1'); 
+                      // file, MEM_IDX, index, FILE_BOARD_TYPE
     })
-
-
+  
+   
   return (
     <article>
       <h1>회원정보 수정</h1>
