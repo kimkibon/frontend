@@ -36,13 +36,11 @@ const QnaList = () => { //QnaList 함수 생성
               <tbody>
                 <tr>
                   <td width="50px">IDX</td>
-                  <td width="50px">ID</td>
+                  <td width="70px">ID</td>
                   <td width="200px">TITLE</td>
-                  <td width="200px">CONTENT</td>
                   <td width="100px">DATE</td>
                   <td width="70px">STATE</td>
-                  <td width="200px">COMMENT</td>
-                  <td width="50px"></td>
+                  <td width="70px"></td>
                 </tr>
               </tbody>
             </Table>          

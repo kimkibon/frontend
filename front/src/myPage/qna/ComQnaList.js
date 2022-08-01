@@ -34,17 +34,15 @@ const ComQnaList = (props) => {
                         <tr>
                         {/* onClick={handleDetail} */}
                         <td width="50px">{QNA_IDX}</td>
-                        <td width="50px">{QNA_ID}</td>
-                        <td width="200px">
+                        <td width="70px">{QNA_ID}</td>
+                        <td width="200px"> 
                             <Link to ={"./DetailQna/"+QNA_IDX} >
                                  {QNA_TITLE}
                                 </Link>
                         </td>
-                        <td width="200px">{QNA_CONTENT}</td>
                         <td width="100px">{QNA_DATE}</td>
                         <td width="70px">{QNA_STATE}</td>
-                        <td width="200px">{QNA_COMMENT}</td>
-                        <td width="50px">
+                        <td width="70px">
                             <button onClick={handleRemove}> 삭제 </button>
                         </td>
                         </tr>
