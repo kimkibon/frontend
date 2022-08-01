@@ -10,8 +10,9 @@ const ConfirmBoard = (props) => {
     axios({
       method: 'post',
       url: '/GareBnB/Admin/hostBoardConfirm.do',
-      param: {
-        'BOARD_NO': props.state
+      params: {
+        'BOARD_NO': props.state.BOARD_NO,
+        'BOARD_MODIFY_NO' : props.state.BOARD_MODIFY_NO
       }
     }).then(() => {
       // navigate('/');

@@ -1,48 +1,24 @@
-import React, { useEffect, useState, useRef } from "react";
-import axios from "axios";
-
-//테스트용 파일입니다. 
+import axios from 'axios'
+import React from 'react'
 
 const ResRequestDetail = () => {
-    
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    e.persist();
 
-    let files = e.target.profile_files.files;
-    let formData = new FormData();
-    for (let i = 0; i < files.length; i++) {
-      formData.append(i, files[i]);
-    }
-
-    const postSurvey = await axios({
-      method: "POST",
-      url: '/GareBnB/file/insert.do',
-      mode: "cors",
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-      data: formData,
+  axios({
+    method: 'post',
+      url: '/GareBnB/board/boardList.do',
       params : {
-        'BOARD_NO' : '314' ,
-        'FILE_BOARD_TYPE' : 0
+        'START_DATE' : 1659343560217,
+        'END_DATE' : 1659343560217
       }
-    });
 
-  };
+  }).then(Res =>{
+   console.log( Res.data)
+  })
 
   return (
-    <form onSubmit={(e) => onSubmit(e)}>
-      <input
-        type="file"
-        name="profile_files"
-        multiple="multiple"
-      />
+    <div>ResRequestDetail</div>
+  )
+}
 
-      <button type="submit">제출</button>
-    </form>
-  );
-};
-
-export default ResRequestDetail;
+export default ResRequestDetail
 
