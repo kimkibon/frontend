@@ -28,7 +28,7 @@ const ReportList = () => {
 
 
 
-  return (
+  return ( 
         <>
             <hr/>
             <h3> 신고 내역 </h3>

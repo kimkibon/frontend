@@ -13,7 +13,7 @@ const MemChange = () => {
   const [showAddrModal, setShowAddrModal] = React.useState(false);
   const [insertFiles, setInsertFiles] = useState([]);
   const [insertHost, setInsertHost] = useState({    
-    MEM_IDX : '18',
+    MEM_IDX : '20',
     HOST_EMAIL : '',
     HOST_POST : '',
     HOST_ADDR1 : '',
