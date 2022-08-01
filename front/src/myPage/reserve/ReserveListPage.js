@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import Payment from "./payment/Payment";
 import SelectOneFile from "../../commons/Files/SelectOneFile";
+import Auth from "../../login/Auth";
 
 //예약상태
 const ResState=(state)=>{
@@ -17,8 +18,8 @@ const ResState=(state)=>{
 
 }
 
-const mem_id = 'MEM_2';
-const mem_idx = 2;
+//const mem_id = 'MEM_2';
+//const mem_idx = 2;
 
 const ReserveListPage = () => {
   const [resList, setResList] = useState([]); //에약리스트 받아오는 변수
@@ -30,33 +31,37 @@ const ReserveListPage = () => {
   useEffect(() => {
 
     //로그인한 계정의 ID, LEVEL, IDX 가져오기
+    //level 4보다 작은 계정들은 접근 가능
     //Auth(4 , navigate).then(Response => {
+    //  setAuthor(Response)
 
-    //예약리스트가져오기
-    axios({
+      //예약리스트가져오기
+      axios({
 
-        method : 'post' ,
-        url : '/GareBnB/mypage/memReserveList.do' ,
-        contentType:"application/json;charset=UTF-8",
-        params : {
-          MEM_ID : mem_id
-    
-        }
-    }).then(Response => {
-         const url = Response.data.map(async list =>{
-          
-          //예약-게시글 메인 이미지 가져오기
-          await SelectOneFile('0',list.RES_BOARD_NO,list.RES_BOARD_MODIFY_NO).then(Res=>{
-            list['URL'] = "data:image/;base64,"+Res.URL
-          });
-           return list;
-        })
-        //console.log(url);
+          method : 'post' ,
+          url : '/GareBnB/mypage/memReserveList.do' ,
+          contentType:"application/json;charset=UTF-8",
+          params : {
+            MEM_ID : localStorage.getItem('MEM_ID')     //로컬스토리지에서 로그인한 계정의 아이디 전달
+      
+          }
+      }).then(Response => {
+          const url = Response.data.map(async list =>{
+            
+            //예약-게시글 메인 이미지 가져오기
+            await SelectOneFile('0',list.RES_BOARD_NO,list.RES_BOARD_MODIFY_NO).then(Res=>{
+              list['URL'] = "data:image/;base64,"+Res.URL
+            });
+            return list;
+          })
+          //console.log(url);
 
-        Promise.all(url).then((data)=>{setResList(data)}); 
-        //setResList(Response.data);
- 
-      });
+          Promise.all(url).then((data)=>{setResList(data)}); 
+          //setResList(Response.data);
+  
+        });
+
+    //})//auth
   } ,[]);
   
   return (
@@ -112,9 +117,9 @@ const ReserveListPage = () => {
 
 
                             {/* 결제대기상태 */}
-                            {resstate === 2 && 
-                                <Payment price={list.PRICE} title={list.BOARD_TITLE} booker={mem_id} res_idx={list.RES_IDX}/>
-                            }
+                            {/* {resstate === 2 && 
+                                <Payment price={list.PRICE} title={list.BOARD_TITLE} booker={localStorage.getItem('MEM_ID')} res_idx={list.RES_IDX}/>
+                            } */}
 
 
                             {/* 예약취소상태 */}
