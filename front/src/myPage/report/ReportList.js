@@ -41,7 +41,7 @@ const ReportList = () => {
                   <td width="200px">TITLE</td>
                   <td width="200px">CONTENT</td>
                   <td width="100px">DATE</td>
-                  <td width="50px"></td>
+                  <td width="70px"></td>
                 </tr>
               </tbody>
             </Table>          
