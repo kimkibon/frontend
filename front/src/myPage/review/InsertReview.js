@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom';
+import { Rating } from 'react-simple-star-rating';
 
 const InsertReview = () => {
 
@@ -10,7 +11,7 @@ const InsertReview = () => {
 
 
   const [inputs, setInputs] = useState({    
-    score: 5,    
+    score: '',    
     review: ''  
   });   
 
@@ -43,14 +44,32 @@ const InsertReview = () => {
     });
   }
 
+
+  //별점
+  const [rating, setRating] = useState(); // initial rating value
+
+  // Catch Rating value
+  const handleRating = (rate) => {
+
+    const ratee = rate/20
+    setInputs({      
+      ...inputs, // 기존의 input 객체를 복사한 뒤      
+      'score':  ratee// name 키를 가진 값을 value 로 설정    
+    });  
+  }
+
+
+
   return (
     <div>
       <h3>리뷰쓰기</h3>
-      <h3>별점 : </h3>
-      <input name="score" placeholder="별점" onChange={onChange} value={score} />
+      <div className='App'>
+        <Rating transition onClick={handleRating} ratingValue={rating} allowHalfIcon showTooltip/>
+
+      </div>
+      <br/> 
+      <textarea rows="4" cols="50" name="review" placeholder="후기를 작성하세요" onChange={onChange} value={review}/>
       <br/>
-      <h3>내용 : </h3>      
-      <input name="review" placeholder="후기" onChange={onChange} value={review}/>
       <button onClick={inputreview}>등록하기</button>
     </div>
     
