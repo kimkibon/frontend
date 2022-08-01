@@ -41,6 +41,8 @@ const InsertReview = () => {
       }
     }).then(Response => {
         window.location.href="/myPage/memUseListPage"
+    }).catch(error =>{
+        alert("별점을 선택해주세요!")
     });
   }
 
