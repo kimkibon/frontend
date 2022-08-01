@@ -61,7 +61,6 @@ const HostInfo = () => {
             MEM_ID : 'MEM_20',
             MEM_IDX : '20'
         }})
-
     .then(Response => { 
     console.log(Response.data);
     sethostDetail(Response.data);
@@ -76,6 +75,7 @@ const HostInfo = () => {
        });
     })
   },[]); 
+  
 
    hostDetail['URL'] = url;
 

@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Modal } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import ImageUploadBox from '../host/myBoard/component/ImageUploadBox';
 import HostAddress from './HostAddress';
-import axios from 'axios';
 import InsertHost from './InsertHost';
 
 const MemChange = () => {
@@ -94,6 +94,9 @@ const MemChange = () => {
                   alert('사진을 두 장 이상 입력해주세요')
                 } else {
                   setInsertModal(true);
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -102,8 +105,6 @@ const MemChange = () => {
       }
     }
   }
-}
-    }}
 
   return (
     <div>
@@ -111,14 +112,14 @@ const MemChange = () => {
       <input name="HOST_EMAIL" placeholder="이메일 입력" onChange={onChange} value={HOST_EMAIL} />
       <br/>
       <h3>우편번호 : </h3>
-      <input name="HOST_POST" placeholder="우편번호 입력" onChange={onChange} value={HOST_POST} />
-      <button
-      className="btn btn-outline-secondary"
-      type="button"
-      id="button-addon"
-      onClick={() => setShowAddrModal(true)}>
-      우편번호 찾기
-      </button>
+        <input name="HOST_POST" placeholder="우편번호 입력" onChange={onChange} value={HOST_POST} />
+        <button
+        className="btn btn-outline-secondary"
+        type="button"
+        id="button-addon"
+        onClick={() => setShowAddrModal(true)}>
+        우편번호 찾기
+        </button>
       <h3>기본주소 : </h3>
       <input name="HOST_ADDR1" placeholder="기본 주소 입력" onChange={onChange} value={HOST_ADDR1} />
       <br/>
@@ -160,7 +161,8 @@ const MemChange = () => {
             setAddrInfo={setAddrInfo}/>
         </Modal>
  
-    <button onClick={insertOnClick}>등록하기</button>
+    <button onClick={insertOnClick}>등록하기</button> &emsp; &emsp; 
+    <button><Link to='/'>취소</Link></button>
     </div>
     
   )

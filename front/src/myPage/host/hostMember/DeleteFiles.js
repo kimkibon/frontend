@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-//파일 삭제 컴포넌트 
+//파일 삭제 컴포넌트 (실제로 삭제는 하지 않고, DEL_GB 만 업데이트)
 async function DeleteFiles(file, MEM_IDX, index, FILE_BOARD_TYPE) {
 
     return (await new Promise((reject) => {
