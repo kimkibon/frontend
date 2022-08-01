@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Table from 'react-bootstrap/Table';
+import {Button} from 'react-bootstrap';
 
 const ComQnaList = (props) => {
     const {QNA_COMMENT, QNA_CONTENT, QNA_DATE, QNA_ID, QNA_IDX, QNA_STATE, QNA_TITLE} = props.list;
@@ -43,7 +44,7 @@ const ComQnaList = (props) => {
                         <td width="100px">{QNA_DATE}</td>
                         <td width="70px">{QNA_STATE}</td>
                         <td width="70px">
-                            <button onClick={handleRemove}> 삭제 </button>
+                            <Button onClick={handleRemove}> 삭제 </Button>
                         </td>
                         </tr>
                     </tbody>

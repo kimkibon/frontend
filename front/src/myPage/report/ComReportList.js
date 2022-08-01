@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
+import {Button} from 'react-bootstrap';
 
 const ComReportList = (props) => {
     const {REPORT_IDX, REPORT_TITLE, REPORT_CONTENT, REPORT_DATE, REPORT_STATE} = props.list;
@@ -39,8 +40,8 @@ const ComReportList = (props) => {
                         </td>
                         <td width="200px">{REPORT_CONTENT}</td>
                         <td width="100px">{REPORT_DATE}</td>
-                        <td width="70px">
-                            <button onClick={handleRemove}> 삭제 </button>
+                        <td width="80px">
+                            <Button onClick={handleRemove}> 삭제 </Button>
                         </td>
                         </tr>
                     </tbody>
