@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
+import {Button} from 'react-bootstrap';
 
 const HostComReport = (props) => {
     const {REPORT_IDX, REPORT_TITLE, REPORT_CONTENT, REPORT_DATE, REPORT_STATE} = props.list;
@@ -31,7 +32,7 @@ const HostComReport = (props) => {
                     <tbody>
                         <tr>
                         <td width="50px">{REPORT_IDX}</td>
-                        <td width="50px">{REPORT_STATE}</td>
+                        <td width="70px">{REPORT_STATE}</td>
                         <td width="200px">
                           <Link to ={"./HostDetailReport/"+REPORT_IDX} >
                             {REPORT_TITLE}
@@ -39,8 +40,8 @@ const HostComReport = (props) => {
                         </td>
                         <td width="200px">{REPORT_CONTENT}</td>
                         <td width="100px">{REPORT_DATE}</td>
-                        <td width="50px">
-                            <button onClick={handleRemove}> 삭제 </button>
+                        <td width="70px">
+                            <Button onClick={handleRemove}> 삭제 </Button>
                         </td>
                         </tr>
                     </tbody>
