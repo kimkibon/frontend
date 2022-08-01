@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Modal from '../../member/Modal';
 import Carousel from 'react-bootstrap/Carousel';
 import SelectFileList from '../../../commons/Files/SelectFileList';
+import ImageUploadBox from '../myBoard/component/ImageUploadBox';
 
 
 const HostInfo = () => { 
@@ -12,17 +13,12 @@ const HostInfo = () => {
     const [hostDetail, sethostDetail] = useState([]);
     const [url, setUrl] = useState();
     const [file, setFile] = useState([]);
-    
-    let param = {
-        MEM_IDX : hostDetail.MEM_IDX,
-        MEM_ID : hostDetail.MEM_ID
-    }
-
     const [memDelete, setmemDelete] = useState([]); // 탈퇴 회원으로 레벨 업데이트 
+    
     const onDeleteMem = (mem_id) => {
         axios({ 
-        method : 'post' ,
-        url : '/GareBnB/mypage/memDelete.do' , 
+        method : 'post',
+        url : '/GareBnB/mypage/memDelete.do', 
         contentType:"application/json; charset=UTF-8",
         params : { 
             MEM_ID : mem_id
@@ -32,7 +28,6 @@ const HostInfo = () => {
     setmemDelete(Response.data);
     })
     };
-
 
     const [modalOpen, setModalOpen] = useState(false); //  모달 오픈 상태 (true: 열림, false : 닫힘) - 비밀번호 입력하는 모달
     const openModal = () => {
@@ -63,8 +58,8 @@ const HostInfo = () => {
         url : '/GareBnB/host/myPage/hostInfo.do' , 
         contentType:"application/json; charset=UTF-8",
         params : { 
-            MEM_ID : 'MEM_18',
-            MEM_IDX : '18'
+            MEM_ID : 'MEM_20',
+            MEM_IDX : '20'
         }})
 
     .then(Response => { 
@@ -80,13 +75,8 @@ const HostInfo = () => {
       setFile(Response);
        });
     })
-
- 
   },[]); 
-    // 이미지 ************* // 무한 반복중!!!!!!!!!!!!!!!!!!
-    
-   
- 
+
    hostDetail['URL'] = url;
 
 
@@ -128,8 +118,9 @@ const HostInfo = () => {
        
 
 
-        <Link to = {'../HostModify'} state = {{mem : hostDetail}}><button>수정하기</button></Link>
+        <Link to = {'../HostModify'} state = {{mem : hostDetail, file: file}}><button>수정하기</button></Link>
         &nbsp; &nbsp; &nbsp; &nbsp; 
+    
 
         <button onClick={openModal}>탈퇴하기</button>
         

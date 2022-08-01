@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 
-//파일 업데이트 컴포넌트 
-async function UpdateFiles(file, MEM_IDX, index, FILE_BOARD_TYPE) {
+//파일 삭제 컴포넌트 
+async function DeleteFiles(file, MEM_IDX, index, FILE_BOARD_TYPE) {
 
     return (await new Promise((reject) => {
 
@@ -10,7 +10,7 @@ async function UpdateFiles(file, MEM_IDX, index, FILE_BOARD_TYPE) {
         formData.append(index, file);
         axios({
             method: 'post',
-            url: '/GareBnB/file/update.do',
+            url: '/GareBnB/file/delete.do',
             headers: {
                 'Content-Type': 'multipart/form-data',
             },
@@ -32,4 +32,4 @@ async function UpdateFiles(file, MEM_IDX, index, FILE_BOARD_TYPE) {
     )
 }
 
-export default UpdateFiles
+export default DeleteFiles
