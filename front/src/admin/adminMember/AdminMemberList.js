@@ -1,6 +1,10 @@
 import React, { useState , useEffect} from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import '../adminHostMember/table.css'
+import '../adminHostMember/input.css'
+import '../adminHostMember/button.css'
+
 
 
 const AdminMemberList = () => {
@@ -50,29 +54,29 @@ const AdminMemberList = () => {
 
   return (
     <div>
-      <h1>일반 회원 관리</h1> 
+      <h1>일반 회원 관리</h1> <br/>
       <form onSubmit={e => onSearch(e)}>
-      <h2>검색어(ID/이름) : &nbsp;
-      <input type = "text" value={search} placeholder = "내용을 입력해 주세요" onChange={onChangeSearch}></input> &nbsp;
-      <button type="submit">검색</button></h2></form>
+      <h4>검색어(ID/이름) : &nbsp;
+      <input type = "text" value={search} placeholder = "검색어 입력" onChange={onChangeSearch}></input> &nbsp;
+      <button class="w-btn-outline w-btn-green-outline" type="submit">검색</button></h4></form>
+      <br/>
       
-      
-      <table border="3">
-        <thead>
-              <tr align="center">
-              <td width = "100">번호(IDX)</td>
-              <td width = "200">이름</td>
-              <td width = "200">아이디</td>
-              <td width = "200">비밀번호</td>
-              <td width = "200">휴대폰번호</td>
-            </tr>
-        </thead>
+      <table>
+        <tr align="center">
+        <th width = "100"> 번호(IDX)</th>
+        <th width = "200"> 이름</th>
+        <th width = "200">아이디</th>
+        <th width = "200">비밀번호</th>
+        <th width = "200">휴대폰번호</th>      
+      </tr>
        {memList.map((list)=> {
         return (
           <tbody key={list.MEM_IDX}>
             <tr align="center">
-              <Link to = {'/admin/adminMemberDetail/'+list.MEM_IDX} state = {{'MEM_IDX' : list.MEM_IDX}}>
-              <td>{list.MEM_IDX}</td></Link>
+              <td>
+                <Link to = {'/admin/adminMemberDetail/'+list.MEM_IDX} state = {{'MEM_IDX' : list.MEM_IDX}}>
+                {list.MEM_IDX}</Link>
+              </td>
               <td>{list.MEM_NAME}</td>
               <td>{list.MEM_ID}</td>
               <td>{list.MEM_PW}</td>
