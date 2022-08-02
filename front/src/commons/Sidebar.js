@@ -1,14 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './sidestyle.css'
 import {AiFillAlert, AiFillDatabase, AiFillCarryOut, AiFillEye, AiFillNotification, AiFillInteraction} from "react-icons/ai";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../../node_modules/bootstrap/dist/js/bootstrap'
+import Auth from '../login/Auth';
 // react-icons names -> fa로 통일
 
 
 
 const Sidebar = () => {
-
+  const [author , setAuthor] = useState();
+  const navigate = useNavigate();
+  Auth(4,navigate).then(Res => {
+    setAuthor(Res);
+  })
 
   return (
     <div className='col'>

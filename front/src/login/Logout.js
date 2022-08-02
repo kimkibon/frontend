@@ -4,7 +4,7 @@ const Logout = () => {
     function onClick(){
         
     localStorage.removeItem("MEM_ID")
-    localStorage.removeItem("MEM_LEVEL")
+
     window.history.go('/')
     }
     if(localStorage.getItem("MEM_ID") !== null){

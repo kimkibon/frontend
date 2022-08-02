@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Modal } from 'react-bootstrap';
 import ReactDatePicker from 'react-datepicker';
+import { useNavigate } from 'react-router-dom';
+import Auth from '../../../login/Auth';
 import Address from './Address';
 import ImageUploadBox from './component/ImageUploadBox';
 import InsertBoard from './component/InsertBoard'
@@ -10,8 +12,8 @@ const HostBoardForm = () => {
   const [showAddrModal, setShowAddrModal] = React.useState(false);
   const [insertFiles, setInsertFiles] = useState([]);
   const [insertBoard, setInsertBoard] = useState({
-    'BOARD_HOST_ID': 'test_id',     // 로컬 스토리지에서 가져오기 테스트 코드 나중에 수정해야함
-    'BOARD_HOST_IDX': '314',    // 어디서 가져오지 ? 서버에서 ? 테스트 코드 나중에 수정해야함
+    'BOARD_HOST_ID': '',     // 로컬 스토리지에서 가져오기 테스트 코드 나중에 수정해야함
+    'BOARD_HOST_IDX': '',    // 어디서 가져오지 ? 서버에서 ? 테스트 코드 나중에 수정해야함
     'BOARD_TITLE': '',       // 입력 받음
     'BOARD_CONTENT': '',     // 입력 받음 
     'BOARD_ADDR1': '',       //입력 받음
@@ -25,7 +27,7 @@ const HostBoardForm = () => {
   });
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-
+  const Navigate = useNavigate();
   // 일단 호스트 아이디로 호스트 정보를 가져온다?
   const {
     BOARD_HOST_ID,
@@ -41,6 +43,13 @@ const HostBoardForm = () => {
     BOARD_DATE_END
   } = insertBoard;
   //변수 초기화 
+
+  Auth(2 , Navigate).then(Res =>{
+    setInsertBoard({
+      ...insertBoard,
+      'BOARD_HOST_IDX' : Res.MEM_IDX
+    })
+  })
 
   const setAddrInfo = (data) => {
     setInsertBoard({
