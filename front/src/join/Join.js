@@ -14,6 +14,7 @@ const Join = () => {
   const [JoinPhone, setJoinPhone] = useState(""); //입력한 폰번호
   const [PhoneOK, setPhoneOK] = useState("0"); //미인증:0 인증:1 폰인증 됐는지?
   const [InputVerifyCode, setInputVerifyCode] = useState(""); //입력한 인증번호
+  const [RealVerifyCode, setRealVerifyCode] = useState(""); //서버에서 넘어온 VerifyCode
   const navigate = useNavigate();
 
   const dataRuleCheckForID = (ch) => {
@@ -73,10 +74,27 @@ const Join = () => {
       }
     }).then(Response =>{
       console.log(Response.data)
+      console.log(Response.data.value)
+      setRealVerifyCode(Response.data)
     }).catch(err=>{
       console.log(err);
+      alert("에러")
     })
   }  
+
+  const verify = () =>{
+    if (InputVerifyCode == RealVerifyCode){
+      alert("인증이 완료되었습니다.")
+      setPhoneOK(1)
+      console.log(PhoneOK)
+    }
+    else{
+      alert("인증에 실패하였습니다.")
+      console.log(RealVerifyCode)
+      console.log(InputVerifyCode)
+    }
+
+  }
 
 
   
@@ -86,7 +104,7 @@ const Join = () => {
     if(JoinID !== ""){
       axios({
         method : 'post' ,
-        url : '/GareBnB/confirmId' ,
+        url : '/GareBnB/confirmId.do' ,
         contentType:"application/json;charset=UTF-8",
         params : {
             'MEM_ID' : JoinID   
@@ -123,22 +141,24 @@ const Join = () => {
         if(SameCheckForPW()){
           if(JoinName!==""){
             if(JoinPhone!==""){
-              axios({
-                method : 'post' ,
-                url : '/GareBnB/joinSuccess' ,
-                contentType:"application/json;charset=UTF-8",
-                params : {
-                    'MEM_ID' : JoinID ,
-                    'MEM_PW' : JoinPassword,
-                    'MEM_NAME' : JoinName,
-                    'MEM_PHONE' : JoinPhone  
-                }}).then(Response => {
-                  navigate('/');
-                }).catch(err => {
-                  console.log(err);
-                });
-              
-            }
+              if(PhoneOK===1){
+               axios({
+                 method : 'post' ,
+                 url : '/GareBnB/joinSuccess.do' ,
+                 contentType:"application/json;charset=UTF-8",
+                 params : {
+                     'MEM_ID' : JoinID ,
+                     'MEM_PW' : JoinPassword,
+                     'MEM_NAME' : JoinName,
+                     'MEM_PHONE' : JoinPhone  
+                 }}).then(Response => {
+                    navigate('/');
+                 }).catch(err => {
+                   console.log(err);
+                 });
+                 
+              }
+          }
             else alert("휴대폰번호를 입력해주세요")
           }
           else alert("이름을 입력해주세요")
@@ -208,7 +228,7 @@ const Join = () => {
       <button onClick={Join}> 가입 </button>
       <button onClick={Exit}> 취소 </button>     
       <button onClick={send}>인증번호 보내기</button>
-      {/* <button onClick={verify}>인증 확인</button> */}
+      <button onClick={verify}>인증 확인</button>
     </div>
   )
 }
