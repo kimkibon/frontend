@@ -1,8 +1,6 @@
 import React, { useEffect, useState }from 'react'
 import { Navigate, useNavigate } from 'react-router-dom';
-import secret_key from './secret_sms';
 import axios from 'axios';
-import CryptoJS from 'crypto-js';
 
 const Join = () => {
 
@@ -175,61 +173,101 @@ const Join = () => {
   };
 
   return (
-    <div>
-      <input
-        type="text"
-        id="ID"
-        name="ID"
-        placeholder="아이디"
-        value={JoinID}
-        onChange={(e) => getJoinID(e)} //내용이 바뀔떄마다 ID GET
-      />
-      <input
-        type="text"
-        id="PW"
-        name="PW"
-        placeholder="비밀번호"
-        value={JoinPassword}
-        onChange={(e) => getJoinPassword(e)} //내용이 바뀔떄마다 PW GET
-      />
-      <input
-        type="text"
-        id="PWCheck"
-        name="PWCheck"
-        placeholder="비밀번호확인"
-        value={JoinPwCheck}
-        onChange={(e) => getJoinPwCheck(e)} //내용이 바뀔떄마다 PWCheck GET
-      />
-      <input
-        type="text"
-        id="NAME"
-        name="NAME"
-        placeholder="이름"
-        value={JoinName}
-        onChange={(e) => getJoinName(e)} //내용이 바뀔떄마다 Name GET
-      />
-      <input
-        type="text"
-        id="PHONE"
-        name="PHONE"
-        placeholder="전화번호확인"
-        value={JoinPhone}
-        onChange={(e) => getJoinPhone(e)} //내용이 바뀔떄마다 Phone GET
-      />
-      <input
-        type="text"
-        id="Verify"
-        name="Verify"
-        placeholder="인증번호 입력"
-        value={InputVerifyCode}
-        onChange={(e) => getInputVerifyCode(e)} //내용이 바뀔떄마다 INputVerifyCode GET
-      />
-      <button onClick={IDDupCheck}> 중복확인 </button>
-      <button onClick={Join}> 가입 </button>
-      <button onClick={Exit}> 취소 </button>     
-      <button onClick={send}>인증번호 보내기</button>
-      <button onClick={verify}>인증 확인</button>
-    </div>
+    <form  className= "form-horizontal">
+      <div className = "container-sm">
+     <div className = "form-group" >
+     <div className = "col-sm-3">
+        <div className = "mb-3">
+          <label for ="inputID" className="col-sm-2 control-label">ID</label>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="아이디"
+            value={JoinID}
+            onChange={(e) => getJoinID(e)} //내용이 바뀔떄마다 ID GET
+          />
+          <button type="button" className="btn btn-primary"onClick={IDDupCheck}> 중복확인 </button>
+        </div>
+        </div>
+      </div>
+      <div className = "form-group">
+      <div className = "col-sm-3">
+        <div className = "mb-3">
+         <label for ="inputPW" className="col-sm-2 control-label">PW</label>
+         <input
+            type="password"
+            className='form-control'
+            placeholder="비밀번호"
+            value={JoinPassword}
+            onChange={(e) => getJoinPassword(e)} //내용이 바뀔떄마다 PW GET
+         />
+        </div>
+        </div>
+      </div> 
+      <div className = "form-group"> 
+      <div className = "col-sm-3">
+      <div className = "mb-3">
+        <label for ="inputPWCheck" className="col-sm-2 control-label">PWCheck</label>
+        <input
+           type="password"
+           className='form-control'
+           placeholder="비밀번호확인"
+           value={JoinPwCheck}
+           onChange={(e) => getJoinPwCheck(e)} //내용이 바뀔떄마다 PWCheck GET
+         />
+       </div>
+       </div>
+      </div>
+      <div className = "form-group">
+      <div className = "col-sm-3">
+      <div className = "mb-3">
+        <label for ="inputName" className="col-sm-2 control-label">Name</label>
+        <input
+          type="text"
+          className='form-control'
+          placeholder="이름"
+          value={JoinName}
+          onChange={(e) => getJoinName(e)} //내용이 바뀔떄마다 Name GET
+        />
+       </div>
+       </div>
+      </div>
+      <div className = "form-group">
+      <div className = "col-sm-3">
+      <div className = "mb-3">
+        <label for ="inputPhone" className="col-sm-2 control-label">Phone</label>
+        <input
+         type="text"
+         className='form-control'
+         placeholder="핸드폰 번호"
+         value={JoinPhone}
+         onChange={(e) => getJoinPhone(e)} //내용이 바뀔떄마다 Phone GET
+       />
+       <button type ="button" className ="btn btn-secondary"onClick={send}>인증번호 보내기</button>
+
+       </div>
+       </div>
+      </div>
+      <div className = "form-group">
+      <div className = "col-sm-3">
+      <div className = "mb-4">
+        <input
+         type="text"
+         className='form-control'
+         placeholder="인증번호 입력"
+         value={InputVerifyCode}
+         onChange={(e) => getInputVerifyCode(e)} //내용이 바뀔떄마다 INputVerifyCode GET
+        />
+        <button type ="button" className = "btn btn-primary"onClick={verify}>인증 확인</button>
+
+       </div>
+       </div>
+      </div>
+      <button type ="submit" className = "btn btn-1g btn-success" onClick={Join}> 가입 </button>
+      <button type ="button" className = "btn btn-light" onClick={Exit}> 취소 </button>     
+
+      </div>
+    </form>
   )
 }
 

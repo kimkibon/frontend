@@ -27,7 +27,7 @@ const ModifyHost = (props) => {
           u8arr[n] = bstr.charCodeAt(n);
         }
         return (
-          new File([u8arr], file.fileName, { type: mime })
+          new File([u8arr], file.FILE_NAME, { type: mime })
         )
       })
 
@@ -39,9 +39,8 @@ const ModifyHost = (props) => {
         contentType:"apllication/json; charset=UTF-8",
         params : hostModify
         }).then(Response => {
-          console.log(files)
-            files.map(async (file, index) => {  
-                await UpdateFiles(file , Response.data.MEM_IDX , index , '1'); 
+            files.map(async (file,index) => {  
+                await UpdateFiles(file , hostModify.MEM_IDX , index , '1'); 
                                 // file, MEM_IDX, index, FILE_BOARD_TYPE
             }).then(Response => {
               alert('수정완료 성공');
