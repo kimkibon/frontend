@@ -5,6 +5,8 @@ import logoImage from './images/logo/GareBnBlog.png';
 import './style.css'
 
 const header = () => {
+  const mem_id = localStorage.getItem("MEM_ID");//로컬스토리지에서 로그인한 계정의 아이디 전달
+
   return (
     <div className='header'>
   <nav className="navbar navbar-expand-lg navbar-light">
@@ -36,7 +38,7 @@ const header = () => {
       </ul>
 
       {/* -- 로그인하기 모양 -- */}
-      <div className="menu-icon ml-auto" >
+      {mem_id == null ?<div className="menu-icon ml-auto" >
           <Link to="/login"><svg xmlns="http://www.w3.org/2000/svg" width="80"
                   height="20" viewBox="0 0 18 20">
                   <g id="Account" transform="translate(1 1)">
@@ -49,15 +51,12 @@ const header = () => {
                           strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
                   </g>
               </svg></Link>
-      </div>
+      </div> : <Logout/>}
       </div>
     </div>
     
   
   </nav>
-
-      <Logout/>
-      
 
     </div>
   )
