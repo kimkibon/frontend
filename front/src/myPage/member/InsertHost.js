@@ -8,6 +8,7 @@ const InsertHost = (props) => {
   const insertHost = props.props.insertHost;
   const insertFiles = props.props.insertFiles;
 
+  console.log(insertFiles)
   
  
   //변수 초기 세팅
@@ -16,7 +17,7 @@ const InsertHost = (props) => {
     e.persist();
 
     const files = insertFiles.map(file => {
-      let arr = file.url.split(','),
+      let arr = file.URL.split(','),
         mime = arr[0].match(/:(.*?);/)[1],
         bstr = atob(arr[1]),
         n = bstr.length,
@@ -26,7 +27,7 @@ const InsertHost = (props) => {
         u8arr[n] = bstr.charCodeAt(n);
       }
       return (
-        new File([u8arr], file.fileName, { type: mime })
+        new File([u8arr], file.FILE_NAME, { type: mime })
        
       )
 

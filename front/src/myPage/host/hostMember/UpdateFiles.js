@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-//파일 업데이트 컴포넌트 
+//파일 업데이트 컴포넌트 (DELETE, INSERT, UPDATE)
 async function UpdateFiles(file, MEM_IDX, index, FILE_BOARD_TYPE) {
 
     return (await new Promise((reject) => {
@@ -15,7 +15,7 @@ async function UpdateFiles(file, MEM_IDX, index, FILE_BOARD_TYPE) {
                 'Content-Type': 'multipart/form-data',
             },
             params: {
-                'FILE_BOARD_IDX': MEM_IDX,
+                'BOARD_NO': MEM_IDX,
                 'FILE_BOARD_TYPE': FILE_BOARD_TYPE,
                 'FILE_LEVEL': index,
             },
