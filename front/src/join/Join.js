@@ -16,86 +16,6 @@ const Join = () => {
   const [InputVerifyCode, setInputVerifyCode] = useState(""); //입력한 인증번호
   const navigate = useNavigate();
 
-  const date = Date.now().toString;  
-  const uri = secret_key.NCP_serviceID;
-  const secretKey = secret_key.NCP_secretKey;
-  const accessKey = secret_key.NCP_accessKey;
-  const method = 'POST';
-  const space =" ";
-  const newLine = "\n";
-  const url = 'https://sens.apigw.ntruss.com/sms/v2/services/ncp:sms:kr:290045243827:koo/messages';
-  const url2 = '/sms/v2/services/${uri}/messages';
-  
-  // 헤더생성
-  const hmac = CryptoJS.algo.HMAC.create(CryptoJS.algo.SHA256, secretKey);
-
-  // x-ncp-apigw-signature-v2 속성 설정을 위한 선언들
-  hmac.update(method);
-  hmac.update(space);
-  hmac.update(url2);
-  hmac.update(newLine);
-  hmac.update(date);
-  hmac.update(newLine);
-  hmac.update(accessKey); 
-  const hash = hmac.finalize();
-  const signature = hash.toString(CryptoJS.enc.Base64);  //signature 선언
-
-  const send = () => {  //인증문자 발송 함수
-    const phoneNumber = JoinPhone;  //핸드폰번호 받기
-
-
-    const verifyCode = Math.floor(Math.random()*(999999-100000))+100000; //난수로 인증번호 설정
-    
-     
-
-    axios({
-        method: method,  //POST
-        json: true,  //JSON으로 전송
-        url: url,  //api url
-        headers:{  //헤더(수정X)
-            'Content-Type' : 'application/json',
-            'x-ncp-iam-access-key': accessKey,
-            'x-ncp-apigw-timestamp': date,
-            'x-ncp-apigw-signature-vw': signature,
-        },
-        data:{  //데이터
-            type:'SMS',  //SMS로 전송
-            contentType:'COMM', //광고문자 아닌 일반문자 전송
-            countryCode:'82', //대한민국
-            from: '01039578057',  //발신번호(등록해놓음)
-            content:'[KOO]인증번호 [${verifyCode}를 입력해주세요.',  //내용
-            messages:[
-                {
-                    to: '${phoneNumber}'  //수신번호(숫자사이 - 없어야함)
-                },
-            ],
-        },
-    })
-    .then(Response => {  //성공여부 확인
-        console.log("보냈다!!")
-        sessionStorage.setItem('verifyCode',verifyCode)
-    })
-    .catch(err =>{
-        if(err === undefined){
-            console.log("보냈다")
-            sessionStorage.setItem('verifyCode',verifyCode)
-        }
-        else console.log("안감?")
-    });
-  };
-
-  const verify = () =>{ //인증문자 검증함수
-    const verifyCode= sessionStorage.getItem('verifyCode')
-    
-
-    if(InputVerifyCode=== verifyCode){  //인증번호 = 입력된인증번호시)
-        return setPhoneOK(1);
-    }else if (InputVerifyCode!== verifyCode){  //캐시에 저장된 정보와 사용자가 입력한 인증번호가 다를시
-        return setPhoneOK(0);
-    }else{  //인증ok시
-        console.log(PhoneOK)
-    } 
-  }
   const dataRuleCheckForID = (ch) => {
     let ascii = ch.charCodeAt(0);
     if (48 /* 0 */ <= ascii && ascii <= 57 /* 9 */) return true;
@@ -143,7 +63,20 @@ const Join = () => {
     setInputVerifyCode(value);
   };
 
-    
+  const send = () =>{
+    axios({
+      method : 'post',
+      url : '/GareBnB/PhoneNumberCheck.do' ,
+      contentType : "application/json;charset=UTF-8",
+      params : {
+        'to' : JoinPhone
+      }
+    }).then(Response =>{
+      console.log(Response.data)
+    }).catch(err=>{
+      console.log(err);
+    })
+  }  
 
 
   
@@ -153,7 +86,7 @@ const Join = () => {
     if(JoinID !== ""){
       axios({
         method : 'post' ,
-        url : '/GareBnB//confirmId.do' ,
+        url : '/GareBnB/confirmId' ,
         contentType:"application/json;charset=UTF-8",
         params : {
             'MEM_ID' : JoinID   
@@ -192,7 +125,7 @@ const Join = () => {
             if(JoinPhone!==""){
               axios({
                 method : 'post' ,
-                url : '/GareBnB//joinSuccess.do' ,
+                url : '/GareBnB/joinSuccess' ,
                 contentType:"application/json;charset=UTF-8",
                 params : {
                     'MEM_ID' : JoinID ,
@@ -265,8 +198,8 @@ const Join = () => {
       />
       <input
         type="text"
-        id="VerifyCode"
-        name="VerifyCode"
+        id="Verify"
+        name="Verify"
         placeholder="인증번호 입력"
         value={InputVerifyCode}
         onChange={(e) => getInputVerifyCode(e)} //내용이 바뀔떄마다 INputVerifyCode GET
@@ -275,7 +208,7 @@ const Join = () => {
       <button onClick={Join}> 가입 </button>
       <button onClick={Exit}> 취소 </button>     
       <button onClick={send}>인증번호 보내기</button>
-      <button onClick={verify}>인증 확인</button>
+      {/* <button onClick={verify}>인증 확인</button> */}
     </div>
   )
 }
