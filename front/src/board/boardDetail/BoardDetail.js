@@ -59,9 +59,9 @@ const BoardDetail = () => {
 
   useEffect(() => {
 
-    // Auth(4, navigate).then(Response => {
+    Auth(4, navigate).then(Response => {
 
-    //   setAuthor(Response)
+      setAuthor(Response)
 
       axios({
         method: 'post',
@@ -99,9 +99,9 @@ const BoardDetail = () => {
         console.log(Response)
       })
       // 서버에서 예약 내역 시간을 리턴 받음
-    // }).catch(err => {
+    }).catch(err => {
 
-    // })
+    })
 
   }, []) // param이 바뀔 때 마다 실행되도록 설정해서 무의미한 재실행을 막음. 
   return (

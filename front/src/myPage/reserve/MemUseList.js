@@ -12,7 +12,7 @@ const MemUseList = (props) => {
 
   useEffect(()=>{
 
-    SelectOneFile('0',184, 0).then(Res=>{
+    SelectOneFile('0',list.RES_BOARD_NO,list.RES_BOARD_MODIFY_NO).then(Res=>{
       setUrl("data:image/;base64,"+Res.URL);
       // setUrl(url);
     });
@@ -26,7 +26,7 @@ const MemUseList = (props) => {
         <img src={list.URL} width="200px" height="auto"/><p/>
       </div>
       <div class="col-md-7 mt-1 align-items-center align-content-center">
-        <h4>예약번호 : {list.RES_IDX}</h4><br/>
+        <h5>예약번호 : {list.RES_IDX}</h5><br/>
         주소 : {list.BOARD_ADDR}<br/>
         이용날짜 : {list.RES_DATE_START} ~ {list.RES_DATE_END}<br/>
         맡긴 동물 수 : {list.RES_CARE_NO}<br/>

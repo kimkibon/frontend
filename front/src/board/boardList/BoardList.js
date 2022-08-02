@@ -4,7 +4,7 @@ import SelectOneFile from '../../commons/Files/SelectOneFile';
 import List from '../boardList/boardListComponemt/List';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 
 

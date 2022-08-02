@@ -15,7 +15,7 @@ function ResRequestOnClick(props) {
             params : props.props
         }).then(Response =>{
 
-            navigate('/board/resDetail');
+            navigate('/myPage');
             //응답이 완료되면 페이지 이동
 
         }).catch(()=>{

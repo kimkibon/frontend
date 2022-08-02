@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link, Route, Routes } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Link, Route, Routes, useNavigate } from 'react-router-dom'
 import AdminSidebar from '../commons/AdminSidebar'
 import AdminBoardReview from './adminHostBoard/AdminBoardReview'
 import AdminHostBoardDetail from './adminHostBoard/AdminHostBoardDetail'
@@ -15,8 +15,13 @@ import AdminReportList from './adminReport/AdminReportList'
 import AdminAllResList from './adminResList/AdminAllResList'
 import AdminResInfo from './adminResList/AdminResInfo'
 import ResCancel from '../myPage/reserve/ResCancel';
+import Auth from '../login/Auth'
 
 const AdminIndex = () => {
+  const Navigate = useNavigate();
+  useEffect(()=>{
+  Auth(0,Navigate)
+},[])
   return (
       <div class="container-fluid">
       <div class="row">

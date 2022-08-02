@@ -26,6 +26,7 @@ const ReserveListPage = () => {
   const [resList, setResList] = useState([]); //예약리스트 받아오는 변수
 
   //auth
+  const mem_id = localStorage.getItem("MEM_ID");//로컬스토리지에서 로그인한 계정의 아이디 전달
   const [author, setAuthor] = useState({});
   const navigate = useNavigate();
 
@@ -43,7 +44,7 @@ const ReserveListPage = () => {
           url : '/GareBnB/mypage/memReserveList.do' ,
           contentType:"application/json;charset=UTF-8",
           params : {
-            MEM_ID : 'MEM_2'//localStorage.getItem('MEM_ID')     //로컬스토리지에서 로그인한 계정의 아이디 전달
+            MEM_ID : mem_id//////////////////////////////////     
       
           }
       }).then(Response => {
@@ -184,7 +185,7 @@ const ReserveListPage = () => {
 
   return (
     <div>
-      <h1>예약 내역</h1>
+      <h1>예약내역</h1>
       {resList[0] !==undefined && resList.map((list)=>{
         
         let resstate = list.RES_LEVEL;
@@ -208,8 +209,7 @@ const ReserveListPage = () => {
 
                         </div>
                         <div class="col-md-7 mt-1">
-                        예약상태 : {ResState(resstate)}<br/>
-                            <h5>예약번호  {list.RES_IDX}</h5>
+                            <h5>예약번호  {list.RES_IDX}</h5><br/>
                             주소 : {list.ADDR1}{list.ADDR2}<br/>
                             이용날짜 : {list.RES_DATE_START} ~ {list.RES_DATE_END}<br/>
                             맡긴 동물 수 : {list.RES_CARE_NO}<br/>
@@ -241,7 +241,7 @@ const ReserveListPage = () => {
 
                             {/* 결제대기상태 */}
                             {resstate === 2 && 
-                                <Payment price={list.PRICE} title={list.BOARD_TITLE} booker={localStorage.getItem('MEM_ID')} res_idx={list.RES_IDX}/>
+                                <Payment price={list.PRICE} title={list.BOARD_TITLE} booker={mem_id} res_idx={list.RES_IDX}/>
                             }
 
 
@@ -251,7 +251,9 @@ const ReserveListPage = () => {
 
                           </div>
                         </div>
+                        
                     </div>
+                    <p/>
                   </div>
                 </div>
               </div>

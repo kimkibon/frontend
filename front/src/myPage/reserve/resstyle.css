@@ -76,3 +76,7 @@
 .stepper-item:last-child::after {
   content: none;
 }
+
+.disable-link {
+  pointer-events: none;
+}
