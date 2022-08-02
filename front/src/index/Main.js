@@ -38,16 +38,15 @@ const Main = () => {
           <img src={homeImage} alt="banner-img" class="img-fluid" />
           <div className="banner-area__content">
             <div className='context'>
-              <h2>Premium care for
-                premium people.</h2>
+              <h2 className='context'>Premium care for premium people.</h2>
             </div>
-            <div>
+            <div className='number'>
               <input type='number' name='CARE_NO' value={state.CARE_NO} onChange={(e) => setItem(e)} />
             </div>
-            <div>
+            <div className='add'>
               <input type='text' name='BOARD_ADDR1' value={state.BOARD_ADDR1} onChange={(e) => setItem(e)}/>
             </div>
-            <div>
+            <div className='date'>
               <ReactDatePicker
                 minDate={new Date()}
                 selected={state.START_DATE}

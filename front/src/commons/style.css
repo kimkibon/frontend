@@ -37,6 +37,18 @@
     top: 70%;
     left: 50%;
     transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 20px;
+    width: 80px;
+    height: 40px;
+    border-width: 0px;
+    background-color: #94B49F;
+    border-radius: 10px;
+    transition-duration: 0.4s;
+}
+
+.btn2:hover {
+  background: #CEE5D0; 
 }
 
 /* 배너 내용 */
@@ -46,6 +58,27 @@
     top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.number {
+    position: absolute;
+    top: 60%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+}
+
+.add {
+  position :absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.date {
+  position :absolute;
+  top: 60%;
+  left: 70%;
+  transform: translate(-50%, -50%);
 }
 
 
