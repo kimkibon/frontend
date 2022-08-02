@@ -30,7 +30,6 @@ const DetailReport = () => {
 
       const state = detail.REPORT_STATE;
       const comment = detail.REPORT_COMMENT;
-      console.log(state); //미답변:0, 답변완료:1
       const navigate = useNavigate(); //확인 누르면 뒤로가기  
         
 
