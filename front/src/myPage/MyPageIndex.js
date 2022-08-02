@@ -1,5 +1,5 @@
-import React from 'react'
-import { Route, Routes } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import { Route, Routes, useNavigate } from 'react-router-dom';
 
 import MyPage from './MyPage';
 import QnaList from './qna/QnaList';
@@ -27,11 +27,19 @@ import MemModify from './member/MemModify';
 import MemDelete from './member/MemDelete';
 import DetailQna from './qna/DetailQna';
 import DetailReport from './report/DetailReport';
-import { Row } from 'react-bootstrap';
 import Sidebar from '../commons/Sidebar';
+import Auth from '../login/Auth';
 //import Layout from './Layout';
 
 const MyPageIndex = () => {
+  const [author , setAuthor] = useState();
+  const navigate = useNavigate();
+
+  useEffect(()=>{
+  Auth(4,navigate).then(Res => {
+    setAuthor(Res);
+  })
+},[])
   return (
     <div class="container-fluid">
       <div class="row">

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link, Route, Routes, useNavigate } from 'react-router-dom'
 import AdminSidebar from '../commons/AdminSidebar'
 import AdminBoardReview from './adminHostBoard/AdminBoardReview'
@@ -19,7 +19,9 @@ import Auth from '../login/Auth'
 
 const AdminIndex = () => {
   const Navigate = useNavigate();
+  useEffect(()=>{
   Auth(0,Navigate)
+},[])
   return (
       <div class="container-fluid">
       <div class="row">
