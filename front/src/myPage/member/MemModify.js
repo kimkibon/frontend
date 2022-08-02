@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useLocation, Link } from 'react-router-dom';
 import Modal from '../member/Modal';
-import secret_sms from '../../join/secret_sms';
+// import secret_sms from '../../join/secret_sms';
 
 // 회원정보 보기 - 수정
 
@@ -45,12 +45,12 @@ const MemModify = () => {
       };
 
   const dataRuleCheckForPW =() =>{
-        return (password.length >= 8 ? true : false)
+        return (MEM_PW.length >= 8 ? true : false)
       }
 
 const onSubmit = (e) => {
   e.preventDefault();
-  if(dataRuleCheckForPW()){
+  if(dataRuleCheckForPW(false)){
     alert("비밀번호를 8자 이상 입력해주세요.")
   } else {
   if (password !== passwordCheck) { // 수정할 비밀번호와 수정할 비밀번호 확인이 다를 때
@@ -109,13 +109,17 @@ const verify = () =>{
     console.log(InputVerifyCode)
   }
 }
-const ModifySuccess = () => {
+
+const ModifySuccess = () => { // 아래 유효성 검사를 진행
   if(MEM_NAME===''){
     alert ('이름을 입력해주세요.')
   } else {
     if(MEM_PW===''){
       alert('비밀번호 수정하기를 통해 비밀번호를 입력해주세요.')
     } else {
+      if(MEM_PW.length <8){
+        alert('비밀번호를 8자 이상 입력해주세요.')
+      } else {
       if(MEM_PHONE ===''){
         alert('휴대폰 번호 인증하기를 통해 휴대폰 번호를 입력해주세요')
       } else {
@@ -129,13 +133,11 @@ const ModifySuccess = () => {
               MEM_PW : MEM_PW,
               MEM_NAME : MEM_NAME,
               MEM_PHONE : MEM_PHONE
-            } })
+            }})
           .then(Response => {
             alert('수정완료에 성공하였습니다');
             window.location.href = '../member/MemDetail'; // 수정완료 성공 알림창 확인 버튼 클릭 시 회원정보 보기 페이지로 이동됨
-                  })
-                }}}
-  }
+          })}}}}}
 
   return (
     <div>
