@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import SelectFileList from '../../commons/Files/SelectFileList';
 import BoardReview from './BoardReview';
@@ -13,6 +13,7 @@ import Refuse from './boardDetailComponent/Refuse';
 import BoardDelete from './boardDetailComponent/BoardDelete';
 import ConfirmBoard from './boardDetailComponent/ConfirmBoard';
 import resDate from './boardDetailComponent/resDate';
+import Auth from '../../login/Auth';
 
 
 const BoardDetail = () => {
@@ -21,7 +22,7 @@ const BoardDetail = () => {
   const [file, setFile] = useState([]);
   const [review, setReview] = useState([]);
   const [host, setHost] = useState([]);
-  const [resDates , setResDates] = useState([]);
+  const [resDates, setResDates] = useState([]);
   const [modalShow, setModalShow] = React.useState(false);
   const [deleteModal, setDeleteModal] = React.useState(false);
   const [refuseModal, setRefuseModal] = React.useState(false);
@@ -29,6 +30,7 @@ const BoardDetail = () => {
   const [author, setAuthor] = useState({});
 
   const location = useLocation();
+  const navigate = useNavigate();
 
   let param
 
@@ -41,7 +43,7 @@ const BoardDetail = () => {
     }
   }
   const state = {
-    'RES_CLI_ID': '',
+    'RES_CLI_ID': author.MEM_IDX,
     'RES_CARE_NO': boardDetail.BOARD_CARE_NO,
     'RES_REQ_DETAIL': '',
     'RES_BOARD_NO': boardDetail.BOARD_NO,
@@ -56,43 +58,51 @@ const BoardDetail = () => {
   //resRequest 컴포넌트로 전달할 정보 초기화 밑 저장. 
 
   useEffect(() => {
-    axios({
-      method: 'post',
-      url: '/GareBnB/board/boardDetail.do',
-      params: {
-        'BOARD_NO': param.BOARD_NO,
-        'BOARD_MODIFY_NO': param.BOARD_MODIFY_NO
-      }
-    }).then(Response => {
-      setBoardDetail(Response.data);
-    });
-    //리스트에서 보드 넘버를 받아와서 보드디테일에 대한 기본 정보를 저장. 
 
-    BoardReview(param.BOARD_NO).then(Response => {
-      setReview(Response);
-    }); //리뷰 정보를 받아와서 저장.
+    // Auth(4 , navigate).then(Response => {
 
-    SelectFileList('0', param.BOARD_NO, param.BOARD_MODIFY_NO).then(Response => {
-      Response.map(base64 => {
-        base64.URL = "data:image/;base64," + base64.URL //바이너리 변환된 이미지를 출력하기 위해 주석을 달아줌
+    //   setAuthor(Response)
+
+      axios({
+        method: 'post',
+        url: '/GareBnB/board/boardDetail.do',
+        params: {
+          'BOARD_NO': param.BOARD_NO,
+          'BOARD_MODIFY_NO': param.BOARD_MODIFY_NO
+        }
+      }).then(Response => {
+        setBoardDetail(Response.data);
+      });
+      //리스트에서 보드 넘버를 받아와서 보드디테일에 대한 기본 정보를 저장. 
+
+      BoardReview(param.BOARD_NO).then(Response => {
+        setReview(Response);
+      }); //리뷰 정보를 받아와서 저장.
+
+      SelectFileList('0', param.BOARD_NO, param.BOARD_MODIFY_NO).then(Response => {
+        Response.map(base64 => {
+          base64.URL = "data:image/;base64," + base64.URL //바이너리 변환된 이미지를 출력하기 위해 주석을 달아줌
+        })
+        Response.sort(function (a, b) {
+          return a.FILE_LEVEL - b.FILE_LEVEL
+        })
+        setFile(Response);
+      });
+      //서버에서 파일을 받아와서 파일 레벨 순서로 정렬하고 저장
+      Detail(param.BOARD_NO, param.BOARD_MODIFY_NO).then(Response => {
+        setHost(Response);
       })
-      Response.sort(function (a, b) {
-        return a.FILE_LEVEL - b.FILE_LEVEL
+      //서버에서 호스트의 전화번호를 리턴받음. 
+
+      resDate(param.BOARD_NO).then(Response => {
+        setResDates(Response);
+        console.log(Response)
       })
-      setFile(Response);
-    });
-    //서버에서 파일을 받아와서 파일 레벨 순서로 정렬하고 저장
-    Detail(param.BOARD_NO , param.BOARD_MODIFY_NO).then(Response => {
-      setHost(Response);
-    })
-    //서버에서 호스트의 전화번호를 리턴받음. 
-
-    resDate(param.BOARD_NO).then(Response => {
-      setResDates(Response);
-      console.log(Response)
-    })
-    // 서버에서 예약 내역 시간을 리턴 받음
-
+      // 서버에서 예약 내역 시간을 리턴 받음
+    // }).catch(err => {
+      
+    // })
+    
   }, []) // param이 바뀔 때 마다 실행되도록 설정해서 무의미한 재실행을 막음. 
   return (
     <>
@@ -198,9 +208,9 @@ const BoardDetail = () => {
             등록 거절
           </button>
 
-            <button className="btn btn-primary" type="button" onClick={() => setConfirmModal(true)}>
-              등록 승인
-            </button>
+          <button className="btn btn-primary" type="button" onClick={() => setConfirmModal(true)}>
+            등록 승인
+          </button>
         </div>
 
 
@@ -209,32 +219,32 @@ const BoardDetail = () => {
         <ResRequest
           show={modalShow}
           onHide={() => setModalShow(false)}
-          state={{'resData' : state , 'resDate' : resDates}}
+          state={{ 'resData': state, 'resDate': resDates }}
         />
         {/* 예약창을 모달로 띄움. */}
 
         <BoardDelete
           show={deleteModal}
           onHide={() => setDeleteModal(false)}
-          state={boardDetail.BOARD_NO}
+          state={param}
         />
         {/* 삭제 버튼 모달창 */}
 
         <ConfirmBoard
           show={confirmModal}
-          onHide={()=> setConfirmModal(false)}
-          state={boardDetail.BOARD_NO}
-            />
-          {/* 등록 승인 모달창 */}
+          onHide={() => setConfirmModal(false)}
+          state={param}
+        />
+        {/* 등록 승인 모달창 */}
 
         <Refuse
           show={refuseModal}
           onHide={() => setRefuseModal(false)}
-          state={boardDetail.BOARD_NO}
+          state={param}
         />
         {/* 등록 거절 모달창 */}
 
-        
+
 
         <div className="row">
           <Review prop={review} />

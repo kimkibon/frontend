@@ -8,12 +8,13 @@ const BoardDelete = (props) => {
     const navigate = useNavigate();
     
     const onClick = () => {
-
+        console.log(props)
         axios({
             method :'post',
             url : '/GareBnB/host/mypage/myboardDelete.do',
             params : {
-                'BOARD_NO' : props.state
+                'BOARD_NO' : props.state.BOARD_NO,
+                'BOARD_MODIFY_NO' : props.state.BOARD_MODIFY_NO
             }
         }).then(()=> {
             // navigate('/')

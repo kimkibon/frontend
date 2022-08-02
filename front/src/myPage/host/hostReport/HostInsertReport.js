@@ -3,16 +3,18 @@ import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom';
 import {Button,Form} from 'react-bootstrap';
 
-const InsertReport = () => {
+const HostInsertReport = () => {
 
   const location = useLocation();
-  const report_id = location.state.REPORT_ID; //
-  const report_res_no = location.state.REPORT_RES_NO; //res_idx 받아옴
-  const report_mem_idx = location.state.REPORT_MEM_IDX;
 
-  // console.log(report_id);
-  // console.log(report_res_no);
-  // console.log(report_mem_idx);
+  // HostReserveList 에서 넘어오는 값들
+  const report_id = location.state.REPORT_ID; //mem_id -- 호스트 로컬스토리지에서 받아오는
+  const report_res_no = location.state.REPORT_RES_NO; //res_idx 받아옴 -- 예약번호
+  const report_mem_idx = location.state.REPORT_MEM_IDX; //MEM_ID .. 예약자 아이디
+
+  console.log(report_id);
+  console.log(report_res_no);
+  console.log(report_mem_idx);
 
 
   const [form, setForm] = useState({
@@ -57,7 +59,7 @@ const InsertReport = () => {
           //response의 data를 setForm의 정보로 변경
       });
       console.log(form);
-      window.location.href ="/myPage/report";
+      window.location.href ="/myPage/host/hostReport";
       
   }
 
@@ -91,4 +93,4 @@ const InsertReport = () => {
   )
 }
 
-export default InsertReport;
+export default HostInsertReport;

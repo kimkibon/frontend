@@ -9,13 +9,13 @@ async function resDate(BOARD_NO) {
       params: { 'RES_BOARD_NO': BOARD_NO }
 
     }).then(Response => {
+      console.log(Response.data)
+      const exDate = [];
 
-      Response.data.map(date => {
-        date.start = new Date(date.start);
-        date.end = new Date(date.end);
+      Response.data.map(date =>{
+        exDate.push({'start' : new Date(date.RES_DATE_START) , 'end' : new Date(date.RES_DATE_END)})
       })
-
-      resolve(Response.data)
+      resolve(exDate)
 
     }).catch(err => {
       reject(err);

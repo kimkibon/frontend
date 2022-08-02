@@ -51,7 +51,10 @@ const MemUseListPage = () => {
                 return(
                 <div>
                     <MemUseList list={list }/>
-                    <button>신고하기</button>
+                    
+                    <Link to ={'InsertReport'} 
+                        state={{'REPORT_ID': list.RES_CLI_ID, 'REPORT_RES_NO': list.RES_IDX,'REPORT_MEM_IDX':list.RES_HOST_ID}}>
+                        <button>신고하기</button></Link>
                     
                     <Link to ={'Myreview'} 
                         state={{'CLI_ID': list.RES_CLI_ID, 'RES_BOARD_NO': list.RES_BOARD_NO,'after_date':after_date,'reviewcheck':review_check}}>

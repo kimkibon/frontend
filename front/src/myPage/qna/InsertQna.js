@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-
 import {Button,Form} from 'react-bootstrap';
 
 
@@ -37,8 +36,8 @@ const InsertQna = ({}) => {
                   QNA_TITLE : (form.title),
                   MEM_ID : 'ID2',
                   QNA_CONTENT : (form.content),
-                  QNA_STATE : 1,
-                  QNA_COMMENT : 'Reply_1'
+                  QNA_STATE : 0,
+                  QNA_COMMENT : ''
               }
       }).then(Response => {
           //console.log(Response.data);
@@ -73,6 +72,8 @@ const InsertQna = ({}) => {
         <Form.Control type="text" placeholder="문의내용을 입력하세요" 
         onChange={handleChange} name="content" value={form.content} />
       </Form.Group>
+      
+      <br/>
 
       <Button variant="primary" type="submit">
         입력하기

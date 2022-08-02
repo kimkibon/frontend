@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-//import {useLocation} from 'react-router-dom';
-//import QueryString from 'qs';
-// import Table from 'react-bootstrap/Table';
-// import Alert from 'react-bootstrap/Alert';
 
 
-const DetailReport = () => {
+const HostDetailReport = () => {
     const {REPORT_IDX} = useParams();
 
     const [detail, setDetail] = useState([]);
@@ -22,13 +18,10 @@ const DetailReport = () => {
         }).then(Response => {
             console.log(Response.data);
             setDetail(Response.data);
-            //응답이 들어왔을 때 SetQnaList 함수를 사용해서 
+            //응답이 들어왔을 때 SetDetail 함수를 사용해서 
             //response의 data를 detail의 정보로 변경
         });
-      },[REPORT_IDX]);
-
-        
-        
+      },[]);
 
 
   return (
@@ -46,6 +39,8 @@ const DetailReport = () => {
             상태 : {detail.REPORT_STATE}<br/>
             아이디 : {detail.REPORT_ID}<br/>
             번호 : {detail.REPORT_IDX}<br/>
+            신고할 회원번호 : {detail.REPORT_MEM_IDX}<br/>
+            신고한 예약번호 : {detail.REPORT_RES_NO}<br/>
             
         
           </div>
@@ -54,4 +49,4 @@ const DetailReport = () => {
   );
 };
 
-export default DetailReport;
+export default HostDetailReport;

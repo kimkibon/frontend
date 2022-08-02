@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, Route, Routes } from 'react-router-dom'
+import AdminSidebar from '../commons/AdminSidebar'
 import AdminBoardReview from './adminHostBoard/AdminBoardReview'
 import AdminHostBoardDetail from './adminHostBoard/AdminHostBoardDetail'
 import AdminHostBoardList from './adminHostBoard/AdminHostBoardList'
@@ -17,7 +18,14 @@ import ResCancel from '../myPage/reserve/ResCancel';
 
 const AdminIndex = () => {
   return (
-    <div>
+      <div class="container-fluid">
+      <div class="row">
+        
+        <div class='col-lg-2'>
+          <AdminSidebar />
+        </div>
+
+        <div className='col-lg-8'>
       <Link to=''><li>admin index</li></Link>
       
       <Link to='adminBoardReview'><li>adminBoardReview</li></Link>
@@ -39,7 +47,7 @@ const AdminIndex = () => {
       <Link to='adminAllResList'><li>adminAllResList</li></Link>
 
       
-
+      
       <Routes>
         <Route path='/admin' element={<AdminIndex/>}/>
         <Route path='/adminBoardReview' element={<AdminBoardReview/>}/>
@@ -53,10 +61,10 @@ const AdminIndex = () => {
         <Route path='/adminMemberDetail/*' element={<AdminMemberDetail/>}/>
 
         <Route path='/adminQnaList' element={<AdminQnaList/>}/>
-        <Route path='/adminQnaDetail' element={<AdminQnaDetail/>}/>
+        <Route path='/adminQnaDetail/:QNA_IDX' element={<AdminQnaDetail/>}/>
 
         <Route path='/adminReportList' element={<AdminReportList/>}/>
-        <Route path='/adminReportDetail' element={<AdminReportDetail/>}/>
+        <Route path='/adminReportDetail/:REPORT_IDX' element={<AdminReportDetail/>}/>
 
         <Route path='/adminAllResList' element={<AdminAllResList/>}/>
         <Route path='/adminAllResList/adminResInfo/:RES_IDX' element={<AdminResInfo/>}/>
@@ -64,7 +72,13 @@ const AdminIndex = () => {
     
 
       </Routes>
-      
+      </div>
+
+        <div class='col-lg-2'/>
+        
+
+
+      </div>
     </div>
   )
 }

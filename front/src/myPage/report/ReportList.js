@@ -15,7 +15,7 @@ const ReportList = () => {
             url : '/GareBnB/mypage/memReportList.do' ,
             contentType:"application/json;charset=UTF-8",
             params : {
-                MEM_ID : 'MEM_2'
+                MEM_ID : 'MEM_7'
             }
         }).then(Response => {
             console.log(Response.data);
@@ -28,12 +28,12 @@ const ReportList = () => {
 
 
 
-  return (
+  return ( 
         <>
             <hr/>
             <h3> 신고 내역 </h3>
             <hr/>
-            <Table striped width="920px" height="30px">
+            <Table striped width="900px" height="30px">
               <tbody>
                 <tr>
                   <td width="50px">IDX</td>
@@ -41,7 +41,7 @@ const ReportList = () => {
                   <td width="200px">TITLE</td>
                   <td width="200px">CONTENT</td>
                   <td width="100px">DATE</td>
-                  <td width="50px"></td>
+                  <td width="90px"></td>
                 </tr>
               </tbody>
             </Table>          
