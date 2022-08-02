@@ -226,21 +226,21 @@ const BoardDetail = () => {
         <BoardDelete
           show={deleteModal}
           onHide={() => setDeleteModal(false)}
-          state={boardDetail.BOARD_NO}
+          state={param}
         />
         {/* 삭제 버튼 모달창 */}
 
         <ConfirmBoard
           show={confirmModal}
           onHide={() => setConfirmModal(false)}
-          state={boardDetail.BOARD_NO}
+          state={param}
         />
         {/* 등록 승인 모달창 */}
 
         <Refuse
           show={refuseModal}
           onHide={() => setRefuseModal(false)}
-          state={boardDetail.BOARD_NO}
+          state={param}
         />
         {/* 등록 거절 모달창 */}
 

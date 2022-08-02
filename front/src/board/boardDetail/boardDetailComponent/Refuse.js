@@ -10,9 +10,10 @@ const Refuse = (props) => {
     const onClick = () => {
         axios({
             method :'post',
-            url : '/GareBnB/Admin/hostBoardDeny',
+            url : '/GareBnB/Admin/hostBoardDeny.do',
             params : {
-                'BOARD_NO' : props.state
+                'BOARD_NO' : props.state.BOARD_NO,
+                'BOARD_MODIFY_NO' : props.state.BOARD_MODIFY_NO
             }
         }).then(()=> {
             // navigate('/')
