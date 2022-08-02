@@ -15,7 +15,7 @@ const HostModify = () => {
 
   const [insertModal, setInsertModal] = React.useState(false);
   const [showAddrModal, setShowAddrModal] = React.useState(false);
-  const [insertFiles, setInsertFiles] = useState([]);
+  const [insertFiles, setInsertFiles] = useState(hostfile);
 
   const [hostModify , setHostModify] = useState ({ // hostModify 초기값으로 mem의 값 지정
     MEM_ID : mem.MEM_ID,
