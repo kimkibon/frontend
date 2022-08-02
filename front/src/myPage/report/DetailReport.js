@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 //import {useLocation} from 'react-router-dom';
 //import QueryString from 'qs';
 // import Table from 'react-bootstrap/Table';
@@ -27,30 +27,68 @@ const DetailReport = () => {
         });
       },[REPORT_IDX]);
 
-        
+
+      const state = detail.REPORT_STATE;
+      const comment = detail.REPORT_COMMENT;
+      console.log(state); //미답변:0, 답변완료:1
+      const navigate = useNavigate(); //확인 누르면 뒤로가기  
         
 
 
   return (
-    <div>
+
+    <div className='container'>
+      <div className='top'>
+          <h5>상세보기</h5>
+        <hr/>
+
+        <div className='title'>
+          <h2>{detail.REPORT_TITLE}</h2>
+        </div>
+
+        <div className='row'>
+          <div className='col-lg-10'>{detail.REPORT_ID}</div>
+          <div className='col-lg-2'>{detail.REPORT_DATE}</div>
+        </div>
+      </div>
+
       <hr/>
-      <h1>상세보기</h1>
+      <div class="con mt-3">
+        <label className="content mt-2 pl-4" >
+        {detail.REPORT_CONTENT}
+        </label>
+      </div>
+
       <hr/>
 
-          <div>
+      <p>문의답변</p>
+      <div class="com mt-1">
+        <label className="comment mt-2" >
+          {state === '미답변' ?
+           <p>답변이 등록되지 않았습니다.</p>:
+           comment
+           } 
+        </label>
+      </div>
+      
+      <br/>
 
-            제목 : {detail.REPORT_TITLE}<br/>
-            내용 : {detail.REPORT_CONTENT}<br/>
-            답변 : {detail.REPORT_COMMENT}<br/>
-            날짜 : {detail.REPORT_DATE}<br/>
-            상태 : {detail.REPORT_STATE}<br/>
-            아이디 : {detail.REPORT_ID}<br/>
-            번호 : {detail.REPORT_IDX}<br/>
-            
-        
-          </div>
+      <div className='col-lg-12 text-lg-center'>
+        <button type="button" class="btn btn-success"  
+        onClick={(e)=>{ e.preventDefault(); navigate(-1); }}>확인</button>
+      </div> 
           
-    </div>          
+    </div>    
+
+    //         제목 : {detail.REPORT_TITLE}<br/>
+    //         내용 : {detail.REPORT_CONTENT}<br/>
+    //         답변 : {detail.REPORT_COMMENT}<br/>
+    //         날짜 : {detail.REPORT_DATE}<br/>
+    //         상태 : {detail.REPORT_STATE}<br/>
+    //         아이디 : {detail.REPORT_ID}<br/>
+    //         번호 : {detail.REPORT_IDX}<br/>
+            
+      
   );
 };
 

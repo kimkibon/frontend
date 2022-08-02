@@ -33,15 +33,15 @@ const ReportList = () => {
             <hr/>
             <h3> 신고 내역 </h3>
             <hr/>
-            <Table striped width="900px" height="30px">
+            <Table striped width="920px" height="30px">
               <tbody>
                 <tr>
-                  <td width="50px">IDX</td>
-                  <td width="70px">STATE</td>
+                  <td width="50px">IDX</td> 
+                  <td width="70px">ID</td>
                   <td width="200px">TITLE</td>
-                  <td width="200px">CONTENT</td>
                   <td width="100px">DATE</td>
-                  <td width="90px"></td>
+                  <td width="70px">STATE</td>
+                  <td width="70px"></td>
                 </tr>
               </tbody>
             </Table>          

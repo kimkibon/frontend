@@ -29,6 +29,9 @@ const DetailQna = () => {
       },[]);
 
 
+      const state = detail.QNA_STATE;
+      const comment = detail.QNA_COMMENT;
+      console.log(state); //미답변:0, 답변완료:1
       const navigate = useNavigate();
        
         
@@ -62,10 +65,15 @@ const DetailQna = () => {
       <p>문의답변</p>
       <div class="com mt-1">
         <label className="comment mt-2" >
-          {detail.QNA_COMMENT}
+        <label className="comment mt-2" >
+          {state === '미답변' ?
+           <p>답변이 등록되지 않았습니다.</p>:
+           comment
+           } 
+        </label>
         </label>
       </div>
-      
+
       {/* 
                   상태 : {detail.QNA_STATE}<br/>
                   번호 : {detail.QNA_IDX}<br/> */}
