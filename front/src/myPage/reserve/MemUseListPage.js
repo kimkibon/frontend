@@ -7,7 +7,7 @@ import MemUseList from "./MemUseList";
 
 const MemUseListPage = () => {
     const [resComList, setResComList] = useState([]);
-    const mem_id = 'MEM_7';
+    const mem_id = localStorage.getItem("MEM_ID");
     //이용내역
     useEffect(() => {
         axios({
@@ -60,18 +60,18 @@ const MemUseListPage = () => {
                                         <div class="d-flex flex-column mt-4">
                                             <Link to ={'InsertReport'} 
                                                 state={{'REPORT_ID': list.RES_CLI_ID, 'REPORT_RES_NO': list.RES_IDX,'REPORT_MEM_IDX':list.RES_HOST_ID}}>
-                                                <button>신고하기</button></Link>
+                                                <button class="btn btn-danger">신고하기</button></Link>
                                             
                                             <Link to ={'Myreview'} 
                                                 state={{'CLI_ID': list.RES_CLI_ID, 'RES_BOARD_NO': list.RES_BOARD_NO,'after_date':after_date,'reviewcheck':review_check}}>
-                                                <button>리뷰확인</button></Link>                    
+                                                <button type="button" class="btn btn-primary">리뷰확인</button></Link>                    
                                             
                                             {new Date().getTime()<after_date ?
                                                                         (review_check===0 ? 
                                                                                         <Link to ={'InsertReview'} state={{'REVIEW_MEM_ID': list.RES_CLI_ID, 'BOARD_NO': list.RES_BOARD_NO}}>
-                                                                                        <button>리뷰쓰기</button></Link>
-                                                                                            :<input type='button' disabled value='리뷰쓰기'/>)
-                                                                            :<input type='button' disabled value='리뷰쓰기'/>}
+                                                                                        <button type="button" class="btn btn-primary">리뷰쓰기</button></Link>
+                                                                                            :<Link to="" className="disable-link"><button type="button" class="btn btn-outline-primary" disabled>리뷰쓰기</button></Link>)
+                                                                            :<Link to="" className="disable-link"><button type="button" class="btn btn-outline-primary" disabled>리뷰쓰기</button></Link>}
                                         </div>
                                     </div>            
                                 </div>

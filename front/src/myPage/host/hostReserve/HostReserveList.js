@@ -40,6 +40,7 @@ const mem_idx = 15;
 
 const HostReserveList = () => {
   const [resList, setResList] = useState([]);
+  const mem_id = localStorage.getItem("MEM_ID");
 
   useEffect(() => {
     axios({
@@ -55,7 +56,7 @@ const HostReserveList = () => {
       //파일 불러오기
         const url = Response.data.map(async list =>{
 
-          await SelectOneFile('0',list.RES_BOARD_NO).then(Res=>{
+          await SelectOneFile('0',list.RES_BOARD_NO, list.RES_BOARD_MODIFY_NO).then(Res=>{
             list['URL'] = "data:image/;base64,"+Res.URL
           });
           return list;
