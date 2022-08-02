@@ -59,7 +59,6 @@ const HostModify = () => {
     setInsertFiles(image);
   }
 
-console.log(insertFiles)
 
    const updateOnClick = () => {
 
@@ -140,7 +139,7 @@ console.log(insertFiles)
           onHide={() => setInsertModal(false)}
           props={{
             'hostModify': hostModify,
-            'updateFiles' : hostfile,
+            'updateFiles' : insertFiles,
             'fileType': '1',
           }}/>
 

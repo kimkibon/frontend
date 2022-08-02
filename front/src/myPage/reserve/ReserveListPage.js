@@ -35,7 +35,7 @@ const ReserveListPage = () => {
     //level 4보다 작은 계정들은 접근 가능
     //Auth(4 , navigate).then(Response => {
     //  setAuthor(Response)
-
+    
       //예약리스트가져오기
       axios({
 
@@ -199,7 +199,7 @@ const ReserveListPage = () => {
                   
                     <div class="row p-2 bg-white border rounded">
 
-                        <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src={list.URL}/><p/>
+                        <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src={list.URL} width="200px" height="auto"/><p/>
                           {resstate === 4 && (list.RES_REJ)!=null && 
                               <div>
                                <button type="button" class="btn btn-warning" onClick={()=>{alert(list.RES_REJ)}}>거절사유보기</button>
@@ -240,9 +240,9 @@ const ReserveListPage = () => {
 
 
                             {/* 결제대기상태 */}
-                            {/* {resstate === 2 && 
+                            {resstate === 2 && 
                                 <Payment price={list.PRICE} title={list.BOARD_TITLE} booker={localStorage.getItem('MEM_ID')} res_idx={list.RES_IDX}/>
-                            } */}
+                            }
 
 
                             {/* 예약취소상태 */}

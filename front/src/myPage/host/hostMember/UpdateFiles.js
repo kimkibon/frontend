@@ -18,6 +18,7 @@ async function UpdateFiles(file, MEM_IDX, index, FILE_BOARD_TYPE) {
                 'BOARD_NO': MEM_IDX,
                 'FILE_BOARD_TYPE': FILE_BOARD_TYPE,
                 'FILE_LEVEL': index,
+                "FILE_MODIFY_NO" : '0'
             },
             data: formData,
             mode: 'cors'
