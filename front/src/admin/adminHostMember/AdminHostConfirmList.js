@@ -1,6 +1,8 @@
 import React, { useState , useEffect} from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import './table.css'
+
 
 const AdminHostConfirmList = () => {
 
@@ -20,23 +22,23 @@ const AdminHostConfirmList = () => {
 
   return (
     <div>
-      <h1>호스트 등록 요청 리스트</h1> 
-    <table border="3">
-      <thead>
-            <tr align="center">
-            <td width = "100">번호(IDX)</td>
-            <td width = "200">이름</td>
-            <td width = "200">아이디</td>
-            <td width = "200">비밀번호</td>
-            <td width = "200">휴대폰번호</td>
-          </tr>
-      </thead>
+      <h1>호스트 등록 요청 리스트</h1> <br/>
+    <table>
+      <tr align="center">
+        <th width = "100"> 번호(IDX)</th>
+        <th width = "200"> 이름</th>
+        <th width = "200">아이디</th>
+        <th width = "200">비밀번호</th>
+        <th width = "200">휴대폰번호</th>      
+      </tr>
      {hostResList.map((list)=> {
       return (
         <tbody key={list.MEM_IDX}>
           <tr align="center">
-            <Link to = {'/admin/AdminHostConfirmDetail/'+list.MEM_IDX} state = {{'MEM_IDX' : list.MEM_IDX}}>
-            <td>{list.MEM_IDX}</td></Link>
+            <td>
+              <Link to = {'/admin/AdminHostConfirmDetail/'+list.MEM_IDX} state = {{'MEM_IDX' : list.MEM_IDX}}>
+              {list.MEM_IDX}</Link>
+            </td>
             <td>{list.MEM_NAME}</td>
             <td>{list.MEM_ID}</td>
             <td>{list.MEM_PW}</td>
