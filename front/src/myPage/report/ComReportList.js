@@ -5,7 +5,7 @@ import Table from 'react-bootstrap/Table';
 import {Button} from 'react-bootstrap';
 
 const ComReportList = (props) => {
-    const {REPORT_IDX, REPORT_TITLE, REPORT_CONTENT, REPORT_DATE, REPORT_STATE} = props.list;
+    const {REPORT_IDX, REPORT_ID, REPORT_TITLE, REPORT_CONTENT, REPORT_DATE, REPORT_STATE} = props.list;
 
     const handleRemove = (e) => { //버튼이 눌리면 실행이될
         e.preventDefault();
@@ -28,19 +28,19 @@ const ComReportList = (props) => {
 
     return(
             <div>               
-                <Table width="900px" height="30px" className='table table-hover'>
+                <Table width="920px" height="30px" className='table table-hover'>
                     <tbody>
                         <tr>
                         <td width="50px">{REPORT_IDX}</td>
-                        <td width="70px">{REPORT_STATE}</td>
+                        <td width="70px">{REPORT_ID}</td>
                         <td width="200px">
                           <Link to ={"./DetailReport/"+REPORT_IDX} >
                             {REPORT_TITLE}
                           </Link>
                         </td>
-                        <td width="200px">{REPORT_CONTENT}</td>
                         <td width="100px">{REPORT_DATE}</td>
-                        <td width="90px">
+                        <td width="70px">{REPORT_STATE}</td>
+                        <td width="70px">
                             <Button onClick={handleRemove}> 삭제 </Button>
                         </td> 
                         </tr>

@@ -12,21 +12,8 @@ const HostBoardModifyForm = () => {
     const file = location.state.file;
     const [insertModal, setInsertModal] = React.useState(false);
     const [showAddrModal, setShowAddrModal] = React.useState(false);
-    const [insertFiles, setInsertFiles] = useState([]);
-    const [insertBoard, setInsertBoard] = useState({
-        'BOARD_NO': '',
-        'BOARD_HOST_ID': '',     // 로컬 스토리지에서 가져오기 테스트 코드 나중에 수정해야함
-        'BOARD_HOST_IDX': '',    // 어디서 가져오지 ? 서버에서 ? 테스트 코드 나중에 수정해야함
-        'BOARD_TITLE': '',       // 입력 받음
-        'BOARD_CONTENT': '',     // 입력 받음 
-        'BOARD_ADDR1': '',       //입력 받음
-        'BOARD_ADDR2': '',       //입력 받음
-        'BOARD_POST': '',        //우편번호인가? 어디서 가져오지? 카카오 api 위치 정하기 ?
-        'BOARD_PRICE': '',       // 입력 받음
-        'BOARD_CARE_NO': '1',     //입력 받음
-        'BOARD_DATE_START': new Date().toISOString().slice(0, 10).replace(/-/g, "/"),  //모달 데이트 피커?
-        'BOARD_DATE_END': new Date().toISOString().slice(0, 10).replace(/-/g, "/"),    //모달 데이트 피커 ? 
-    });
+    const [insertFiles, setInsertFiles] = useState();
+    const [insertBoard, setInsertBoard] = useState(boardDetail);
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
     //변경 내용 저장 확인
@@ -48,10 +35,9 @@ const HostBoardModifyForm = () => {
     //변수 초기화 
 
     useEffect(() => {
-
         setInsertBoard(boardDetail)
-        console.log(boardDetail)
-        console.log(file)
+        setInsertFiles(file)
+        console.log(file);
     }, location)
 
     //초기값 부여
@@ -63,7 +49,6 @@ const HostBoardModifyForm = () => {
             'BOARD_POST': data.BOARD_POST
         })
         setShowAddrModal(false)
-        console.log(insertBoard)
     }
 
     const onChange = (dates) => {
@@ -83,7 +68,6 @@ const HostBoardModifyForm = () => {
             ...insertBoard,
             [name]: value
         })
-        console.log(insertBoard)
     };
 
     //글 입력 내용이 변경되면 변수에 저장. 

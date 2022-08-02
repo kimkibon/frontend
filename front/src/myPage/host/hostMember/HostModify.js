@@ -57,7 +57,8 @@ const HostModify = () => {
      // 미리보기로 만들어진 이미지를 저장 
   const getImages = (image) => {
     setInsertFiles(image);
-   }
+  }
+
 
    const updateOnClick = () => {
 
@@ -138,8 +139,7 @@ const HostModify = () => {
           onHide={() => setInsertModal(false)}
           props={{
             'hostModify': hostModify,
-            'deleteFiles' : hostfile,
-            'insertFiles': insertFiles,
+            'updateFiles' : insertFiles,
             'fileType': '1',
           }}/>
 
