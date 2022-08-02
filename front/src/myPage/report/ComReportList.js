@@ -5,11 +5,11 @@ import Table from 'react-bootstrap/Table';
 import {Button} from 'react-bootstrap';
 
 const ComReportList = (props) => {
-    const {REPORT_IDX, REPORT_ID, REPORT_TITLE, REPORT_CONTENT, REPORT_DATE, REPORT_STATE} = props.list;
+    const {REPORT_IDX, REPORT_ID, REPORT_TITLE, REPORT_DATE, REPORT_STATE} = props.list;
 
     const handleRemove = (e) => { //버튼이 눌리면 실행이될
         e.preventDefault();
-
+        if (window.confirm("정말 삭제합니까?")) {
           axios({ //통신으로 정보 받아오기
               method : 'post' ,
               url : '/GareBnB/mypage/deleteQna.do' ,
@@ -24,6 +24,10 @@ const ComReportList = (props) => {
               //응답이 들어왔을 때 SetForm 함수를 사용해서 
               //response의 data를 setForm의 정보로 변경
           });
+          alert("삭제되었습니다.");
+            } else {
+            alert("취소합니다.");
+            }
       };
 
     return(
