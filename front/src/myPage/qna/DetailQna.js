@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 //import {useLocation} from 'react-router-dom';
 //import QueryString from 'qs';
 // import Table from 'react-bootstrap/Table';
 // import Alert from 'react-bootstrap/Alert';
+import './detail.css';
 
 
 const DetailQna = () => {
@@ -27,35 +28,61 @@ const DetailQna = () => {
         });
       },[]);
 
-        
+
+      const state = detail.QNA_STATE;
+      const comment = detail.QNA_COMMENT;
+      console.log(state); //미답변:0, 답변완료:1
+      const navigate = useNavigate();
+       
         
 
 
   return (
-    <div>
+    <div className='container'>
+      <div className='top'>
+          <h5>상세보기</h5>
+        <hr/>
+
+        <div className='title'>
+          <h2>{detail.QNA_TITLE}</h2>
+        </div>
+
+        <div className='row'>
+          <div className='col-lg-10'>{detail.QNA_ID}</div>
+          <div className='col-lg-2'>{detail.QNA_DATE}</div>
+        </div>
+      </div>
+
       <hr/>
-      <h1>상세보기</h1>
+      <div class="con mt-3">
+        <label className="content mt-2 pl-4" >
+          {detail.QNA_CONTENT}
+        </label>
+      </div>
+
       <hr/>
 
-          <div>
-            {/* 제목 : {QNA_TITLE}<br/>
-            내용 : {QNA_CONTENT}<br/>
-            답변 : {QNA_COMMENT}<br/>
-            날짜 : {QNA_DATE}<br/>
-            상태 : {QNA_STATE}<br/>
-            아이디 : {QNA_ID}<br/>
-            번호 : {QNA_IDX}<br/> */}
+      <p>문의답변</p>
+      <div class="com mt-1">
+        <label className="comment mt-2" >
+        <label className="comment mt-2" >
+          {state === '미답변' ?
+           <p>답변이 등록되지 않았습니다.</p>:
+           comment
+           } 
+        </label>
+        </label>
+      </div>
 
-            제목 : {detail.QNA_TITLE}<br/>
-            내용 : {detail.QNA_CONTENT}<br/>
-            답변 : {detail.QNA_COMMENT}<br/>
-            날짜 : {detail.QNA_DATE}<br/>
-            상태 : {detail.QNA_STATE}<br/>
-            아이디 : {detail.QNA_ID}<br/>
-            번호 : {detail.QNA_IDX}<br/>
-            
-        
-          </div>
+      {/* 
+                  상태 : {detail.QNA_STATE}<br/>
+                  번호 : {detail.QNA_IDX}<br/> */}
+      <br/>
+
+      <div className='col-lg-12 text-lg-center'>
+        <button type="button" class="btn btn-success"  
+        onClick={(e)=>{ e.preventDefault(); navigate(-1); }}>확인</button>
+      </div> 
           
     </div>          
   );

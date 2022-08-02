@@ -7,8 +7,6 @@ import MyPageIndex from './myPage/MyPageIndex';
 import LoginIndex from './login/LoginIndex';
 import BoardIndex from './board/BoardIndex';
 import AdminIndex from './admin/AdminIndex';
-import { Container, Row, Col } from 'react-bootstrap';
-import Sidebar from './commons/Sidebar';
 
 function App() {
   return (
@@ -25,7 +23,9 @@ function App() {
                 <Route path='/join/*' element={<Join />} />
                 <Route path='/login/*' element={<LoginIndex />} />
                 <Route path='/myPage/*' element={<MyPageIndex />} />
+                
                 <Route path='/board/*' element={<BoardIndex />} />
+                
                 <Route path='/admin/*' element={<AdminIndex />} />
               </Routes>      
           </div>

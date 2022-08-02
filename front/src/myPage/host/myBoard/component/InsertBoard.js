@@ -15,9 +15,8 @@ const InsertBoard = (props) => {
   const InsertBoard = async (e) => {
     e.preventDefault();
     e.persist();
-
     const files = insertFiles.map(file => {
-      let arr = file.url.split(','),
+      let arr = file.URL.split(','),
         mime = arr[0].match(/:(.*?);/)[1],
         bstr = atob(arr[1]),
         n = bstr.length,
@@ -27,7 +26,7 @@ const InsertBoard = (props) => {
         u8arr[n] = bstr.charCodeAt(n);
       }
       return (
-        new File([u8arr], file.fileName, { type: mime })
+        new File([u8arr], file.FILE_NAME, { type: mime })
       )
     })
 
@@ -40,10 +39,10 @@ const InsertBoard = (props) => {
       //보드 인서트 리턴으로 보드 넘버를 받아옴
     }).then(async Response => {
 
-      console.log(Response)
+      console.log(files)
 
       files.map(async (file, index) => {
-
+        
         if(postUrl === '/GareBnB/host/mypage/myboardPut.do'){
           FILE_MODIFY_NO = '0'
           BOARD_NO = Response.data.BOARD_NO
@@ -63,6 +62,8 @@ const InsertBoard = (props) => {
     <Modal
       {...props}
     >
+      {    console.log(insertFiles)
+}
       <Modal.Header closeButton>
         <Modal.Title>글 등록 확인</Modal.Title>
       </Modal.Header>

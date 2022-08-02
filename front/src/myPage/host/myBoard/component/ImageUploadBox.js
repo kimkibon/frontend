@@ -15,7 +15,7 @@ function ImageUploadBox(props) {
         if (props.beforeImages !== undefined) {
             console.log(props)
             props.beforeImages.map(file => {
-                setImageFile((imageFile) => [...imageFile, file.URL]);
+                setImageFile((imageFile) => [...imageFile, file]);
                 setUploadedImages((uploadedImages) => [...uploadedImages, file.URL]);
             })
         }
@@ -33,7 +33,7 @@ function ImageUploadBox(props) {
                 reader.onloadend = (e) => {
                     const result = e.target.result;
                     if (result) {
-                        const resultSet = { fileName: fileName, url: result }
+                        const resultSet = { FILE_NAME: fileName, URL: result }
                         setImageFile((imageFile) => [...imageFile, resultSet]);
                         setUploadedImages((state) => [...state, result].slice(0, max));
                     }

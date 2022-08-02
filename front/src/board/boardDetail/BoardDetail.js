@@ -59,7 +59,7 @@ const BoardDetail = () => {
 
   useEffect(() => {
 
-    // Auth(4 , navigate).then(Response => {
+    // Auth(4, navigate).then(Response => {
 
     //   setAuthor(Response)
 
@@ -100,9 +100,9 @@ const BoardDetail = () => {
       })
       // 서버에서 예약 내역 시간을 리턴 받음
     // }).catch(err => {
-      
+
     // })
-    
+
   }, []) // param이 바뀔 때 마다 실행되도록 설정해서 무의미한 재실행을 막음. 
   return (
     <>
@@ -175,11 +175,9 @@ const BoardDetail = () => {
                   등록 거절
                 </button>
 
-                <Link to='' state={boardDetail.BOARD_NO}>
-                  <button className="btn btn-primary" type="button">
-                    등록 승인
-                  </button>
-                </Link>
+                <button className="btn btn-primary" type="button" onClick={() => setConfirmModal(true)}>
+                  등록 승인
+                </button>
               </div>
             }
 

@@ -1,0 +1,25 @@
+
+body
+{
+    min-height: 100vh;
+    background: #ffffff;
+}
+
+.top h5 {
+    margin-left: 0;
+    margin-right: 0;
+    text-align: center;
+}
+
+.con {
+    height: 250px;
+    
+}
+
+.com {
+    height: 150px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #94B49F;
+    border-radius: 8px;
+}
