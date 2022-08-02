@@ -21,7 +21,7 @@ async function Auth(BOARD_LEVEL , navigate) {
             url: "/GareBnB/Auth.do",
             params: { 'MEM_ID': id }
         }).then(Response => {
-            if (Response.data.MEM_LEVEL > BOARD_LEVEL) {
+            if (Response.data.MEM_LEVEL >= BOARD_LEVEL) {
                 alert("권한이 없습니다.");
                 navigate(-1);
             } else {
