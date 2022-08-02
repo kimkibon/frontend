@@ -9,7 +9,12 @@ const AdminHostBoardList = () => {
   useEffect(() => {
     axios({
       method: 'get',
-      url: '/GareBnB/Admin/hostBoardList.do'
+      url: '/GareBnB/Admin/hostBoardList.do',
+      params : {
+        'BOARD_CARE_NO' : 1,
+        'BOARD_ADDR1' : '장위동',
+        'BOARD_CONFIRM' : '0'
+      }
       //서버에서 리스트 요청
     }).then(Response => {
       setBoard(Response.data)
