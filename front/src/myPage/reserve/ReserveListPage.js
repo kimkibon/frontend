@@ -6,16 +6,16 @@ import SelectOneFile from "../../commons/Files/SelectOneFile";
 import './resstyle.css'
 
 //예약상태
-const ResState = (state) => {
-  switch (state) {
-    case 0: return '예약요청'
-    case 1: return '예약승인'
-    case 2: return '결제대기'
-    case 3: return '결제/예약완료'
-    case 4: return '예약취소'
-  }
+// const ResState = (state) => {
+//   switch (state) {
+//     case 0: return '예약요청'
+//     case 1: return '예약승인'
+//     case 2: return '결제대기'
+//     case 3: return '결제/예약완료'
+//     case 4: return '예약취소'
+//   }
 
-}
+// }
 
 const ReserveListPage = () => {
   const [resList, setResList] = useState([]); //예약리스트 받아오는 변수
@@ -51,7 +51,6 @@ const ReserveListPage = () => {
         });
         return list;
       })
-      //console.log(url);
 
       Promise.all(url).then((data) => { setResList(data) });
       //setResList(Response.data);
@@ -62,7 +61,7 @@ const ReserveListPage = () => {
   }, []);
 
 
-  //getElementId 사용 또는 ref 사용 반드시!중복 너무 많아
+  //예약 상태에 따른 step bar 변화
   const stateChange = (state) => {
     let a, b, c, d
 
