@@ -45,7 +45,7 @@ const ResRequest = (res) => {
   useEffect(() => {
 
     const request = {
-      'RES_CLI_ID': 'MEM_ID',
+      'RES_CLI_ID': localStorage.getItem('MEM_ID'),
       'MEM_ID': resData.RES_HOST_ID,
       'BOARD_NO': resData.RES_BOARD_NO,
       'RES_DATE_START': startDate.toISOString().slice(0,10).replace(/-/g,"/"),
