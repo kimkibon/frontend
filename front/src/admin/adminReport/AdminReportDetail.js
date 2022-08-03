@@ -4,7 +4,7 @@ import axios from 'axios';
 import {useLocation} from 'react-router-dom';
  import Table from 'react-bootstrap/Table';
  import {Button,Form} from 'react-bootstrap';
-// import Alert from 'react-bootstrap/Alert';
+ import { useNavigate } from 'react-router-dom';
 
 
 const AdminReportDetail = () => {
@@ -87,7 +87,8 @@ const AdminReportDetail = () => {
         )
       }
 
-
+      const navigate = useNavigate();
+      
   
      return (
     
@@ -138,11 +139,12 @@ const AdminReportDetail = () => {
           <p className="card-text">{detail.REPORT_COMMENT}</p>
         </div>
       </div>
-      <div className="col text-center">
-      <button type="submit" className="btn btn-primary float-right" >수정</button>
-      </div>
       </>
       }
+      <div className='col-lg-12 text-lg-center'>
+        <button type="button" class="btn btn-success"  
+        onClick={(e)=>{ e.preventDefault(); navigate(-1); }}>확인</button>
+      </div> 
       </div>  
     </div>          
   );
