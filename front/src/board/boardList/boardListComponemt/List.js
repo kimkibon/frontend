@@ -13,23 +13,12 @@ const List = (board) => {
 
             <div className="col" key={list.BOARD_NO}>
               <div className="card shadow-sm">
-                <svg
-                  className="bd-placeholder-img card-img-top"
-                  width="100%"
-                  height="225"
-                  xmlns="http://www.w3.org/2000/svg"
-                  role="img"
-                  aria-label="Placeholder: Thumbnail"
-                  preserveAspectRatio="xMidYMid slice"
-                  focusable="false"
-                >
-                  <title>Placeholder</title>
+                
                   <img
                     className="d-block w-100"
                     src={list.URL}
                     alt=""
                   />
-                </svg>
 
                 <div className="card-body">
                   <h4 className="card-text">
