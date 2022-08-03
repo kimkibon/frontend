@@ -108,7 +108,9 @@ const MemChange = () => {
   }
 
   return (
-    <div>
+       <div className="container">
+      <section className="row border border-primary">
+      <div className="col-md-6">
       <h2>호스트 전환하기</h2>
       <div>
       <Form.Group>
