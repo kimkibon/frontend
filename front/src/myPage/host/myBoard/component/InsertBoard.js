@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React from 'react'
 import { Button, Modal } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import InsertFiles from './InsertFiles';
 
 const InsertBoard = (props) => {
@@ -8,6 +9,7 @@ const InsertBoard = (props) => {
   const insertFiles = props.props.insertFiles;
   const FILE_BOARD_TYPE = props.props.fileType;
   const postUrl = props.props.postUrl;
+  const navigate = useNavigate();
   let BOARD_NO , FILE_MODIFY_NO
 
   //변수 초기 세팅
@@ -54,7 +56,9 @@ const InsertBoard = (props) => {
         await InsertFiles(file, BOARD_NO  , index , FILE_MODIFY_NO , FILE_BOARD_TYPE);
 
       })
-      
+      return(Response);
+    }).then(res => {
+      navigate('/myPage/host/hostBoardList');
     })
     // 받아온 보드 넘버로 이미지 파일을 업로드
   }
