@@ -12,9 +12,9 @@ const Sidebar = () => {
 
   return (
     <div className='col'>
-      
+
         <div className='navigation'>
-          <ul>
+          <ul className='big_menu1'>
           <li>
               <Link to='/myPage/ReserveListPage'>
                 <span className='icon'><AiFillDatabase className='fa'/></span>
@@ -63,17 +63,29 @@ const Sidebar = () => {
                 <span className='title'>admin 메뉴들</span>
               </Link>
           </li>
-
+          </ul>
+          
+          <ul className='big_menu2'>
           <li>
               <Link to="/myPage/host">
                 <span className='icon'><AiFillInteraction/></span>
                 <span className='title'>host 메뉴들</span>
               </Link>
           </li>
+              <ul class="left_sub_menu">
+                    <li><a href="#">소메뉴1-1</a></li>
+                    <li><a href="#">소메뉴1-2</a></li>
+                    <li><a href="#">소메뉴1-3</a></li>
+                    <li><a href="#">소메뉴1-4</a></li>
+              </ul>
           </ul>
         </div>
 
         {/* <div class="toggle"><AiOutlineMenu className='fa' onClick={toggleMenu()}/></div> */}
+
+        <div className='submenu'>
+
+        </div>
         
               
 </div>
