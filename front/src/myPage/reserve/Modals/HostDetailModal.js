@@ -24,7 +24,7 @@ const HostDetailModal =(props) => {
      
     useEffect(() => {
   
-  
+      if(hostId !== undefined){
       //호스트정보 가져오기
       axios({
   
@@ -32,7 +32,7 @@ const HostDetailModal =(props) => {
           url : '/GareBnB/myPage/hostDetail.do' ,
           contentType:"application/json;charset=UTF-8",
           params : {
-            MEM_ID : hostId
+            MEM_ID :props.state.hostId
       
           }
       }).then(Response => {
@@ -45,7 +45,7 @@ const HostDetailModal =(props) => {
   
       });
   
-  
+    }
     } ,[]);
   
   

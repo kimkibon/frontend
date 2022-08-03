@@ -179,7 +179,14 @@ const ReserveListPage = () => {
 
                     
                     {[1, 2, 3].includes(resstate) && 
-                      <button type="button" class="btn btn-success" onClick={() => hostModal(list.HOST_ID)}>호스트정보</button>}                  
+                      <button 
+                      type="button" 
+                      class="btn btn-success" 
+                      onClick={() => hostModal(list.HOST_ID)}
+                      >
+                        호스트정보
+                      </button>
+                      }                  
                   
 
 
