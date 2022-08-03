@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Modal } from 'react-bootstrap';
 import ReactDatePicker from 'react-datepicker';
 import { useNavigate } from 'react-router-dom';
@@ -43,14 +43,14 @@ const HostBoardForm = () => {
     BOARD_DATE_END
   } = insertBoard;
   //변수 초기화 
-
-  Auth(2 , Navigate).then(Res =>{
-    setInsertBoard({
-      ...insertBoard,
-      'BOARD_HOST_IDX' : Res.MEM_IDX
+  useEffect(()=>{
+    Auth(2 , Navigate).then(Res =>{
+      setInsertBoard({
+        ...insertBoard,
+        'BOARD_HOST_IDX' : Res.MEM_IDX
+      })
     })
-  })
-
+  },[])
   const setAddrInfo = (data) => {
     setInsertBoard({
       ...insertBoard,
