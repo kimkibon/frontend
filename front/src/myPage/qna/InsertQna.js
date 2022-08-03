@@ -1,9 +1,16 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import {Button,Form} from 'react-bootstrap';
+import { useNavigate } from "react-router-dom";
+import Auth from "../../login/Auth";
 
 
 const InsertQna = ({}) => {
+
+  //Auth
+  const mem_id = localStorage.getItem("MEM_ID");//로컬스토리지에서 로그인한 계정의 아이디 전달
+  const [author, setAuthor] = useState({});
+  const navigate = useNavigate();
 
   const [form, setForm] = useState({ //book, setBook 랑 같은거
     title : '',
@@ -34,7 +41,7 @@ const InsertQna = ({}) => {
               contentType:"application/json;charset=UTF-8",
               params : {
                   QNA_TITLE : (form.title),
-                  MEM_ID : 'ID2',
+                  MEM_ID : mem_id,
                   QNA_CONTENT : (form.content),
                   QNA_STATE : 0,
                   QNA_COMMENT : ''
@@ -63,7 +70,7 @@ const InsertQna = ({}) => {
       <Form.Group controlId="formBasicEmail">
         <Form.Label>TITLE</Form.Label>
         <Form.Control type="text" placeholder="제목을 입력하세요"
-        onChange={handleChange} name="title" value={form.title} />
+        onChange={handleChange} name="title" value={form.title} maxlength="16" />
         {/* onChange는 실행이 될때마다 뭔가가 바꾸니는것 */}
       </Form.Group>
 
@@ -75,9 +82,11 @@ const InsertQna = ({}) => {
       
       <br/>
 
+    <div className='col-lg-12 text-lg-center'>
       <Button variant="primary" type="submit">
         입력하기
       </Button>
+    </div>
     </Form>
 
     </div>

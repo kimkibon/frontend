@@ -43,7 +43,7 @@ const DetailQna = () => {
           <h5>상세보기</h5>
         <hr/>
 
-        <div className='title'>
+        <div className='dtitle'>
           <h2>{detail.QNA_TITLE}</h2>
         </div>
 
@@ -55,23 +55,19 @@ const DetailQna = () => {
 
       <hr/>
       <div class="con mt-3">
-        <label className="content mt-2 pl-4" >
           {detail.QNA_CONTENT}
-        </label>
       </div>
 
       <hr/>
 
       <p>문의답변</p>
-      <div class="com mt-1">
-        <label className="comment mt-2" >
-        <label className="comment mt-2" >
+      <div className="com mt-1">
+        <div className='comcom'>
           {state === '미답변' ?
            <p>답변이 등록되지 않았습니다.</p>:
            comment
            } 
-        </label>
-        </label>
+        </div>
       </div>
 
       {/* 

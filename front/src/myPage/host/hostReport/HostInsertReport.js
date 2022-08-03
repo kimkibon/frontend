@@ -7,7 +7,7 @@ const HostInsertReport = () => {
 
   const location = useLocation();
 
-  // HostReserveList 에서 넘어오는 값들
+  // HostReserveList 에서 넘어오는 값들  호스트회원 -> 일반회원 신고
   const report_id = location.state.REPORT_ID; //mem_id -- 호스트 로컬스토리지에서 받아오는
   const report_res_no = location.state.REPORT_RES_NO; //res_idx 받아옴 -- 예약번호
   const report_mem_idx = location.state.REPORT_MEM_IDX; //MEM_ID .. 예약자 아이디

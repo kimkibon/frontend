@@ -62,12 +62,12 @@ const DetailReport = () => {
 
       <p>문의답변</p>
       <div class="com mt-1">
-        <label className="comment mt-2" >
+        <div className="comcom" >
           {state === '미답변' ?
            <p>답변이 등록되지 않았습니다.</p>:
            comment
            } 
-        </label>
+        </div>
       </div>
       
       <br/>

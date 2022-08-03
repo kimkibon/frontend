@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Carousel } from "react-bootstrap";
 import ImagePreview from "./ImagePreview";
+import dragImage from "../../../../commons/images/dragImage.jpeg"
 
 function ImageUploadBox(props) {
     const max = 10;
@@ -122,7 +123,7 @@ function ImageUploadBox(props) {
                                 width='700px'
                                 height='400px'
                             />
-                            <div className="card-img-overlay">
+                            <div className="card-img-overlay" style={{backgroundImage : 'url('+dragImage+')'}}>
                                 <div className="row">
                                     <div className="col-sm-12 text-center">
                                         <h1 className="input-group-text">
