@@ -66,55 +66,55 @@ const ReserveListPage = () => {
 
   //getElementId 사용 또는 ref 사용 반드시!중복 너무 많아
   const stateChange=(state)=>{
-    const class_state =[];
+    const className_state =[];
     if(state===0){
-      class_state[0] = 'completed';
-      class_state[1] = 'active';
-      class_state[2] = '';
-      class_state[3] = '';
+      className_state[0] = 'completed';
+      className_state[1] = 'active';
+      className_state[2] = '';
+      className_state[3] = '';
     }
     else if(state===1){
-      class_state[0] = 'completed';
-      class_state[1] = 'completed';
-      class_state[2] = 'active';
-      class_state[3] = '';
+      className_state[0] = 'completed';
+      className_state[1] = 'completed';
+      className_state[2] = 'active';
+      className_state[3] = '';
     }
     else if(state===2){
-      class_state[0] = 'completed';
-      class_state[1] = 'completed';
-      class_state[2] = 'completed';
-      class_state[3] = 'active';
+      className_state[0] = 'completed';
+      className_state[1] = 'completed';
+      className_state[2] = 'completed';
+      className_state[3] = 'active';
     }
     else if(state===3){
-      class_state[0] = 'completed';
-      class_state[1] = 'completed';
-      class_state[2] = 'completed';
-      class_state[3] = 'completed';
+      className_state[0] = 'completed';
+      className_state[1] = 'completed';
+      className_state[2] = 'completed';
+      className_state[3] = 'completed';
     }
     else{
-      class_state[0] = '';
-      class_state[1] = '';
-      class_state[2] = '';
-      class_state[3] = '';
+      className_state[0] = '';
+      className_state[1] = '';
+      className_state[2] = '';
+      className_state[3] = '';
     }
 
       return(
-        <div class="stepper-wrapper">
-        <div class={'stepper-item'+ class_state[0]}>
-          <div class="step-counter">1</div>
-          <div class="step-name">예약요청</div>
+        <div className="stepper-wrapper">
+        <div className={'stepper-item'+ className_state[0]}>
+          <div className="step-counter">1</div>
+          <div className="step-name">예약요청</div>
         </div>
-        <div class={'stepper-item'+ class_state[1]}>
-          <div class="step-counter">2</div>
-          <div class="step-name">예약승인</div>
+        <div className={'stepper-item'+ className_state[1]}>
+          <div className="step-counter">2</div>
+          <div className="step-name">예약승인</div>
         </div>
-        <div class={'stepper-item'+ class_state[2]}>
-          <div class="step-counter">3</div>
-          <div class="step-name">결제대기</div>
+        <div className={'stepper-item'+ className_state[2]}>
+          <div className="step-counter">3</div>
+          <div className="step-name">결제대기</div>
         </div>
-        <div class={'stepper-item'+ class_state[3]}>
-          <div class="step-counter">4</div>
-          <div class="step-name">결제/예약완료</div>
+        <div className={'stepper-item'+ className_state[3]}>
+          <div className="step-counter">4</div>
+          <div className="step-name">결제/예약완료</div>
         </div>
       </div>       
       )
@@ -129,23 +129,23 @@ const ReserveListPage = () => {
         
         let resstate = list.RES_LEVEL;
         return(
-          <div class="container mt-5 mb-5">
-            <div class="d-flex justify-content-center row">
-                <div class="col-md-10">
+          <div className="container mt-5 mb-5">
+            <div className="d-flex justify-content-center row">
+                <div className="col-md-10">
 
                   
                   {stateChange(resstate)}
                   
                   
-                    <div class="row p-2 bg-white border rounded">
+                    <div className="row p-2 bg-white border rounded">
 
-                        <div class="col-md-3 mt-1" mt-2 d-flex flex-column align-items-center align-content-center>
-                          <img class="img-fluid img-responsive rounded product-image" src={list.URL} width="200px" height="auto"/><p/>
+                        <div className="col-md-3 mt-1" mt-2 d-flex flex-column align-items-center align-content-center>
+                          <img className="img-fluid img-responsive rounded product-image" src={list.URL} width="200px" height="auto"/><p/>
                           
-                          {[1,2,3].includes(resstate) && <Link to ={'hostDetail'} state={{'hostId': list.HOST_ID}}><button type="button" class="btn btn-success">호스트정보</button></Link>}
+                          {[1,2,3].includes(resstate) && <Link to ={'hostDetail'} state={{'hostId': list.HOST_ID}}><button type="button" className="btn btn-success">호스트정보</button></Link>}
 
                         </div>
-                        <div class="col-md-7 mt-1">
+                        <div className="col-md-7 mt-1">
                             <h5>예약번호  {list.RES_IDX}</h5><br/>
                             주소 : {list.ADDR1}{list.ADDR2}<br/>
                             이용날짜 : {list.RES_DATE_START} ~ {list.RES_DATE_END}<br/>
@@ -153,18 +153,18 @@ const ReserveListPage = () => {
                             가격 : {list.PRICE} 원<br/>
                             세부 요청 사항 : {list.REQ_DETAIL}<br/>
                         </div>
-                        <div class="align-items-center align-content-center col-md-2 border-left mt-1">
-                          <div class="d-flex flex-column mt-4">
+                        <div className="align-items-center align-content-center col-md-2 border-left mt-1">
+                          <div className="d-flex flex-column mt-4">
                             {[0,1,2].includes(resstate) && 
                                                 <Link to ={'resCancel'} state={{'res_idx': list.RES_IDX}}>
-                                                  <button type="button" class="btn btn-primary">예약취소</button>
+                                                  <button type="button" className="btn btn-primary">예약취소</button>
                                                 </Link>}
 
                             
                             {/* 예약요청상태 */}
                             {resstate === 0 && 
                               <div>
-                                <button type="button" class="btn btn-outline-primary" disabled>요청대기</button>
+                                <button type="button" className="btn btn-outline-primary" disabled>요청대기</button>
                                 
                               </div>}
 
@@ -172,7 +172,7 @@ const ReserveListPage = () => {
                             {/* 예약승인상태 */}
                             {resstate === 1 && 
                                 <div>
-                                  <Link to ={'resConfirm'} state={{'res_idx': list.RES_IDX}}><button type="button" class="btn btn-primary">예약확정</button></Link>
+                                  <Link to ={'resConfirm'} state={{'res_idx': list.RES_IDX}}><button type="button" className="btn btn-primary">예약확정</button></Link>
                                 </div>
                             }
 
@@ -187,7 +187,7 @@ const ReserveListPage = () => {
                             {resstate === 4 && <div>예약이 취소되었습니다.<p/></div>}
                             {resstate === 4 && (list.RES_REJ)!=null && 
                               <div>
-                               <button type="button" class="btn btn-warning" onClick={()=>{alert(list.RES_REJ)}}>거절사유</button>
+                               <button type="button" className="btn btn-warning" onClick={()=>{alert(list.RES_REJ)}}>거절사유</button>
                               </div>}
 
 

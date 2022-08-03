@@ -49,15 +49,15 @@ const Myreview =() => {
                     <p/>
                     {new Date().getTime()<after_date && 
                         <Link to ={'ModifyReview'} state={{'REVIEW_IDX': myreview.REVIEW_IDX, 'SCORE':myreview.SCORE, 'REVIEW_CONTENT':myreview.REVIEW_CONTENT}}>
-                            <button type="button" class="btn btn-primary">수정하기</button>
+                            <button type="button" className="btn btn-primary">수정하기</button>
                         </Link> 
                     } 
                     &nbsp; 
                     <Link to ={'DeleteReview'} state={{'REVIEW_IDX': myreview.REVIEW_IDX}}>
-                        <button type="button" class="btn btn-primary">삭제하기</button>
+                        <button type="button" className="btn btn-primary">삭제하기</button>
                     </Link>
                     &nbsp; 
-                    <button type="button" class="btn btn-primary" onClick={(e)=>{
+                    <button type="button" className="btn btn-primary" onClick={(e)=>{
                             e.preventDefault();
                             navigate(-1); }}>확인</button>
 
