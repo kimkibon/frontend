@@ -12,9 +12,9 @@ const HostInsertReport = () => {
   const report_res_no = location.state.REPORT_RES_NO; //res_idx 받아옴 -- 예약번호
   const report_mem_idx = location.state.REPORT_MEM_IDX; //MEM_ID .. 예약자 아이디
 
-  console.log(report_id);
-  console.log(report_res_no);
-  console.log(report_mem_idx);
+  console.log(111,report_id);
+  console.log(2222,report_res_no);
+  console.log(33333,report_mem_idx);
 
 
   const [form, setForm] = useState({

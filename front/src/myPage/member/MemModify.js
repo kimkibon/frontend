@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useLocation, Link } from 'react-router-dom';
 import Modal from '../member/Modal';
-// import secret_sms from '../../join/secret_sms';
 
 // 회원정보 보기 - 수정
 
