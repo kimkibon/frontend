@@ -1,10 +1,8 @@
 import axios from "axios";
-import { useEffect, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import Button from 'react-bootstrap/Button';
+import { useEffect, useState } from "react";
+import { Link, } from "react-router-dom";
 import Payment from "./payment/Payment";
 import SelectOneFile from "../../commons/Files/SelectOneFile";
-import Auth from "../../login/Auth";
 import './resstyle.css'
 
 //예약상태
@@ -66,59 +64,117 @@ const ReserveListPage = () => {
 
   //getElementId 사용 또는 ref 사용 반드시!중복 너무 많아
   const stateChange=(state)=>{
-    const className_state =[];
     if(state===0){
-      className_state[0] = 'completed';
-      className_state[1] = 'active';
-      className_state[2] = '';
-      className_state[3] = '';
-    }
-    else if(state===1){
-      className_state[0] = 'completed';
-      className_state[1] = 'completed';
-      className_state[2] = 'active';
-      className_state[3] = '';
-    }
-    else if(state===2){
-      className_state[0] = 'completed';
-      className_state[1] = 'completed';
-      className_state[2] = 'completed';
-      className_state[3] = 'active';
-    }
-    else if(state===3){
-      className_state[0] = 'completed';
-      className_state[1] = 'completed';
-      className_state[2] = 'completed';
-      className_state[3] = 'completed';
-    }
-    else{
-      className_state[0] = '';
-      className_state[1] = '';
-      className_state[2] = '';
-      className_state[3] = '';
-    }
-
       return(
-        <div className="stepper-wrapper">
-        <div className={'stepper-item'+ className_state[0]}>
-          <div className="step-counter">1</div>
-          <div className="step-name">예약요청</div>
+        <div class="stepper-wrapper">
+        <div class="stepper-item completed">
+          <div class="step-counter">1</div>
+          <div class="step-name">예약요청</div>
         </div>
-        <div className={'stepper-item'+ className_state[1]}>
-          <div className="step-counter">2</div>
-          <div className="step-name">예약승인</div>
+        <div class="stepper-item active">
+          <div class="step-counter">2</div>
+          <div class="step-name">예약승인</div>
         </div>
-        <div className={'stepper-item'+ className_state[2]}>
-          <div className="step-counter">3</div>
-          <div className="step-name">결제대기</div>
+        <div class="stepper-item">
+          <div class="step-counter">3</div>
+          <div class="step-name">결제대기</div>
         </div>
-        <div className={'stepper-item'+ className_state[3]}>
-          <div className="step-counter">4</div>
-          <div className="step-name">결제/예약완료</div>
+        <div class="stepper-item">
+          <div class="step-counter">4</div>
+          <div class="step-name">결제/예약완료</div>
         </div>
       </div>       
       )
     }
+    else if(state===1){
+      return(
+        <div class="stepper-wrapper">
+        <div class="stepper-item completed">
+          <div class="step-counter">1</div>
+          <div class="step-name">예약요청</div>
+        </div>
+        <div class="stepper-item completed">
+          <div class="step-counter">2</div>
+          <div class="step-name">예약승인</div>
+        </div>
+        <div class="stepper-item active">
+          <div class="step-counter">3</div>
+          <div class="step-name">결제대기</div>
+        </div>
+        <div class="stepper-item">
+          <div class="step-counter">4</div>
+          <div class="step-name">결제/예약완료</div>
+        </div>
+      </div>        
+      )
+    }
+    else if(state===2){
+      return(
+        <div class="stepper-wrapper">
+        <div class="stepper-item completed">
+          <div class="step-counter">1</div>
+          <div class="step-name">예약요청</div>
+        </div>
+        <div class="stepper-item completed">
+          <div class="step-counter">2</div>
+          <div class="step-name">예약승인</div>
+        </div>
+        <div class="stepper-item completed">
+          <div class="step-counter">3</div>
+          <div class="step-name">결제대기</div>
+        </div>
+        <div class="stepper-item active">
+          <div class="step-counter">4</div>
+          <div class="step-name">결제/예약완료</div>
+        </div>
+      </div>        
+      )
+    }
+    else if(state===3){
+      return(
+        <div class="stepper-wrapper">
+        <div class="stepper-item completed">
+          <div class="step-counter">1</div>
+          <div class="step-name">예약요청</div>
+        </div>
+        <div class="stepper-item completed">
+          <div class="step-counter">2</div>
+          <div class="step-name">예약승인</div>
+        </div>
+        <div class="stepper-item completed">
+          <div class="step-counter">3</div>
+          <div class="step-name">결제대기</div>
+        </div>
+        <div class="stepper-item completed">
+          <div class="step-counter">4</div>
+          <div class="step-name">결제/예약완료</div>
+        </div>
+      </div>        
+      )
+    }
+    else if(state===4){
+      return(
+        <div class="stepper-wrapper">
+        <div class="stepper-item">
+          <div class="step-counter">1</div>
+          <div class="step-name">예약요청</div>
+        </div>
+        <div class="stepper-item">
+          <div class="step-counter">2</div>
+          <div class="step-name">예약승인</div>
+        </div>
+        <div class="stepper-item">
+          <div class="step-counter">3</div>
+          <div class="step-name">결제대기</div>
+        </div>
+        <div class="stepper-item">
+          <div class="step-counter">4</div>
+          <div class="step-name">결제/예약완료</div>
+        </div>
+      </div>        
+      )
+    }
+  }
   
 
 
@@ -139,7 +195,7 @@ const ReserveListPage = () => {
                   
                     <div className="row p-2 bg-white border rounded">
 
-                        <div className="col-md-3 mt-1" mt-2 d-flex flex-column align-items-center align-content-center>
+                        <div className="col-md-3 mt-1" mt-2 d-flex flex-column align-items-center="true" align-content-center="true">
                           <img className="img-fluid img-responsive rounded product-image" src={list.URL} width="200px" height="auto"/><p/>
                           
                           {[1,2,3].includes(resstate) && <Link to ={'hostDetail'} state={{'hostId': list.HOST_ID}}><button type="button" className="btn btn-success">호스트정보</button></Link>}
@@ -153,7 +209,7 @@ const ReserveListPage = () => {
                             가격 : {list.PRICE} 원<br/>
                             세부 요청 사항 : {list.REQ_DETAIL}<br/>
                         </div>
-                        <div className="align-items-center align-content-center col-md-2 border-left mt-1">
+                        <div className="col-md-2 border-left mt-1" align-items-center="true" align-content-center="true">
                           <div className="d-flex flex-column mt-4">
                             {[0,1,2].includes(resstate) && 
                                                 <Link to ={'resCancel'} state={{'res_idx': list.RES_IDX}}>
