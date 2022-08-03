@@ -4,6 +4,7 @@ import { Link, } from "react-router-dom";
 import Payment from "./payment/Payment";
 import SelectOneFile from "../../commons/Files/SelectOneFile";
 import './resstyle.css'
+import HostDetailModal from "./Modals/HostDetailModal";
 
 //예약상태
 // const ResState = (state) => {
@@ -24,6 +25,9 @@ const ReserveListPage = () => {
   const mem_id = localStorage.getItem("MEM_ID");//로컬스토리지에서 로그인한 계정의 아이디 전달
   //const [author, setAuthor] = useState({});
   //const navigate = useNavigate();
+
+
+  const [modalShow, setModalShow] = useState(false);
 
   useEffect(() => {
 
@@ -131,6 +135,7 @@ const ReserveListPage = () => {
         let resstate = list.RES_LEVEL;
         return (
           <div class="container mt-5 mb-5" key={index}>
+      
             <div class="d-flex justify-content-center row">
               <div class="col-md-10">
 
@@ -141,9 +146,10 @@ const ReserveListPage = () => {
 
                   <div class="col-md-3 mt-1 mt-2 d-flex flex-column align-items-center align-content-center">
                     <img class="img-fluid img-responsive rounded product-image" src={list.URL} width="200px" height="auto" /><p />
-
-                    {[1, 2, 3].includes(resstate) && <Link to={'hostDetail'} state={{ 'hostId': list.HOST_ID }}><button type="button" class="btn btn-success">호스트정보</button></Link>}
-
+                    
+                    <HostDetailModal show={modalShow} onHide={() => setModalShow(false)} state={{ 'hostId': list.HOST_ID }}/>
+                    {[1, 2, 3].includes(resstate) && <button type="button" class="btn btn-success" onClick={() => setModalShow(true)}>호스트정보</button>}                  
+                  
                   </div>
                   <div class="col-md-7 mt-1">
                     <h5>예약번호  {list.RES_IDX}</h5><br />
