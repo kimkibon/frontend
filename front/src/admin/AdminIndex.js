@@ -22,6 +22,7 @@ const AdminIndex = () => {
   useEffect(()=>{
   Auth(0,Navigate)
 },[])
+//admin 페이지에 접속하려 했을 경우 권한 검사 
   return (
       <div class="container-fluid">
       <div class="row">

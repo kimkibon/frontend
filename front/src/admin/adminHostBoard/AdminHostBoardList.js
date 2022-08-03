@@ -11,8 +11,8 @@ const AdminHostBoardList = () => {
       method: 'get',
       url: '/GareBnB/Admin/hostBoardList.do',
       params : {
-        'BOARD_CARE_NO' : 1,
-        'BOARD_ADDR1' : '장위동',
+        'BOARD_CARE_NO' : '0',
+        'BOARD_ADDR1' : '',
         'BOARD_CONFIRM' : '0'
       }
       //서버에서 리스트 요청

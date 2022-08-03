@@ -10,27 +10,34 @@ const MemUseListPage = () => {
     const mem_id = localStorage.getItem("MEM_ID");
     //이용내역
     useEffect(() => {
-        axios({
 
-            method : 'post' ,
-            url : '/GareBnB/mypage/memuseList.do' ,
-            contentType:"application/json;charset=UTF-8",
-            params : {
-                MEM_ID : mem_id
-        
-            }
-        }).then(Response => {
-            const list_review = Response.data.map(async list=>{
-                await Reviewcheck(list.RES_CLI_ID, list.RES_BOARD_NO).then(Res=>{
-                    list['review'] = Res
-                })
-                return list
 
-            })
+        //로그인한 계정의 ID, LEVEL, IDX 가져오기
+        //level 4보다 작은 계정들은 접근 가능
+        //Auth(4 , navigate).then(Response => {
+            //setAuthor(Response)
+            axios({
+
+                method : 'post' ,
+                url : '/GareBnB/mypage/memuseList.do' ,
+                contentType:"application/json;charset=UTF-8",
+                params : {
+                    MEM_ID : mem_id
             
-            Promise.all(list_review).then((data)=>{setResComList(data)});
+                }
+            }).then(Response => {
+                const list_review = Response.data.map(async list=>{
+                    await Reviewcheck(list.RES_CLI_ID, list.RES_BOARD_NO).then(Res=>{
+                        list['review'] = Res
+                    })
+                    return list
 
-        });
+                })
+                
+                Promise.all(list_review).then((data)=>{setResComList(data)});
+
+            });
+        //})//auth
 
     },[]);
   
