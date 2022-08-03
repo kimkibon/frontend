@@ -109,53 +109,71 @@ const MemChange = () => {
 
   return (
     <div>
-     {/* <h3>이메일주소 : </h3>
-      <input name="HOST_EMAIL" placeholder="이메일 입력" onChange={onChange} value={HOST_EMAIL} />
-      <br/> */}
-      <Form.Group controlId="formBasicEmail">
+      <h2>호스트 전환하기</h2>
+      <div>
+      <Form.Group>
         <Form.Label>이메일 주소</Form.Label>
-        <Form.Control type="text" placeholder="이메일 입력" 
+        <Form.Control type="email" placeholder="이메일 입력" 
         onChange={onChange} name="HOST_EMAIL" value={insertHost.HOST_EMAIL} />
       </Form.Group>
 
-      <Form.Group controlId="formBasicEmail">
-        <Form.Label>우편번호</Form.Label>
-        <Form.Control type="text" placeholder="이메일 입력" 
-        onChange={onChange} name="HOST_EMAIL" value={insertHost.HOST_EMAIL} />
+      <Form.Group>
+        <Form.Label>우편번호 </Form.Label>
+        <Form.Control type="text" placeholder="우편번호 입력" 
+                      onChange={onChange} name="HOST_POST" value={insertHost.HOST_POST} 
+                      aria-describedby="button-addon" className="input-group mb-3"></Form.Control>
+                       <button className="btn btn-primary" type="button" id="button-addon" onClick={() => setShowAddrModal(true)}>우편번호 찾기</button>
       </Form.Group>
-      
-      <h3>우편번호 : </h3>
-        <input name="HOST_POST" placeholder="우편번호 입력" onChange={onChange} value={HOST_POST} />
-        <button
-        className="btn btn-outline-secondary"
-        type="button"
-        id="button-addon"
-        onClick={() => setShowAddrModal(true)}>
-        우편번호 찾기
-        </button>
-      <h3>기본주소 : </h3>
-      <input name="HOST_ADDR1" placeholder="기본 주소 입력" onChange={onChange} value={HOST_ADDR1} />
-      <br/>
-      <h3>상세주소 : </h3>
-      <input name="HOST_ADDR2" placeholder="상세 주소 입력" onChange={onChange} value={HOST_ADDR2} />
-      <br/>
-      <h3>주민 등록 번호 : </h3>
-      <input name="HOST_JUMIN1" placeholder="주민 등록 번호 앞자리" onChange={onChange} value={HOST_JUMIN1} /> -  
-      <input name="HOST_JUMIN2" placeholder="주민 등록 번호 뒷자리 1번째" onChange={onChange} value={HOST_JUMIN2} /> ******
-      <br/>
-      <h3>호스트 사진 : </h3>
-          {/* 사진 첨부 */}
-      <ImageUploadBox getImages={getImages} />
-      <h3>본인 소개 : </h3>
-      <input name="HOST_INTRO" placeholder="본인 소개" onChange={onChange} value={HOST_INTRO} />
-      <br/>
-      <h3>은행 : </h3>
-      {/* 은행명 선택할 수 있게 수정하기 */}
-      <input name="HOST_BANK" placeholder="은행명" onChange={onChange} value={HOST_BANK} />
-      <br/>
-      <h3>계좌번호 : </h3>
-      <input name="HOST_ACCOUNT" placeholder="계좌번호 입력" onChange={onChange} value={HOST_ACCOUNT} />
-      <br/>
+     
+      <Form.Group>
+        <Form.Label>기본 주소</Form.Label>
+        <Form.Control type="text" placeholder="기본 주소" 
+        onChange={onChange} name="HOST_ADDR1" value={insertHost.HOST_ADDR1} />
+      </Form.Group>
+     
+      <Form.Group>
+        <Form.Label>상세 주소</Form.Label>
+        <Form.Control type="text" placeholder="상세 주소" 
+        onChange={onChange} name="HOST_ADDR2" value={insertHost.HOST_ADDR2} />
+      </Form.Group>
+
+      <Form.Group>
+        <Form.Label>주민 등록 번호</Form.Label>
+        <Form.Control type="number" placeholder="주민 등록 번호 앞자리" 
+        onChange={onChange} name="HOST_JUMIN1" value={insertHost.HOST_JUMIN1} /> -
+        <Form.Control type="number" placeholder="주민 등록 번호 뒷자리 1번째" 
+        onChange={onChange} name="HOST_JUMIN2" value={insertHost.HOST_JUMIN2} /> ******
+      </Form.Group>
+
+      <Form.Group>
+        <Form.Label>본인 소개</Form.Label>
+        <Form.Control type="text" placeholder="본인 소개글" 
+        onChange={onChange} name="HOST_INTRO" value={insertHost.HOST_INTRO} />
+      </Form.Group>
+
+      <Form.Group>
+        <Form.Label>호스트 사진 및 소개 파일</Form.Label>
+        <ImageUploadBox getImages={getImages} />
+      </Form.Group>
+
+
+      <div class="form-group">
+        <label for="exampleSelect1" class="form-label mt-4">은행명</label>
+        <select class="form-select" id="exampleSelect1" onChange={onChange} name="HOST_BANK" value={insertHost.HOST_BANK}>
+          <option>은행명을 선택하세요</option>
+          <option>신한</option>
+          <option>국민</option>
+          <option>우리</option>
+          <option>하나</option>
+          <option>농협</option>
+        </select>
+       </div>
+
+      <Form.Group>
+        <Form.Label>계좌번호</Form.Label>
+        <Form.Control type="text" placeholder="계좌번호 입력" 
+        onChange={onChange} name="HOST_ACCOUNT" value={insertHost.HOST_ACCOUNT} />
+      </Form.Group>
 
       <InsertHost
           show={insertModal}
@@ -173,10 +191,24 @@ const MemChange = () => {
           <HostAddress
             setAddrInfo={setAddrInfo}/>
         </Modal>
+        </div>
  
-    <button onClick={insertOnClick}>등록하기</button> &emsp; &emsp; 
-    <button><Link to='/'>취소</Link></button>
+        <div className='col-lg-12 text-lg-left'>
+          <Button variant="primary" type="submit" onClick={insertOnClick}>
+          등록하기
+          </Button>
+          <div className='col-lg-12 text-lg-center'>
+          <Button variant="primary" type="submit">
+          <Link to='/'>취소</Link>
+          </Button>
+        </div>
+       
+       </div>
+
+       
     </div>
+    
+
     
   )
 }
