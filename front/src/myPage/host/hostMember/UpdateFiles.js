@@ -23,8 +23,6 @@ async function UpdateFiles(file, MEM_IDX, index, FILE_BOARD_TYPE) {
             data: formData,
             mode: 'cors'
 
-        }).then(Response => {
-            console.log(Response.data)
         }).catch((err) => {
             alert('호스트 정보 수정에 실패했습니다. 다시 시도해주세요.');
             reject(err);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Modal } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import ImageUploadBox from '../host/myBoard/component/ImageUploadBox';
@@ -8,13 +8,13 @@ import {Button,Form} from 'react-bootstrap';
 import Auth from '../../login/Auth';
 
 const MemChange = () => {
-  const navigate = useNavigate();
-  const [author , setAuthor] = useState();
   const [insertModal, setInsertModal] = React.useState(false);
   const [showAddrModal, setShowAddrModal] = React.useState(false);
   const [insertFiles, setInsertFiles] = useState([]);
+  const Navigate = useNavigate();
+
   const [insertHost, setInsertHost] = useState({    
-    MEM_IDX : author.MEM_IDX,
+    MEM_IDX : '',
     HOST_EMAIL : '',
     HOST_POST : '',
     HOST_ADDR1 : '',
@@ -25,6 +25,7 @@ const MemChange = () => {
 		HOST_ACCOUNT : '',
 		HOST_BANK : ''
   });  
+
 
   const {     
     MEM_IDX,
@@ -38,9 +39,15 @@ const MemChange = () => {
     HOST_ACCOUNT,
     HOST_BANK } = insertHost;
 
-    Auth(4 , navigate).then(Response => {
-      setAuthor(Response)
-    })
+    useEffect(()=>{
+    Auth(4 , Navigate).then(Res =>{
+      setInsertHost({
+        ...insertHost,
+        'MEM_IDX' : Res.MEM_IDX
+          })
+        })
+      },[])
+      
 
     const setAddrInfo = (data) => {
       setInsertHost({
