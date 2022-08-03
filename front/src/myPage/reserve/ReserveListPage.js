@@ -19,23 +19,20 @@ const ResState=(state)=>{
 
 }
 
-//const mem_id = 'MEM_2';
-//const mem_idx = 2;
-
 const ReserveListPage = () => {
   const [resList, setResList] = useState([]); //예약리스트 받아오는 변수
 
   //auth
   const mem_id = localStorage.getItem("MEM_ID");//로컬스토리지에서 로그인한 계정의 아이디 전달
-  const [author, setAuthor] = useState({});
-  const navigate = useNavigate();
+  //const [author, setAuthor] = useState({});
+  //const navigate = useNavigate();
 
   useEffect(() => {
 
     //로그인한 계정의 ID, LEVEL, IDX 가져오기
     //level 4보다 작은 계정들은 접근 가능
     //Auth(4 , navigate).then(Response => {
-    //  setAuthor(Response)
+      //setAuthor(Response)
     
       //예약리스트가져오기
       axios({
@@ -44,7 +41,7 @@ const ReserveListPage = () => {
           url : '/GareBnB/mypage/memReserveList.do' ,
           contentType:"application/json;charset=UTF-8",
           params : {
-            MEM_ID : mem_id//////////////////////////////////     
+            MEM_ID : 'MEM_2'//mem_id//////////////////////////////////     
       
           }
       }).then(Response => {
@@ -69,118 +66,60 @@ const ReserveListPage = () => {
 
   //getElementId 사용 또는 ref 사용 반드시!중복 너무 많아
   const stateChange=(state)=>{
-    if(state==0){
+    const class_state =[];
+    if(state===0){
+      class_state[0] = 'completed';
+      class_state[1] = 'active';
+      class_state[2] = '';
+      class_state[3] = '';
+    }
+    else if(state===1){
+      class_state[0] = 'completed';
+      class_state[1] = 'completed';
+      class_state[2] = 'active';
+      class_state[3] = '';
+    }
+    else if(state===2){
+      class_state[0] = 'completed';
+      class_state[1] = 'completed';
+      class_state[2] = 'completed';
+      class_state[3] = 'active';
+    }
+    else if(state===3){
+      class_state[0] = 'completed';
+      class_state[1] = 'completed';
+      class_state[2] = 'completed';
+      class_state[3] = 'completed';
+    }
+    else{
+      class_state[0] = '';
+      class_state[1] = '';
+      class_state[2] = '';
+      class_state[3] = '';
+    }
+
       return(
         <div class="stepper-wrapper">
-        <div class="stepper-item completed">
+        <div class={'stepper-item'+ class_state[0]}>
           <div class="step-counter">1</div>
           <div class="step-name">예약요청</div>
         </div>
-        <div class="stepper-item active">
+        <div class={'stepper-item'+ class_state[1]}>
           <div class="step-counter">2</div>
           <div class="step-name">예약승인</div>
         </div>
-        <div class="stepper-item">
+        <div class={'stepper-item'+ class_state[2]}>
           <div class="step-counter">3</div>
           <div class="step-name">결제대기</div>
         </div>
-        <div class="stepper-item">
+        <div class={'stepper-item'+ class_state[3]}>
           <div class="step-counter">4</div>
           <div class="step-name">결제/예약완료</div>
         </div>
       </div>       
       )
     }
-    else if(state==1){
-      return(
-        <div class="stepper-wrapper">
-        <div class="stepper-item completed">
-          <div class="step-counter">1</div>
-          <div class="step-name">예약요청</div>
-        </div>
-        <div class="stepper-item completed">
-          <div class="step-counter">2</div>
-          <div class="step-name">예약승인</div>
-        </div>
-        <div class="stepper-item active">
-          <div class="step-counter">3</div>
-          <div class="step-name">결제대기</div>
-        </div>
-        <div class="stepper-item">
-          <div class="step-counter">4</div>
-          <div class="step-name">결제/예약완료</div>
-        </div>
-      </div>        
-      )
-    }
-    else if(state==2){
-      return(
-        <div class="stepper-wrapper">
-        <div class="stepper-item completed">
-          <div class="step-counter">1</div>
-          <div class="step-name">예약요청</div>
-        </div>
-        <div class="stepper-item completed">
-          <div class="step-counter">2</div>
-          <div class="step-name">예약승인</div>
-        </div>
-        <div class="stepper-item completed">
-          <div class="step-counter">3</div>
-          <div class="step-name">결제대기</div>
-        </div>
-        <div class="stepper-item active">
-          <div class="step-counter">4</div>
-          <div class="step-name">결제/예약완료</div>
-        </div>
-      </div>        
-      )
-    }
-    else if(state==3){
-      return(
-        <div class="stepper-wrapper">
-        <div class="stepper-item completed">
-          <div class="step-counter">1</div>
-          <div class="step-name">예약요청</div>
-        </div>
-        <div class="stepper-item completed">
-          <div class="step-counter">2</div>
-          <div class="step-name">예약승인</div>
-        </div>
-        <div class="stepper-item completed">
-          <div class="step-counter">3</div>
-          <div class="step-name">결제대기</div>
-        </div>
-        <div class="stepper-item completed">
-          <div class="step-counter">4</div>
-          <div class="step-name">결제/예약완료</div>
-        </div>
-      </div>        
-      )
-    }
-    else if(state==4){
-      return(
-        <div class="stepper-wrapper">
-        <div class="stepper-item">
-          <div class="step-counter">1</div>
-          <div class="step-name">예약요청</div>
-        </div>
-        <div class="stepper-item">
-          <div class="step-counter">2</div>
-          <div class="step-name">예약승인</div>
-        </div>
-        <div class="stepper-item">
-          <div class="step-counter">3</div>
-          <div class="step-name">결제대기</div>
-        </div>
-        <div class="stepper-item">
-          <div class="step-counter">4</div>
-          <div class="step-name">결제/예약완료</div>
-        </div>
-      </div>        
-      )
-    }
-
-  }
+  
 
 
   return (
@@ -200,11 +139,9 @@ const ReserveListPage = () => {
                   
                     <div class="row p-2 bg-white border rounded">
 
-                        <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src={list.URL} width="200px" height="auto"/><p/>
-                          {resstate === 4 && (list.RES_REJ)!=null && 
-                              <div>
-                               <button type="button" class="btn btn-warning" onClick={()=>{alert(list.RES_REJ)}}>거절사유보기</button>
-                              </div>}
+                        <div class="col-md-3 mt-1" mt-2 d-flex flex-column align-items-center align-content-center>
+                          <img class="img-fluid img-responsive rounded product-image" src={list.URL} width="200px" height="auto"/><p/>
+                          
                           {[1,2,3].includes(resstate) && <Link to ={'hostDetail'} state={{'hostId': list.HOST_ID}}><button type="button" class="btn btn-success">호스트정보</button></Link>}
 
                         </div>
@@ -214,6 +151,7 @@ const ReserveListPage = () => {
                             이용날짜 : {list.RES_DATE_START} ~ {list.RES_DATE_END}<br/>
                             맡긴 동물 수 : {list.RES_CARE_NO}<br/>
                             가격 : {list.PRICE} 원<br/>
+                            세부 요청 사항 : {list.REQ_DETAIL}<br/>
                         </div>
                         <div class="align-items-center align-content-center col-md-2 border-left mt-1">
                           <div class="d-flex flex-column mt-4">
@@ -246,8 +184,12 @@ const ReserveListPage = () => {
 
 
                             {/* 예약취소상태 */}
-                            {resstate === 4 && <div>예약이 취소되었습니다.<p/>
-                            </div>}
+                            {resstate === 4 && <div>예약이 취소되었습니다.<p/></div>}
+                            {resstate === 4 && (list.RES_REJ)!=null && 
+                              <div>
+                               <button type="button" class="btn btn-warning" onClick={()=>{alert(list.RES_REJ)}}>거절사유</button>
+                              </div>}
+
 
                           </div>
                         </div>
