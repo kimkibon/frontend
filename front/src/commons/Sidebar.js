@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './sidestyle.css'
-import {AiFillAlert, AiFillDatabase, AiFillCarryOut, AiFillEye, AiFillNotification, AiFillInteraction} from "react-icons/ai";
+import {AiFillAlert, AiFillDatabase, AiFillCarryOut, AiFillEye, AiFillNotification, AiFillInteraction, AiOutlineDown} from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import '../../node_modules/bootstrap/dist/js/bootstrap'
 import Auth from '../login/Auth';
@@ -9,6 +9,7 @@ import Auth from '../login/Auth';
 
 
 const Sidebar = () => {
+
 
   return (
     <div className='col'>
@@ -65,34 +66,45 @@ const Sidebar = () => {
           </li>
           </ul>
           
+          {/* ----------------------------------------------------------------------------------------- */}
           <ul className='big_menu2'>
           <li>
-              <Link to="/myPage/host">
-                <span className='icon'><AiFillInteraction/></span>
-                <span className='title'>host 메뉴들</span>
+              <Link to="host/myPage">
+                <span className='icon'><AiOutlineDown/></span>
+                <span className='title'>host 메뉴
+                </span>
               </Link>
           </li>
               <ul class="small_menu">
-                
-                <Link to="#">
-                  <span className='icon'><AiFillInteraction/></span>
-                  <span className='title'>소메뉴1</span>
-                </Link>
-                
-                <Link to="#">
-                  <span className='icon'><AiFillInteraction/></span>
-                  <span className='title'>소메뉴2</span>
-                </Link>
 
-                <Link to="#">
-                  <span className='icon'><AiFillInteraction/></span>
-                  <span className='title'>소메뉴3</span>
-                </Link>
+                <li>
+                  <Link to="#">
+                    <span className='icon'><AiFillInteraction/></span>
+                    <span className='title'>내 게시글</span>
+                  </Link>
+                </li>
+                
+                <li>
+                  <Link to="#">
+                    <span className='icon'><AiFillInteraction/></span>
+                    <span className='title'>예약조회</span>
+                  </Link>
+                </li>  
 
-                <Link to="#">
-                  <span className='icon'><AiFillInteraction/></span>
-                  <span className='title'>소메뉴4</span>
-                </Link>
+                <li>
+                  <Link to="#">
+                    <span className='icon'><AiFillInteraction/></span>
+                    <span className='title'>이용내역</span>
+                  </Link>
+                </li>
+
+                <li>
+                  <Link to="#">
+                    <span className='icon'><AiFillInteraction/></span>
+                    <span className='title'>회원정보보기</span>
+                  </Link>
+                </li>
+
               </ul>
           </ul>
         </div>

@@ -4,7 +4,7 @@ import Logout from '../login/Logout'
 import logoImage from './images/logo/GareBnBlog.png';
 import './style.css'
 
-const header = () => {
+const Header = () => {
   const mem_id = localStorage.getItem("MEM_ID");//로컬스토리지에서 로그인한 계정의 아이디 전달
 
   const LogIn = () => {
@@ -89,4 +89,4 @@ const header = () => {
 }
 
 
-export default header
+export default Header
