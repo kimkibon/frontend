@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import SelectOneFile from '../../commons/Files/SelectOneFile';
 import AdminBoardList from './adminComponent/AdminBoardList';
-import { button } from 'bootstrap';
 
 const AdminHostBoardList = () => {
   const [board, setBoard] = useState([]); //변수 초기화
@@ -72,6 +71,7 @@ const AdminHostBoardList = () => {
         <button className='btn btn-danger' onClick={(e) => searchConfirm(e.target.value)} value='5'>
           수정 취소
         </button>
+        {/* 어드민 계정에서 사용 가능한 버튼 모음 */}
       </div>
       {AdminBoardList(board)}
     </div>

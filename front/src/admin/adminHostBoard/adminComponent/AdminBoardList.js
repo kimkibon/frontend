@@ -1,39 +1,34 @@
-import axios from 'axios'
 import React from 'react'
 import { Link } from 'react-router-dom'
-import SelectOneFile from '../../../commons/Files/SelectOneFile'
 const AdminBoardList = (board) => {
 
-    //상위 컴포넌트에서 받아온 데이터를 표시 
+    
 
     const state = (BOARD_CONFIRM) => {
         switch (BOARD_CONFIRM) {
             case 0:
                 return ('등록 요청')
-                break;
 
             case 1:
                 return ('등록 완료')
-                break;
 
             case 2:
                 return ('등록 거절')
-                break;
 
             case 3:
                 return ('수정 요청')
-                break;
 
             case 4:
                 return ('삭제 완료')
-                break;
 
             case 5:
                 return ('수정 취소')
-                break;
+
+            default:
+                return('')
         }
     }
-
+    //컴펌 레벨에 따른 종류 표시 
     return (
 
         <div className="container">
@@ -44,12 +39,12 @@ const AdminBoardList = (board) => {
                     return (
                         <div className="col" key={list.BOARD_NO}>
                             <div className="card shadow-sm">
-                                
-                                    <img
-                                        className="d-block w-100"
-                                        src={list.URL}
-                                        alt=""
-                                    />
+
+                                <img
+                                    className="d-block w-100"
+                                    src={list.URL}
+                                    alt=""
+                                />
 
                                 <div className="card-body">
                                     <h4 className="card-text">
