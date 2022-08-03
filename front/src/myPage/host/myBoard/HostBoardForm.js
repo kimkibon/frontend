@@ -43,14 +43,14 @@ const HostBoardForm = () => {
     BOARD_DATE_END
   } = insertBoard;
   //변수 초기화 
-  useEffect(()=>{
-    Auth(2 , Navigate).then(Res =>{
-      setInsertBoard({
-        ...insertBoard,
-        'BOARD_HOST_IDX' : Res.MEM_IDX
-      })
-    })
-  },[])
+  // useEffect(()=>{
+  //   Auth(2 , Navigate).then(Res =>{
+  //     setInsertBoard({
+  //       ...insertBoard,
+  //       'BOARD_HOST_IDX' : Res.MEM_IDX
+  //     })
+  //   })
+  // },[])
   const setAddrInfo = (data) => {
     setInsertBoard({
       ...insertBoard,

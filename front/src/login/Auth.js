@@ -24,16 +24,16 @@ async function Auth(BOARD_LEVEL , navigate) {
             params: { 'MEM_ID': id }
         }).then(Response => {
             console.log(Response)
-            if (Response.data.MEM_LEVEL >= BOARD_LEVEL) {
-                alert("권한이 없습니다.");
-                navigate(-1);
-                //mem_level 값과 page_level을 비교해서 권한이 없으면 뒤로가기
-            } else {
+            if(Response.data.MEM_LEVEL <= BOARD_LEVEL){
                 return ({
                     'MEM_LEVEL' : Response.data.MEM_LEVEL,
                     'MEM_IDX' : Response.data.MEM_IDX
                 })
-            } //권한을 만족하면 level과 idx를 세팅
+            } else {
+                alert("권한이 없습니다.");
+                navigate(-1);
+                //mem_level 값과 page_level을 비교해서 권한이 없으면 뒤로가기
+            }  
         }).then(data => {
             resolve(data);
         }).catch(err =>{

@@ -119,19 +119,11 @@ function ImageUploadBox(props) {
                         <div className="card">
                             <img
                                 alt=""
+                                src={dragImage}
                                 className="card-img d-block w-100"
                                 width='700px'
                                 height='400px'
                             />
-                            <div className="card-img-overlay" style={{backgroundImage : 'url('+dragImage+')'}}>
-                                <div className="row">
-                                    <div className="col-sm-12 text-center">
-                                        <h1 className="input-group-text">
-                                            드래그 또는 클릭하여 업로드
-                                        </h1>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </Carousel.Item>
                 </Carousel>
