@@ -8,19 +8,19 @@ import Auth from '../../login/Auth';
 
 const MemDetail = () => { 
     const navigate = useNavigate();
-    const [author , setAuthor] = useState();
-
+    const [author , setAuthor] = useState({});
     const [memDetail, setMemDetail] = useState([]);
 
     useEffect(() => {// 회원정보 보여주기
     Auth(4 , navigate).then(Response => {
         setAuthor(Response)
+        console.log(author)
         axios({ 
         method : 'post' ,
         url : '/GareBnB/mypage/MemDetail.do' , 
         contentType:"application/json; charset=UTF-8",
         params : { 
-            MEM_IDX : author.MEM_IDX 
+            MEM_IDX : Response.MEM_IDX 
         }})
     .then(Response => { 
     console.log(Response.data);
@@ -77,8 +77,6 @@ const MemDetail = () => {
         <li>비밀번호(임시) : {memDetail.MEM_PW}</li>
         <li>휴대폰 번호 : {memDetail.MEM_PHONE}</li>
         </ul>
-       
-
 
         <Link to = {'../member/MemModify'} state = {{mem : memDetail}}><button>수정하기</button></Link>
         &nbsp; &nbsp; &nbsp; &nbsp; 

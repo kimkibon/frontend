@@ -57,13 +57,14 @@ const HostInfo = () => {
    useEffect(() => {
     Auth(1 , navigate).then(Response => {
     setAuthor(Response)
+    console.log(author)
         axios({ 
         method : 'post' ,
         url : '/GareBnB/host/myPage/hostInfo.do' , 
         contentType:"application/json; charset=UTF-8",
         params : { 
             MEM_ID : localStorage.getItem("MEM_ID"),
-            MEM_IDX : author.MEM_IDX
+            MEM_IDX : Response.MEM_IDX
         }})
     .then(Response => { 
     console.log(Response.data);
