@@ -42,13 +42,15 @@ const ModifyHost = (props) => {
         contentType:"apllication/json; charset=UTF-8",
         params : hostModify
         }).then(Response => {
-          console.log(hostModify.MEM_IDX)
+
             FileDelete(hostModify.MEM_IDX,'1').then(res=>{
+
             files.map(async (file,index) => {  
                 await UpdateFiles(file , hostModify.MEM_IDX , index , '1'); 
-                                // file, MEM_IDX, index, FILE_BOARD_TYPE
             })
-          }).then(Response => {
+
+          }).then(res => {
+
             alert('수정완료 성공');
             navigate('../host/hostInfo') // 수정완료 성공 알림창 확인 버튼 클릭 시 회원정보 보기 페이지로 이동됨
 

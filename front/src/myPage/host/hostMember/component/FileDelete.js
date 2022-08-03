@@ -4,7 +4,7 @@ import axios from 'axios';
 //파일 업데이트 컴포넌트 (DELETE, INSERT, UPDATE)
 async function FileDelete(MEM_IDX,FILE_BOARD_TYPE) {
 
-    return (await new Promise((reject) => {
+    return (await new Promise((resolve,reject) => {
 
         axios({
             method: 'post',
@@ -17,6 +17,7 @@ async function FileDelete(MEM_IDX,FILE_BOARD_TYPE) {
             mode: 'cors'
 
         }).then(Response => {
+            resolve(Response);
             console.log(Response.data)
         }).catch((err) => {
             alert('호스트 정보 수정에 실패했습니다. 다시 시도해주세요.');
