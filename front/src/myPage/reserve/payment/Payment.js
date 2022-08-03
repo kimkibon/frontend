@@ -86,7 +86,7 @@ const Payment = (props)=>{
     
     return (
       <div>
-        <button type="button" className="btn btn-danger" onClick={onClickPayment}>결제하기</button>
+        <button type="button" class="btn btn-danger" onClick={onClickPayment}>결제하기</button>
       </div>
     );
 }

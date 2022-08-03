@@ -22,10 +22,10 @@ const MemUseList = (props) => {
   list['URL'] = url;
   return (
     <>
-      <div className="col-md-3 mt-2 d-flex flex-column align-items-center align-content-center">
+      <div class="col-md-3 mt-2 d-flex flex-column align-items-center align-content-center">
         <img src={list.URL} width="200px" height="auto"/><p/>
       </div>
-      <div className="col-md-7 mt-1 align-items-center align-content-center">
+      <div class="col-md-7 mt-1 align-items-center align-content-center">
         <h5>예약번호 : {list.RES_IDX}</h5><br/>
         주소 : {list.BOARD_ADDR}<br/>
         이용날짜 : {list.RES_DATE_START} ~ {list.RES_DATE_END}<br/>

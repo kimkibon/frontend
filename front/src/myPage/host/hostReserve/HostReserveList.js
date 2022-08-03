@@ -83,110 +83,110 @@ const HostReserveList = () => {
   const stateChange=(state)=>{
     if(state==0){
       return(
-        <div className="stepper-wrapper">
-        <div className="stepper-item completed">
-          <div className="step-counter">1</div>
-          <div className="step-name">예약요청</div>
+        <div class="stepper-wrapper">
+        <div class="stepper-item completed">
+          <div class="step-counter">1</div>
+          <div class="step-name">예약요청</div>
         </div>
-        <div className="stepper-item active">
-          <div className="step-counter">2</div>
-          <div className="step-name">예약승인</div>
+        <div class="stepper-item active">
+          <div class="step-counter">2</div>
+          <div class="step-name">예약승인</div>
         </div>
-        <div className="stepper-item">
-          <div className="step-counter">3</div>
-          <div className="step-name">결제대기</div>
+        <div class="stepper-item">
+          <div class="step-counter">3</div>
+          <div class="step-name">결제대기</div>
         </div>
-        <div className="stepper-item">
-          <div className="step-counter">4</div>
-          <div className="step-name">결제/예약완료</div>
+        <div class="stepper-item">
+          <div class="step-counter">4</div>
+          <div class="step-name">결제/예약완료</div>
         </div>
       </div>       
       )
     }
     else if(state==1){
       return(
-        <div className="stepper-wrapper">
-        <div className="stepper-item completed">
-          <div className="step-counter">1</div>
-          <div className="step-name">예약요청</div>
+        <div class="stepper-wrapper">
+        <div class="stepper-item completed">
+          <div class="step-counter">1</div>
+          <div class="step-name">예약요청</div>
         </div>
-        <div className="stepper-item completed">
-          <div className="step-counter">2</div>
-          <div className="step-name">예약승인</div>
+        <div class="stepper-item completed">
+          <div class="step-counter">2</div>
+          <div class="step-name">예약승인</div>
         </div>
-        <div className="stepper-item active">
-          <div className="step-counter">3</div>
-          <div className="step-name">결제대기</div>
+        <div class="stepper-item active">
+          <div class="step-counter">3</div>
+          <div class="step-name">결제대기</div>
         </div>
-        <div className="stepper-item">
-          <div className="step-counter">4</div>
-          <div className="step-name">결제/예약완료</div>
+        <div class="stepper-item">
+          <div class="step-counter">4</div>
+          <div class="step-name">결제/예약완료</div>
         </div>
       </div>        
       )
     }
     else if(state==2){
       return(
-        <div className="stepper-wrapper">
-        <div className="stepper-item completed">
-          <div className="step-counter">1</div>
-          <div className="step-name">예약요청</div>
+        <div class="stepper-wrapper">
+        <div class="stepper-item completed">
+          <div class="step-counter">1</div>
+          <div class="step-name">예약요청</div>
         </div>
-        <div className="stepper-item completed">
-          <div className="step-counter">2</div>
-          <div className="step-name">예약승인</div>
+        <div class="stepper-item completed">
+          <div class="step-counter">2</div>
+          <div class="step-name">예약승인</div>
         </div>
-        <div className="stepper-item completed">
-          <div className="step-counter">3</div>
-          <div className="step-name">결제대기</div>
+        <div class="stepper-item completed">
+          <div class="step-counter">3</div>
+          <div class="step-name">결제대기</div>
         </div>
-        <div className="stepper-item active">
-          <div className="step-counter">4</div>
-          <div className="step-name">결제/예약완료</div>
+        <div class="stepper-item active">
+          <div class="step-counter">4</div>
+          <div class="step-name">결제/예약완료</div>
         </div>
       </div>        
       )
     }
     else if(state==3){
       return(
-        <div className="stepper-wrapper">
-        <div className="stepper-item completed">
-          <div className="step-counter">1</div>
-          <div className="step-name">예약요청</div>
+        <div class="stepper-wrapper">
+        <div class="stepper-item completed">
+          <div class="step-counter">1</div>
+          <div class="step-name">예약요청</div>
         </div>
-        <div className="stepper-item completed">
-          <div className="step-counter">2</div>
-          <div className="step-name">예약승인</div>
+        <div class="stepper-item completed">
+          <div class="step-counter">2</div>
+          <div class="step-name">예약승인</div>
         </div>
-        <div className="stepper-item completed">
-          <div className="step-counter">3</div>
-          <div className="step-name">결제대기</div>
+        <div class="stepper-item completed">
+          <div class="step-counter">3</div>
+          <div class="step-name">결제대기</div>
         </div>
-        <div className="stepper-item completed">
-          <div className="step-counter">4</div>
-          <div className="step-name">결제/예약완료</div>
+        <div class="stepper-item completed">
+          <div class="step-counter">4</div>
+          <div class="step-name">결제/예약완료</div>
         </div>
       </div>        
       )
     }
     else if(state==4){
       return(
-        <div className="stepper-wrapper">
-        <div className="stepper-item">
-          <div className="step-counter">1</div>
-          <div className="step-name">예약요청</div>
+        <div class="stepper-wrapper">
+        <div class="stepper-item">
+          <div class="step-counter">1</div>
+          <div class="step-name">예약요청</div>
         </div>
-        <div className="stepper-item">
-          <div className="step-counter">2</div>
-          <div className="step-name">예약승인</div>
+        <div class="stepper-item">
+          <div class="step-counter">2</div>
+          <div class="step-name">예약승인</div>
         </div>
-        <div className="stepper-item">
-          <div className="step-counter">3</div>
-          <div className="step-name">결제대기</div>
+        <div class="stepper-item">
+          <div class="step-counter">3</div>
+          <div class="step-name">결제대기</div>
         </div>
-        <div className="stepper-item">
-          <div className="step-counter">4</div>
-          <div className="step-name">결제/예약완료</div>
+        <div class="stepper-item">
+          <div class="step-counter">4</div>
+          <div class="step-name">결제/예약완료</div>
         </div>
       </div>        
       )
@@ -213,18 +213,18 @@ const HostReserveList = () => {
         let resstate = list.RES_LEVEL;
 
         return(
-          <div className="container mt-5 mb-5">
-            <div className="d-flex justify-content-center row">
-                <div className="col-md-10">
+          <div class="container mt-5 mb-5">
+            <div class="d-flex justify-content-center row">
+                <div class="col-md-10">
 
                   {stateChange(resstate)}
 
-                  <div className="row p-2 bg-white border rounded">
-                    <div className="col-md-3 mt-2 d-flex flex-column align-items-center align-content-center">
-                      <img className="img-fluid img-responsive rounded product-image" src={list.URL} width="200px" height="auto"/>
+                  <div class="row p-2 bg-white border rounded">
+                    <div class="col-md-3 mt-2 d-flex flex-column align-items-center align-content-center">
+                      <img class="img-fluid img-responsive rounded product-image" src={list.URL} width="200px" height="auto"/>
                     </div>  
 
-                    <div className="col-md-7 mt-1">
+                    <div class="col-md-7 mt-1">
                     <h5>예약번호 : {list.RES_IDX}</h5><br/>
                       게시글제목 : {list.BOARD_TITLE}<br/>
                       예약자이름 : {list.MEM_NAME}<br/>
@@ -235,14 +235,14 @@ const HostReserveList = () => {
                       세부 요청 사항 : {list.RES_REQ_DETAIL}<br/>
                     </div>
                     
-                    <div className="align-items-center align-content-center col-md-2 border-left mt-1">
-                        <div className="d-flex flex-column mt-4">
+                    <div class="align-items-center align-content-center col-md-2 border-left mt-1">
+                        <div class="d-flex flex-column mt-4">
                           {/* 예약요청상태 */}
                           {resstate === 0 && 
                           <div>
-                            <button type="button" className="btn btn-primary" 
+                            <button type="button" class="btn btn-primary" 
                               onClick={()=>{resApprove(list.RES_IDX)}}>예약승인</button><p/>
-                            <button type="button" className="btn btn-primary" 
+                            <button type="button" class="btn btn-primary" 
                             onClick={()=>{
                               const rej = prompt("거절 메세지를 입력하세요");
                               reject(rej, list.RES_IDX);
@@ -256,7 +256,7 @@ const HostReserveList = () => {
                           {[1,2,3,4].includes(resstate) && 
                             <Link to ={'InsertReport'} 
                             state={{'REPORT_ID': mem_id, 'REPORT_RES_NO': list.RES_IDX,'REPORT_MEM_IDX':list.RES_CLI_ID}}>
-                              <button className="btn btn-danger">신고하기</button>
+                              <button class="btn btn-danger">신고하기</button>
                             </Link>
                           }
 
