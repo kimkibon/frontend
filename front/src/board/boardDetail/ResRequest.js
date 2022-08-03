@@ -16,7 +16,6 @@ const ResRequest = (res) => {
   const [cliRequest, setCliRequest] = useState(''); //클라이언트 요청사항 초기화
   const [ResReqShow, setResReqShow] = React.useState(false); // 모달창 온오프 변수 
   const resData = res.state.resData;
-  const resDate = res.state.resDate;
 
   const onChange = (dates) => {
     const [start, end] = dates;

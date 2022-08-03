@@ -18,70 +18,71 @@ import ResCancel from '../myPage/reserve/ResCancel';
 import Auth from '../login/Auth'
 
 const AdminIndex = () => {
-  const Navigate = useNavigate();
-  useEffect(()=>{
-  Auth(0,Navigate)
-},[])
-//admin 페이지에 접속하려 했을 경우 권한 검사 
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    Auth(0, navigate)
+  }, [])
+  //admin 페이지에 접속하려 했을 경우 권한 검사 
   return (
-      <div class="container-fluid">
+    <div class="container-fluid">
       <div class="row">
-        
+
         <div class='col-lg-2'>
           <AdminSidebar />
         </div>
 
         <div className='col-lg-8'>
-      <Link to=''><li>admin index</li></Link>
-      
-      <Link to='adminBoardReview'><li>adminBoardReview</li></Link>
-      <Link to='adminBoardDetail'><li>adminBoardDetail</li></Link>
-      <Link to='adminBoardList'><li>adminBoardList</li></Link>
+          <Link to=''><li>admin index</li></Link>
 
-      <Link to='adminHostConfirmList'><li>adminHostConfirmList</li></Link>
-      <Link to='adminHostConfirmDetail'><li>adminHostConfirmDetail</li></Link>
+          <Link to='adminBoardReview'><li>adminBoardReview</li></Link>
+          <Link to='adminBoardDetail'><li>adminBoardDetail</li></Link>
+          <Link to='adminBoardList'><li>adminBoardList</li></Link>
 
-      <Link to='adminMemberList'><li>adminMemberList</li></Link>
-      <Link to='adminMemberDetail'><li>adminMemberDetail</li></Link>
+          <Link to='adminHostConfirmList'><li>adminHostConfirmList</li></Link>
+          <Link to='adminHostConfirmDetail'><li>adminHostConfirmDetail</li></Link>
 
-      <Link to='adminQnaList'><li>adminQnaList</li></Link>
-      <Link to='adminQnaDetail'><li>adminQnaDetail</li></Link>
+          <Link to='adminMemberList'><li>adminMemberList</li></Link>
+          <Link to='adminMemberDetail'><li>adminMemberDetail</li></Link>
 
-      <Link to='adminReportList'><li>adminReportList</li></Link>
-      <Link to='adminReportDetail'><li>adminReportDetail</li></Link>
+          <Link to='adminQnaList'><li>adminQnaList</li></Link>
+          <Link to='adminQnaDetail'><li>adminQnaDetail</li></Link>
 
-      <Link to='adminAllResList'><li>adminAllResList</li></Link>
+          <Link to='adminReportList'><li>adminReportList</li></Link>
+          <Link to='adminReportDetail'><li>adminReportDetail</li></Link>
 
-      
-      
-      <Routes>
-        <Route path='/admin' element={<AdminIndex/>}/>
-        <Route path='/adminBoardReview' element={<AdminBoardReview/>}/>
-        <Route path='/adminBoardDetail' element={<AdminHostBoardDetail/>}/>
-        <Route path='/adminBoardList' element={<AdminHostBoardList/>}/>
+          <Link to='adminAllResList'><li>adminAllResList</li></Link>
 
-        <Route path='/adminHostConfirmList' element={<AdminHostConfirmList/>}/>
-        <Route path='/adminHostConfirmDetail/*' element={<AdminHostConfirmDetail/>}/>
 
-        <Route path='/adminMemberList' element={<AdminMemberList/>}/>
-        <Route path='/adminMemberDetail/*' element={<AdminMemberDetail/>}/>
 
-        <Route path='/adminQnaList' element={<AdminQnaList/>}/>
-        <Route path='/adminQnaDetail/:QNA_IDX' element={<AdminQnaDetail/>}/>
+          <Routes>
+            <Route path='/admin' element={<AdminIndex />} />
+            <Route path='/adminBoardReview' element={<AdminBoardReview />} />
+            <Route path='/adminBoardDetail' element={<AdminHostBoardDetail />} />
+            <Route path='/adminBoardList' element={<AdminHostBoardList />} />
 
-        <Route path='/adminReportList' element={<AdminReportList/>}/>
-        <Route path='/adminReportDetail/:REPORT_IDX' element={<AdminReportDetail/>}/>
+            <Route path='/adminHostConfirmList' element={<AdminHostConfirmList />} />
+            <Route path='/adminHostConfirmDetail/*' element={<AdminHostConfirmDetail />} />
 
-        <Route path='/adminAllResList' element={<AdminAllResList/>}/>
-        <Route path='/adminAllResList/adminResInfo/:RES_IDX' element={<AdminResInfo/>}/>
-        <Route path='/adminAllResList/adminResInfo/:RES_IDX/resCancel' element={<ResCancel/>}/>
-    
+            <Route path='/adminMemberList' element={<AdminMemberList />} />
+            <Route path='/adminMemberDetail/*' element={<AdminMemberDetail />} />
 
-      </Routes>
-      </div>
+            <Route path='/adminQnaList' element={<AdminQnaList />} />
+            <Route path='/adminQnaDetail/:QNA_IDX' element={<AdminQnaDetail />} />
 
-        <div class='col-lg-2'/>
-        
+            <Route path='/adminReportList' element={<AdminReportList />} />
+            <Route path='/adminReportDetail/:REPORT_IDX' element={<AdminReportDetail />} />
+
+            <Route path='/adminAllResList' element={<AdminAllResList />} />
+            <Route path='/adminAllResList/adminResInfo/:RES_IDX' element={<AdminResInfo />} />
+            <Route path='/adminAllResList/adminResInfo/:RES_IDX/resCancel' element={<ResCancel />} />
+
+
+          </Routes>
+        </div>
+
+        <div class='col-lg-2' />
+
 
 
       </div>
