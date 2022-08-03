@@ -1,5 +1,7 @@
+import axios from 'axios'
 import React from 'react'
 import { Link } from 'react-router-dom'
+import SelectOneFile from '../../../commons/Files/SelectOneFile'
 const AdminBoardList = (board) => {
 
     //상위 컴포넌트에서 받아온 데이터를 표시 
@@ -32,6 +34,12 @@ const AdminBoardList = (board) => {
         }
     }
 
+    function imageUrl(props){
+        SelectOneFile(props).then(Res => {
+            return ("data:image/;base64,"+Res)
+        })
+    }
+
     return (
 
         <div className="container border border-primary">
@@ -44,7 +52,7 @@ const AdminBoardList = (board) => {
                                 width='700px'
                                 height='400px'
 
-                                src={list.URL}
+                                src={imageUrl(list.BOARD_NO)}
                                 alt=""
                             />
                         </div>
