@@ -12,7 +12,7 @@ const HostDetailModal =(props) => {
   
     //호스트아이디
     const hostId = props.state.hostId;
-  
+    console.log(hostId);
     const gender=(num)=>{
       if(num===1){
         return '남';
@@ -36,7 +36,7 @@ const HostDetailModal =(props) => {
       
           }
       }).then(Response => {
-          //console.log(Response.data); 
+          console.log(Response.data); 
           setHostDetail(Response.data);
   
           SelectOneFile(1,Response.data.MEM_IDX,0).then(Res=>{
