@@ -11,9 +11,7 @@ const List = (board) => {
         {board[0] !== undefined && board.map(list => {
           return (
 
-
-
-            <div className="col">
+            <div className="col" key={list.BOARD_NO}>
               <div className="card shadow-sm">
                 <svg
                   className="bd-placeholder-img card-img-top"
