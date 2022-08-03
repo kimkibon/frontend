@@ -24,7 +24,7 @@ const HostDetailModal =(props) => {
      
     useEffect(() => {
   
-      if(hostId !== undefined){
+      if(props.state.hostId !== undefined){
       //호스트정보 가져오기
       axios({
   
@@ -46,7 +46,7 @@ const HostDetailModal =(props) => {
       });
   
     }
-    } ,[]);
+    } ,[props.state.hostId]);
   
   
     hostDetail['URL'] = url;
