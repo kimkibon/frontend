@@ -43,7 +43,7 @@ const BoardDetail = () => {
     }
   }
   const state = {
-    'RES_CLI_ID': author.MEM_IDX,
+    'RES_CLI_ID': localStorage.getItem("MEM_ID"),
     'RES_CARE_NO': boardDetail.BOARD_CARE_NO,
     'RES_REQ_DETAIL': '',
     'RES_BOARD_NO': boardDetail.BOARD_NO,
@@ -62,6 +62,7 @@ const BoardDetail = () => {
     Auth(4, navigate).then(Response => {
 // 탈퇴한 회원, 정지된 회원인 경우 권한 없음 표시
       setAuthor(Response)
+      
 // cli mem_idx를 저장 
       axios({
         method: 'post',

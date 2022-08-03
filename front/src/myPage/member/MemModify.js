@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useLocation, Link } from 'react-router-dom';
 import Modal from '../member/Modal';
-// import secret_sms from '../../join/secret_sms';
 
 // 회원정보 보기 - 수정
 
@@ -44,18 +43,16 @@ const MemModify = () => {
         setModalOpen(false);
       };
 
-  const dataRuleCheckForPW =() =>{
-        return (MEM_PW.length >= 8 ? true : false)
-      }
+
 
 const onSubmit = (e) => {
   e.preventDefault();
-  if(dataRuleCheckForPW(false)){
-    alert("비밀번호를 8자 이상 입력해주세요.")
-  } else {
   if (password !== passwordCheck) { // 수정할 비밀번호와 수정할 비밀번호 확인이 다를 때
     return setPasswordError(true) // 에러 띄움
   } else {
+    if(password.length <8){ // 수정할 비밀번호가 8자 미만일 때
+      alert("비밀번호를 8자 이상 입력해주세요.")
+    } else {
     console.log(password);
     setMemModify( {
       ...memModify, 

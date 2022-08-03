@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useLocation } from 'react-router-dom';
+import SelectFileList from '../../commons/Files/SelectFileList';
+import Carousel from 'react-bootstrap/Carousel';
 
 const AdminMemberDetail = () => {
   
   const location = useLocation();
-
   const [mem_LEV, setMem_LEV] = useState('');
-
-  const mem_idx = location.state.MEM_IDX
+  const mem_idx = location.state.MEM_IDX;
+  const [file, setFile] = useState([]);
 
   const [getMem, setGetMem] = useState({ // MEM_IDX는 list에서 넘어온 값으로 초기값 지정
     MEM_IDX : mem_idx,
@@ -32,6 +33,15 @@ const AdminMemberDetail = () => {
     console.log(Response.data);
     setGetMem(Response.data);
     setMem_LEV(Response.data.MEM_LEVEL);
+    SelectFileList('1', Response.data.MEM_IDX, '0').then(Response => {
+      Response.map(base64 => {
+        base64.URL = "data:image/;base64," + base64.URL //바이너리 변환된 이미지를 출력하기 위해 주석을 달아줌
+      })
+      Response.sort(function (a, b) {
+        return a.FILE_LEVEL - b.FILE_LEVEL
+      })
+      setFile(Response);
+       });
   })
   },[]); 
 
@@ -69,7 +79,23 @@ const AdminMemberDetail = () => {
       <li>level(임시) : {mem_LEV}</li>
       <p/>
       <h3>호스트 회원 정보</h3>
-      <li>호스트프로필사진: </li>
+      <li>호스트 사진</li>  {/* 캐러셀 */}
+                <Carousel>
+                  {file.map(url => {
+                    return (
+                      <Carousel.Item key={url.FILE_LEVEL}>
+                        <img
+                          className="d-block w-100"
+                          src={url.URL}
+                          width='700px'
+                          height='400px'
+                          alt=""
+                        />
+                        {/* fileList 에서 받아온 정보를 표시.  */}
+                      </Carousel.Item>
+                    )
+                  })}
+                </Carousel>
       <li>이메일 : {getMem.HOST_EMAIL}</li>
       <li>우편번호 : {getMem.HOST_POST}</li>
       <li>주소 : {getMem.HOST_ADDR1}</li>

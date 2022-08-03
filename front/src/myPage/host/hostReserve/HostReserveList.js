@@ -6,17 +6,17 @@ import SelectOneFile from "../../../commons/Files/SelectOneFile";
 
 
 //예약상태
-const ResState=(state)=>{
-  switch(state){
-    case 0: return '예약요청'
-    case 1: return '예약승인'
-    case 2: return '결제대기'
-    case 3: return '결제/예약완료'
-    case 4: return '예약취소'
-    case 5: return '이용완료'
-  }
+// const ResState=(state)=>{
+//   switch(state){
+//     case 0: return '예약요청'
+//     case 1: return '예약승인'
+//     case 2: return '결제대기'
+//     case 3: return '결제/예약완료'
+//     case 4: return '예약취소'
+//     case 5: return '이용완료'
+//   }
 
-}
+// }
 
 //예약승인
 const resApprove=(res_idx)=>{
@@ -33,13 +33,13 @@ const resApprove=(res_idx)=>{
 }
 
 
-
-
 const HostReserveList = () => {
   const [resList, setResList] = useState([]);
   const mem_id = localStorage.getItem("MEM_ID");
 
   useEffect(() => {
+
+    //호스트의 예약리스트 select
     axios({
 
         method : 'post' ,
@@ -63,6 +63,7 @@ const HostReserveList = () => {
   } ,[]);
   
 
+  //거절사유입력
   const reject=(rej_content,res_idx)=>{
     axios({
 
@@ -77,134 +78,73 @@ const HostReserveList = () => {
       window.location.href="/myPage/host/hostReserve"
   });
   }
-///////////////////////////////////////////////////////////
 
-  //getElementId 사용 또는 ref 사용 반드시!중복 너무 많아
-  const stateChange=(state)=>{
-    if(state==0){
-      return(
-        <div class="stepper-wrapper">
-        <div class="stepper-item completed">
-          <div class="step-counter">1</div>
-          <div class="step-name">예약요청</div>
-        </div>
-        <div class="stepper-item active">
-          <div class="step-counter">2</div>
-          <div class="step-name">예약승인</div>
-        </div>
-        <div class="stepper-item">
-          <div class="step-counter">3</div>
-          <div class="step-name">결제대기</div>
-        </div>
-        <div class="stepper-item">
-          <div class="step-counter">4</div>
-          <div class="step-name">결제/예약완료</div>
-        </div>
-      </div>       
-      )
-    }
-    else if(state==1){
-      return(
-        <div class="stepper-wrapper">
-        <div class="stepper-item completed">
-          <div class="step-counter">1</div>
-          <div class="step-name">예약요청</div>
-        </div>
-        <div class="stepper-item completed">
-          <div class="step-counter">2</div>
-          <div class="step-name">예약승인</div>
-        </div>
-        <div class="stepper-item active">
-          <div class="step-counter">3</div>
-          <div class="step-name">결제대기</div>
-        </div>
-        <div class="stepper-item">
-          <div class="step-counter">4</div>
-          <div class="step-name">결제/예약완료</div>
-        </div>
-      </div>        
-      )
-    }
-    else if(state==2){
-      return(
-        <div class="stepper-wrapper">
-        <div class="stepper-item completed">
-          <div class="step-counter">1</div>
-          <div class="step-name">예약요청</div>
-        </div>
-        <div class="stepper-item completed">
-          <div class="step-counter">2</div>
-          <div class="step-name">예약승인</div>
-        </div>
-        <div class="stepper-item completed">
-          <div class="step-counter">3</div>
-          <div class="step-name">결제대기</div>
-        </div>
-        <div class="stepper-item active">
-          <div class="step-counter">4</div>
-          <div class="step-name">결제/예약완료</div>
-        </div>
-      </div>        
-      )
-    }
-    else if(state==3){
-      return(
-        <div class="stepper-wrapper">
-        <div class="stepper-item completed">
-          <div class="step-counter">1</div>
-          <div class="step-name">예약요청</div>
-        </div>
-        <div class="stepper-item completed">
-          <div class="step-counter">2</div>
-          <div class="step-name">예약승인</div>
-        </div>
-        <div class="stepper-item completed">
-          <div class="step-counter">3</div>
-          <div class="step-name">결제대기</div>
-        </div>
-        <div class="stepper-item completed">
-          <div class="step-counter">4</div>
-          <div class="step-name">결제/예약완료</div>
-        </div>
-      </div>        
-      )
-    }
-    else if(state==4){
-      return(
-        <div class="stepper-wrapper">
-        <div class="stepper-item">
-          <div class="step-counter">1</div>
-          <div class="step-name">예약요청</div>
-        </div>
-        <div class="stepper-item">
-          <div class="step-counter">2</div>
-          <div class="step-name">예약승인</div>
-        </div>
-        <div class="stepper-item">
-          <div class="step-counter">3</div>
-          <div class="step-name">결제대기</div>
-        </div>
-        <div class="stepper-item">
-          <div class="step-counter">4</div>
-          <div class="step-name">결제/예약완료</div>
-        </div>
-      </div>        
-      )
+
+
+  //예약 상태에 따른 step bar 변화
+  const stateChange = (state) => {
+    let a, b, c, d
+
+    switch (state) {
+      case 0:
+        a = 'stepper-item completed'
+        b = 'stepper-item active'
+        c = 'stepper-item'
+        d = 'stepper-item'
+        break;
+      case 1:
+        a = 'stepper-item completed'
+        b = 'stepper-item completed'
+        c = 'stepper-item active'
+        d = 'stepper-item'
+        break;
+      case 2:
+        a = 'stepper-item completed'
+        b = 'stepper-item completed'
+        c = 'stepper-item completed'
+        d = 'stepper-item active'
+        break;
+      case 3:
+        a = 'stepper-item completed'
+        b = 'stepper-item completed'
+        c = 'stepper-item completed'
+        d = 'stepper-item completed'
+        break;
+      case 4:
+        a = 'stepper-item'
+        b = 'stepper-item'
+        c = 'stepper-item'
+        d = 'stepper-item'
+        break;
+
+      default:
+        break;
     }
 
+    return (
+      <div class="stepper-wrapper">
+        <div class={a}>
+          <div class="step-counter">1</div>
+          <div class="step-name">예약요청</div>
+        </div>
+        <div class={b}>
+          <div class="step-counter">2</div>
+          <div class="step-name">예약승인</div>
+        </div>
+        <div class={c}>
+          <div class="step-counter">3</div>
+          <div class="step-name">결제대기</div>
+        </div>
+        <div class={d}>
+          <div class="step-counter">4</div>
+          <div class="step-name">결제/예약완료</div>
+        </div>
+      </div>
+    )
   }
 
 
 
-
-
-
-
-
-
-
-
-///////////////////////////////////////////////////////////////////
   return (
     <div>
       <h1>예약내역</h1>
@@ -249,8 +189,10 @@ const HostReserveList = () => {
                             }}>예약거절</button>
                           </div>}
 
+
                           {/* 예약취소상태 */}
                           {resstate === 4 && <div>예약이 취소되었습니다.<p/></div>}
+
 
                           {/* 예약승인상태 *//* 결제대기상태 *//* 결제/예약완료상태 */}
                           {[1,2,3,4].includes(resstate) && 
