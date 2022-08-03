@@ -57,7 +57,6 @@ const HostInfo = () => {
    useEffect(() => {
     Auth(1 , navigate).then(Response => {
     setAuthor(Response)
-    console.log(author)
         axios({ 
         method : 'post' ,
         url : '/GareBnB/host/myPage/hostInfo.do' , 
