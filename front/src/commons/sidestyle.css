@@ -83,22 +83,6 @@ body
     color: #94B49F;
 }
 
-/* .left_sub_menu {
-    position: fixed;
-    top: 50px;
-    width: 200px;
-    z-index: 10;
-    left: 45px;
-    background: white;
-    border-right: 1px solid rgba(0, 0, 0, 0.07);
-    bottom: 50px;
-    height: 100%;
-    margin-bottom: -70px;
-    margin-top: 0px;
-    padding-bottom: 0px;
-    box-shadow: 0 0px 24px 0 rgb(0 0 0 / 6%), 0 1px 0px 0 rgb(0 0 0 / 2%);
-    color: black;
-} */
 
 /* 아이콘 */
 .navigation ul li a .icon
@@ -128,6 +112,13 @@ body
     text-align: start;
     white-space: nowrap;
 }
+
+/* 사이드바 서브메뉴 */
+.big_menu2 .small_menu {
+    margin-left: 14px;
+    padding-top: 8px;
+}
+
 
 @font-face {
     font-family: 'Material Icons';

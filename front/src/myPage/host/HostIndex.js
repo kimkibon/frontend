@@ -19,7 +19,7 @@ const HostIndex = () => {
         <Link to='hostDelete'><li>host delete</li></Link>
         <Link to='hostInfo'><li>host info</li></Link>
         <Link to='hostModify'><li>host modify</li></Link>
-        <Link to='hostReport'><li>host Report</li></Link>
+        {/* <Link to='hostReport'><li>host Report</li></Link> */}
         <Link to='hostReserve'><li>host예약내역</li></Link>
         <Link to='hostUseList'><li>host이용내역</li></Link>
         <Link to='hostBoardList'><li>host BoardList</li></Link>
