@@ -39,7 +39,7 @@ const ReserveListPage = () => {
       url: '/GareBnB/mypage/memReserveList.do',
       contentType: "application/json;charset=UTF-8",
       params: {
-        MEM_ID: 'MEM_2'//mem_id//////////////////////////////////     
+        MEM_ID: mem_id//////////////////////////////////     
 
       }
     }).then(Response => {
