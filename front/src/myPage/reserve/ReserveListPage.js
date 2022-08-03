@@ -66,23 +66,38 @@ const ReserveListPage = () => {
 
   //getElementId 사용 또는 ref 사용 반드시!중복 너무 많아
   const stateChange=(state)=>{
-    switch (key) {
-      case 1:
-        
-        break;
-        case 1:
-        
-          break;
-          case 1:
-        
-            break;
-            case 1:
-        
-              break;
-    
-      default:
-        break;
+    const class_state =[];
+    if(state===0){
+      class_state[0] = 'completed';
+      class_state[1] = 'active';
+      class_state[2] = '';
+      class_state[3] = '';
     }
+    else if(state===1){
+      class_state[0] = 'completed';
+      class_state[1] = 'completed';
+      class_state[2] = 'active';
+      class_state[3] = '';
+    }
+    else if(state===2){
+      class_state[0] = 'completed';
+      class_state[1] = 'completed';
+      class_state[2] = 'completed';
+      class_state[3] = 'active';
+    }
+    else if(state===3){
+      class_state[0] = 'completed';
+      class_state[1] = 'completed';
+      class_state[2] = 'completed';
+      class_state[3] = 'completed';
+    }
+    else{
+      class_state[0] = '';
+      class_state[1] = '';
+      class_state[2] = '';
+      class_state[3] = '';
+    }
+
       return(
         <div class="stepper-wrapper">
         <div class={'stepper-item'+ class_state[0]}>
