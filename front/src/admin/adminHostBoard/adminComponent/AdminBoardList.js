@@ -34,11 +34,11 @@ const AdminBoardList = (board) => {
         }
     }
 
-    function imageUrl(props){
-        SelectOneFile(props).then(Res => {
-            return ("data:image/;base64,"+Res)
-        })
-    }
+    // function imageUrl(props){
+    //     SelectOneFile('0', props.BOARD_NO,props.BOARD_MODIFY_NO).then(Res => {
+    //         return ("data:image/;base64,"+Res)
+    //     })
+    // }
 
     return (
 
@@ -52,7 +52,7 @@ const AdminBoardList = (board) => {
                                 width='700px'
                                 height='400px'
 
-                                src={imageUrl(list.BOARD_NO)}
+                                src={list.URL}
                                 alt=""
                             />
                         </div>

@@ -254,7 +254,7 @@ const HostReserveList = () => {
 
                           {/* 예약승인상태 *//* 결제대기상태 *//* 결제/예약완료상태 */}
                           {[1,2,3,4].includes(resstate) && 
-                            <Link to ={'InsertReport'} 
+                            <Link to ={'HostInsertReport'} 
                             state={{'REPORT_ID': mem_id, 'REPORT_RES_NO': list.RES_IDX,'REPORT_MEM_IDX':list.RES_CLI_ID}}>
                               <button class="btn btn-danger">신고하기</button>
                             </Link>

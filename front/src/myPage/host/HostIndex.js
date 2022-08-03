@@ -35,6 +35,7 @@ const HostIndex = () => {
             <Route path='/hostReport' element={<HostReport/>}/>
             <Route path='/hostReport/HostDetailReport/:REPORT_IDX' element={<HostDetailReport/>}/>
             <Route path='/hostUseList/HostInsertReport' element={<HostInsertReport/>}/>
+            <Route path='/hostReserve/HostInsertReport' element={<HostInsertReport/>}/>
             <Route path='/hostReserve' element={<HostReserveList/>}/>
             <Route path='/hostUseList' element={<HostUseList/>}/>
             <Route path='/hostBoardList' element={<HostBoardList/>}/>
