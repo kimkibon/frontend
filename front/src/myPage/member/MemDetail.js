@@ -2,27 +2,31 @@
 // 회원정보 보기 (수정하기 버튼), (회원 탈퇴) 도 같은 페이지에 보여야 함)
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Modal from '../member/Modal';
+import Auth from '../../login/Auth';
 
 const MemDetail = () => { 
+    const navigate = useNavigate();
+    const [author , setAuthor] = useState();
 
     const [memDetail, setMemDetail] = useState([]);
 
-    useEffect(() => // 회원정보 보여주기
-        { axios({ 
+    useEffect(() => {// 회원정보 보여주기
+    Auth(4 , navigate).then(Response => {
+        setAuthor(Response)
+        axios({ 
         method : 'post' ,
         url : '/GareBnB/mypage/MemDetail.do' , 
         contentType:"application/json; charset=UTF-8",
         params : { 
-            MEM_IDX : '7' 
+            MEM_IDX : author.MEM_IDX 
         }})
-
     .then(Response => { 
     console.log(Response.data);
     setMemDetail(Response.data);
-
     })
+})// auth
     },[]); 
 
     const [memDelete, setmemDelete] = useState([]); // 탈퇴 회원으로 레벨 업데이트 

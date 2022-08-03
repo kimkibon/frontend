@@ -1,20 +1,20 @@
 import React, { useState } from 'react'
 import { Modal } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ImageUploadBox from '../host/myBoard/component/ImageUploadBox';
 import HostAddress from './HostAddress';
 import InsertHost from './InsertHost';
 import {Button,Form} from 'react-bootstrap';
+import Auth from '../../login/Auth';
 
 const MemChange = () => {
-
-  // MEM_IDX 불러오는 기능있어야함
-
+  const navigate = useNavigate();
+  const [author , setAuthor] = useState();
   const [insertModal, setInsertModal] = React.useState(false);
   const [showAddrModal, setShowAddrModal] = React.useState(false);
   const [insertFiles, setInsertFiles] = useState([]);
   const [insertHost, setInsertHost] = useState({    
-    MEM_IDX : '3',
+    MEM_IDX : author.MEM_IDX,
     HOST_EMAIL : '',
     HOST_POST : '',
     HOST_ADDR1 : '',
@@ -37,6 +37,10 @@ const MemChange = () => {
     HOST_INTRO,
     HOST_ACCOUNT,
     HOST_BANK } = insertHost;
+
+    Auth(4 , navigate).then(Response => {
+      setAuthor(Response)
+    })
 
     const setAddrInfo = (data) => {
       setInsertHost({
