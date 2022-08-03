@@ -128,6 +128,7 @@ const ReserveListPage = () => {
   }
 
 
+  //////////모달!!!!!!!!!!!!!!!!!!!!
 //////////////hostid 셋팅
   const [hostt, setHostt] = useState();
 
@@ -145,7 +146,13 @@ const ReserveListPage = () => {
     <div>
       <h1>예약내역</h1>
 
+
+
       <HostDetailModal show={modalShow} onHide={() => setModalShow(false)} state={{ 'hostId': hostt }}/>
+
+
+
+
 
 
       {resList[0] !== undefined && resList.map((list,index) => {
@@ -165,9 +172,24 @@ const ReserveListPage = () => {
                     <img class="img-fluid img-responsive rounded product-image" src={list.URL} width="200px" height="auto" /><p />
                     
                     
+
+
+
+
+
+                    
                     {[1, 2, 3].includes(resstate) && 
                       <button type="button" class="btn btn-success" onClick={() => hostModal(list.HOST_ID)}>호스트정보</button>}                  
                   
+
+
+
+
+
+
+
+
+
                   </div>
                   <div class="col-md-7 mt-1">
                     <h5>예약번호  {list.RES_IDX}</h5><br />
