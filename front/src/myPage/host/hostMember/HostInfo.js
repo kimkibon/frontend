@@ -58,8 +58,8 @@ const HostInfo = () => {
         url : '/GareBnB/host/myPage/hostInfo.do' , 
         contentType:"application/json; charset=UTF-8",
         params : { 
-            MEM_ID : 'MEM_20',
-            MEM_IDX : '20'
+            MEM_ID : 'HOST1',
+            MEM_IDX : '3'
         }})
     .then(Response => { 
     console.log(Response.data);
