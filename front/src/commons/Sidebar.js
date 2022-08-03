@@ -72,7 +72,12 @@ const Sidebar = () => {
                 <span className='title'>host 메뉴들</span>
               </Link>
           </li>
-              <ul class="left_sub_menu">
+              <ul class="small_menu">
+                
+                <Link to="/admin">
+                  <span className='icon'><AiFillInteraction/></span>
+                  <span className='title'>소메뉴1</span>
+                </Link>
                     <li><a href="#">소메뉴1-1</a></li>
                     <li><a href="#">소메뉴1-2</a></li>
                     <li><a href="#">소메뉴1-3</a></li>
