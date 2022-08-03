@@ -52,6 +52,12 @@ body
     width: 100%;
 }
 
+.big_menu2 samll_menu
+{
+    display: flex;
+    background-color: #94B49F;
+}
+
 /* 호스트의 서브메뉴 */
 
 .navigation ul li
@@ -111,6 +117,7 @@ body
     font-size: 30px;
 }
 
+/*  */
 .navigation ul li a .title
 {
     position: relative;

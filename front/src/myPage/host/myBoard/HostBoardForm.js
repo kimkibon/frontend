@@ -11,8 +11,9 @@ const HostBoardForm = () => {
   const [insertModal, setInsertModal] = React.useState(false);
   const [showAddrModal, setShowAddrModal] = React.useState(false);
   const [insertFiles, setInsertFiles] = useState([]);
+
   const [insertBoard, setInsertBoard] = useState({
-    'BOARD_HOST_ID': '',     // 로컬 스토리지에서 가져오기 테스트 코드 나중에 수정해야함
+    'BOARD_HOST_ID': localStorage.getItem("MEM_ID"),     // 로컬 스토리지에서 가져오기 테스트 코드 나중에 수정해야함
     'BOARD_HOST_IDX': '',    // 어디서 가져오지 ? 서버에서 ? 테스트 코드 나중에 수정해야함
     'BOARD_TITLE': '',       // 입력 받음
     'BOARD_CONTENT': '',     // 입력 받음 
@@ -42,15 +43,15 @@ const HostBoardForm = () => {
     BOARD_DATE_START,
     BOARD_DATE_END
   } = insertBoard;
-  //변수 초기화 
-  // useEffect(()=>{
-  //   Auth(2 , Navigate).then(Res =>{
-  //     setInsertBoard({
-  //       ...insertBoard,
-  //       'BOARD_HOST_IDX' : Res.MEM_IDX
-  //     })
-  //   })
-  // },[])
+  // 변수 초기화 
+  useEffect(()=>{
+    Auth(2 , Navigate).then(Res =>{
+      setInsertBoard({
+        ...insertBoard,
+        'BOARD_HOST_IDX' : Res.MEM_IDX
+      })
+    })
+  },[])
   const setAddrInfo = (data) => {
     setInsertBoard({
       ...insertBoard,
