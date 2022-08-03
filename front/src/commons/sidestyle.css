@@ -34,13 +34,25 @@ body
     width: 250px;
 }
 
-.navigation ul
+/* 일반회원 메뉴 */
+.navigation big_menu1
 {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
 }
+
+/* 호스트 메뉴 */
+.navigation big_menu2
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+/* 호스트의 서브메뉴 */
 
 .navigation ul li
 {
@@ -64,6 +76,23 @@ body
     text-decoration: none;
     color: #94B49F;
 }
+
+/* .left_sub_menu {
+    position: fixed;
+    top: 50px;
+    width: 200px;
+    z-index: 10;
+    left: 45px;
+    background: white;
+    border-right: 1px solid rgba(0, 0, 0, 0.07);
+    bottom: 50px;
+    height: 100%;
+    margin-bottom: -70px;
+    margin-top: 0px;
+    padding-bottom: 0px;
+    box-shadow: 0 0px 24px 0 rgb(0 0 0 / 6%), 0 1px 0px 0 rgb(0 0 0 / 2%);
+    color: black;
+} */
 
 /* 아이콘 */
 .navigation ul li a .icon

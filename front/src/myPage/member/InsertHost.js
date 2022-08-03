@@ -8,9 +8,6 @@ const InsertHost = (props) => {
   const insertHost = props.props.insertHost;
   const insertFiles = props.props.insertFiles;
 
-  console.log(insertFiles)
-  
- 
   //변수 초기 세팅
   const InsertHost = async (e) => {
     e.preventDefault();

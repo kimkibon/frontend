@@ -1,10 +1,8 @@
 import axios from "axios";
-import { useEffect, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import Button from 'react-bootstrap/Button';
+import { useEffect, useState } from "react";
+import { Link, } from "react-router-dom";
 import Payment from "./payment/Payment";
 import SelectOneFile from "../../commons/Files/SelectOneFile";
-import Auth from "../../login/Auth";
 import './resstyle.css'
 
 //예약상태
@@ -127,18 +125,15 @@ const ReserveListPage = () => {
   }
 
 
-
   return (
     <div>
       <h1>예약내역</h1>
       {resList[0] !== undefined && resList.map((list,index) => {
-
         let resstate = list.RES_LEVEL;
         return (
           <div class="container mt-5 mb-5" key={index}>
             <div class="d-flex justify-content-center row">
               <div class="col-md-10">
-
 
                 {stateChange(resstate)}
 

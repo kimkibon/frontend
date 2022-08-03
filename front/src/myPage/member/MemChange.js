@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import ImageUploadBox from '../host/myBoard/component/ImageUploadBox';
 import HostAddress from './HostAddress';
 import InsertHost from './InsertHost';
+import {Button,Form} from 'react-bootstrap';
 
 const MemChange = () => {
 
@@ -13,7 +14,7 @@ const MemChange = () => {
   const [showAddrModal, setShowAddrModal] = React.useState(false);
   const [insertFiles, setInsertFiles] = useState([]);
   const [insertHost, setInsertHost] = useState({    
-    MEM_IDX : '20',
+    MEM_IDX : '13',
     HOST_EMAIL : '',
     HOST_POST : '',
     HOST_ADDR1 : '',
@@ -53,7 +54,7 @@ const MemChange = () => {
       ...insertHost, // 기존의 input 객체를 복사한 뒤      
       [name]: value // name 키를 가진 값을 value 로 설정    
     });  
-   
+   console.log(insertHost)
   };
 
   const getImages = (image) => {
@@ -108,9 +109,21 @@ const MemChange = () => {
 
   return (
     <div>
-     <h3>이메일주소 : </h3>
+     {/* <h3>이메일주소 : </h3>
       <input name="HOST_EMAIL" placeholder="이메일 입력" onChange={onChange} value={HOST_EMAIL} />
-      <br/>
+      <br/> */}
+      <Form.Group controlId="formBasicEmail">
+        <Form.Label>이메일 주소</Form.Label>
+        <Form.Control type="text" placeholder="이메일 입력" 
+        onChange={onChange} name="HOST_EMAIL" value={insertHost.HOST_EMAIL} />
+      </Form.Group>
+
+      <Form.Group controlId="formBasicEmail">
+        <Form.Label>우편번호</Form.Label>
+        <Form.Control type="text" placeholder="이메일 입력" 
+        onChange={onChange} name="HOST_EMAIL" value={insertHost.HOST_EMAIL} />
+      </Form.Group>
+      
       <h3>우편번호 : </h3>
         <input name="HOST_POST" placeholder="우편번호 입력" onChange={onChange} value={HOST_POST} />
         <button
