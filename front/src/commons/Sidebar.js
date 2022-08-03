@@ -74,14 +74,25 @@ const Sidebar = () => {
           </li>
               <ul class="small_menu">
                 
-                <Link to="/admin">
+                <Link to="#">
                   <span className='icon'><AiFillInteraction/></span>
                   <span className='title'>소메뉴1</span>
                 </Link>
-                    <li><a href="#">소메뉴1-1</a></li>
-                    <li><a href="#">소메뉴1-2</a></li>
-                    <li><a href="#">소메뉴1-3</a></li>
-                    <li><a href="#">소메뉴1-4</a></li>
+                
+                <Link to="#">
+                  <span className='icon'><AiFillInteraction/></span>
+                  <span className='title'>소메뉴2</span>
+                </Link>
+
+                <Link to="#">
+                  <span className='icon'><AiFillInteraction/></span>
+                  <span className='title'>소메뉴3</span>
+                </Link>
+
+                <Link to="#">
+                  <span className='icon'><AiFillInteraction/></span>
+                  <span className='title'>소메뉴4</span>
+                </Link>
               </ul>
           </ul>
         </div>
