@@ -133,7 +133,7 @@ const AdminResInfo =() => {
                         결제금액
                     </td>
                     <td>
-                        {resInfo.PAY_PRICE}
+                        {resInfo.PAY_PRICE} 원
                     </td>    
                 </tr>
                 <tr>
