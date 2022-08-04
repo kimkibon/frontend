@@ -10,6 +10,8 @@ const HostDetailModal =(props) => {
     const [hostDetail, setHostDetail] = useState([]);
     const [url,setUrl] = useState(); //이미지파일 불러오기
   
+
+    const close=props.onHide;
     //호스트아이디
     const hostId = props.state.hostId;
     console.log(hostId);
@@ -80,7 +82,7 @@ const HostDetailModal =(props) => {
 
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={props.onHide}>확인</Button>
+            <Button onClick={()=>{setUrl('');close();}}>확인</Button>
           </Modal.Footer>
         </Modal>
       )
