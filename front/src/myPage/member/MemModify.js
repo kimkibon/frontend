@@ -185,10 +185,11 @@ const MemModify = () => {
 
       <div className='row'>
         <label for="staticEmail" class="col-md-4 col-form-label">인증 번호</label>
-        <div className='col-md-8'>
+        <div className='col-md-4'>
           <input type='text' name='Verify' onChange={getInputVerifyCode} value={InputVerifyCode} class="form-control"> 
             </input></div>
-            <button onClick={verify}>인증 확인</button>
+            <div className='col-md-4'>
+            <Button variant="primary" onClick={verify}>인증 확인</Button> </div>
       </div>
 
       <button type="submit" onClick={ModifySuccess}>수정완료</button> 

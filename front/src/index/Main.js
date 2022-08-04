@@ -41,7 +41,7 @@ const Main = () => {
       {/* <!--Banner Area Start --> */}
       <section className="row banner-area">
         <div className="banner-area__img">
-          <img src={homeImage} alt="banner-img" class="img-fluid" />
+          <img src={homeImage} alt="banner-img" className="img-fluid" />
           <div className="banner-area__content">
             <div className='number'>
               <div className='row'>
