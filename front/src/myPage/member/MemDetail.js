@@ -113,7 +113,7 @@ const MemDetail = () => {
                 </div>
 
 
-                <Modal show={show}>
+                <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
                         <Modal.Title>정말로 탈퇴하시겠습니까?</Modal.Title>
                     </Modal.Header>
