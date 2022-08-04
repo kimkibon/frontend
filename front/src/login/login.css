@@ -101,7 +101,7 @@
     margin-left: 20px;
 }
 .margin-l-lg {
-    margin-left: 30px;
+    margin-left: 580px;
 }
 
 .margin-r {
@@ -171,14 +171,15 @@
 
 /* Container */
 
-.container-content {
-    background-color: #3a3a3aa2;
+.container {
+    background-color: #e0d0d0a2;
     color: inherit;
-    padding: 15px 20px 20px 20px;
-    border-color: #FFEB3B;
+    padding: 15px 15px 15px 35px;
+    width: 10px;
+    border-color: #020201;
     border-image: none;
     border-style: solid solid none;
-    border-width: 1px 0;
+    border-width: 2px 0;
 }
 
 /* Backgrounds */

@@ -1,6 +1,6 @@
 import React from 'react'
 import './sidestyle.css'
-import {AiFillAlert, AiFillDatabase, AiFillCarryOut, AiFillEye, AiFillNotification, AiFillInteraction} from "react-icons/ai";
+import {AiFillAlert, AiFillDatabase, AiFillCarryOut, AiFillEye, AiFillNotification, AiFillInteraction, AiOutlineDown} from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import 'bootstrap'
 // react-icons names -> fa로 통일
@@ -13,68 +13,57 @@ const HostSidebar = () => {
   return (
     <div className='col'>
       
-        <div className='navigation'>
-          <ul>
-          <li>
-              <Link to='/Admin'>
-                <span className='icon'><AiFillDatabase className='fa'/></span>
-                <span className='title'>INDEX</span>
-              </Link>
-            </li>
+        <div className='navigation'>                   
+          <ul className='big_menu2'>
+          
+          <label className='hostmenu' for='hostmenu'>
+            <span className='icon'><AiOutlineDown/></span>
+            <span className='title'>
+              host 메뉴
+            </span>
+            </label>
+          <input id="hostmenu" type="checkbox"></input> 
+        
 
+            <ul class="small_menu">
               <li>
-              <Link to="/Admin/adminBoardReview">
-                <span className='icon'><AiFillCarryOut className='fa' /></span>
-                <span className='title'>일반회원관리</span>
-              </Link>
+                <Link to="host/myPage">
+                  <span className='icon'><AiFillInteraction/></span>
+                  <span className='title'>호스트 메뉴</span>
+                </Link>
               </li>
 
               <li>
-              <Link to="/myPage/qna">
-                <span className='icon'><AiFillNotification/></span>
-                <span className='title'> 호스트회원관리 </span>
-              </Link>
+                <Link to="/myPage/host/hostBoardList">
+                  <span className='icon'><AiFillInteraction/></span>
+                  <span className='title'>내 게시글</span>
+                </Link>
+              </li>
+              
+              <li>
+                <Link to="/myPage/host/hostReserve">
+                  <span className='icon'><AiFillInteraction/></span>
+                  <span className='title'>예약내역</span>
+                </Link>
+              </li>  
+
+              <li>
+                <Link to="/myPage/host/hostUseList">
+                  <span className='icon'><AiFillInteraction/></span>
+                  <span className='title'>이용내역</span>
+                </Link>
               </li>
 
               <li>
-              <Link to="/myPage/qna">
-                <span className='icon'><AiFillNotification/></span>
-                <span className='title'> 호스트 등록요청 </span>
-              </Link>
+                <Link to="/myPage/host/hostInfo">
+                  <span className='icon'><AiFillInteraction/></span>
+                  <span className='title'>회원정보보기</span>
+                </Link>
               </li>
 
-              <li>
-              <Link to="/myPage/qna">
-                <span className='icon'><AiFillNotification/></span>
-                <span className='title'> 호스트등록글관리 </span>
-              </Link>
-              </li>
-
-
-              <li>
-              <Link to="/myPage/report">
-                <span className='icon'><AiFillAlert className='fa'/></span>
-                <span className='title'>게시글관리</span>
-              </Link>
-              </li>
-
-              <li>
-              <Link to="/myPage/member/MemDetail">
-                <span className='icon'><AiFillEye/></span>
-                <span className='title'>QNA 관리</span>
-              </Link>
-              </li>
-
-              <li>
-              <Link to="/myPage/member/MemChange">
-                <span className='icon'><AiFillInteraction/></span>
-                <span className='title'>신고 관리</span>
-              </Link>
-          </li>
-          </ul>
+            </ul>
+        </ul>
         </div>
-
-        {/* <div class="toggle"><AiOutlineMenu className='fa' onClick={toggleMenu()}/></div> */}
         
               
 </div>
