@@ -43,9 +43,9 @@ const MyPageIndex = () => {
     <div class="container-fluid">
       <div class="row">
         
-        <div class='col-lg-2'>
+        {/* <div class='col-lg-2'>
           <Sidebar />
-        </div>
+        </div> */}
         
         {/* <Layout>
         <Link to='host'><li>Host</li></Link>

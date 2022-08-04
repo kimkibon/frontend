@@ -16,7 +16,7 @@ const HostSidebar = () => {
         <div className='navigation'>                   
           <ul className='big_menu2'>
           
-          <label className='hostmenu' for='hostmenu'>
+          <label className='hostmenu' htmlFor='hostmenu'>
             <span className='icon'><AiOutlineDown/></span>
             <span className='title'>
               host 메뉴
@@ -25,7 +25,7 @@ const HostSidebar = () => {
           <input id="hostmenu" type="checkbox"></input> 
         
 
-            <ul class="small_menu">
+            <ul className="small_menu">
               <li>
                 <Link to="host/myPage">
                   <span className='icon'><AiFillInteraction/></span>
