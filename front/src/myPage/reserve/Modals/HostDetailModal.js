@@ -14,7 +14,7 @@ const HostDetailModal =(props) => {
     const close=props.onHide;
     //호스트아이디
     const hostId = props.state.hostId;
-    console.log(hostId);
+
     const gender=(num)=>{
       if(num===1){
         return '남';

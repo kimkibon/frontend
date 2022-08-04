@@ -27,7 +27,7 @@ const MemUseListPage = () => {
                 }
             }).then(Response => {
                 const list_review = Response.data.map(async list=>{
-                    await Reviewcheck(list.RES_CLI_ID, list.RES_BOARD_NO).then(Res=>{
+                    await Reviewcheck(list.RES_CLI_ID, list.RES_IDX).then(Res=>{
                         list['review'] = Res
                     })
                     return list
@@ -70,12 +70,12 @@ const MemUseListPage = () => {
                                                 <button class="btn btn-danger">신고하기</button></Link>
                                             
                                             <Link to ={'Myreview'} 
-                                                state={{'CLI_ID': list.RES_CLI_ID, 'RES_BOARD_NO': list.RES_BOARD_NO,'after_date':after_date,'reviewcheck':review_check}}>
+                                                state={{'CLI_ID': list.RES_CLI_ID, 'RES_IDX': list.RES_IDX,'after_date':after_date,'reviewcheck':review_check}}>
                                                 <button type="button" class="btn btn-primary">리뷰확인</button></Link>                    
                                             
                                             {new Date().getTime()<after_date ?
                                                                         (review_check===0 ? 
-                                                                                        <Link to ={'InsertReview'} state={{'REVIEW_MEM_ID': list.RES_CLI_ID, 'BOARD_NO': list.RES_BOARD_NO}}>
+                                                                                        <Link to ={'InsertReview'} state={{'REVIEW_MEM_ID': list.RES_CLI_ID, 'BOARD_NO': list.RES_BOARD_NO,'RES_IDX': list.RES_IDX}}>
                                                                                         <button type="button" class="btn btn-primary">리뷰쓰기</button></Link>
                                                                                             :<Link to="" className="disable-link"><button type="button" class="btn btn-outline-primary" disabled>리뷰쓰기</button></Link>)
                                                                             :<Link to="" className="disable-link"><button type="button" class="btn btn-outline-primary" disabled>리뷰쓰기</button></Link>}

@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-async function Reviewcheck(mem_id ,board_no) {
+async function Reviewcheck(mem_id ,res_idx) {
 
   return( new Promise((resolve,reject)=>{
 
@@ -10,7 +10,7 @@ async function Reviewcheck(mem_id ,board_no) {
         contentType:"application/json;charset=UTF-8",
         params : {
             MEM_ID : mem_id,
-            BOARD_NO : board_no
+            RES_IDX : res_idx
     
         }
     })
