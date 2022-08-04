@@ -42,7 +42,7 @@ const MemDetail = () => {
             window.location.href = '../index/' // 메인 페이지로 이동 
 
         } else {
-            alert("비밀번호가 일치하지 않습니다")
+            alert("비밀번호를 다시 확인해주세요")
         }
     }
 
@@ -97,43 +97,39 @@ const MemDetail = () => {
                     <label class="col-2 col-form-label">휴대폰 번호</label>
                     <div className='col-4 text-center'>
                         <input type='text' value={memDetail.MEM_PHONE} class="form-control" readOnly></input></div>
-                </div><br />
+                </div><br /><br />
 
-                <div class="row d-flex justify-content-center align-items-center">
-                    <div className='col-3 text-lg-start'>
-
-                        <Button className="btn btn-primary" type="button">
+                <div class="row d-flex justify-content-end align-items-end">
+                    <div className='col-lg-2'>
+                        <Button className="btn btn-primary " type="button">
                             <Link to={'../member/MemModify'} style={{ textDecoration: "none", color: "white" }} state={{ mem: memDetail }}>수정</Link>
-
-                        </Button>
-                    </div>
-                    <div className='col-3 text-lg-end'>
+                        </Button> &nbsp;
                         <Button className="btn btn-success" type="button" onClick={handleShow}>
                             탈퇴
                         </Button>
                     </div>
-
-
-                    <Modal show={show} onHide={handleClose}>
-                        <Modal.Header closeButton>
-                            <Modal.Title>정말로 탈퇴하시겠습니까?</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                            <div style={{ color: 'red' }}>비밀번호를 입력하신 후,
-                                <br />탈퇴 버튼을 클릭하시면 탈퇴 처리가 완료됩니다. <br /><br /></div>
-                            <input type="password" placeholder='비밀번호를 입력하세요' onChange={e => setOriginPw(e.target.value)} class="form-control">
-                            </input>
-                        </Modal.Body>
-                        <Modal.Footer>
-                            <Button variant="success" onClick={PWCHECK}>탈퇴</Button>
-                            <Button variant="secondary" onClick={handleClose}>취소</Button>
-                        </Modal.Footer>
-                    </Modal>
-
-
                 </div>
-            </div >
-        </div>
+
+                <Modal show={show} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>정말로 탈퇴하시겠습니까?</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div style={{ color: 'red' }}>비밀번호를 입력하신 후,
+                            <br />탈퇴 버튼을 클릭하시면 탈퇴 처리가 완료됩니다. <br /><br /></div>
+                        <input type="password" placeholder='비밀번호를 입력하세요' onChange={e => setOriginPw(e.target.value)} class="form-control">
+                        </input>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="success" onClick={PWCHECK}>탈퇴</Button>
+                        <Button variant="secondary" onClick={handleClose}>취소</Button>
+                    </Modal.Footer>
+                </Modal>
+
+
+            </div>
+        </div >
+
     )
 }
 
