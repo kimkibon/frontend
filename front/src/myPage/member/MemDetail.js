@@ -58,7 +58,7 @@ const MemDetail = () => {
             .then(Response => {
                 console.log(Response.data);
                 setmemDelete(Response.data);
-                // 메인페이지로 이동하는 링크 작성!!!
+                window.location.href = '/';
             })
     };
 
@@ -67,7 +67,6 @@ const MemDetail = () => {
     }
     const handleClose = () => { // 모달창 닫힘
         setShow(false);
-        // 메인페이지로 이동하는 링크 작성!!!!!
     }
 
 
