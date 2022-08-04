@@ -5,6 +5,8 @@ import homeImage from '../commons/images/homeImage.png';
 import '../commons/style.css'
 
 const Main = () => {
+  const [startDate , setStartDate] = useState(new Date());
+  const [endDate , setEndDate] = useState(new Date());
   const [state, setState] = useState({
     'START_DATE': '',
     'END_DATE': '',
@@ -24,11 +26,15 @@ const Main = () => {
   const onChange = (dates) => {
     const [start, end] = dates;
 
+    if(end !== undefined){
+    setStartDate(start);
+    setEndDate(end);
+
     setState({
       'START_DATE': start,
       'END_DATE': end
     })
-
+  }
   };
   return (
     <div>
@@ -41,42 +47,48 @@ const Main = () => {
               <h2 className='context'>Premium care for premium people.</h2>
             </div>
             <div className='number'>
-              <div className='input-group mb-3'>
-                <span class="input-group-text" id="basic-addon1">케어링</span>
-                <input
-                  className='form-control'
-                  type='number'
-                  name='CARE_NO'
-                  value={state.CARE_NO}
-                  onChange={(e) => setItem(e)}
-                />
-                <span class="input-group-text" id="basic-addon1">마리</span>
+              <div className='row'>
+                <div className='col input-group mb-3'>
+                  <span class="input-group-text" id="basic-addon1">케어링</span>
+                  <input
+                    className='form-control'
+                    type='number'
+                    name='CARE_NO'
+                    value={state.CARE_NO}
+                    min='0'
+                    onChange={(e) => setItem(e)}
+                  />
+                  <span class="input-group-text" id="basic-addon1">마리 이상</span>
                 </div>
-                <div class="input-group mb-3">
+                <div className='col input-group mb-3'>
                   <span className='input-group-text'>지역</span>
-                <input
-                  className='form-control'
-                  type='text'
-                  name='BOARD_ADDR1'
-                  value={state.BOARD_ADDR1}
-                  onChange={(e) => setItem(e)}
-                />
-                </div><div className='input-group mb-3'>
-                  <span className='input-group mb-3'>예약 날짜</span>
-                <ReactDatePicker
-                  className='form-control'
-                  minDate={new Date()}
-                  selected={state.START_DATE}
-                  onChange={onChange}
-                  startDate={state.START_DATE}
-                  endDate={state.END_DATE}
-                  selectsRange
-                  dateFormat={'yyyy년 MM월 dd일'}
-                />
+                  <input
+                    className='form-control'
+                    type='text'
+                    name='BOARD_ADDR1'
+                    value={state.BOARD_ADDR1}
+                    onChange={(e) => setItem(e)}
+                  />
+                </div>
+                </div>
+              ‹<div className='input-group mb-3'>
+                <span className='input-group-text'>예약 날짜</span>
+                <span className='form-control'>
+                  {<ReactDatePicker
+                    className='form-control'
+                    minDate={new Date()}
+                    selected={startDate}
+                    onChange={onChange}
+                    startDate={startDate}
+                    endDate={endDate}
+                    selectsRange
+                    dateFormat={'yyyy년 MM월 dd일'}
+                  />}
+                </span>
+                <Link to='/board' state={state} className='btn btn-danger'>
+                  Search
+                </Link>
               </div>
-              <Link to='/board' state={state}>
-                <button type="button" class="btn2 btn-outline-warning">Search</button>
-              </Link>
             </div>
           </div>
         </div>
