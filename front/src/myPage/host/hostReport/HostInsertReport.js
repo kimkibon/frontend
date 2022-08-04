@@ -59,7 +59,7 @@ const HostInsertReport = () => {
           //response의 data를 setForm의 정보로 변경
       });
       console.log(form);
-      window.location.href ="/myPage/host/hostReport";
+      window.location.href ="/myPage/report";
       
   }
 
