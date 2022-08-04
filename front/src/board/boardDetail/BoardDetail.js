@@ -152,26 +152,30 @@ const BoardDetail = () => {
         </section>
         <div className='row'>
           {/* 클라이언트 예약 */}
-          <div className='col-lg-12'>
+          
+            <div className='col'>
             <button className="btn btn-outline-dark" type="button" onClick={() => setModalShow(true)}>
               예약하기
             </button>
+            </div>
             {/* 모달창 온오프 */}
 
             {/* 호스트 게시글 수정 */}
             {(boardDetail.BOARD_HOST_ID === localStorage.getItem('MEM_ID') && (author.MEM_LEVEL <= 1)) &&
+              <div className='col'>
               <Link to='/myPage/host/hostBoardModify' state={{ 'boardDetail': boardDetail, 'file': file }}>
                 <button className="btn btn-outline-dark" type="button">
                   수정하기
                 </button>
               </Link>
+              </div>
             }
 
             {/* 게시글 수정 링크 */}
 
             {/* 어드민 확인 */}
             {((author.MEM_LEVEL === 0) && (author.MEM_LEVEL !== undefined)) &&
-              <div>
+              <div className='col'>
                 <button className="btn btn-danger" type="button" onClick={() => setRefuseModal(true)}>
                   등록 거절
                 </button>
@@ -185,11 +189,12 @@ const BoardDetail = () => {
             {/* 게시글 삭제 버튼 */}
 
             {((author.MEM_LEVEL === 0) || (localStorage.getItem('MEM_ID') === boardDetail.BOARD_HOST_ID)) &&
+              <div className='col'>
               <button className="btn btn-danger" type="button" onClick={() => setDeleteModal(true)}>
                 게시글 삭제
               </button>
+              </div>
             }
-          </div>
         </div>
 
         {/* 테스트 코드 입니다.  */}
