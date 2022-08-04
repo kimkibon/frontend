@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Logout from '../login/Logout'
 import logoImage from './images/logo/GareBnBlog.png';
 import './style.css'
+import Offside from './Offside.js';
 
 const Header = () => {
   const mem_id = localStorage.getItem("MEM_ID");//로컬스토리지에서 로그인한 계정의 아이디 전달
@@ -34,15 +35,18 @@ const Header = () => {
           <Link to ='/'>
             <img src={logoImage} alt="Gare" className="img-logo" />
           </Link>
-      
-          {/* <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button> */}
+
       </div>   
 
       {/* navbar */}
       <div className='h-navbar'>
           <nav className="navbar navbar-expand-lg navbar-light">
+
+          {/* 오프캔버스 추가
+          <div>
+            <Offside/>
+          </div> */}
+            
               
               {/* -- 홈으로 가기 -- */}
               <div className="collapse navbar-collapse justify-content-end">
