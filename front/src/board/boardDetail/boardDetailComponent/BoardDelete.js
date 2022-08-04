@@ -17,7 +17,7 @@ const BoardDelete = (props) => {
                 'BOARD_MODIFY_NO' : props.state.BOARD_MODIFY_NO
             }
         }).then(()=> {
-            // navigate('/')
+             navigate(-1)
         }).catch(err => {
             alert(err);
         })

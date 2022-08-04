@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import './sidestyle.css'
-import {AiFillAlert, AiFillDatabase, AiFillCarryOut, AiFillEye, AiFillNotification, AiFillInteraction} from "react-icons/ai";
+import {AiFillAlert, AiFillDatabase, AiFillCarryOut, AiFillEye, AiFillNotification, AiFillInteraction, AiOutlineDown} from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import '../../node_modules/bootstrap/dist/js/bootstrap'
+import HostSidebar from './HostSidebar';
 import Auth from '../login/Auth';
+
 // react-icons names -> fa로 통일
 
 
 
 const Sidebar = () => {
 
+
   return (
     <div className='col'>
 
+      
         <div className='navigation'>
           <ul className='big_menu1'>
           <li>
@@ -64,44 +68,14 @@ const Sidebar = () => {
               </Link>
           </li>
           </ul>
+
+          {/* ----------------------------------------------------------------------------------------- */}
+          <HostSidebar/>
           
-          <ul className='big_menu2'>
-          <li>
-              <Link to="/myPage/host">
-                <span className='icon'><AiFillInteraction/></span>
-                <span className='title'>host 메뉴들</span>
-              </Link>
-          </li>
-              <ul class="small_menu">
-                
-                <Link to="#">
-                  <span className='icon'><AiFillInteraction/></span>
-                  <span className='title'>소메뉴1</span>
-                </Link>
-                
-                <Link to="#">
-                  <span className='icon'><AiFillInteraction/></span>
-                  <span className='title'>소메뉴2</span>
-                </Link>
-
-                <Link to="#">
-                  <span className='icon'><AiFillInteraction/></span>
-                  <span className='title'>소메뉴3</span>
-                </Link>
-
-                <Link to="#">
-                  <span className='icon'><AiFillInteraction/></span>
-                  <span className='title'>소메뉴4</span>
-                </Link>
-              </ul>
-          </ul>
         </div>
 
         {/* <div class="toggle"><AiOutlineMenu className='fa' onClick={toggleMenu()}/></div> */}
 
-        <div className='submenu'>
-
-        </div>
         
               
 </div>
