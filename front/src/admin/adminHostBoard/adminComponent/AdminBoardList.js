@@ -60,7 +60,7 @@ const AdminBoardList = (board) => {
                                     </figure>
                                     <div className="d-flex justify-content-between align-items-center">
                                         <div className="btn-group">
-                                            <Link to='Detail' state={list}>
+                                            <Link to='/board/detail' state={list}>
                                                 <button type="button" className="btn btn-sm btn-outline-secondary">View</button>
                                             </Link>
                                         </div>
