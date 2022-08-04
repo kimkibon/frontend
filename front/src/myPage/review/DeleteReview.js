@@ -9,7 +9,8 @@ const DeleteReview =() => {
     return (
         <div>
             <h2>리뷰를 삭제하시겠습니까?</h2>
-            <button onClick={(e)=>{
+            <p/>
+            <button type="button" class="btn btn-primary" onClick={(e)=>{
                 e.preventDefault();
                 axios({
                         method : 'post' ,
@@ -22,7 +23,8 @@ const DeleteReview =() => {
                         window.location.href="/myPage/memUseListPage"
                     });
             }}> 확인 </button>
-            <button onClick={(e)=>{
+            &nbsp;
+            <button type="button" class="btn btn-secondary" onClick={(e)=>{
                 e.preventDefault();
                 navigate(-1); }}>취소</button>
         </div>
