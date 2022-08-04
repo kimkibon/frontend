@@ -1,6 +1,7 @@
 import React from 'react'
 import './sidestyle.css'
-import {AiFillAlert, AiFillDatabase, AiFillCarryOut, AiFillEye, AiFillNotification, AiFillInteraction, AiOutlineDown} from "react-icons/ai";
+import { AiFillInteraction, AiOutlineDown} from "react-icons/ai";
+import { BsFillAlarmFill, BsFillCalendarCheckFill, BsFillInfoCircleFill, BsFillHddStackFill } from "react-icons/bs";
 import { Link } from 'react-router-dom';
 import 'bootstrap'
 // react-icons names -> fa로 통일
@@ -17,7 +18,7 @@ const HostSidebar = () => {
           <ul className='big_menu2'>
           
           <label className='hostmenu' htmlFor='hostmenu'>
-            <span className='icon'><AiOutlineDown/></span>
+            <span className='icon'><AiOutlineDown className='fa'/></span>
             <span className='title'>
               host 메뉴
             </span>
@@ -28,35 +29,35 @@ const HostSidebar = () => {
             <ul className="small_menu">
               <li>
                 <Link to="host/myPage">
-                  <span className='icon'><AiFillInteraction/></span>
+                  <span className='icon'><AiFillInteraction className='fa'/></span>
                   <span className='title'>호스트 메뉴</span>
                 </Link>
               </li>
 
               <li>
                 <Link to="/myPage/host/hostBoardList">
-                  <span className='icon'><AiFillInteraction/></span>
+                  <span className='icon'><BsFillHddStackFill className='fa'/></span>
                   <span className='title'>내 게시글</span>
                 </Link>
               </li>
               
               <li>
                 <Link to="/myPage/host/hostReserve">
-                  <span className='icon'><AiFillInteraction/></span>
+                  <span className='icon'><BsFillAlarmFill className='fa'/></span>
                   <span className='title'>예약내역</span>
                 </Link>
               </li>  
 
               <li>
                 <Link to="/myPage/host/hostUseList">
-                  <span className='icon'><AiFillInteraction/></span>
+                  <span className='icon'><BsFillCalendarCheckFill className='fa'/></span>
                   <span className='title'>이용내역</span>
                 </Link>
               </li>
 
               <li>
                 <Link to="/myPage/host/hostInfo">
-                  <span className='icon'><AiFillInteraction/></span>
+                  <span className='icon'><BsFillInfoCircleFill className='fa'/></span>
                   <span className='title'>회원정보보기</span>
                 </Link>
               </li>
