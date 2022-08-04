@@ -71,7 +71,7 @@ const Main = () => {
                   />
                 </div>
                 </div>
-              ‹<div className='input-group mb-3'>
+              <div className='input-group mb-3'>
                 <span className='input-group-text'>예약 날짜</span>
                 <span className='form-control'>
                   {<ReactDatePicker

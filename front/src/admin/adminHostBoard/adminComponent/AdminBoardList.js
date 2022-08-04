@@ -40,7 +40,9 @@ const AdminBoardList = (board) => {
                             <div className="card shadow-sm">
 
                                 <img
-                                    className="d-block w-100"
+                                    className="d-block"
+                                    width='350px'
+                                    height='200px'
                                     src={list.URL}
                                     alt=""
                                 />
