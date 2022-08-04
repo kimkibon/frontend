@@ -184,17 +184,7 @@ const Login = () => {
                 <span>아이디 저장</span>
               </label>
               </span>
-              {/* 비밀번호 표시 input box */}
-              <span className="checkbox-item">
-                <input
-                  type="checkbox"
-                  checked={passwordOption}
-                  onChange={() => setPasswordOption(!passwordOption)}
-                />
-                <label>
-                  <span>비밀번호 표시</span>
-                </label>
-              </span>
+              
             {/* capsLockFlag에 따라 className과 Caps Lock On/Off로 변경되게 한다. */}
             <span
               className={

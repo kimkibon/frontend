@@ -60,10 +60,10 @@ const BoardDetail = () => {
   useEffect(() => {
 
     Auth(4, navigate).then(Response => {
-// 탈퇴한 회원, 정지된 회원인 경우 권한 없음 표시
+      // 탈퇴한 회원, 정지된 회원인 경우 권한 없음 표시
       setAuthor(Response)
-      
-// cli mem_idx를 저장 
+
+      // cli mem_idx를 저장 
       axios({
         method: 'post',
         url: '/GareBnB/board/boardDetail.do',
@@ -150,20 +150,25 @@ const BoardDetail = () => {
             </div>
           </div>
         </section>
-        <div className='row'>
-          {/* 클라이언트 예약 */}
-          <div className='col-lg-12'>
-            <button className="btn btn-outline-dark" type="button" onClick={() => setModalShow(true)}>
-              예약하기
-            </button>
+        <div className='float-end d-inline-flex row'>
+          <div className='btn-group'>
+            {/* 클라이언트 예약 */}
+            <>
+              <button className="btn btn-success" type="button" onClick={() => setModalShow(true)}>
+                예약하기
+              </button>
+            </>
             {/* 모달창 온오프 */}
 
             {/* 호스트 게시글 수정 */}
             {(boardDetail.BOARD_HOST_ID === localStorage.getItem('MEM_ID') && (author.MEM_LEVEL <= 1)) &&
-              <Link to='/myPage/host/hostBoardModify' state={{ 'boardDetail': boardDetail, 'file': file }}>
-                <button className="btn btn-outline-dark" type="button">
-                  수정하기
-                </button>
+
+              <Link
+                to='/myPage/host/hostBoardModify'
+                state={{ 'boardDetail': boardDetail, 'file': file }}
+                className='btn btn-info'
+              >
+                수정하기
               </Link>
             }
 
@@ -171,29 +176,29 @@ const BoardDetail = () => {
 
             {/* 어드민 확인 */}
             {((author.MEM_LEVEL === 0) && (author.MEM_LEVEL !== undefined)) &&
-              <div>
+              <>
                 <button className="btn btn-danger" type="button" onClick={() => setRefuseModal(true)}>
                   등록 거절
                 </button>
-
                 <button className="btn btn-primary" type="button" onClick={() => setConfirmModal(true)}>
                   등록 승인
                 </button>
-              </div>
+              </>
             }
 
             {/* 게시글 삭제 버튼 */}
 
             {((author.MEM_LEVEL === 0) || (localStorage.getItem('MEM_ID') === boardDetail.BOARD_HOST_ID)) &&
-              <button className="btn btn-danger" type="button" onClick={() => setDeleteModal(true)}>
-                게시글 삭제
-              </button>
+              <>
+                <button className="btn btn-danger" type="button" onClick={() => setDeleteModal(true)}>
+                  게시글 삭제
+                </button>
+              </>
             }
           </div>
         </div>
-
         {/* 테스트 코드 입니다.  */}
-        <div className='col-sm-6'>
+        {/* <div className='col-sm-6'>
           <Link to='/myPage/host/hostBoardModify' state={{ 'boardDetail': boardDetail, 'file': file }}>
             <button className="btn btn-outline-dark" type="button">
               수정하기
@@ -210,9 +215,7 @@ const BoardDetail = () => {
           <button className="btn btn-primary" type="button" onClick={() => setConfirmModal(true)}>
             등록 승인
           </button>
-        </div>
-
-
+        </div> */}
         {/* 여기까지 테스트 코드 입니다. */}
 
         <ResRequest
@@ -245,7 +248,7 @@ const BoardDetail = () => {
 
 
 
-        <div className="row">
+        <div className="col">
           <Review prop={review} />
         </div>
         {/* 리뷰 리스트 출력 */}
