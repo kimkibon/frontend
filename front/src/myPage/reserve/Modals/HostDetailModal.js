@@ -2,7 +2,6 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { useLocation } from 'react-router-dom';
 import SelectOneFile from '../../../commons/Files/SelectOneFile';
 
 const HostDetailModal =(props) => {
@@ -11,7 +10,7 @@ const HostDetailModal =(props) => {
     const [url,setUrl] = useState(); //이미지파일 불러오기
   
     //호스트아이디
-    const hostId = props.state.hostId;
+    //const hostId = props.state.hostId;
 
     const gender=(num)=>{
       if(num===1){
