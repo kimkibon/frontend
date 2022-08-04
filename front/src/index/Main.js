@@ -5,8 +5,8 @@ import homeImage from '../commons/images/homeImage.png';
 import '../commons/style.css'
 
 const Main = () => {
-  const [startDate , setStartDate] = useState(new Date());
-  const [endDate , setEndDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
   const [state, setState] = useState({
     'START_DATE': '',
     'END_DATE': '',
@@ -26,15 +26,15 @@ const Main = () => {
   const onChange = (dates) => {
     const [start, end] = dates;
 
-    if(end !== undefined){
-    setStartDate(start);
-    setEndDate(end);
+    if (end !== undefined) {
+      setStartDate(start);
+      setEndDate(end);
 
-    setState({
-      'START_DATE': start,
-      'END_DATE': end
-    })
-  }
+      setState({
+        'START_DATE': start,
+        'END_DATE': end
+      })
+    }
   };
   return (
     <div>
@@ -43,13 +43,10 @@ const Main = () => {
         <div className="banner-area__img">
           <img src={homeImage} alt="banner-img" class="img-fluid" />
           <div className="banner-area__content">
-            <div className='context'>
-              <h2 className='context'>Premium care for premium people.</h2>
-            </div>
             <div className='number'>
               <div className='row'>
                 <div className='col input-group mb-3'>
-                  <span class="input-group-text" id="basic-addon1">케어링</span>
+                  <span className="input-group-text" id="basic-addon1">케어링</span>
                   <input
                     className='form-control'
                     type='number'
@@ -58,7 +55,7 @@ const Main = () => {
                     min='0'
                     onChange={(e) => setItem(e)}
                   />
-                  <span class="input-group-text" id="basic-addon1">마리 이상</span>
+                  <span className="input-group-text" id="basic-addon1">마리 이상</span>
                 </div>
                 <div className='col input-group mb-3'>
                   <span className='input-group-text'>지역</span>
@@ -70,7 +67,7 @@ const Main = () => {
                     onChange={(e) => setItem(e)}
                   />
                 </div>
-                </div>
+              </div>
               <div className='input-group mb-3'>
                 <span className='input-group-text'>예약 날짜</span>
                 <span className='form-control'>
