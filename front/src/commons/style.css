@@ -76,9 +76,12 @@
 /* 마리수 검색 */
 .number {
     position: absolute;
-    top: 60%;
-    left: 30%;
+    top: 30%;
+    left: 50%;
     transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 3px;
+    background-color: rgba(240, 248, 255, 0.828);
 }
 
 /* 주소 검색 */

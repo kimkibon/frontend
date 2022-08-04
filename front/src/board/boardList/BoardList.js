@@ -17,15 +17,15 @@ const BoardList = () => {
   const [state, setState] = useState({
     'START_DATE': location.START_DATE,
     'END_DATE': location.END_DATE,
-    'CARE_NO' : location.CARE_NO,
-    'BOARD_ADDR1' : location.BOARD_ADDR1
+    'CARE_NO': location.CARE_NO,
+    'BOARD_ADDR1': location.BOARD_ADDR1
   });
 
   const setCare = (e) => {
     const careNo = e.target.value
     setState({
       ...state,
-      'CARE_NO' : careNo
+      'CARE_NO': careNo
     });
   }
 
@@ -33,7 +33,7 @@ const BoardList = () => {
     const ADDR = e.target.value
     setState({
       ...state,
-      'BOARD_ADDR1' : ADDR
+      'BOARD_ADDR1': ADDR
     })
   }
 
@@ -42,11 +42,11 @@ const BoardList = () => {
 
     setStartDate(start);
     setEndDate(end);
-    if(start !== null && end !== null)
-    setState({
-      'START_DATE': dates[0].getTime(),
-      'END_DATE': dates[1].getTime()
-    })
+    if (start !== null && end !== null)
+      setState({
+        'START_DATE': dates[0].getTime(),
+        'END_DATE': dates[1].getTime()
+      })
   };
 
   const Search = () => {
@@ -79,41 +79,65 @@ const BoardList = () => {
 
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     Search();
-  },[])
+  }, [])
 
 
 
   return (
     <div>
-      <div className='row'>
-        <div className='col'>
-          <div className='input-form'>
-            <input className='' type='number' value={state.CARE_NO} onChange={(e) => setCare(e)} />
+      <div className='container'>
+        <div className='row'>
+          <div className='col col-mb-4 input-group mb-3'>
+            <span
+              class="input-group-text"
+              id="basic-addon1"
+            >
+              케어링
+            </span>
+            <input
+              className='form-control'
+              type='number'
+              value={state.CARE_NO}
+              onChange={(e) => setCare(e)}
+            />
+            <span
+              className="input-group-text"
+              id="basic-addon1"
+            >
+              마리 이상
+            </span>
           </div>
-          <div className='input-form'>
-            <input className='' type='text' value={state.BOARD_ADDR1} onChange={(e) => setADDR(e)} />
+          <div className='col col-mb-4 input-group mb-3'>
+            <span
+              className='input-group-text'
+            >
+              지역
+            </span>
+            <input className='form-control' type='text' value={state.BOARD_ADDR1} onChange={(e) => setADDR(e)} />
           </div>
-          <div>
-            {<DatePicker
-              className='col-sm-9'
-              minDate={new Date()}
-              selected={startDate}
-              onChange={onChange}
-              startDate={startDate}
-              endDate={endDate}
-              selectsRange
-              dateFormat={'yyyy년 MM월 dd일'}
-            />}
-          </div>
-          <div>
-              <Button onClick={()=> Search()}>검색</Button>
+        </div>
+        <div className='row'>
+          <div className='col col-mb-4 input-group mb-3'>
+            <span className='form-control'>
+              {<DatePicker
+                className='col-sm-9'
+                minDate={new Date()}
+                selected={startDate}
+                onChange={onChange}
+                startDate={startDate}
+                endDate={endDate}
+                selectsRange
+                dateFormat={'yyyy년 MM월 dd일'}
+              />}
+            </span>
+            <Button className='btn' onClick={() => Search()}>검색</Button>
           </div>
         </div>
       </div>
       {List(board)}
-    </div>
+    </div >
   )
 }
 

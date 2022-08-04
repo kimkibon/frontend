@@ -9,7 +9,6 @@ async function resDate(BOARD_NO) {
       params: { 'RES_BOARD_NO': BOARD_NO }
 
     }).then(Response => {
-      console.log(Response.data)
       const exDate = [];
 
       Response.data.map(date =>{

@@ -6,7 +6,7 @@ import { Rating } from 'react-simple-star-rating';
 const Myreview =() => {
     const location = useLocation();
     const mem_id = location.state.CLI_ID;
-    const board_no = location.state.RES_BOARD_NO;
+    const res_idx = location.state.RES_IDX;
     const after_date = location.state.after_date;
     const review_check = location.state.reviewcheck;
     
@@ -21,7 +21,7 @@ const Myreview =() => {
             contentType:"application/json;charset=UTF-8",
             params : {
                 MEM_ID : mem_id,
-                BOARD_NO : board_no
+                RES_IDX : res_idx
         
             }
         }).then(Response => {
@@ -39,7 +39,8 @@ const Myreview =() => {
     return (
         <div>
             <h1>리뷰 확인</h1>
-            {review_check===0 ? <h3>작성한 리뷰가 없습니다.</h3> 
+            {review_check===0 
+            ? <div><h3>작성한 리뷰가 없습니다.</h3><br/><button type="button" class="btn btn-primary" onClick={(e)=>{e.preventDefault();navigate(-1); }}>확인</button></div>
             :   <div>
                     <div className='App'>
                         <Rating allowHalfIcon ratingValue={myreview.SCORE*20} readonly size={50} showTooltip/>

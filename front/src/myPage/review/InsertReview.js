@@ -8,6 +8,7 @@ const InsertReview = () => {
   const location = useLocation();
   const mem_id = location.state.REVIEW_MEM_ID;
   const board_no = location.state.BOARD_NO;
+  const res_idx = location.state.RES_IDX;
 
 
   const [inputs, setInputs] = useState({    
@@ -37,7 +38,8 @@ const InsertReview = () => {
         MEM_ID : mem_id,
         BOARD_NO : board_no,
         SCORE : score,
-        REVIEW_CONTENT : review
+        REVIEW_CONTENT : review,
+        RES_IDX : res_idx
       }
     }).then(Response => {
         window.location.href="/myPage/memUseListPage"

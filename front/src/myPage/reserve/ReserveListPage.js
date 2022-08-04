@@ -189,14 +189,15 @@ const ReserveListPage = () => {
                           <button type="button" class="btn btn-primary">예약취소</button>
                         </Link>}
 
+                      <br/> 
 
                       {/* 예약요청상태 */}
                       {resstate === 0 &&
                         <div>
+                          <br/>
                           <button type="button" class="btn btn-outline-primary" disabled>요청대기</button>
-
-                        </div>}
-
+                          <br/>
+                        </div>}            
 
                       {/* 예약승인상태 */}
                       {resstate === 1 &&
@@ -205,12 +206,14 @@ const ReserveListPage = () => {
                         </div>
                       }
 
+                      <br/> 
 
                       {/* 결제대기상태 */}
                       {resstate === 2 &&
                         <Payment price={list.PRICE} title={list.BOARD_TITLE} booker={mem_id} res_idx={list.RES_IDX} />
                       }
 
+                       
 
                       {/* 예약취소상태 */}
                       {resstate === 4 && <div>예약이 취소되었습니다.<p /></div>}
@@ -218,7 +221,8 @@ const ReserveListPage = () => {
                         <div>
                           <button type="button" class="btn btn-warning" onClick={() => { alert(list.RES_REJ) }}>거절사유</button>
                         </div>}
-
+                      
+                      <br/> 
 
                     </div>
                   </div>

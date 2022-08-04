@@ -97,7 +97,6 @@ const BoardDetail = () => {
 
       resDate(param.BOARD_NO).then(Response => {
         setResDates(Response);
-        console.log(Response)
       })
       // 서버에서 예약 내역 시간을 리턴 받음
     }).catch(err => {
@@ -154,9 +153,11 @@ const BoardDetail = () => {
           <div className='btn-group'>
             {/* 클라이언트 예약 */}
             <>
-              <button className="btn btn-success" type="button" onClick={() => setModalShow(true)}>
-                예약하기
-              </button>
+              {(boardDetail.BOARD_HOST_ID !== localStorage.getItem('MEM_ID')) &&
+                <button className="btn btn-success" type="button" onClick={() => setModalShow(true)}>
+                  예약하기
+                </button>
+              }
             </>
             {/* 모달창 온오프 */}
 

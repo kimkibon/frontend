@@ -58,6 +58,15 @@ const AdminSidebar = () => {
               </Link>
               </li>
 
+
+              <li>
+              <Link to="/Admin/adminAllResList">
+                <span className='icon'><AiFillAlert className='fa'/></span>
+                <span className='title'>예약관리</span>
+              </Link>
+              </li>
+
+
               <li>
               <Link to="/Admin/adminQnaList">
                 <span className='icon'><AiFillEye/></span>

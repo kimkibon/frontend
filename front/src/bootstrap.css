@@ -55,7 +55,7 @@
   --bs-dark-rgb: 52, 58, 64;
   --bs-white-rgb: 255, 255, 255;
   --bs-black-rgb: 0, 0, 0;
-  --bs-body-color-rgb: 136, 136, 136;
+  --bs-body-or-rgb: 136, 136, 136;
   --bs-body-bg-rgb: 255, 255, 255;
   --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -799,7 +799,7 @@ progress {
 }
 
 .offset-1 {
-  margin-left: 8.33333333%;
+  margin-left: 0.83333333%;
 }
 
 .offset-2 {
@@ -807,7 +807,7 @@ progress {
 }
 
 .offset-3 {
-  margin-left: 25%;
+  margin-left: 30%;
 }
 
 .offset-4 {
@@ -819,7 +819,7 @@ progress {
 }
 
 .offset-6 {
-  margin-left: 50%;
+  margin-left: 46%;
 }
 
 .offset-7 {
@@ -2984,7 +2984,7 @@ textarea.form-control-lg {
 
 .btn-light {
   --bs-btn-color: #000;
-  --bs-btn-bg: #f8f9fa;
+  --bs-btn-bg: #d2d6da;
   --bs-btn-border-color: #f8f9fa;
   --bs-btn-hover-color: #fff;
   --bs-btn-hover-bg: #d3d4d5;

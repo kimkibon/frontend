@@ -23,7 +23,6 @@ const HostBoardList = () => {
     }).then(Response => {
 
       const url = Response.data.map(async list => {
-        console.log(Response.data);
         await SelectOneFile('0', list.BOARD_NO, list.BOARD_MODIFY_NO).then(Res => {
           //요청된 리스트의 게시글 넘버로 메인 이미지 요청
 

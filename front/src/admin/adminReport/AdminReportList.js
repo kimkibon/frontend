@@ -89,7 +89,7 @@ const AdminReportList = () => {
           </tr>
         </thead>
       
-      {reportList.map((list)=> {
+      {reportList[0] !== undefined && reportList.map((list)=> {
       return (
         <tbody>
                         <tr>
