@@ -19,7 +19,7 @@ body
 {
     /* position: fixed */
     position: absolute;
-    width: 260px;
+    width: 80px;
     /* 넓이 80px로 맞추고 아래 동적 nav */
     height: 100%;
     background:#ffffff;
@@ -29,11 +29,11 @@ body
 }
 
 /* 동적nav 만들기위해 */
-/* .navigation:hover,
+.navigation:hover,
 .navigation.active
 {
     width: 250px;
-} */
+}
 
 /* 일반회원 메뉴 */
 .navigation big_menu1
