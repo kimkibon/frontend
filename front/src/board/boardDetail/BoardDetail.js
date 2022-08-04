@@ -153,9 +153,11 @@ const BoardDetail = () => {
           <div className='btn-group'>
             {/* 클라이언트 예약 */}
             <>
-              <button className="btn btn-success" type="button" onClick={() => setModalShow(true)}>
-                예약하기
-              </button>
+              {(boardDetail.BOARD_HOST_ID !== localStorage.getItem('MEM_ID')) &&
+                <button className="btn btn-success" type="button" onClick={() => setModalShow(true)}>
+                  예약하기
+                </button>
+              }
             </>
             {/* 모달창 온오프 */}
 
