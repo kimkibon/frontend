@@ -7,6 +7,8 @@ import Table from 'react-bootstrap/Table';
 const AdminQnaList = () => {
 
   const [qnaList,setQnaList] = useState([]); // QNA_LIST db에서 가져오기 
+  const [qnaListcopy,setQnaListcopy] = useState([]); // QNA_LIST db에서 가져오기 
+
 
     useEffect(() => {
       axios({ //통신으로 정보 받아오기
@@ -16,6 +18,7 @@ const AdminQnaList = () => {
       }).then(Response => {
           console.log(Response.data);
           setQnaList(Response.data);
+          setQnaListcopy(Response.data);
           //응답이 들어왔을 때 SetQnaList 함수를 사용해서 
           //response의 data를 qnaList의 정보로 변경
       });
@@ -24,8 +27,6 @@ const AdminQnaList = () => {
   
   
   //selectBox
- 
-  // const SelectBox = () => {
 
     const [selected, setSelected] = useState([]); //선택된 값
     const handleSelected = (e)=> { //셀렉트박스 선택됐을때 ,, eventhandler
@@ -35,28 +36,23 @@ const AdminQnaList = () => {
     };
     
     const SelectBox = () => {
-      if(selected === '2' ) {
-        axios({
-          method : 'post' , 
-          url : '/GareBnB/Admin/qnaList.do' ,
-          contentType:"application/json;charset=UTF-8"
-      }).then(Response => {
-          console.log(Response.data);
-          setQnaList(Response.data);
-          //응답이 들어왔을 때 SetQnaList 함수를 사용해서 
-          //response의 data를 qnaList의 정보로 변경
-      });
-    } else if(selected === '0'){
-      const listData = qnaList.filter((list) =>
-      list.QNA_STATE.includes('미답변'));
-      setQnaList(listData);
-      console.log(listData);
-    } else if (selected === '1'){
-      const listData = qnaList.filter((list) =>
-      list.QNA_STATE.includes('답변완료'));
-      setQnaList(listData);
-      console.log(listData);
-    }
+        if(selected === '2' ) {
+          setQnaListcopy(qnaList);
+      } else if(selected === '0'){
+        const listData = qnaList.filter((list) =>
+        list.QNA_STATE.includes('미답변'));
+        setQnaListcopy(listData);
+        console.log(listData);
+      } else if (selected === '1'){
+        const listData = qnaList.filter((list) =>
+        list.QNA_STATE.includes('답변완료'));
+        setQnaListcopy(listData);
+        console.log(listData);
+      }
+      
+      
+      
+      
     setSelected('');
   };
     
@@ -92,7 +88,7 @@ const AdminQnaList = () => {
           </tr>
         </thead>
       
-      {qnaList.map((list)=> {
+      {qnaListcopy.map((list)=> {
       return (
         <tbody>
                         <tr>
