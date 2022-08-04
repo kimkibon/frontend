@@ -19,7 +19,7 @@ const HostIndex = () => {
         <Link to='hostDelete'><li>host delete</li></Link>
         <Link to='hostInfo'><li>host info</li></Link>
         <Link to='hostModify'><li>host modify</li></Link>
-        <Link to='hostReport'><li>host Report</li></Link>
+        {/* <Link to='hostReport'><li>host Report</li></Link> */}
         <Link to='hostReserve'><li>host예약내역</li></Link>
         <Link to='hostUseList'><li>host이용내역</li></Link>
         <Link to='hostBoardList'><li>host BoardList</li></Link>
@@ -35,6 +35,7 @@ const HostIndex = () => {
             <Route path='/hostReport' element={<HostReport/>}/>
             <Route path='/hostReport/HostDetailReport/:REPORT_IDX' element={<HostDetailReport/>}/>
             <Route path='/hostUseList/HostInsertReport' element={<HostInsertReport/>}/>
+            <Route path='/hostReserve/HostInsertReport' element={<HostInsertReport/>}/>
             <Route path='/hostReserve' element={<HostReserveList/>}/>
             <Route path='/hostUseList' element={<HostUseList/>}/>
             <Route path='/hostBoardList' element={<HostBoardList/>}/>

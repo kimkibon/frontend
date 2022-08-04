@@ -9,7 +9,6 @@ import ReviewList from './review/ReviewList';
 import HostIndex from './host/HostIndex';
 import InsertQna from './qna/InsertQna';
 import MemUseList from './reserve/MemUseList';
-import HostDetail from './reserve/HostDetail';
 import InsertReview from './review/InsertReview';
 import InsertReport from './report/InsertReport';
 
@@ -82,7 +81,6 @@ const MyPageIndex = () => {
             <Route path='/ReserveListPage' element={<ReserveListPage/>}/>
             <Route path='/ReserveListPage/resCancel' element={<ResCancel/>}/>
             <Route path='/ReserveListPage/resConfirm' element={<ResConfirm/>}/>
-            <Route path='/ReserveListPage/hostDetail' element={<HostDetail/>}/>
 
             <Route path='/memUseListPage' element={<MemUseListPage/>}/>
             <Route path='/memUseListPage/memUseList' element={<MemUseList/>}/>

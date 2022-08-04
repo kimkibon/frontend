@@ -5,10 +5,13 @@ import DeleteFiles from './DeleteFiles';
 import ImageUploadBox from '../myBoard/component/ImageUploadBox';
 import InsertFiles from '../myBoard/component/InsertFiles';
 import UpdateFiles from './UpdateFiles';
+import FileDelete from './component/FileDelete';
+import { useNavigate } from 'react-router-dom';
 
 const ModifyHost = (props) => {
   const hostModify = props.props.hostModify;
   const updateFiles = props.props.updateFiles;
+  const navigate = useNavigate();
 
   //변수 초기 세팅
   const modify = async (e) => {
@@ -39,13 +42,19 @@ const ModifyHost = (props) => {
         contentType:"apllication/json; charset=UTF-8",
         params : hostModify
         }).then(Response => {
+
+            FileDelete(hostModify.MEM_IDX,'1').then(res=>{
+
             files.map(async (file,index) => {  
                 await UpdateFiles(file , hostModify.MEM_IDX , index , '1'); 
-                                // file, MEM_IDX, index, FILE_BOARD_TYPE
-            }).then(Response => {
-              alert('수정완료 성공');
             })
-        window.location.href = '../host/hostInfo'; // 수정완료 성공 알림창 확인 버튼 클릭 시 회원정보 보기 페이지로 이동됨
+
+          }).then(res => {
+
+            alert('수정완료 성공');
+            navigate('../host/hostInfo') // 수정완료 성공 알림창 확인 버튼 클릭 시 회원정보 보기 페이지로 이동됨
+
+          })
         }).catch(err => {
             console.log(err);
         });

@@ -43,7 +43,7 @@ const BoardDetail = () => {
     }
   }
   const state = {
-    'RES_CLI_ID': author.MEM_IDX,
+    'RES_CLI_ID': localStorage.getItem("MEM_ID"),
     'RES_CARE_NO': boardDetail.BOARD_CARE_NO,
     'RES_REQ_DETAIL': '',
     'RES_BOARD_NO': boardDetail.BOARD_NO,
@@ -62,6 +62,7 @@ const BoardDetail = () => {
     Auth(4, navigate).then(Response => {
 // 탈퇴한 회원, 정지된 회원인 경우 권한 없음 표시
       setAuthor(Response)
+      
 // cli mem_idx를 저장 
       axios({
         method: 'post',
@@ -80,7 +81,7 @@ const BoardDetail = () => {
       }); //리뷰 정보를 받아와서 저장.
 
       SelectFileList('0', param.BOARD_NO, param.BOARD_MODIFY_NO).then(Response => {
-        Response.map(base64 => {
+        Response.map((base64) => {
           base64.URL = "data:image/;base64," + base64.URL //바이너리 변환된 이미지를 출력하기 위해 주석을 달아줌
         })
         Response.sort(function (a, b) {

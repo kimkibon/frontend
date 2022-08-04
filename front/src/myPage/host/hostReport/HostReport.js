@@ -10,7 +10,8 @@ import HostComReport from './HostComReport';
 const HostReport = () => {
 
   const [reportList,setReportList] = useState([]); //빈 배열 변수 선언 reportList 만큼 ComReportList.js를 뿌릴거임
-  const MEM_ID = 'MEM_12'; //세션에서 받아올
+  const mem_id = localStorage.getItem("MEM_ID");
+  //const MEM_ID = 'MEM_12'; //세션에서 받아올
   
     //함수 실행시 최초 한 번 실행되는 것
     useEffect(() => {
@@ -19,7 +20,7 @@ const HostReport = () => {
             url : '/GareBnB/host/mypage/hostReportList.do' ,
             contentType:"application/json;charset=UTF-8",
             params : {
-                MEM_ID : MEM_ID
+                MEM_ID : mem_id
             }
         }).then(Response => {
             console.log(Response.data);

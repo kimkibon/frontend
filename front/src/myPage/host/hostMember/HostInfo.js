@@ -1,15 +1,17 @@
 // 회원정보 보기 (수정하기 버튼), (회원 탈퇴) 도 같은 페이지에 보여야 함)
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Modal from '../../member/Modal';
 import Carousel from 'react-bootstrap/Carousel';
 import SelectFileList from '../../../commons/Files/SelectFileList';
 import ImageUploadBox from '../myBoard/component/ImageUploadBox';
+import Auth from '../../../login/Auth';
 
 
 const HostInfo = () => { 
-
+    const navigate = useNavigate();
+    const [author , setAuthor] = useState();
     const [hostDetail, sethostDetail] = useState([]);
     const [url, setUrl] = useState();
     const [file, setFile] = useState([]);
@@ -53,13 +55,15 @@ const HostInfo = () => {
 
    // 회원정보 보여주기
    useEffect(() => {
+    Auth(1 , navigate).then(Response => {
+    setAuthor(Response)
         axios({ 
         method : 'post' ,
         url : '/GareBnB/host/myPage/hostInfo.do' , 
         contentType:"application/json; charset=UTF-8",
         params : { 
-            MEM_ID : 'MEM_20',
-            MEM_IDX : '20'
+            MEM_ID : localStorage.getItem("MEM_ID"),
+            MEM_IDX : Response.MEM_IDX
         }})
     .then(Response => { 
     console.log(Response.data);
@@ -74,10 +78,8 @@ const HostInfo = () => {
       setFile(Response);
        });
     })
+  }) //auth
   },[]); 
-  
-
-   hostDetail['URL'] = url;
 
 
     return ( 

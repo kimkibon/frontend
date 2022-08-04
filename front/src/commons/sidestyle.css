@@ -19,7 +19,8 @@ body
 {
     /* position: fixed */
     position: absolute;
-    width: 80px;
+    width: 260px;
+    /* 넓이 80px로 맞추고 아래 동적 nav */
     height: 100%;
     background:#ffffff;
     transition: 0.5s;
@@ -28,13 +29,14 @@ body
 }
 
 /* 동적nav 만들기위해 */
-.navigation:hover,
+/* .navigation:hover,
 .navigation.active
 {
     width: 250px;
-}
+} */
 
-.navigation ul
+/* 일반회원 메뉴 */
+.navigation big_menu1
 {
     position: absolute;
     top: 0;
@@ -42,12 +44,46 @@ body
     width: 100%;
 }
 
+/* 호스트 메뉴 */
+.navigation big_menu2
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+
+/* 호스트의 서브메뉴 */
+
 .navigation ul li
 {
     position: relative;
     width: 100%;
     list-style: none;
 }
+
+
+/* 호스트 서브메뉴 체크박스 */
+#hostmenu {
+    display: none;
+}
+
+/*  체크되면 나옴 */
+#hostmenu:checked ~ .small_menu {
+     display: block; 
+    }
+
+/* 호스트 서브메뉴 안보이게,, */
+.small_menu {
+     display: none; 
+    }
+
+/* 호스트 서브메뉴 */
+label.hostmenu:hover {
+    background-color: #CEE5D0;
+}
+
 
 /* 올리면 색 변화 */
 .navigation ul li:hover
@@ -64,6 +100,7 @@ body
     text-decoration: none;
     color: #94B49F;
 }
+
 
 /* 아이콘 */
 .navigation ul li a .icon
@@ -82,16 +119,24 @@ body
     font-size: 30px;
 }
 
+/*  */
 .navigation ul li a .title
 {
     position: relative;
     display: block;
-    padding: 0 30px;
+    padding: 10 30px;
     height: 60px;
     line-height: 60px;
     text-align: start;
     white-space: nowrap;
 }
+
+/* 사이드바 서브메뉴 */
+.big_menu2 .small_menu {
+    margin-left: 14px;
+    padding-top: 8px;
+}
+
 
 @font-face {
     font-family: 'Material Icons';

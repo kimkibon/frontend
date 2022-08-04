@@ -4,8 +4,12 @@ import { Link } from "react-router-dom";
 import SelectOneFile from "../../../commons/Files/SelectOneFile";
 
 const HostUseList = () => {
+    //auth
+    const mem_id = localStorage.getItem("MEM_ID");
+
+
     const [resComList, setResComList] = useState([]);
-    const mem_id = 'MEM_12';
+    
 
 
     //이용내역
@@ -24,7 +28,7 @@ const HostUseList = () => {
             //파일 불러오기
             const url = Response.data.map(async list =>{
 
-                await SelectOneFile('0',list.RES_BOARD_NO).then(Res=>{
+                await SelectOneFile('0',list.RES_BOARD_NO,list.RES_BOARD_MODIFY_NO).then(Res=>{
                 list['URL'] = "data:image/;base64,"+Res.URL
                 });
                 return list;
@@ -45,26 +49,38 @@ const HostUseList = () => {
             {resComList[0] !==undefined && resComList.map((list)=>{
                 
                 return(
-                <div>
-                    <div>
-                        <h4>
-                        예약번호 : {list.RES_IDX}<br/>
-                        게시글제목 : {list.BOARD_TITLE}<br/>
-                        게시글 사진 : <img src={list.URL}/><br/>
-                        예약자ID : {list.RES_CLI_ID}<br/>
-                        이용날짜 : {list.RES_DATE_START} ~ {list.RES_DATE_END}<br/>
-                        맡긴 동물 수 : {list.RES_CARE_NO}<br/>
-                        세부 요청 사항 : {list.RES_REQ_DETAIL}<br/>
-                        결제금액 : {list.PRICE} 원<br/>
-                        결제날짜 : {list.PAY_DATE}<br/>
-                        </h4>
-                    </div>
+                    <div class="container mt-5 mb-5">
+                        <div class="d-flex justify-content-center row">
+                            <div class="col-md-10">
+                                <div class="row p-2 bg-white border rounded">
+                                    <div class="col-md-3 mt-2 d-flex flex-column align-items-center align-content-center">
+                                    <img class="img-fluid img-responsive rounded product-image" src={list.URL} width="200px" height="auto"/>
+                                    </div>
 
-                    <Link to ={'HostInsertReport'} 
-                        state={{'REPORT_ID': mem_id, 'REPORT_RES_NO': list.RES_IDX,'REPORT_MEM_IDX':list.RES_CLI_ID}}>
-                        <button>신고하기</button></Link>
-                           
-                </div>
+                                    <div class="col-md-7 mt-1">
+                                        <h5>예약번호 : {list.RES_IDX}</h5><br/>
+                                        게시글제목 : {list.BOARD_TITLE}<br/>
+                                        예약자ID : {list.RES_CLI_ID}<br/>
+                                        이용날짜 : {list.RES_DATE_START} ~ {list.RES_DATE_END}<br/>
+                                        맡긴 동물 수 : {list.RES_CARE_NO}<br/>
+                                        세부 요청 사항 : {list.RES_REQ_DETAIL}<br/>
+                                        결제금액 : {list.PRICE} 원<br/>
+                                        결제날짜 : {list.PAY_DATE}<br/>
+                                    </div>
+
+                                    <div class="align-items-center align-content-center col-md-2 border-left mt-1">
+                                        <div class="d-flex flex-column mt-4">
+                                            <Link to ={'InsertReport'} 
+                                            state={{'REPORT_ID': mem_id, 'REPORT_RES_NO': list.RES_IDX,'REPORT_MEM_IDX':list.RES_CLI_ID}}>
+                                                <button class="btn btn-danger">신고하기</button>
+                                            </Link>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p/>
+                            </div>
+                        </div>
+                    </div>
                 )
             
             })}

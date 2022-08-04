@@ -57,8 +57,8 @@ const AdminMemberList = () => {
       <h1>일반 회원 관리</h1> <br/>
       <form onSubmit={e => onSearch(e)}>
       <h4>검색어(ID/이름) : &nbsp;
-      <input type = "text" value={search} placeholder = "검색어 입력" onChange={onChangeSearch}></input> &nbsp;
-      <button class="w-btn-outline w-btn-green-outline" type="submit">검색</button></h4></form>
+      <input className="input-aram" type = "text" value={search} placeholder = "검색어 입력" onChange={onChangeSearch}></input> &nbsp;
+      <button className="w-btn-outline w-btn-green-outline" type="submit">검색</button></h4></form>
       <br/>
       
       <table>
