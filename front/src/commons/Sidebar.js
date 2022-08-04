@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './sidestyle.css'
-import {AiFillAlert, AiFillDatabase, AiFillCarryOut, AiFillEye, AiFillNotification, AiFillInteraction, AiOutlineDown} from "react-icons/ai";
+import {AiFillInteraction} from "react-icons/ai";
+import { BsFillAlarmFill, BsFillCalendarCheckFill, BsFillMegaphoneFill, BsFillQuestionCircleFill,BsFillInfoCircleFill,BsFillPeopleFill  } from "react-icons/bs";
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import '../../node_modules/bootstrap/dist/js/bootstrap'
 import HostSidebar from './HostSidebar';
@@ -14,10 +15,13 @@ import Auth from '../login/Auth';
 const Sidebar = () => {
 
   const mem_id = localStorage.getItem("MEM_ID");
+
   const [memberLevel, setMemberLevel] = useState({
     MEM_LEVEL:''
   });
   console.log(mem_id);
+
+  const {MEM_LEVEL} = memberLevel;
   
  
   //level 2 -> 호스트,,,,
@@ -28,9 +32,8 @@ const Sidebar = () => {
             'MEM_LEVEL': Res.MEM_LEVEL,
             })
           })
-  }, [])
-  
-  console.log(memberLevel);  
+  }, []);
+  console.log(memberLevel);
 
   
 
@@ -42,43 +45,43 @@ const Sidebar = () => {
           <ul className='big_menu1'>
           <li>
               <Link to='/myPage/ReserveListPage'>
-                <span className='icon'><AiFillDatabase className='fa'/></span>
+                <span className='icon'><BsFillAlarmFill className='fa'/></span>
                 <span className='title'>RESERVATION</span>
               </Link>
             </li>
 
               <li>
               <Link to="/myPage/memUseListPage">
-                <span className='icon'><AiFillCarryOut className='fa' /></span>
+                <span className='icon'><BsFillCalendarCheckFill className='fa' /></span>
                 <span className='title'>이용내역</span>
               </Link>
               </li>
 
               <li>
               <Link to="/myPage/qna">
-                <span className='icon'><AiFillNotification/></span>
+                <span className='icon'><BsFillQuestionCircleFill className='fa'/></span>
                 <span className='title'> QNA </span>
               </Link>
               </li>
 
               <li>
               <Link to="/myPage/report">
-                <span className='icon'><AiFillAlert className='fa'/></span>
+                <span className='icon'><BsFillMegaphoneFill className='fa'/></span>
                 <span className='title'>REPORT</span>
               </Link>
               </li>
 
               <li>
               <Link to="/myPage/member/MemDetail">
-                <span className='icon'><AiFillEye/></span>
+                <span className='icon'><BsFillInfoCircleFill className='fa'/></span>
                 <span className='title'>회원정보보기</span>
               </Link>
               </li>
 
               <li>
               <Link to="/myPage/member/MemChange">
-                <span className='icon'><AiFillInteraction/></span>
-                <span className='title'>TOHOST</span>
+                <span className='icon'><BsFillPeopleFill className='fa'/></span>
+                <span className='title'>호스트전환</span>
               </Link>
           </li>
 
@@ -91,9 +94,9 @@ const Sidebar = () => {
           </ul>
 
           {/* ----------------------------------------------------------------------------------------- */}
-           {/* {memberLevel === 1 && } */}
-
-           <HostSidebar/>
+          
+          {MEM_LEVEL === 1 && <HostSidebar/>}
+           
           
           
           

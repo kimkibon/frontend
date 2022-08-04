@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useLocation, Link } from 'react-router-dom';
-import Modal from '../member/Modal';
-import { Button } from 'react-bootstrap';
+import { Button, Modal } from 'react-bootstrap';
 
 // 회원정보 보기 - 수정
 
@@ -15,6 +14,8 @@ const MemModify = () => {
   const [modifyPhoneOK, setModifyPhoneOK] = useState("1"); //미인증:0 인증:1 폰인증 됐는지?
   const [InputVerifyCode, setInputVerifyCode] = useState(""); //입력한 인증번호
   const [RealVerifyCode, setRealVerifyCode] = useState(""); //서버에서 넘어온 VerifyCode
+
+  const [show, setShow] = useState(false);
 
   const location = useLocation();
   const mem = location.state.mem;   // MemDetail의 member 정보를 MemModify로 넘겨줌 (mem)
@@ -99,17 +100,27 @@ const MemModify = () => {
     console.log(modifyPhoneOK)
   }
 
-  const verify = () => { // 인증확인 버튼 눌렀을 때
-    if (InputVerifyCode == RealVerifyCode) { // 입력할 인증번호 == 서버에서 온 인증번호면 인증 ok
-      alert("인증이 완료되었습니다.")
-      setModifyPhoneOK(1)
-      console.log(modifyPhoneOK)
+  const modifyVerify = () => { // 인증확인 버튼 눌렀을 때
+    if (modifyPhoneOK == 0) {
+      alert("인증에 실패하였습니다. 인증을 다시 시도해주세요")
+      // console.log(modifyPhoneOK)
+    } else {
+      if (InputVerifyCode == RealVerifyCode) { // 입력할 인증번호 == 서버에서 온 인증번호면 인증 ok
+        alert("인증이 완료되었습니다.")
+        setModifyPhoneOK(1)
+      } else {
+        alert("인증에 실패하였습니다.")
+        // console.log(RealVerifyCode)
+        // console.log(InputVerifyCode)
+      }
     }
-    else {
-      alert("인증에 실패하였습니다.")
-      console.log(RealVerifyCode)
-      console.log(InputVerifyCode)
-    }
+  }
+
+  const handleShow = () => { // 모달창 열림
+    setShow(true);
+  }
+  const handleClose = () => { // 모달창 닫힘
+    setShow(false);
   }
 
   const ModifySuccess = () => { // 아래 유효성 검사를 진행
@@ -148,82 +159,83 @@ const MemModify = () => {
   }
 
   return (
+    <div className="container">
 
-    <div className="container px-4 px-lg-5 my-5">
-      <h1>회원정보 수정</h1>
-      <div className='row'>
-        <label class="col-md-4 col-form-label">아이디</label>
-        <div className='col-md-4'>
-          <input type='text' value={memModify.MEM_ID} class="form-control" readOnly></input></div>
-      </div>
+      <div className="container px-4 px-lg-5 my-5">
 
-      <div className='row'>
-        <label for="staticEmail" class="col-md-4 col-form-label">이름</label>
-        <div className='col-md-4'>
-          <input type='text' value={memModify.MEM_NAME} class="form-control"></input></div>
-      </div>
+        <h1>회원정보 수정</h1><br />
+    
+        <div class="row d-flex justify-content-center align-items-center ">
+        <label class="col-2 col-form-label">아이디</label>
+        <div className='col-4 text-center'>
+            <input type='text' value={memModify.MEM_ID} class="form-control" readOnly></input></div>
+        </div><br />
 
-      <div className='row'>
-        <label for="staticEmail" class="col-md-4 col-form-label">비밀번호</label>
-        <div className='col-md-4'>
-          <input type='password' value={memModify.MEM_PW} class="form-control"></input>
-        </div>
+        <div class="row d-flex justify-content-center align-items-center ">
+        <label class="col-2 col-form-label">이름</label>
+        <div className='col-4 text-center'>
+            <input type='text' value={memModify.MEM_NAME} class="form-control"></input></div>
+        </div><br />
+
+        <div class="row d-flex justify-content-center align-items-center ">
+        <label class="col-3 col-form-label">비밀번호</label>
           <div className='col-md-4'>
-          <Button variant="primary" onClick={openModal}>비밀번호 수정하기</Button> </div>
-      </div>
+            <input type='password' value={memModify.MEM_PW} class="form-control"></input>
+          </div>
+          <div className='col-4'>
+            <Button variant="primary" onClick={handleShow}>비밀번호 수정</Button> </div>
+        </div><br />
 
-      <div className='row'>
-        <label for="staticEmail" class="col-md-4 col-form-label">휴대폰 번호</label>
-        <div className='col-md-4'>
-          <input type='text' value={memModify.MEM_PHONE} class="form-control" 
-            onChange={(e) => {
-            onChange(e)
-            onChangePhone(e)}}></input></div>
-            <div className='col-md-4'>
-            <Button variant="primary" onClick={send}>휴대폰 인증하기</Button> </div>
-      </div>
+        <div class="row d-flex justify-content-center align-items-center ">
+          <label for="staticEmail" class="col-md-4 col-form-label">휴대폰 번호</label>
+          <div className='col-md-4'>
+            <input type='text' name='MEM_PHONE' value={memModify.MEM_PHONE} class="form-control"
+              onChange={(e) => {
+                onChange(e)
+                onChangePhone(e)
+              }}></input></div>
+          <div className='col-md-4'>
+            <Button variant="primary" onClick={send}>휴대폰 인증</Button> </div>
+        </div><br />
 
-      <div className='row'>
-        <label for="staticEmail" class="col-md-4 col-form-label">인증 번호</label>
-        <div className='col-md-4'>
-          <input type='text' name='Verify' onChange={getInputVerifyCode} value={InputVerifyCode} class="form-control"> 
+        <div class="row d-flex justify-content-center align-items-center ">
+          <label for="staticEmail" class="col-md-4 col-form-label">인증 번호</label>
+          <div className='col-md-4'>
+            <input type='text' name='Verify' onChange={getInputVerifyCode} value={InputVerifyCode} class="form-control">
             </input></div>
-            <div className='col-md-4'>
-            <Button variant="primary" onClick={verify}>인증 확인</Button> </div>
+          <div className='col-md-4'>
+            <Button variant="primary" onClick={modifyVerify}>인증 확인</Button> </div>
+        </div>
+        {/* </section> */}
       </div>
 
-      <button type="submit" onClick={ModifySuccess}>수정완료</button> 
-      <button><Link to = '../member/MemDetail'>취소</Link></button>
-     
-     
+      <div class="row d-flex justify-content-center align-items-center ">
+        <div className='col-lg-6 col-sm-12 text-lg-start'>
+          <Button type="button" className="btn btn-light" onClick={ModifySuccess}>수정완료</Button>
+        </div>
+        <div className='col-lg-6 col-sm-12 text-lg-end'>
+          <Button type="button" className="btn btn-light" ariant="secondary">
+            <Link to='../member/MemDetail' style={{ textDecoration: "none" }}>취소</Link>
+          </Button>
+        </div> </div>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>비밀번호 수정 확인</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <h5>확인 버튼을 클릭하시면 비밀번호가 변경됩니다.</h5>
+          수정할 비밀번호<input id='PW' type="password" value={password} onChange={onChangePassword} class="form-control"></input>
+          수정할 비밀번호 확인<input type="password" value={passwordCheck} onChange={onChangePasswordChk} class="form-control"></input>
+          {passwordError && <div style={{ color: 'red' }}>비밀번호가 일치하지 않습니다.</div>}
+
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={onSubmit}>확인</Button>
+          <Button variant="secondary" onClick={handleClose}>취소</Button>
+        </Modal.Footer>
+      </Modal>
     </div>
-
-    /* <li>아이디 : {mem.MEM_ID} </li>
-    <li>이름 : <input name = "MEM_NAME" onChange={onChange} defaultValue={MEM_NAME} /> </li>
-    <li>비밀번호 : <input type="password" value= {MEM_PW} readOnly />
-    <button onClick={openModal}>비밀번호 수정하기</button> </li>
-    
- 
-    <Modal open = {modalOpen} close= {closeModal}>
-    <h3>수정할 비밀번호 : <input id='PW' type="password" value={password} onChange={onChangePassword}></input></h3>
-    <h3>수정할 비밀번호 확인 :<input type="password" value={passwordCheck} onChange={onChangePasswordChk}></input></h3>
-    {passwordError && <div style={{color:'red'}}>비밀번호가 일치하지 않습니다.</div>}
-    <button onClick={onSubmit}>확인</button> &emsp; &emsp;
-    <button onClick={()=>setModalOpen(false)}>취소</button>
-    </Modal>
-
-    <li>휴대폰 번호 : <input name = "MEM_PHONE" defaultValue={MEM_PHONE} 
-      onChange={(e) => {
-      onChange(e)
-      onChangePhone(e)}} /> 
-    <button onClick={send}>휴대폰 인증하기</button></li>
-    <li>인증 번호 : <input name = "Verify" onChange={getInputVerifyCode} value={InputVerifyCode}/> 
-    <button onClick={verify}>인증 확인</button></li>
-    <button type="submit" onClick={ModifySuccess}>수정완료</button>  &emsp; &emsp; 
-    <button><Link to = '../member/MemDetail'>취소</Link></button>
-    </ul>
-    
-   </div> */
   )
 }
 
