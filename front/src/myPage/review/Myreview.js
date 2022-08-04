@@ -6,7 +6,7 @@ import { Rating } from 'react-simple-star-rating';
 const Myreview =() => {
     const location = useLocation();
     const mem_id = location.state.CLI_ID;
-    const board_no = location.state.RES_BOARD_NO;
+    const res_idx = location.state.RES_IDX;
     const after_date = location.state.after_date;
     const review_check = location.state.reviewcheck;
     
@@ -21,7 +21,7 @@ const Myreview =() => {
             contentType:"application/json;charset=UTF-8",
             params : {
                 MEM_ID : mem_id,
-                BOARD_NO : board_no
+                RES_IDX : res_idx
         
             }
         }).then(Response => {

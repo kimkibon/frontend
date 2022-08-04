@@ -66,7 +66,7 @@ const AdminMemberList = () => {
         <th width = "100"> 번호(IDX)</th>
         <th width = "200"> 이름</th>
         <th width = "200">아이디</th>
-        <th width = "200">비밀번호</th>
+        {/* <th width = "200">비밀번호</th> */}
         <th width = "200">휴대폰번호</th>      
       </tr>
        {memList.map((list)=> {
@@ -79,7 +79,7 @@ const AdminMemberList = () => {
               </td>
               <td>{list.MEM_NAME}</td>
               <td>{list.MEM_ID}</td>
-              <td>{list.MEM_PW}</td>
+              {/* <td>{list.MEM_PW}</td> */}
               <td>{list.MEM_PHONE}</td>
             </tr></tbody>
 
