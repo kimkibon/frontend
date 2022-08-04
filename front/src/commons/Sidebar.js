@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import './sidestyle.css'
 import {AiFillAlert, AiFillDatabase, AiFillCarryOut, AiFillEye, AiFillNotification, AiFillInteraction, AiOutlineDown} from "react-icons/ai";
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import '../../node_modules/bootstrap/dist/js/bootstrap'
 import HostSidebar from './HostSidebar';
 import Auth from '../login/Auth';
@@ -12,6 +13,26 @@ import Auth from '../login/Auth';
 
 const Sidebar = () => {
 
+  const mem_id = localStorage.getItem("MEM_ID");
+  const [memberLevel, setMemberLevel] = useState({
+    MEM_LEVEL:''
+  });
+  console.log(mem_id);
+  
+ 
+  //level 2 -> 호스트,,,,
+  useEffect(() => { // 레벨 4 이하인(일반,호스트,관리자) 접근 가능. MEM_IDX 받아오기
+    Auth(4).then(Res => {
+          setMemberLevel({
+            ...memberLevel,
+            'MEM_LEVEL': Res.MEM_LEVEL,
+            })
+          })
+  }, [])
+  
+  console.log(memberLevel);  
+
+  
 
   return (
     <div className='col'>
@@ -70,7 +91,11 @@ const Sidebar = () => {
           </ul>
 
           {/* ----------------------------------------------------------------------------------------- */}
-          <HostSidebar/>
+           {/* {memberLevel === 1 && } */}
+
+           <HostSidebar/>
+          
+          
           
         </div>
 
