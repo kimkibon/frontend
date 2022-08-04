@@ -57,7 +57,7 @@ const MyPageIndex = () => {
         <Link to='memUseListPage'><li>MemUseListPage</li></Link>
         <Link to='reviewList'><li>reviewList</li></Link>
         </Layout> */}
-        <div className='col-lg-8'>
+        
           <Routes>
             <Route path='/' element={<MyPage/>}/>
 
@@ -92,9 +92,7 @@ const MyPageIndex = () => {
             <Route path='/memUseListPage/insertReview' element={<InsertReview/>}/>
             <Route path='/reviewList' element={<ReviewList/>}/>
           </Routes>
-        </div>
-
-        <div class='col-lg-2'/>
+        
         
 
 
