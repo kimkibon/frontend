@@ -106,11 +106,11 @@ const AdminAllResList =() => {
    
 
                
-            {copyresList[0] !==undefined && copyresList.map((list)=>{
+                {copyresList[0] !==undefined && copyresList.map((list)=>{
                 return(
                     <tbody>
-                        <tr>
-                            <td><Link to={"./adminResInfo/"+list.RES_IDX}>{list.RES_IDX}</Link></td>
+                        <tr onClick={()=>{window.location.href="./adminAllResList/adminResInfo/"+list.RES_IDX}}>
+                            <td>{list.RES_IDX}</td>
                             <td>{list.RES_CLI_ID}</td>
                             <td>{list.RES_HOST_ID}</td>
                             <td align='center'>{list.RES_BOARD_NO}_{list.RES_BOARD_MODIFY_NO}</td>
