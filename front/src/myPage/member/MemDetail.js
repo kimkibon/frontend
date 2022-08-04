@@ -3,9 +3,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
+import { Button, Modal } from 'react-bootstrap';
 import Auth from '../../login/Auth';
-import { Modal } from 'react-bootstrap';
 
 const MemDetail = () => {
     const Navigate = useNavigate();
@@ -75,31 +74,31 @@ const MemDetail = () => {
 
                 <h1>회원정보 보기</h1> <br />
 
-                <div class="row d-flex justify-content-center align-items-center ">
-                    <label class="col-2 col-form-label">아이디</label>
+                <div className="row d-flex justify-content-center align-items-center ">
+                    <label className="col-2 col-form-label">아이디</label>
                     <div className='col-4 text-center'>
-                        <input type='text' value={memDetail.MEM_ID} class="form-control" readOnly></input></div>
+                        <input type='text' value={memDetail.MEM_ID} className="form-control" readOnly></input></div>
                 </div><br />
 
-                <div class="row d-flex justify-content-center align-items-center">
-                    <label class="col-2 col-form-label">이름</label>
+                <div className="row d-flex justify-content-center align-items-center">
+                    <label className="col-2 col-form-label">이름</label>
                     <div className='col-4 text-center'>
-                        <input type='text' value={memDetail.MEM_NAME} class="form-control" readOnly></input></div>
+                        <input type='text' value={memDetail.MEM_NAME} className="form-control" readOnly></input></div>
                 </div><br />
 
-                <div class="row d-flex justify-content-center align-items-center">
-                    <label class="col-2 col-form-label">비밀번호</label>
+                <div className="row d-flex justify-content-center align-items-center">
+                    <label className="col-2 col-form-label">비밀번호</label>
                     <div className='col-4 text-center'>
-                        <input type='text' value={memDetail.MEM_PW} class="form-control" readOnly></input></div>
+                        <input type='text' value={memDetail.MEM_PW} className="form-control" readOnly></input></div>
                 </div><br />
 
-                <div class="row d-flex justify-content-center align-items-center">
-                    <label class="col-2 col-form-label">휴대폰 번호</label>
+                <div claclassNamess="row d-flex justify-content-center align-items-center">
+                    <label className="col-2 col-form-label">휴대폰 번호</label>
                     <div className='col-4 text-center'>
-                        <input type='text' value={memDetail.MEM_PHONE} class="form-control" readOnly></input></div>
+                        <input type='text' value={memDetail.MEM_PHONE} className="form-control" readOnly></input></div>
                 </div><br /><br />
 
-                <div class="row d-flex justify-content-end align-items-end">
+                <div clclassNameass="row d-flex justify-content-end align-items-end">
                     <div className='col-lg-2'>
                         <Button className="btn btn-primary " type="button">
                             <Link to={'../member/MemModify'} style={{ textDecoration: "none", color: "white" }} state={{ mem: memDetail }}>수정</Link>
@@ -115,9 +114,11 @@ const MemDetail = () => {
                         <Modal.Title>정말로 탈퇴하시겠습니까?</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <div style={{ color: 'red' }}>비밀번호를 입력하신 후,
-                            <br />탈퇴 버튼을 클릭하시면 탈퇴 처리가 완료됩니다. <br /><br /></div>
-                        <input type="password" placeholder='비밀번호를 입력하세요' onChange={e => setOriginPw(e.target.value)} class="form-control">
+                        <div style={{ color: 'red' }}>
+                            탈퇴 후에는 해당 아이디로 다시 가입할 수 없으며, <br /> 아이디와 데이터는 복구할 수 없습니다. <br /><br /></div>
+                        <div>
+                            <h5>비밀번호 재확인</h5></div>
+                        <input type="password" placeholder='비밀번호를 입력하세요' onChange={e => setOriginPw(e.target.value)} className="form-control">
                         </input>
                     </Modal.Body>
                     <Modal.Footer>

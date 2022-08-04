@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import ImageUploadBox from '../myBoard/component/ImageUploadBox';
-import { Modal } from 'react-bootstrap';
+import { Modal, Button } from 'react-bootstrap';
 import HostAddress from '../../member/HostAddress';
 import ModifyHost from './ModifyHost';
 
@@ -17,34 +17,34 @@ const HostModify = () => {
   const [showAddrModal, setShowAddrModal] = React.useState(false);
   const [insertFiles, setInsertFiles] = useState(hostfile);
 
-  const [hostModify , setHostModify] = useState ({ // hostModify 초기값으로 mem의 값 지정
-    MEM_ID : mem.MEM_ID,
-    MEM_IDX : mem.MEM_IDX,
-    MEM_PW : mem.MEM_PW, 
-    MEM_NAME : mem.MEM_NAME, 
-    MEM_PHONE : mem.MEM_PHONE,
-    HOST_EMAIL : mem.HOST_EMAIL,
-    HOST_POST : mem.HOST_POST,
-    HOST_ADDR1 : mem.HOST_ADDR1,
-    HOST_ADDR2 : mem.HOST_ADDR2,
-    HOST_INTRO : mem.HOST_INTRO,
-    HOST_BANK : mem.HOST_BANK,
-    HOST_ACCOUNT : mem.HOST_ACCOUNT
+  const [hostModify, setHostModify] = useState({ // hostModify 초기값으로 mem의 값 지정
+    MEM_ID: mem.MEM_ID,
+    MEM_IDX: mem.MEM_IDX,
+    MEM_PW: mem.MEM_PW,
+    MEM_NAME: mem.MEM_NAME,
+    MEM_PHONE: mem.MEM_PHONE,
+    HOST_EMAIL: mem.HOST_EMAIL,
+    HOST_POST: mem.HOST_POST,
+    HOST_ADDR1: mem.HOST_ADDR1,
+    HOST_ADDR2: mem.HOST_ADDR2,
+    HOST_INTRO: mem.HOST_INTRO,
+    HOST_BANK: mem.HOST_BANK,
+    HOST_ACCOUNT: mem.HOST_ACCOUNT
   });
- 
+
   const { MEM_ID, MEM_IDX, MEM_PW, MEM_NAME, MEM_PHONE, HOST_EMAIL,
-    HOST_POST, HOST_ADDR1, HOST_ADDR2, HOST_INTRO, HOST_BANK, HOST_ACCOUNT} = hostModify;
+    HOST_POST, HOST_ADDR1, HOST_ADDR2, HOST_INTRO, HOST_BANK, HOST_ACCOUNT } = hostModify;
 
 
   const onChange = (e) => { // 수정하면 복사된 hostModify name & value가 setHostModify 입력됨 
-    const {name, value} = e.target;
-    setHostModify( {
-      ...hostModify, 
-      [name] : value
+    const { name, value } = e.target;
+    setHostModify({
+      ...hostModify,
+      [name]: value
     });
   };
 
-  const setAddrInfo = (data) => {
+  const setAddrInfo = (data) => { // 주소 검색
     setHostModify({
       ...hostModify,
       'HOST_ADDR1': data.HOST_ADDR1,
@@ -54,13 +54,12 @@ const HostModify = () => {
     console.log(hostModify)
   }
 
-     // 미리보기로 만들어진 이미지를 저장 
-  const getImages = (image) => {
+  const getImages = (image) => {   // 미리보기로 만들어진 이미지를 저장 
     setInsertFiles(image);
   }
 
 
-   const updateOnClick = () => {
+  const updateOnClick = () => { // 유효성 검사
 
     if (hostModify.HOST_EMAIL === '') {
       alert('이메일을 입력해주세요.')
@@ -106,61 +105,139 @@ const HostModify = () => {
   }
 
   return (
-    <div>
-      <h1>회원정보 수정</h1>
-      <h5>이름, 비밀번호, 휴대폰번호는 일반회원 페이지에서 수정하실 수 있습니다.</h5>
-      
-      <ul>
-      <h3>호스트 사진 : </h3>
-          {/* 사진 첨부 */}
-      <ImageUploadBox getImages={getImages} beforeImages={hostfile}/>
-      <li>아이디 : {MEM_ID} </li>
-      <li>이름 : {MEM_NAME} </li>
-      <li>비밀번호 : {MEM_PW} </li>
-      <li>휴대폰 번호 : {MEM_PHONE}</li>
-      <li>이메일 : <input name="HOST_EMAIL" value={HOST_EMAIL} onChange={onChange}></input></li>
-      <li>우편번호 : 
-        <input name="HOST_POST" placeholder="우편번호 입력" onChange={onChange} value={HOST_POST} />
-        <button
-        className="btn btn-outline-secondary"
-        type="button"
-        id="button-addon"
-        onClick={() => setShowAddrModal(true)}>
-        우편번호 찾기
-        </button></li>
-      <li>기본주소 : <input name="HOST_ADDR1" value={HOST_ADDR1} onChange={onChange}></input></li>
-      <li>상세주소 : <input name="HOST_ADDR2" value={HOST_ADDR2} onChange={onChange}></input></li>
-      <li>소개글 : <input name="HOST_INTRO" value={HOST_INTRO} onChange={onChange}></input></li>
-      <li>은행 : <input name="HOST_BANK" value={HOST_BANK} onChange={onChange}></input></li>
-      <li>계좌번호 : <input name="HOST_ACCOUNT" value={HOST_ACCOUNT} onChange={onChange}></input></li>
-      </ul>
-      <ModifyHost
+    <div className="container">
+
+      <div className="container px-4 px-lg-5 my-5 h-100" >
+        <h1>회원정보 수정(HOST)</h1><br />
+        <h5>이름, 비밀번호, 휴대폰번호는 일반회원 페이지에서 수정하실 수 있습니다.</h5><br />
+
+
+        <div className="row d-flex justify-content-center align-items-center ">
+          <div className="col-md-8">
+            <label className="col-2 col-form-label">호스트 사진</label>
+            {/* 사진 첨부 */}
+            <ImageUploadBox getImages={getImages} beforeImages={hostfile} />
+          </div></div><br />
+
+        <div className="row d-flex justify-content-end align-items-end ">
+          <label className="col-md-2 col-form-label">아이디</label>
+          <div className='col-4'>
+            <input type='text' value={MEM_ID} className="form-control" readOnly></input>
+          </div>
+          <div className='col-4'></div>
+        </div><br />
+
+        <div className="row d-flex justify-content-end align-items-end ">
+          <label className="col-md-2 col-form-label">이름</label>
+          <div className='col-4 text-center'>
+            <input type='text' name='MEM_NAME' value={MEM_NAME} className="form-control" readOnly></input></div>
+          <div className='col-4'></div>
+        </div><br />
+
+        <div className="row d-flex justify-content-end align-items-end ">
+          <label className="col-md-2 col-form-label">비밀번호</label>
+          <div className='col-4 text-center'>
+            <input type='text' name='MEM_PW' value={MEM_PW} className="form-control" readOnly></input></div>
+          <div className='col-4'></div>
+        </div><br />
+
+        <div className="row d-flex justify-content-end align-items-end ">
+          <label className="col-md-2 col-form-label">휴대폰 번호</label>
+          <div className='col-4 text-center'>
+            <input type='text' name='MEM_PHONE' value={MEM_PHONE} className="form-control" readOnly></input></div>
+          <div className='col-4'></div>
+        </div><br />
+
+        <div className="row d-flex justify-content-end align-items-end ">
+          <label className="col-md-2 col-form-label">이메일</label>
+          <div className='col-4 text-center'>
+            <input type='text' name='HOST_EMAIL' value={HOST_EMAIL} className="form-control" onChange={onChange}></input></div>
+          <div className='col-4'></div>
+        </div><br />
+
+        <div className="row d-flex justify-content-end align-items-end ">
+          <label className="col-md-2 col-form-label">우편번호</label>
+          <div className='col-4 text-center'>
+            <input type='text' name='HOST_POST' value={HOST_POST} className="form-control" onChange={onChange}></input></div>
+          <div className='col-4'>
+            <Button variant="primary" onClick={() => setShowAddrModal(true)}>우편번호 찾기</Button> </div>
+        </div><br />
+
+        <div className="row d-flex justify-content-end align-items-end ">
+          <label className="col-md-2 col-form-label">기본주소</label>
+          <div className='col-4 text-center'>
+            <input type='text' name='HOST_ADDR1' value={HOST_ADDR1} className="form-control" onChange={onChange}></input></div>
+          <div className='col-4'></div>
+        </div><br />
+
+        <div className="row d-flex justify-content-end align-items-end ">
+          <label className="col-md-2 col-form-label">상세주소</label>
+          <div className='col-4 text-center'>
+            <input type='text' name='HOST_ADDR2' value={HOST_ADDR2} className="form-control" onChange={onChange}></input></div>
+          <div className='col-4'></div>
+        </div><br />
+
+        <div className="row d-flex justify-content-end align-items-end ">
+          <label className="col-md-2 col-form-label">소개글</label>
+          <div className='col-4 text-center'>
+            <textarea class="form-control" id="exampleTextarea" name='HOST_INTRO' value={HOST_INTRO} onChange={onChange} rows="3"></textarea></div>
+          <div className='col-4'></div>
+        </div><br />
+
+        <div className="row d-flex justify-content-end align-items-end ">
+          <label className="col-md-2 col-form-label">은행명</label>
+          <div className='col-4 text-center'>
+            <select class="form-select" id="exampleSelect1" onChange={onChange} name="HOST_BANK" value={HOST_BANK}>
+              <option>은행명을 선택하세요</option>
+              <option>신한</option>
+              <option>국민</option>
+              <option>우리</option>
+              <option>하나</option>
+              <option>농협</option>
+            </select></div>
+          <div className='col-4'></div>
+        </div><br />
+
+        <div className="row d-flex justify-content-end align-items-end ">
+          <label className="col-md-2 col-form-label">계좌번호</label>
+          <div className='col-4 text-center'>
+            <input type='text' name='HOST_ACCOUNT' value={HOST_ACCOUNT} className="form-control" onChange={onChange}></input></div>
+          <div className='col-4'></div>
+        </div><br />
+
+        <ModifyHost
           show={insertModal}
           onHide={() => setInsertModal(false)}
           props={{
             'hostModify': hostModify,
-            'updateFiles' : insertFiles,
+            'updateFiles': insertFiles,
             'fileType': '1',
-          }}/>
+          }} />
 
-         {/* 입력확인창 모달로 띄우기 !  */} {/* 주소 검색 모달 */}
-         <Modal
+        <div className="row d-flex justify-content-end align-items-end">
+          <div className='col-lg-2'>
+            <Button className="btn btn-primary " type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                updateOnClick();
+              }}>
+              수정완료</Button> &nbsp;
+            <Button className="btn btn-success" type="button">
+              <Link to={'../hostInfo'} style={{ textDecoration: "none", color: "white" }}>취소</Link>
+            </Button>
+          </div>
+        </div>
+        {/* 입력확인창 모달로 띄우기 !  */} {/* 주소 검색 모달 */}
+        <Modal
           show={showAddrModal}
           onHide={() => setShowAddrModal(false)}>
           <HostAddress
-            setAddrInfo={setAddrInfo}/>
-         </Modal>
+            setAddrInfo={setAddrInfo} />
+        </Modal>
 
-         <button onClick={(e) => {
-          e.preventDefault();
-          updateOnClick();
-          }}>  정보 수정 완료</button>  &emsp; &emsp; 
-         <button><Link to = '../hostInfo'>취소</Link></button>
- 
-     
-     </div>
+      </div></div>
   )
-  }
+}
 
 
 export default HostModify

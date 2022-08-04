@@ -52,7 +52,7 @@ const ModifyHost = (props) => {
           }).then(res => {
 
             alert('수정완료 성공');
-            navigate('../host/hostInfo') // 수정완료 성공 알림창 확인 버튼 클릭 시 회원정보 보기 페이지로 이동됨
+            navigate('../hostInfo') // 수정완료 성공 알림창 확인 버튼 클릭 시 회원정보 보기 페이지로 이동됨
 
           })
         }).catch(err => {
