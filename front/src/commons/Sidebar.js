@@ -15,10 +15,13 @@ import Auth from '../login/Auth';
 const Sidebar = () => {
 
   const mem_id = localStorage.getItem("MEM_ID");
+
   const [memberLevel, setMemberLevel] = useState({
     MEM_LEVEL:''
   });
   console.log(mem_id);
+
+  const {MEM_LEVEL} = memberLevel;
   
  
   //level 2 -> 호스트,,,,
@@ -29,9 +32,8 @@ const Sidebar = () => {
             'MEM_LEVEL': Res.MEM_LEVEL,
             })
           })
-  }, [])
-  
-  console.log(memberLevel);  
+  }, []);
+  console.log(memberLevel);
 
   
 
@@ -92,9 +94,9 @@ const Sidebar = () => {
           </ul>
 
           {/* ----------------------------------------------------------------------------------------- */}
-           {/* {memberLevel === 1 && } */}
-
-           <HostSidebar/>
+          
+          {MEM_LEVEL === 1 && <HostSidebar/>}
+           
           
           
           
