@@ -166,7 +166,7 @@ const ReserveListPage = () => {
                     {[1, 2, 3].includes(resstate) && 
                       <button 
                       type="button" 
-                      class="btn btn-success" 
+                      class="btn btn-warning" 
                       onClick={() => hostModal(list.HOST_ID)}
                       >
                         호스트정보
@@ -184,29 +184,29 @@ const ReserveListPage = () => {
                   </div>
                   <div class="align-items-center align-content-center col-md-2 border-left mt-1">
                     <div class="d-flex flex-column mt-4">
-                      {[0, 1, 2].includes(resstate) &&
-                        <Link to={'resCancel'} state={{ 'res_idx': list.RES_IDX }}>
-                          <button type="button" class="btn btn-primary">예약취소</button>
-                        </Link>}
-
-                      <br/> 
-
-                      {/* 예약요청상태 */}
-                      {resstate === 0 &&
-                        <div>
-                          <br/>
-                          <button type="button" class="btn btn-outline-primary" disabled>요청대기</button>
-                          <br/>
-                        </div>}            
 
                       {/* 예약승인상태 */}
                       {resstate === 1 &&
                         <div>
-                          <Link to={'resConfirm'} state={{ 'res_idx': list.RES_IDX }}><button type="button" class="btn btn-primary">예약확정</button></Link>
+                          <Link to={'resConfirm'} state={{ 'res_idx': list.RES_IDX }}><button type="button" class="btn btn-primary m-1">예약확정</button></Link>
                         </div>
                       }
 
-                      <br/> 
+
+                      {/* 예약요청상태 */}
+                      {resstate === 0 &&
+                        <div>
+                          <button type="button" class="btn btn-outline-primary m-1" disabled>요청대기</button>
+                        </div>}   
+
+
+
+                      {[0, 1, 2].includes(resstate) &&
+                        <Link to={'resCancel'} state={{ 'res_idx': list.RES_IDX }}>
+                          <button type="button" class="btn btn-secondary m-1">예약취소</button>
+                        </Link>}
+
+         
 
                       {/* 결제대기상태 */}
                       {resstate === 2 &&
@@ -219,10 +219,9 @@ const ReserveListPage = () => {
                       {resstate === 4 && <div>예약이 취소되었습니다.<p /></div>}
                       {resstate === 4 && (list.RES_REJ) != null &&
                         <div>
-                          <button type="button" class="btn btn-warning" onClick={() => { alert(list.RES_REJ) }}>거절사유</button>
+                          <button type="button" class="btn btn-warning m-1" onClick={() => { alert(list.RES_REJ) }}>거절사유</button>
                         </div>}
                       
-                      <br/> 
 
                     </div>
                   </div>
