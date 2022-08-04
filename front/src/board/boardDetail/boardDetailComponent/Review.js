@@ -8,7 +8,7 @@ const Review = (review) => {
     <div className="container px-4 px-lg-5 mt-5">
       <h2 className="fw-bolder mb-4">Reviews</h2>
       <div className="row">
-        {review[0] !== undefined && review.map(view => {
+        {review.prop[0] !== undefined && review.prop.map(view => {
           return (
             <div className="col mb-5">
             <div className="card h-100">
@@ -38,7 +38,7 @@ const Review = (review) => {
           </div>
           )
         })}
-        {review[0] === undefined &&
+        {review.prop[0] === undefined &&
           <div className="col mb-5">
             <div className="card h-100">
               <div className="card-body p-4">

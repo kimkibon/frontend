@@ -19,6 +19,7 @@ const AdminHostBoardList = () => {
       }
       //서버에서 리스트 요청
     }).then(Response => {
+      // setBoard(Response.data)
       const url = Response.data.map(async list => {
 
         await SelectOneFile('0', list.BOARD_NO, list.BOARD_MODIFY_NO).then(Res => {
@@ -42,32 +43,22 @@ const AdminHostBoardList = () => {
 
   return (
     <div className='row'>
-      <div className='col'>
+      <div className='btn-group'>
         <button className='btn btn-danger' onClick={(e) => searchConfirm(e.target.value)} value='0'>
           등록 요청
         </button>
-      </div>
-      <div className='col'>
         <button className='btn btn-danger' onClick={(e) => searchConfirm(e.target.value)} value='1'>
           등록 완료
         </button>
-      </div>
-      <div className='col'>
         <button className='btn btn-danger' onClick={(e) => searchConfirm(e.target.value)} value='2'>
           등록 거절
         </button>
-      </div>
-      <div className='col'>
         <button className='btn btn-danger' onClick={(e) => searchConfirm(e.target.value)} value='3'>
           수정 요청
         </button>
-      </div>
-      <div className='col'>
         <button className='btn btn-danger' onClick={(e) => searchConfirm(e.target.value)} value='4'>
           삭제 완료
         </button>
-      </div>
-      <div className='col'>
         <button className='btn btn-danger' onClick={(e) => searchConfirm(e.target.value)} value='5'>
           수정 취소
         </button>
