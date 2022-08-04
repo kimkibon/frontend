@@ -7,37 +7,53 @@ import MyPageIndex from './myPage/MyPageIndex';
 import LoginIndex from './login/LoginIndex';
 import BoardIndex from './board/BoardIndex';
 import AdminIndex from './admin/AdminIndex';
+import { useState } from 'react';
+import { Button, Collapse } from 'react-bootstrap';
+import Sidebar from './commons/Sidebar';
 
 function App() {
+  const [open, setOpen] = useState(false);
+
   return (
     <div>
       <BrowserRouter>
-        <header>
-          <Header />
-        </header>
-  
-        <div class="container-fluid min-vh-100">
-          <div class="row">        
+      <div className='row'>
+      <Button
+        onClick={() => setOpen(!open)}
+        aria-controls="example-collapse-text"
+        aria-expanded={open}
+      >
+        click
+      </Button>
+        <Header />
+</div>
+        <div className="container-fluid min-vh-100">
+          <div className='row'>
+            <Collapse className='col col-sm-2'  in={open} dimension="width">
+              <div className='z-index-2000'>
+                <Sidebar style={{ width: '300px' }}/>
+              </div>
+            </Collapse>
+            <div className='col'>
               <Routes>
                 <Route path='/' element={<Main />} />
                 <Route path='/join/*' element={<Join />} />
                 <Route path='/login/*' element={<LoginIndex />} />
                 <Route path='/myPage/*' element={<MyPageIndex />} />
-                
+
                 <Route path='/board/*' element={<BoardIndex />} />
-                
+
                 <Route path='/admin/*' element={<AdminIndex />} />
-              </Routes>      
+              </Routes>
+            </div>
           </div>
         </div>
- 
- 
-        <footer>
-          <Footer />
-        </footer>
+
+
+        <Footer />
       </BrowserRouter>
 
-    
+
 
     </div>
   );
