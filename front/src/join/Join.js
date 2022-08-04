@@ -1,9 +1,8 @@
-import React, { useEffect, useState }from 'react'
-import { Navigate, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Join = () => {
-
   const [JoinID, setJoinID] = useState("");
   const [JoinIDCheck, setJoinIDCheck] = useState("1"); //0: 중복체크 완료 , 1: 중복체크 미완료
   const [JoinPassword, setJoinPassword] = useState("");
@@ -25,15 +24,15 @@ const Join = () => {
     return false;
   };
 
-  const getJoinID = (event) =>{
+  const getJoinID = (event) => {
     let value = event.target.value;
 
-    if(value === ""){
+    if (value === "") {
       setJoinID(value);
       return;
     }
     let length = value.length;
-    if(dataRuleCheckForID(value[length-1]) === false) return;
+    if (dataRuleCheckForID(value[length - 1]) === false) return;
 
     setJoinID(value);
     setJoinIDCheck(1);
@@ -41,234 +40,274 @@ const Join = () => {
     return;
   };
 
-  const getJoinPassword = (event) =>{
+  const getJoinPassword = (event) => {
     let value = event.target.value;
     setJoinPassword(value);
   };
-  const getJoinPwCheck = (event) =>{
+  const getJoinPwCheck = (event) => {
     let value = event.target.value;
     setJoinPwCheck(value);
   };
-  const getJoinName = (event) =>{
+  const getJoinName = (event) => {
     let value = event.target.value;
     setJoinName(value);
   };
-  const getJoinPhone = (event) =>{
+  const getJoinPhone = (event) => {
     let value = event.target.value;
     setJoinPhone(value);
   };
-  const getInputVerifyCode = (event) =>{
+  const getInputVerifyCode = (event) => {
     let value = event.target.value;
     setInputVerifyCode(value);
   };
 
-  const send = () =>{
+  const send = () => {
     axios({
-      method : 'post',
-      url : '/GareBnB/PhoneNumberCheck.do' ,
-      contentType : "application/json;charset=UTF-8",
-      params : {
-        'to' : JoinPhone
-      }
-    }).then(Response =>{
-      console.log(Response.data)
-      console.log(Response.data.value)
-      setRealVerifyCode(Response.data)
-    }).catch(err=>{
-      console.log(err);
-      alert("에러")
+      method: "post",
+      url: "/GareBnB/PhoneNumberCheck.do",
+      contentType: "application/json;charset=UTF-8",
+      params: {
+        to: JoinPhone,
+      },
     })
-  }  
+      .then((Response) => {
+        console.log(Response.data);
+        console.log(Response.data.value);
+        setRealVerifyCode(Response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("에러");
+      });
+  };
 
-  const verify = () =>{
-    if (InputVerifyCode == RealVerifyCode){
-      alert("인증이 완료되었습니다.")
-      setPhoneOK(1)
-      console.log(PhoneOK)
+  const verify = () => {
+    if (InputVerifyCode == RealVerifyCode) {
+      alert("인증이 완료되었습니다.");
+      setPhoneOK(1);
+      console.log(PhoneOK);
+    } else {
+      alert("인증에 실패하였습니다.");
+      console.log(RealVerifyCode);
+      console.log(InputVerifyCode);
     }
-    else{
-      alert("인증에 실패하였습니다.")
-      console.log(RealVerifyCode)
-      console.log(InputVerifyCode)
-    }
+  };
 
-  }
-
-
-  
-
-  const IDDupCheck = () =>{
-    
-    if(JoinID !== ""){
+  const IDDupCheck = () => {
+    if (JoinID !== "") {
       axios({
-        method : 'post' ,
-        url : '/GareBnB/confirmId.do' ,
-        contentType:"application/json;charset=UTF-8",
-        params : {
-            'MEM_ID' : JoinID   
-        }}).then(Response => {
-          console.log(Response.data)
-          if (Response.data === 0){
-            alert("아이디를 사용하실 수 있습니다.");  
+        method: "post",
+        url: "/GareBnB/confirmId.do",
+        contentType: "application/json;charset=UTF-8",
+        params: {
+          MEM_ID: JoinID,
+        },
+      })
+        .then((Response) => {
+          console.log(Response.data);
+          if (Response.data === 0) {
+            alert("아이디를 사용하실 수 있습니다.");
             setJoinIDCheck(0);
-          }
-          else {
+          } else {
             alert("해당 아이디가 이미 존재합니다.");
-          
           }
-        }).catch(err => {
+        })
+        .catch((err) => {
           console.log(err);
         });
-      
-    }
-    else alert("아이디를 입력하세요");
+    } else alert("아이디를 입력하세요");
+  };
 
-  }
-
-  const dataRuleCheckForPW =() =>{
-    return (JoinPassword.length >= 8 ? true : false)
-  }
-  const SameCheckForPW =() =>{
-    return (JoinPassword === JoinPwCheck ? true : false)
-  }
+  const dataRuleCheckForPW = () => {
+    return JoinPassword.length >= 8 ? true : false;
+  };
+  const SameCheckForPW = () => {
+    return JoinPassword === JoinPwCheck ? true : false;
+  };
 
   const Join = () => {
-    console.log({JoinID, JoinPassword});
-    if(JoinIDCheck===0){
-      if(dataRuleCheckForPW()){
-        if(SameCheckForPW()){
-          if(JoinName!==""){
-            if(JoinPhone!==""){
-              if(PhoneOK===1){
-               axios({
-                 method : 'post' ,
-                 url : '/GareBnB/joinSuccess.do' ,
-                 contentType:"application/json;charset=UTF-8",
-                 params : {
-                     'MEM_ID' : JoinID ,
-                     'MEM_PW' : JoinPassword,
-                     'MEM_NAME' : JoinName,
-                     'MEM_PHONE' : JoinPhone  
-                 }}).then(Response => {
-                    navigate('/');
-                 }).catch(err => {
-                   console.log(err);
-                 });
-                 
+    console.log({ JoinID, JoinPassword });
+    if (JoinIDCheck === 0) {
+      if (dataRuleCheckForPW()) {
+        if (SameCheckForPW()) {
+          if (JoinName !== "") {
+            if (JoinPhone !== "") {
+              if (PhoneOK === 1) {
+                axios({
+                  method: "post",
+                  url: "/GareBnB/joinSuccess.do",
+                  contentType: "application/json;charset=UTF-8",
+                  params: {
+                    MEM_ID: JoinID,
+                    MEM_PW: JoinPassword,
+                    MEM_NAME: JoinName,
+                    MEM_PHONE: JoinPhone,
+                  },
+                })
+                  .then((Response) => {
+                    navigate("/");
+                  })
+                  .catch((err) => {
+                    console.log(err);
+                  });
               }
-          }
-            else alert("휴대폰번호를 입력해주세요")
-          }
-          else alert("이름을 입력해주세요")
-        }
-        else alert("비밀번호가 같지 않습니다.")
-      }
-      else alert("비밀번호가 너무 짧습니다.")
-    }
-    else alert("아이디를 확인해주세요")
+            } else alert("휴대폰번호를 입력해주세요");
+          } else alert("이름을 입력해주세요");
+        } else alert("비밀번호가 같지 않습니다.");
+      } else alert("비밀번호가 너무 짧습니다.");
+    } else alert("아이디를 확인해주세요");
   };
-  
+
   const Exit = () => {
-    navigate('/');
+    navigate("/");
   };
 
   return (
-    <form  className= "form-horizontal">
-      <div className = "container-sm">
-     <div className = "form-group" >
-     <div className = "col-sm-3">
-        <div className = "mb-3">
-          <label for ="inputID" className="col-sm-2 control-label">ID</label>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="아이디"
-            value={JoinID}
-            onChange={(e) => getJoinID(e)} //내용이 바뀔떄마다 ID GET
-          />
-          <button type="button" className="btn btn-primary"onClick={IDDupCheck}> 중복확인 </button>
-        </div>
-        </div>
-      </div>
-      <div className = "form-group">
-      <div className = "col-sm-3">
-        <div className = "mb-3">
-         <label for ="inputPW" className="col-sm-2 control-label">PW</label>
-         <input
-            type="password"
-            className='form-control'
-            placeholder="비밀번호"
-            value={JoinPassword}
-            onChange={(e) => getJoinPassword(e)} //내용이 바뀔떄마다 PW GET
-         />
-        </div>
-        </div>
-      </div> 
-      <div className = "form-group"> 
-      <div className = "col-sm-3">
-      <div className = "mb-3">
-        <label for ="inputPWCheck" className="col-sm-2 control-label">PWCheck</label>
-        <input
-           type="password"
-           className='form-control'
-           placeholder="비밀번호확인"
-           value={JoinPwCheck}
-           onChange={(e) => getJoinPwCheck(e)} //내용이 바뀔떄마다 PWCheck GET
-         />
-       </div>
-       </div>
-      </div>
-      <div className = "form-group">
-      <div className = "col-sm-3">
-      <div className = "mb-3">
-        <label for ="inputName" className="col-sm-2 control-label">Name</label>
-        <input
-          type="text"
-          className='form-control'
-          placeholder="이름"
-          value={JoinName}
-          onChange={(e) => getJoinName(e)} //내용이 바뀔떄마다 Name GET
-        />
-       </div>
-       </div>
-      </div>
-      <div className = "form-group">
-      <div className = "col-sm-3">
-      <div className = "mb-3">
-        <label for ="inputPhone" className="col-sm-2 control-label">Phone</label>
-        <input
-         type="text"
-         className='form-control'
-         placeholder="핸드폰 번호"
-         value={JoinPhone}
-         onChange={(e) => getJoinPhone(e)} //내용이 바뀔떄마다 Phone GET
-       />
-       <button type ="button" className ="btn btn-secondary"onClick={send}>인증번호 보내기</button>
+    <div className="container">
+      <div className="row">
+        <div className="col-mb-12">
+          <div className="card h-80">
+            <div className="card-body p-4">
+              <div className="row">
+              <div className="col-sm-3">
+               <div className="text-left">
+                  <label for="inputID" className="col-sm-2 control-label">
+                    ID
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="아이디"
+                    value={JoinID}
+                    onChange={(e) => getJoinID(e)} //내용이 바뀔떄마다 ID GET
+                  />
+                  </div>
+                  <div className='col-mb-7'>
+                    <div className="text-end">
+                  <button
+                    type="button"
+                    className="btn btn-primary"
+                    onClick={IDDupCheck}
+                  >
+                    {" "}중복확인{" "}
+                  </button>
+                  </div>
+                  </div>
+                </div>
+              </div>
 
-       </div>
-       </div>
+              <div className="form-group">
+                <div className="col-sm-3">
+                  <div className="mb-3">
+                    <label for="inputPW" className="col-sm-2 control-label">
+                      PW
+                    </label>
+                    <input
+                      type="password"
+                      className="form-control"
+                      placeholder="비밀번호"
+                      value={JoinPassword}
+                      onChange={(e) => getJoinPassword(e)} //내용이 바뀔떄마다 PW GET
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="form-group">
+                <div className="col-sm-3">
+                  <div className="mb-3">
+                    <label
+                      for="inputPWCheck"
+                      className="col-sm-2 control-label"
+                    >
+                      PWCheck
+                    </label>
+                    <input
+                      type="password"
+                      className="form-control"
+                      placeholder="비밀번호확인"
+                      value={JoinPwCheck}
+                      onChange={(e) => getJoinPwCheck(e)} //내용이 바뀔떄마다 PWCheck GET
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="form-group">
+                <div className="col-sm-3">
+                  <div className="mb-3">
+                    <label for="inputName" className="col-sm-2 control-label">
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="이름"
+                      value={JoinName}
+                      onChange={(e) => getJoinName(e)} //내용이 바뀔떄마다 Name GET
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="form-row">
+                <div className="col-sm-3">
+                  <div className="mb-3">
+                    <label for="inputPhone" className="col-sm-2 control-label">
+                      Phone
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="핸드폰 번호"
+                      value={JoinPhone}
+                      onChange={(e) => getJoinPhone(e)} //내용이 바뀔떄마다 Phone GET
+                    />
+                    <button
+                      type="button"
+                      className="btn btn-secondary"
+                      onClick={send}
+                    >
+                      인증번호 보내기
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div className="form-group">
+                <div className="col-sm-3">
+                  <div className="mb-4">
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="인증번호 입력"
+                      value={InputVerifyCode}
+                      onChange={(e) => getInputVerifyCode(e)} //내용이 바뀔떄마다 INputVerifyCode GET
+                    />
+                    <button
+                      type="button"
+                      className="btn btn-primary"
+                      onClick={verify}
+                    >
+                      인증 확인
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <button
+                type="submit"
+                className="btn btn-1g btn-success"
+                onClick={Join}
+              >
+                {" "}
+                가입{" "}
+              </button>
+              <button type="button" className="btn btn-light" onClick={Exit}>
+                {" "}
+                취소{" "}
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-      <div className = "form-group">
-      <div className = "col-sm-3">
-      <div className = "mb-4">
-        <input
-         type="text"
-         className='form-control'
-         placeholder="인증번호 입력"
-         value={InputVerifyCode}
-         onChange={(e) => getInputVerifyCode(e)} //내용이 바뀔떄마다 INputVerifyCode GET
-        />
-        <button type ="button" className = "btn btn-primary"onClick={verify}>인증 확인</button>
+    </div>
+  );
+};
 
-       </div>
-       </div>
-      </div>
-      <button type ="submit" className = "btn btn-1g btn-success" onClick={Join}> 가입 </button>
-      <button type ="button" className = "btn btn-light" onClick={Exit}> 취소 </button>     
-
-      </div>
-    </form>
-  )
-}
-
-export default Join
+export default Join;
