@@ -5,7 +5,7 @@ import List from '../boardList/boardListComponemt/List';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useLocation } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
+import { Button, Container } from 'react-bootstrap';
 
 
 const BoardList = () => {
@@ -86,58 +86,61 @@ const BoardList = () => {
 
 
   return (
-    <div>
+    <Container>
       <div className='container'>
-        <div className='row'>
-          <div className='col col-mb-4 input-group mb-3'>
-            <span
-              class="input-group-text"
-              id="basic-addon1"
-            >
-              케어링
-            </span>
-            <input
-              className='form-control'
-              type='number'
-              value={state.CARE_NO}
-              onChange={(e) => setCare(e)}
-            />
-            <span
-              className="input-group-text"
-              id="basic-addon1"
-            >
-              마리 이상
-            </span>
+        <div className='row m-2 p-2'>
+          <div className='d-flex justify-content-end float-end row'>
+            <div className='col offset-md-6 col-mb-3 input-group mb-3'>
+              <span
+                class="input-group-text"
+                id="basic-addon1"
+              >
+                케어링
+              </span>
+              <input
+                className='form-control'
+                type='number'
+                min='1'
+                value={state.CARE_NO}
+                onChange={(e) => setCare(e)}
+              />
+              <span
+                className="input-group-text"
+                id="basic-addon1"
+              >
+                마리 이상
+              </span>
+            </div>
+            <div className='col col-mb-3 input-group mb-3'>
+              <span
+                className='input-group-text'
+              >
+                지역
+              </span>
+              <input className='form-control' type='text' value={state.BOARD_ADDR1} onChange={(e) => setADDR(e)} />
+            </div>
           </div>
-          <div className='col col-mb-4 input-group mb-3'>
-            <span
-              className='input-group-text'
-            >
-              지역
-            </span>
-            <input className='form-control' type='text' value={state.BOARD_ADDR1} onChange={(e) => setADDR(e)} />
-          </div>
-        </div>
-        <div className='row'>
-          <div className='col col-mb-4 input-group mb-3'>
-            <span className='form-control'>
-              {<DatePicker
-                className='col-sm-9'
-                minDate={new Date()}
-                selected={startDate}
-                onChange={onChange}
-                startDate={startDate}
-                endDate={endDate}
-                selectsRange
-                dateFormat={'yyyy년 MM월 dd일'}
-              />}
-            </span>
-            <Button className='btn' onClick={() => Search()}>검색</Button>
+          <div className='float-end row'>
+            <div className='col offset-md-6 input-group mb-3'>
+              <span className='form-control'>
+                {<DatePicker
+                  className='col-sm-12'
+                  minDate={new Date()}
+                  selected={startDate}
+                  onChange={onChange}
+                  startDate={startDate}
+                  endDate={endDate}
+                  selectsRange
+                  dateFormat={'yyyy년 MM월 dd일'}
+                />}
+              </span>
+              <Button className='btn' onClick={() => Search()}>검색</Button>
+            </div>
           </div>
         </div>
       </div>
       {List(board)}
-    </div >
+    </Container>
   )
 }
 

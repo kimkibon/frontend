@@ -164,29 +164,29 @@ const MemModify = () => {
       <div className="container px-4 px-lg-5 my-5">
 
         <h1>회원정보 수정</h1><br />
-        {/* <section className="row border border-primary"> */}
-        <div className='row'>
-          <label class="col-md-4 col-form-label">아이디</label>
-          <div className='col-md-4'>
+    
+        <div class="row d-flex justify-content-center align-items-center ">
+        <label class="col-2 col-form-label">아이디</label>
+        <div className='col-4 text-center'>
             <input type='text' value={memModify.MEM_ID} class="form-control" readOnly></input></div>
         </div><br />
 
-        <div className='row'>
-          <label for="staticEmail" class="col-md-4 col-form-label">이름</label>
-          <div className='col-md-4'>
+        <div class="row d-flex justify-content-center align-items-center ">
+        <label class="col-2 col-form-label">이름</label>
+        <div className='col-4 text-center'>
             <input type='text' value={memModify.MEM_NAME} class="form-control"></input></div>
         </div><br />
 
-        <div className='row'>
-          <label for="staticEmail" class="col-md-4 col-form-label">비밀번호</label>
+        <div class="row d-flex justify-content-center align-items-center ">
+        <label class="col-3 col-form-label">비밀번호</label>
           <div className='col-md-4'>
             <input type='password' value={memModify.MEM_PW} class="form-control"></input>
           </div>
-          <div className='col-md-4'>
+          <div className='col-4'>
             <Button variant="primary" onClick={handleShow}>비밀번호 수정</Button> </div>
         </div><br />
 
-        <div className='row'>
+        <div class="row d-flex justify-content-center align-items-center ">
           <label for="staticEmail" class="col-md-4 col-form-label">휴대폰 번호</label>
           <div className='col-md-4'>
             <input type='text' name='MEM_PHONE' value={memModify.MEM_PHONE} class="form-control"
@@ -198,7 +198,7 @@ const MemModify = () => {
             <Button variant="primary" onClick={send}>휴대폰 인증</Button> </div>
         </div><br />
 
-        <div className='row'>
+        <div class="row d-flex justify-content-center align-items-center ">
           <label for="staticEmail" class="col-md-4 col-form-label">인증 번호</label>
           <div className='col-md-4'>
             <input type='text' name='Verify' onChange={getInputVerifyCode} value={InputVerifyCode} class="form-control">
@@ -209,7 +209,7 @@ const MemModify = () => {
         {/* </section> */}
       </div>
 
-      <div class="row">
+      <div class="row d-flex justify-content-center align-items-center ">
         <div className='col-lg-6 col-sm-12 text-lg-start'>
           <Button type="button" className="btn btn-light" onClick={ModifySuccess}>수정완료</Button>
         </div>
