@@ -141,7 +141,7 @@ const AdminResInfo =() => {
                         결제날짜
                     </td>
                     <td>
-                    {String(new Date(resInfo.PAY_DATE*1000))}
+                    {resInfo.PAY_DATE}
                     </td>    
                 </tr>
                 </tbody>
