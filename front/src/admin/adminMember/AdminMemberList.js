@@ -51,7 +51,7 @@ const AdminMemberList = () => {
   return (
     <div className='container px-4 px-lg-5 my-5 h-100'>
       <hr />
-      <h3>일반 회원 관리</h3>
+      <h3>회원 관리</h3>
       <hr />
 
       {/* 검색창 기능(ID와 이름으로 검색 가능) */}
