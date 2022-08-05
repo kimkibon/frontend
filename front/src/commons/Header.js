@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { IoPersonOutline, IoPerson } from "react-icons/io5";
 import Logout from '../login/Logout';
 import logoImage from './images/logo/GareBnBlog.png';
 import './style.css';
-import Offside from './Offside.js';
 
 const Header = () => {
-  const mem_id = localStorage.getItem("MEM_ID");//로컬스토리지에서 로그인한 계정의 아이디 전달
+  const [loginId , setLoginId] = useState(localStorage.getItem("MEM_ID"));  //로컬스토리지에서 로그인한 계정의 아이디 전달
+
+  useEffect(()=>{
+    setLoginId(localStorage.getItem("MEM_ID"));
+  },[localStorage.getItem("MEM_ID")])
 
   const LogIn = () => {
 
@@ -30,7 +33,7 @@ const Header = () => {
         <div className='headerLogin'>
           안녕하세요.
         </div>
-        {mem_id}&nbsp;
+        {loginId}&nbsp;
         <div className='headerLogin'>
           님
         </div>
@@ -87,7 +90,7 @@ const Header = () => {
 
 
           {/* 로그인하기 -> 여부에,, */}
-          {mem_id == null ? <div className="menu-icon ml-auto" >
+          {loginId === null ? <div className="menu-icon ml-auto" >
             <Link to="/login">
               {/* <svg xmlns="http://www.w3.org/2000/svg" width="80"
                             height="20" viewBox="0 0 18 20">

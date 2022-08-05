@@ -18,22 +18,20 @@ async function Auth(BOARD_LEVEL , navigate) {
             //스토리지에 멤버 아이디가 저장되어 있지 않으면 로그인 페이지로 이동
         } else {
             const id = localStorage.getItem("MEM_ID")
+            const jwt = localStorage.getItem("JWT");
         axios({
             method: 'post',
             url: "/GareBnB/Auth.do",
-            params: { 'MEM_ID': id }
+            params: { 'JWT': jwt , 'BOARD_LEVEL' : BOARD_LEVEL}
         }).then(Response => {
-            console.log(Response)
-            if(Response.data.MEM_LEVEL <= BOARD_LEVEL){
-                return ({
-                    'MEM_LEVEL' : Response.data.MEM_LEVEL,
-                    'MEM_IDX' : Response.data.MEM_IDX
-                })
-            } else {
-                alert("권한이 없습니다.");
-                navigate(-1);
-                //mem_level 값과 page_level을 비교해서 권한이 없으면 뒤로가기
-            }  
+            const MEM_ID = Response.data.MEM_ID;
+            const MEM_LEVEL = Number(Response.data.MEM_LEVEL);
+            const MEM_IDX = Number(Response.data.MEM_IDX);
+            return({
+                'MEM_ID' : MEM_ID ,
+                'MEM_LEVEL' : MEM_LEVEL,
+                'MEM_IDX' : MEM_IDX
+            });
         }).then(data => {
             resolve(data);
         }).catch(err =>{

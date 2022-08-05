@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import './sidestyle.css'
-import { BsFillAlarmFill, BsFillCalendarCheckFill, BsFillMegaphoneFill, BsFillQuestionCircleFill, BsFillInfoCircleFill, BsFillPeopleFill } from "react-icons/bs";
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../../node_modules/bootstrap/dist/js/bootstrap'
 import HostSidebar from './HostSidebar';
 import Auth from '../login/Auth';
 import { Col } from 'react-bootstrap';
 import AdminSidebar from './AdminSidebar';
-import Logout from '../login/Logout';
 import Offside from './Offside';
 
 

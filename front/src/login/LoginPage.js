@@ -78,8 +78,8 @@ const Login = () => {
           url: "/GareBnB/login/login.do",
           contentType: "application/json;charset=UTF-8",
           params: {
-            MEM_ID: loginID,
-            MEM_PW: loginPassword,
+            'MEM_ID': loginID,
+            'MEM_PW': loginPassword,
           },
         })
           .then((Response) => {
@@ -88,11 +88,11 @@ const Login = () => {
               alert("아이디나 비밀번호를 잘못 입력하셨습니다.");
               console.log("hi");
             } else {
-              console.log(Response);
-              console.log(Response.data.MEM_LEVEL);
 
+              console.log(Response);
               localStorage.setItem("MEM_ID", Response.data.MEM_ID); //MEM_ID만 로컬스토리지에 저장
-              window.location.replace("/")
+              localStorage.setItem("JWT", Response.data.JWT);
+              navigate('/')
               
             }
           })
