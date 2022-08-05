@@ -25,32 +25,7 @@ const AdminIndex = () => {
   }, [])
   //admin 페이지에 접속하려 했을 경우 권한 검사 
   return (
-    <div class="container-fluid">
-      <div class="row">
-
-
-        <div className='col-lg-8'>
-          <Link to=''><li>admin index</li></Link>
-
-          <Link to='adminBoardReview'><li>adminBoardReview</li></Link>
-          <Link to='adminBoardDetail'><li>adminBoardDetail</li></Link>
-          <Link to='adminBoardList'><li>adminBoardList</li></Link>
-
-          <Link to='adminHostConfirmList'><li>adminHostConfirmList</li></Link>
-          <Link to='adminHostConfirmDetail'><li>adminHostConfirmDetail</li></Link>
-
-          <Link to='adminMemberList'><li>adminMemberList</li></Link>
-          <Link to='adminMemberDetail'><li>adminMemberDetail</li></Link>
-
-          <Link to='adminQnaList'><li>adminQnaList</li></Link>
-          <Link to='adminQnaDetail'><li>adminQnaDetail</li></Link>
-
-          <Link to='adminReportList'><li>adminReportList</li></Link>
-          <Link to='adminReportDetail'><li>adminReportDetail</li></Link>
-
-          <Link to='adminAllResList'><li>adminAllResList</li></Link>
-
-
+    <div className="container-fluid">
 
           <Routes>
             <Route path='/admin' element={<AdminIndex />} />
@@ -76,13 +51,7 @@ const AdminIndex = () => {
 
 
           </Routes>
-        </div>
 
-        <div class='col-lg-2' />
-
-
-
-      </div>
     </div>
   )
 }

@@ -22,7 +22,7 @@ function App() {
           {!!localStorage.getItem('MEM_ID') &&
             <div className='col col-sm-1'>
               <Button
-                className='m-5'
+                className='mt-5'
                 onClick={() => setOpen(!open)}
                 aria-controls="example-collapse-text"
                 aria-expanded={open}
@@ -31,9 +31,10 @@ function App() {
               </Button>
             </div>
           }
-          <div className='col col-sm-11'>
+          <div className='col col-sm-10'>
             <Header />
           </div>
+          <div className='col col-sm-1'></div>
         </div>
         <div className="container-fluid min-vh-100">
           <div className='row'>

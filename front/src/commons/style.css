@@ -1,6 +1,6 @@
 
    .header {
-    padding: 20px;
+    padding: 10px;
     text-align: center;
     position: static;
     top: 0;
@@ -9,9 +9,10 @@
 
   /* 헤더 개어비앤비 로고 */
   .img-logo {
-    width: 400px;
-    height: 65px;
+    width: 420px;
+    height: 80px;
     object-fit: contain; 
+    margin-top: 20px;
   }
  
  .footer {
