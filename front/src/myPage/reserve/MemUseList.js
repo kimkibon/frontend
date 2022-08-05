@@ -23,7 +23,7 @@ const MemUseList = (props) => {
   return (
     <>
       <div class="col-md-3 mt-2 d-flex flex-column align-items-center align-content-center">
-        <img src={list.URL} width="200px" height="auto"/><p/>
+        <img class="img-fluid img-responsive rounded product-image" src={list.URL} width="200px" height="auto"/><p/>
       </div>
       <div class="col-md-7 mt-1 align-items-center align-content-center">
                   예약번호 {list.RES_IDX}<br/>

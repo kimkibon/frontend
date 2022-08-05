@@ -59,7 +59,7 @@ const MemUseListPage = () => {
                     <div class="container mt-5 mb-5">
                         <div class="d-flex justify-content-center row">
                             <div class="col-md-10">
-                                <div class="row p-2 bg-white border rounded">
+                                <div class="row p-2 bg-white border rounded align-items-center">
                                     <MemUseList list={list }/>
                                     
 

@@ -202,7 +202,7 @@ const ReserveListPage = () => {
                       
                     </table>
                   </div>
-                  <div class="align-items-center align-content-center col-md-2 border-left mt-1">
+                  <div class="align-items-center align-content-center col-md-2">
                     <div class="d-flex flex-column mt-4">
 
                       {/* 예약승인상태 */}
