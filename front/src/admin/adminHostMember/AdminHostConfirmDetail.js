@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import SelectFileList from '../../commons/Files/SelectFileList';
 import Carousel from 'react-bootstrap/Carousel';
-import { Button, Modal } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 
 
@@ -11,27 +11,11 @@ const AdminHostConfirmDetail = () => {
 
   const [url, setUrl] = useState();
   const [file, setFile] = useState([]);
-  const location = useLocation();
+  const {MEM_IDX} = useParams();
 
-  const host_mem_idx = location.state.MEM_IDX
-
-  const [getHostMem, setGetHostMem] = useState({ // MEM_IDX는 list에서 넘어온 값으로 초기값 지정
-    MEM_IDX: host_mem_idx,
-    MEM_ID: '',
-    MEM_PW: '',
-    MEM_NAME: '',
-    MEM_PHONE: '',
-    HOST_EMAIL: '',
-    HOST_ADDR1: '',
-    HOST_ADDR2: '',
-    HOST_BANK: '',
-    HOST_ACCOUNT: '',
-    HOST_INTRO: ''
-  });
-
+  const [getHostMem, setGetHostMem] = useState([]);
 
   // 이미지 *************
-
 
   useEffect(() => { // 해당 MEM_IDX로 나머지 정보 가져옴
     axios({
@@ -39,7 +23,7 @@ const AdminHostConfirmDetail = () => {
       url: '/GareBnB/Admin/hostConfirmMemberDetail.do',
       contentType: "application/json; charset=UTF-8",
       params: {
-        MEM_IDX: getHostMem.MEM_IDX
+        MEM_IDX: MEM_IDX
       }
     })
       .then(Response => {

@@ -4,14 +4,16 @@ import { useNavigate } from 'react-router-dom';
 import {useLocation} from 'react-router-dom';
  import Table from 'react-bootstrap/Table';
  import {Button,Form} from 'react-bootstrap';
+ import { useParams } from 'react-router-dom';
 // import Alert from 'react-bootstrap/Alert';
 
 
 const AdminQnaDetail = () => {
 
-    const location = useLocation();
-    const qna_idx = location.state.QNA_IDX;
+    // const location = useLocation();
+    // const qna_idx = location.state.QNA_IDX;
     //console.log(qna_idx);
+    const {QNA_IDX} = useParams();
 
     const [detail, setDetail] = useState([]);
     useEffect(() => {
@@ -20,7 +22,7 @@ const AdminQnaDetail = () => {
               url : '/GareBnB/mypage/memDetailQna.do' ,
               contentType:"application/json;charset=UTF-8",
               params : {
-                  QNA_IDX : qna_idx
+                  QNA_IDX : QNA_IDX
               }
           }).then(Response => {
               console.log(Response.data);
@@ -56,7 +58,7 @@ const AdminQnaDetail = () => {
         contentType:"apllication/json; charset=UTF-8",
         params : {
           QNA_COMMENT : (qnaUpdate.comment),  //입력된 값이 넘어가야함
-          QNA_IDX : qna_idx
+          QNA_IDX : QNA_IDX
         }
       }).then(Response => {
         console.log(Response.data);
