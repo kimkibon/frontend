@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import './sidestyle.css'
 import { BsFillAlarmFill, BsFillCalendarCheckFill, BsFillMegaphoneFill, BsFillQuestionCircleFill,BsFillInfoCircleFill,BsFillPeopleFill  } from "react-icons/bs";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../../node_modules/bootstrap/dist/js/bootstrap'
 import HostSidebar from './HostSidebar';
 import Auth from '../login/Auth';
+import { Col } from 'react-bootstrap';
+
+
 // react-icons names -> fa로 통일
 
 
@@ -12,6 +15,7 @@ import Auth from '../login/Auth';
 const Sidebar = () => {
 
   const mem_id = localStorage.getItem("MEM_ID");
+  const navigate = useNavigate();
 
   const [memberLevel, setMemberLevel] = useState({
     MEM_LEVEL:''
@@ -23,21 +27,21 @@ const Sidebar = () => {
  
   //level 2 -> 호스트,,,,
   useEffect(() => { // 레벨 4 이하인(일반,호스트,관리자) 접근 가능. MEM_IDX 받아오기
-    Auth(4).then(Res => {
+    if(localStorage.getItem('MEM_ID')){
+    Auth(4 , navigate).then(Res => {
           setMemberLevel({
             ...memberLevel,
             'MEM_LEVEL': Res.MEM_LEVEL,
             })
           })
+        }
   }, []);
   console.log(memberLevel);
 
   
 
   return (
-    <div className='col'>
-
-      
+    <Col>
         <div className='navigation'>
           <ul className='big_menu1'>
           <li>
@@ -87,17 +91,11 @@ const Sidebar = () => {
           {/* ----------------------------------------------------------------------------------------- */}
           
           {MEM_LEVEL === 1 && <HostSidebar/>}
-           
-          
-          
-          
         </div>
 
         {/* <div class="toggle"><AiOutlineMenu className='fa' onClick={toggleMenu()}/></div> */}
-
-        
-              
-</div>
+         
+</Col>
 
   )
 }

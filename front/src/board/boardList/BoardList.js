@@ -122,9 +122,10 @@ const BoardList = () => {
           </div>
           <div className='float-end row'>
             <div className='col offset-md-6 input-group mb-3'>
+            <span className='input-group-text'>기간 선택</span>
               <span className='form-control'>
                 {<DatePicker
-                  className='col-sm-12'
+                  className='form-control'
                   minDate={new Date()}
                   selected={startDate}
                   onChange={onChange}
