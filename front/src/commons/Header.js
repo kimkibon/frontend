@@ -34,7 +34,9 @@ const Header = () => {
         <div className='headerLogin'>
           님
         </div>
+        <div className='btn btn-danger'>
         <Logout />
+        </div>
       </>
     )
 

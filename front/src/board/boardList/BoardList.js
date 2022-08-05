@@ -89,8 +89,9 @@ const BoardList = () => {
     <Container>
       <div className='container'>
         <div className='row m-2 p-2'>
-          <div className='d-flex justify-content-end float-end row'>
-            <div className='col offset-md-3 col-mb-3 input-group mb-3'>
+          <div className='d-flex justify-content-end float-end row mt-3'>
+            <div className='col-md-3'></div>
+            <div className='col input-group mb-3'>
               <span
                 class="input-group-text"
                 id="basic-addon1"
@@ -111,7 +112,7 @@ const BoardList = () => {
                 마리 이상
               </span>
             </div>
-            <div className='col col-mb-3 input-group mb-3'>
+            <div className='col input-group mb-3'>
               <span
                 className='input-group-text'
               >
@@ -122,7 +123,8 @@ const BoardList = () => {
             <div className='col'></div>
           </div>
           <div className='float-end row'>
-            <div className='col offset-md-3 input-group mb-4'>
+            <div className='col col-md-3'></div>
+            <div className='col input-group mb-4'>
             <span className='input-group-text'>기간 선택</span>
               <span className='form-control'>
                 {<DatePicker
@@ -138,7 +140,7 @@ const BoardList = () => {
               </span>
               <Button className='btn' onClick={() => Search()}>검색</Button>
             </div>
-            <div className='col input-group mb-2'></div>
+            <div className='col col-md-3'></div>
           </div>
         </div>
       </div>
