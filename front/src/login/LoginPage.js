@@ -26,7 +26,7 @@ const Login = () => {
     setCapsLockFlag(capsLock);
   };
 
-  if(localStorage.getItem('MEM_ID')!==undefined){
+  if(!!localStorage.getItem('MEM_ID')){
     navigate('/');
   }
 
