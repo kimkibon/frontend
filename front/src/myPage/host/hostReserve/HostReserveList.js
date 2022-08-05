@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Button from 'react-bootstrap/Button';
 import { Link } from "react-router-dom";
 import SelectOneFile from "../../../commons/Files/SelectOneFile";
+import HostResRejModal from "./HostResRejModal";
 
 
 //예약상태
@@ -121,6 +122,7 @@ const HostReserveList = () => {
         break;
     }
 
+
     return (
       <div class="stepper-wrapper">
         <div class={a}>
@@ -144,14 +146,19 @@ const HostReserveList = () => {
   }
 
 
+  const [modalShow, setModalShow] = useState(false);
+  const [residx, setResidx] = useState();
+
 
   return (
     <div>
       <h1>예약내역</h1>
+      <HostResRejModal show={modalShow} onHide={() => setModalShow(false)} state={{'residx':residx }}/>
+
       {resList[0] !==undefined && resList.map((list)=>{
         
         let resstate = list.RES_LEVEL;
-
+        
         return(
           <div class="container mt-5 mb-5">
             <div class="d-flex justify-content-center row">
@@ -165,17 +172,42 @@ const HostReserveList = () => {
                     </div>  
 
                     <div class="col-md-7 mt-1">
-                    <h5>예약번호 : {list.RES_IDX}</h5><br/>
-                      게시글제목 : {list.BOARD_TITLE}<br/>
-                      예약자이름 : {list.MEM_NAME}<br/>
-                      예약자전화번호 : {list.MEM_PHONE}<br/>
-                      이용날짜 : {list.RES_DATE_START} ~ {list.RES_DATE_END}<br/>
-                      맡긴 동물 수 : {list.RES_CARE_NO}<br/>
-                      가격 : {list.PRICE} 원<br/>
-                      세부 요청 사항 : {list.RES_REQ_DETAIL}<br/>
+                      예약번호 {list.RES_IDX}<br/>
+                      <h4>{list.BOARD_TITLE}</h4><br/>
+                      <table>                  
+                          <tr>
+                            <td width={30+'%'}>예약자ID</td>
+                            <td>{list.RES_CLI_ID}</td>
+                          </tr>
+                          <tr>
+                            <td>예약자 이름</td>
+                            <td>{list.MEM_NAME}</td>
+                          </tr>
+                          <tr>
+                            <td>예약자 번호</td>
+                            <td>{list.MEM_PHONE}</td>
+                          </tr>
+                          <tr>
+                            <td>이용날짜</td>
+                            <td>{list.RES_DATE_START} ~ {list.RES_DATE_END}</td>
+                          </tr>
+                          <tr>
+                            <td>동물 수</td>
+                            <td>{list.RES_CARE_NO}</td>
+                          </tr>
+                          <tr>
+                            <td>가격</td>
+                            <td>{list.PRICE} 원</td>
+                          </tr>
+                          <tr>
+                            <td>요청사항</td>
+                            <td>{list.REQ_DETAIL}</td>
+                          </tr>
+                        
+                      </table>
                     </div>
                     
-                    <div class="align-items-center align-content-center col-md-2 border-left mt-1">
+                    <div class="align-items-center align-content-center col-md-2">
                         <div class="d-flex flex-column mt-4">
                           {/* 예약요청상태 */}
                           {resstate === 0 && 
@@ -183,10 +215,8 @@ const HostReserveList = () => {
                             <button type="button" class="btn btn-primary" 
                               onClick={()=>{resApprove(list.RES_IDX)}}>예약승인</button><p/>
                             <button type="button" class="btn btn-secondary" 
-                            onClick={()=>{
-                              const rej = prompt("거절 메세지를 입력하세요");
-                              reject(rej, list.RES_IDX);
-                            }}>예약거절</button>
+                            onClick={()=>{setResidx(list.RES_IDX);setModalShow(true);}}>
+                              예약거절</button>
                           </div>}
 
 

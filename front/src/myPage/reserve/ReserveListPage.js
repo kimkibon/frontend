@@ -179,7 +179,7 @@ const ReserveListPage = () => {
                     <h4>{list.BOARD_TITLE}</h4><br/>
                     <table>                  
                         <tr>
-                          <td>주소</td>
+                          <td width={30+'%'}>주소</td>
                           <td>{list.ADDR1}{list.ADDR2}</td>
 
                         </tr>
@@ -188,7 +188,7 @@ const ReserveListPage = () => {
                           <td>{list.RES_DATE_START} ~ {list.RES_DATE_END}</td>
                         </tr>
                         <tr>
-                          <td>케어요청 동물 수</td>
+                          <td>동물 수</td>
                           <td>{list.RES_CARE_NO}</td>
                         </tr>
                         <tr>
@@ -196,7 +196,7 @@ const ReserveListPage = () => {
                           <td>{list.PRICE} 원</td>
                         </tr>
                         <tr>
-                          <td>세부 요청 사항</td>
+                          <td>요청사항</td>
                           <td>{list.REQ_DETAIL}</td>
                         </tr>
                       
