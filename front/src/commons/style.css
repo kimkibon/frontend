@@ -32,6 +32,13 @@
     color: #94B49F;
   } */
 
+  /* 로그인 아이콘 */
+  .icon .logIcon {
+    color: #94B49F;
+    font-size: 25px;
+    margin-right: 10px;
+  }
+
   .headerLogin {
     margin-right: 10px;
   }
