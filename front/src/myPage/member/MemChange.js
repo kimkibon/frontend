@@ -166,7 +166,7 @@ const MemChange = () => {
                  
                   <div className='col-1 text-center'>
                   <input type='text' name='HOST_JUMIN2' placeholder="*"
-                  value={insertHost.HOST_ADDR2} className="form-control" onChange={onChange}></input> ******</div>
+                  value={insertHost.HOST_ADDR2} className="form-control" onChange={onChange}></input> ****** </div>
           <div className='col-2'></div>
         </div><br />
 
