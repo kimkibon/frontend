@@ -37,7 +37,7 @@ const AdminQnaList = () => {
     
     const SelectBox = () => {
         if(selected === '2' ) {
-          setQnaListcopy(qnaList);
+          setQnaListcopy(qnaList); 
       } else if(selected === '0'){
         const listData = qnaList.filter((list) =>
         list.QNA_STATE.includes('미답변'));
