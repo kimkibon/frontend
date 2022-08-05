@@ -16,37 +16,23 @@ import Auth from './login/Auth';
 function App() {
   const [open, setOpen] = useState(false);
 
-  // Auth
-  const mem_id = localStorage.getItem("MEM_ID");
-  const [memberLevel, setMemberLevel] = useState({
-    MEM_LEVEL:''
-  });
-  const {MEM_LEVEL} = memberLevel;
- 
-  //level 1 -> 호스트,,,,
-  useEffect(() => { // 레벨 4 이하인(일반,호스트,관리자) 접근 가능. MEM_IDX 받아오기
-    Auth(4).then(Res => {
-          setMemberLevel({
-            ...memberLevel,
-            'MEM_LEVEL': Res.MEM_LEVEL,
-            })
-          })
-  }, []);
 
   return (
     <div>
       <BrowserRouter>
         <div className='row'>
-          <div className='col col-sm-1'>
-            <Button
-              className='m-5'
-              onClick={() => setOpen(!open)}
-              aria-controls="example-collapse-text"
-              aria-expanded={open}
-            >
-              myPage
-            </Button>
-          </div>
+          {!!localStorage.getItem('MEM_ID') &&
+            <div className='col col-sm-1'>
+              <Button
+                className='m-5'
+                onClick={() => setOpen(!open)}
+                aria-controls="example-collapse-text"
+                aria-expanded={open}
+              >
+                myPage
+              </Button>
+            </div>
+          }
           <div className='col col-sm-11'>
             <Header />
           </div>
@@ -55,9 +41,8 @@ function App() {
           <div className='row'>
             <Collapse className='col col-sm-2' in={open} dimension="width">
               <div className='z-index-2000'>
-                {MEM_LEVEL === 0?<AdminSidebar style={{ width: '300px' }}/>
-                :<Sidebar style={{ width: '300px' }}/>}
-                
+                <Sidebar style={{ width: '300px' }} />
+
               </div>
             </Collapse>
             <div className='col'>

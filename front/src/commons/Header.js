@@ -1,8 +1,9 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import Logout from '../login/Logout'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import {IoPersonOutline, IoPerson} from "react-icons/io5";
+import Logout from '../login/Logout';
 import logoImage from './images/logo/GareBnBlog.png';
-import './style.css'
+import './style.css';
 import Offside from './Offside.js';
 
 const Header = () => {
@@ -12,6 +13,17 @@ const Header = () => {
 
     return (
       <>
+
+      <div class="nav-item dropdown">
+        <a class="nav-link show" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">
+          <span className='icon'><IoPerson className='logIcon'/></span></a>
+          <div class="dropdown-menu show" data-popper-placement="bottom-start" style={{margin: 0}} >
+            <a class="dropdown-item" href="/myPage">myPage</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">LogOut</a>
+          </div>
+      </div>
+
       <div className='headerLogin'>
        안녕하세요.
       </div>
@@ -50,28 +62,29 @@ const Header = () => {
               
               {/* -- 홈으로 가기 -- */}
               <div className="collapse navbar-collapse justify-content-end">
-                <ul className="navbar-nav" >
+                {/* <ul className="navbar-nav" >
                   <li className="nav-item" >
                     <Link className="nav-link active" to="/">Home
                       <span className="visually-hidden">(current)</span> 
                     </Link>
                   </li>
-                </ul>
+                </ul> */}
 
               {/* 마이페이지 */}
-                <ul className="navbar-nav">
+                {/* <ul className="navbar-nav">
                   <li className="nav-item">
                     <Link className="nav-link active" to="/myPage">myPage
                       <span className="visually-hidden">(current)</span> 
                     </Link>
                   </li>
-                </ul>
+                </ul> */}
                 </div>
 
 
                 {/* 로그인하기 -> 여부에,, */}
                 {mem_id == null ?<div className="menu-icon ml-auto" >
-                    <Link to="/login"><svg xmlns="http://www.w3.org/2000/svg" width="80"
+                    <Link to="/login">
+                       {/* <svg xmlns="http://www.w3.org/2000/svg" width="80"
                             height="20" viewBox="0 0 18 20">
                             <g id="Account" transform="translate(1 1)">
                                 <path id="Path_86" data-name="Path 86"
@@ -82,7 +95,9 @@ const Header = () => {
                                     transform="translate(4)" fill="#fff" stroke="#000"
                                     strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
                             </g>
-                        </svg></Link>
+                        </svg> */}
+                        <span className='icon'><IoPersonOutline className='logIcon'/></span>
+                        </Link>
                 </div> : <LogIn/>}
 
           </nav>
