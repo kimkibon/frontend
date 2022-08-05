@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
-import { Button } from 'react-bootstrap';
-
 
 const AdminHostConfirmList = () => {
 
@@ -47,10 +44,11 @@ const AdminHostConfirmList = () => {
                 <td>{list.MEM_ID}</td>
                 <td>{list.MEM_PHONE}</td>
               </tr>
-             </tbody>
+            </tbody>
           )
         })}
-        </Table>
+
+      </Table>
     </div>
   )
 }
