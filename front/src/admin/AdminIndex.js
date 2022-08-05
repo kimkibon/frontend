@@ -28,9 +28,6 @@ const AdminIndex = () => {
     <div class="container-fluid">
       <div class="row">
 
-        <div class='col-lg-2'>
-          <AdminSidebar />
-        </div>
 
         <div className='col-lg-8'>
           <Link to=''><li>admin index</li></Link>

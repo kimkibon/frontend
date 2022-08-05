@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import './sidestyle.css'
-import {AiFillInteraction} from "react-icons/ai";
 import { BsFillAlarmFill, BsFillCalendarCheckFill, BsFillMegaphoneFill, BsFillQuestionCircleFill,BsFillInfoCircleFill,BsFillPeopleFill  } from "react-icons/bs";
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../../node_modules/bootstrap/dist/js/bootstrap'
 import HostSidebar from './HostSidebar';
 import Auth from '../login/Auth';
-
 // react-icons names -> fa로 통일
 
 
@@ -15,10 +12,13 @@ import Auth from '../login/Auth';
 const Sidebar = () => {
 
   const mem_id = localStorage.getItem("MEM_ID");
+
   const [memberLevel, setMemberLevel] = useState({
     MEM_LEVEL:''
   });
   console.log(mem_id);
+
+  const {MEM_LEVEL} = memberLevel;
   
  
   //level 2 -> 호스트,,,,
@@ -29,9 +29,8 @@ const Sidebar = () => {
             'MEM_LEVEL': Res.MEM_LEVEL,
             })
           })
-  }, [])
-  
-  console.log(memberLevel);  
+  }, []);
+  console.log(memberLevel);
 
   
 
@@ -83,18 +82,12 @@ const Sidebar = () => {
               </Link>
           </li>
 
-          <li>
-              <Link to="/admin">
-                <span className='icon'><AiFillInteraction/></span>
-                <span className='title'>admin 메뉴들</span>
-              </Link>
-          </li>
           </ul>
 
           {/* ----------------------------------------------------------------------------------------- */}
-           {/* {memberLevel === 1 && } */}
-
-           <HostSidebar/>
+          
+          {MEM_LEVEL === 1 && <HostSidebar/>}
+           
           
           
           
