@@ -159,7 +159,7 @@ const HostReserveList = () => {
 
                   {stateChange(resstate)}
 
-                  <div class="row p-2 bg-white border rounded">
+                  <div class="row p-2 bg-white border rounded align-items-center">
                     <div class="col-md-3 mt-2 d-flex flex-column align-items-center align-content-center">
                       <img class="img-fluid img-responsive rounded product-image" src={list.URL} width="200px" height="auto"/>
                     </div>  
@@ -182,7 +182,7 @@ const HostReserveList = () => {
                           <div>
                             <button type="button" class="btn btn-primary" 
                               onClick={()=>{resApprove(list.RES_IDX)}}>예약승인</button><p/>
-                            <button type="button" class="btn btn-primary" 
+                            <button type="button" class="btn btn-secondary" 
                             onClick={()=>{
                               const rej = prompt("거절 메세지를 입력하세요");
                               reject(rej, list.RES_IDX);

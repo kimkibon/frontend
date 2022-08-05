@@ -31,9 +31,9 @@ const AdminResInfo =() => {
               }
         }).then(Response => {
             setResInfo(Response.data);
+            console.log(new Date(Response.data.PAY_DATE));
         });
     },[]);
-
 
     return (
         <div>
@@ -146,13 +146,14 @@ const AdminResInfo =() => {
                 </tr>
                 </tbody>
             </table>
-            <div>
-            <Link to ={'resCancel'} state={{'res_idx': resInfo.RES_IDX}}>
-                {[3,5].includes(resInfo.RES_LEVEL) && <button type="button" class="btn btn-primary">환불하기</button> }           
-                {[0,1,2].includes(resInfo.RES_LEVEL) && <button type="button" class="btn btn-primary">예약취소</button>}
-            </Link>
-            <button type="button" class="btn btn-primary" 
-            onClick={(e)=>{e.preventDefault();window.location.href="/admin/adminAllResList"}}>확인</button>
+            <div className='text-lg-center'>
+                <Link to ={'resCancel'} state={{'res_idx': resInfo.RES_IDX}}>
+                    {[3,5].includes(resInfo.RES_LEVEL) && <button type="button" class="btn btn-primary">환불하기</button> }           
+                    {[0,1,2].includes(resInfo.RES_LEVEL) && <button type="button" class="btn btn-primary">예약취소</button>}
+                </Link>
+                &nbsp;
+                <button type="button" class="btn btn-primary" 
+                onClick={(e)=>{e.preventDefault();window.location.href="/admin/adminAllResList"}}>확인</button>
             </div>            
         </div>
 
