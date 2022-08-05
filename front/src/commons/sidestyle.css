@@ -19,7 +19,7 @@ body
 {
     /* position: fixed */
     position: absolute;
-    width: 200px;
+    width: 220px;
     /* 넓이 80px로 맞추고 아래 동적 nav */
     height: 100%;
     background:#ffffff;

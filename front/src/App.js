@@ -10,8 +10,6 @@ import AdminIndex from './admin/AdminIndex';
 import { useState, useEffect } from 'react';
 import { Button, Collapse } from 'react-bootstrap';
 import Sidebar from './commons/Sidebar';
-import AdminSidebar from './commons/AdminSidebar';
-import Auth from './login/Auth';
 
 function App() {
   const [open, setOpen] = useState(false);
@@ -40,12 +38,12 @@ function App() {
         <div className="container-fluid min-vh-100">
           <div className='row'>
             <Collapse className='col col-sm-2' in={open} dimension="width">
-              <div className='z-index-2000'>
-                <Sidebar style={{ width: '300px' }} />
+              <div className='z-index-2000 col-fluid'  style={{ width: '300px' }} >
+                <Sidebar/>
 
               </div>
             </Collapse>
-            <div className='col'>
+            <div className='col col-fluid'>
               <Routes>
                 <Route path='/' element={<Main />} />
                 <Route path='/join/*' element={<Join />} />

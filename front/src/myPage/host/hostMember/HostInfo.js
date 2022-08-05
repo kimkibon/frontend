@@ -166,13 +166,13 @@ const HostInfo = () => {
       <div className="row d-flex justify-content-center align-items-center">
         <label className="col-2 col-form-label">은행명</label>
         <div className='col-4 text-center'>
-          <input type='textarea' value={hostDetail.HOST_BANK} className="form-control" readOnly></input></div>
+          <input type='text' value={hostDetail.HOST_BANK} className="form-control" readOnly></input></div>
       </div><br />
 
       <div className="row d-flex justify-content-center align-items-center">
         <label className="col-2 col-form-label">계좌번호</label>
         <div className='col-4 text-center'>
-          <input type='textarea' value={hostDetail.HOST_ACCOUNT} className="form-control" readOnly></input></div>
+          <input type='text' value={hostDetail.HOST_ACCOUNT} className="form-control" readOnly></input></div>
       </div><br /><br />
 
       {/* 주민등록번호는 회원정보에 띄우지 않았음..! */}

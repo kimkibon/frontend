@@ -215,7 +215,7 @@ const ResRequest = (res) => {
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={res.onHide}>취소</Button>
+          <Button variant='danger' onClick={res.onHide}>취소</Button>
           <Button variant="primary" onClick={() => setResReqShow(true)}>
             예약하기
           </Button>
