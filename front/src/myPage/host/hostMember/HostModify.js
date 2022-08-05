@@ -160,7 +160,7 @@ const HostModify = () => {
           <div className='col-4 text-center'>
             <input type='text' name='HOST_POST' value={HOST_POST} className="form-control" onChange={onChange}></input></div>
           <div className='col-4'>
-            <Button variant="primary" onClick={() => setShowAddrModal(true)}>우편번호 찾기</Button> </div>
+            <Button variant="btn btn-outline-primary" onClick={() => setShowAddrModal(true)}>우편번호 찾기</Button> </div>
         </div><br />
 
         <div className="row d-flex justify-content-end align-items-end ">
@@ -203,7 +203,7 @@ const HostModify = () => {
           <div className='col-4 text-center'>
             <input type='text' name='HOST_ACCOUNT' value={HOST_ACCOUNT} className="form-control" onChange={onChange}></input></div>
           <div className='col-4'></div>
-        </div><br />
+        </div><br /><br />
 
         <ModifyHost
           show={insertModal}
@@ -214,15 +214,15 @@ const HostModify = () => {
             'fileType': '1',
           }} />
 
-        <div className="row d-flex justify-content-end align-items-end">
-          <div className='col-lg-2'>
+        <div className="row d-flex justify-content-center align-items-end">
+          <div className='col-md-2'>
             <Button className="btn btn-primary " type="button"
               onClick={(e) => {
                 e.preventDefault();
                 updateOnClick();
               }}>
               수정완료</Button> &nbsp;
-            <Button className="btn btn-success" type="button">
+            <Button className="btn btn-secondary" type="button">
               <Link to={'../hostInfo'} style={{ textDecoration: "none", color: "white" }}>취소</Link>
             </Button>
           </div>
