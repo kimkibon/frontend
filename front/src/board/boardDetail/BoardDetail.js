@@ -176,7 +176,7 @@ const BoardDetail = () => {
             {/* 게시글 수정 링크 */}
 
             {/* 어드민 확인 */}
-            {((author.MEM_LEVEL === 0) && (author.MEM_LEVEL !== undefined)) &&
+            {((author.MEM_LEVEL === 0) && (author.MEM_LEVEL !== undefined) &&(boardDetail.BOARD_CONFIRM !== 1)) &&
               <>
                 <button className="btn btn-danger" type="button" onClick={() => setRefuseModal(true)}>
                   등록 거절
