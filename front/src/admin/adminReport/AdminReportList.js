@@ -7,6 +7,7 @@ import Table from 'react-bootstrap/Table';
 const AdminReportList = () => {
 
   const [reportList,setReportList] = useState([]);
+  const [reportListcopy,setReportListcopy] = useState([]);
 
     useEffect(() => {
       axios({ //통신으로 정보 받아오기
@@ -16,6 +17,7 @@ const AdminReportList = () => {
       }).then(Response => {
           console.log(Response.data);
           setReportList(Response.data);
+          setReportListcopy(Response.data);
           //응답이 들어왔을 때 SetReportList 함수를 사용해서 
           //response의 data를 reportList의 정보로 변경
       });
@@ -33,25 +35,16 @@ const AdminReportList = () => {
     
     const SelectBox = () => {
       if(selected === '2' ) {
-        axios({
-          method : 'post' , 
-          url : '/GareBnB/Admin/reportList.do' ,
-          contentType:"application/json;charset=UTF-8"
-      }).then(Response => {
-          console.log(Response.data);
-          setReportList(Response.data);
-          //응답이 들어왔을 때 SetQnaList 함수를 사용해서 
-          //response의 data를 qnaList의 정보로 변경
-      });
+        setReportListcopy(reportList);
     } else if(selected === '0'){
       const listData = reportList.filter((list) =>
       list.REPORT_STATE.includes('미답변'));
-      setReportList(listData);
+      setReportListcopy(listData);
       console.log(listData);
     } else if (selected === '1'){
       const listData = reportList.filter((list) =>
       list.REPORT_STATE.includes('답변완료'));
-      setReportList(listData);
+      setReportListcopy(listData);
       console.log(listData);
     }
     setSelected('');
@@ -89,7 +82,7 @@ const AdminReportList = () => {
           </tr>
         </thead>
       
-      {reportList[0] !== undefined && reportList.map((list)=> {
+      {reportListcopy[0] !== undefined && reportListcopy.map((list)=> {
       return (
         <tbody>
                         <tr>

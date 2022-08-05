@@ -1,25 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import SelectFileList from '../../commons/Files/SelectFileList';
 import Carousel from 'react-bootstrap/Carousel';
-import { Button, Modal } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 const AdminMemberDetail = () => {
 
-  const location = useLocation();
   const [mem_LEV, setMem_LEV] = useState('');
-  const mem_idx = location.state.MEM_IDX;
   const [file, setFile] = useState([]);
+  const { MEM_IDX } = useParams();
 
-  const [getMem, setGetMem] = useState({ // MEM_IDX는 list에서 넘어온 값으로 초기값 지정
-    MEM_IDX: mem_idx,
-    MEM_ID: '',
-    MEM_PW: '',
-    MEM_LEVEL: '',
-    MEM_NAME: '',
-    MEM_PHONE: ''
-  });
+  const [getMem, setGetMem] = useState([]);
+
+  const MEM_LEVEL = (state) => {
+    switch (state) {
+      case 0: return '관리자'
+      case 1: return '호스트 회원'
+      case 2: return '일반 회원'
+      case 3: return '호스트 대기 회원'
+      case 4: return '호스트 거절됨'
+      case 5: return '정지 회원'
+      case 6: return '탈퇴 회원'
+    }
+  }
 
   useEffect(() => { // 해당 MEM_IDX로 나머지 정보 가져옴
     axios({
@@ -27,10 +31,9 @@ const AdminMemberDetail = () => {
       url: '/GareBnB/Admin/MemDetail.do',
       contentType: "application/json; charset=UTF-8",
       params: {
-        MEM_IDX: getMem.MEM_IDX
+        MEM_IDX: MEM_IDX
       }
     })
-
       .then(Response => {
         console.log(Response.data);
         setGetMem(Response.data);
@@ -72,10 +75,10 @@ const AdminMemberDetail = () => {
     <div className="container">
 
       <div className="container px-4 px-lg-5 my-5 h-100" >
-        <h1>{getMem.MEM_ID} 회원 상세보기</h1><br />
+        <h2>{getMem.MEM_ID} 회원 상세보기</h2><br />
 
-        <h3>일반 회원 정보</h3>
-
+        <h4>일반 회원 정보</h4>
+        <br />
         <div className="row d-flex justify-content-center align-items-center ">
           <label className="col-2 col-form-label">번호(IDX)</label>
           <div className='col-6 text-center'>
@@ -107,13 +110,13 @@ const AdminMemberDetail = () => {
         <div className="row d-flex justify-content-center align-items-center ">
           <label className="col-2 col-form-label">level</label>
           <div className='col-6 text-center'>
-            <input type='text' value={mem_LEV} className="form-control" readOnly></input></div>
+            <input type='text' value={MEM_LEVEL(mem_LEV)} className="form-control" readOnly></input></div>
           <div className='col-2'>
             <Button variant="btn btn-outline-primary" onClick={onClick}>회원정지</Button> </div>
-        </div><br />
+        </div><br /><br />
 
-        <h3>호스트 회원 정보</h3>
-
+        <h4>호스트 회원 정보</h4>
+        <br />
         <div className="row d-flex justify-content-center align-items-center ">
           <div className="col-md-8">
             <label className="col-4 col-form-label">호스트 사진</label>
@@ -133,7 +136,7 @@ const AdminMemberDetail = () => {
                 )
               })}
             </Carousel>
-          </div></div><br />
+          </div></div><br /><br />
 
         <div className="row d-flex justify-content-center align-items-center">
           <label className="col-2 col-form-label">이메일</label>
@@ -185,6 +188,7 @@ const AdminMemberDetail = () => {
         </div><br />
 
         <li>주민번호 : {getMem.HOST_JUMIN1}-{getMem.HOST_JUMIN2}</li>
+        {/* 주민번호 수정해야함!!!!!! */}
 
         <div className="row d-flex justify-content-center align-items-end">
           <div className='col-md-2'>

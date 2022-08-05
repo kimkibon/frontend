@@ -34,7 +34,9 @@ const Header = () => {
         <div className='headerLogin'>
           님
         </div>
+        <div className='btn btn-danger'>
         <Logout />
+        </div>
       </>
     )
 
@@ -100,6 +102,7 @@ const Header = () => {
                             </g>
                         </svg> */}
               <span className='icon'><IoPersonOutline className='logIcon' /></span>
+              <button className='btn btn-primary'>LogIn</button>
             </Link>
           </div> : <LogIn />}
 
