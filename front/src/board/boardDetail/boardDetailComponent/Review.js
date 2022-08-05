@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React from 'react';
+import { Rating } from 'react-simple-star-rating';
 
 //board_detail 에서 받아온 리뷰 정보를 출력하는 컴포넌트 
 
@@ -20,7 +21,6 @@ const Review = (review) => {
 
   return (
     <div className="container px-4 px-lg-5 mt-5">
-      <h2 className="fw-bolder mb-4">Reviews</h2>
       <div className="row">
         {review.prop[0] !== undefined && review.prop.map(view => {
           return (
@@ -35,7 +35,9 @@ const Review = (review) => {
                     </div>
                     <div className='col sm-3'>
                       <span className='text-right'>{view.REVIEW_DATE}</span>
-                      <div>{view.SCORE}</div>
+                      <p>
+                        <Rating initialValue={(view.SCORE) * 20} readonly  size='20px' className='mb-2'  />
+                      </p>
                     </div>
                   </div>
                   <div className='row'>
@@ -70,7 +72,10 @@ const Review = (review) => {
                     </div>
                   </div>
                   <div className='col sm-3'>
-                    <p className='text-right'>날짜 </p><p> 별점</p>
+                    <p className='text-right'>날짜 </p>
+                    <p> 별점 
+                      <Rating initialValue={(0) * 20} readonly size='20px' className='mb-2' />
+                    </p>
                   </div>
                 </div>
                 <div className='row'>
