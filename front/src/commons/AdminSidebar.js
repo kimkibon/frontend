@@ -24,14 +24,7 @@ const AdminSidebar = () => {
         <li>
           <Link to="/Admin/adminMemberList">
             <span className='icon'><AiFillCarryOut className='fa' /></span>
-            <span className='title'>일반회원관리</span>
-          </Link>
-        </li>
-
-        <li>
-          <Link to="/Admin">
-            <span className='icon'><AiFillNotification /></span>
-            <span className='title'> 호스트회원관리 </span>
+            <span className='title'>회원관리</span>
           </Link>
         </li>
 
@@ -39,13 +32,6 @@ const AdminSidebar = () => {
           <Link to="/Admin/adminHostConfirmList">
             <span className='icon'><AiFillNotification /></span>
             <span className='title'> 호스트 등록요청 </span>
-          </Link>
-        </li>
-
-        <li>
-          <Link to="/Admin">
-            <span className='icon'><AiFillNotification /></span>
-            <span className='title'> 호스트등록글관리 </span>
           </Link>
         </li>
 

@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
-import { Link, Route, Routes, useNavigate } from 'react-router-dom'
-import AdminSidebar from '../commons/AdminSidebar'
+import { Route, Routes, useNavigate } from 'react-router-dom'
 import AdminBoardReview from './adminHostBoard/AdminBoardReview'
 import AdminHostBoardDetail from './adminHostBoard/AdminHostBoardDetail'
 import AdminHostBoardList from './adminHostBoard/AdminHostBoardList'

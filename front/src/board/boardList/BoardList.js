@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import SelectOneFile from '../../commons/Files/SelectOneFile';
 import List from '../boardList/boardListComponemt/List';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';

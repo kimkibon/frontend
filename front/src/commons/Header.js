@@ -102,6 +102,7 @@ const Header = () => {
                             </g>
                         </svg> */}
               <span className='icon'><IoPersonOutline className='logIcon' /></span>
+              <button className='btn btn-primary'>LogIn</button>
             </Link>
           </div> : <LogIn />}
 

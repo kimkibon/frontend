@@ -7,7 +7,7 @@ import MyPageIndex from './myPage/MyPageIndex';
 import LoginIndex from './login/LoginIndex';
 import BoardIndex from './board/BoardIndex';
 import AdminIndex from './admin/AdminIndex';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Button, Collapse } from 'react-bootstrap';
 import Sidebar from './commons/Sidebar';
 
@@ -19,8 +19,8 @@ function App() {
     <div>
       <BrowserRouter>
         <div className='row'>
-          {!!localStorage.getItem('MEM_ID') &&
-            <div className='col col-sm-1'>
+          <div className='col col-sm-1'>
+            {!!localStorage.getItem('MEM_ID') &&
               <Button
                 className='mt-5'
                 onClick={() => setOpen(!open)}
@@ -29,8 +29,8 @@ function App() {
               >
                 myPage
               </Button>
-            </div>
-          }
+            }
+          </div>
           <div className='col col-sm-10'>
             <Header />
           </div>
@@ -39,8 +39,8 @@ function App() {
         <div className="container-fluid min-vh-100">
           <div className='row'>
             <Collapse className='col col-sm-2' in={open} dimension="width">
-              <div className='z-index-2000 col-fluid'  style={{ width: '300px' }} >
-                <Sidebar/>
+              <div className='z-index-2000 col-fluid' style={{ width: '300px' }} >
+                <Sidebar />
 
               </div>
             </Collapse>
