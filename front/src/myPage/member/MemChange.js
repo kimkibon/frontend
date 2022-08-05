@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Modal, Button, Form } from 'react-bootstrap';
+import { Modal, Button } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import ImageUploadBox from '../host/myBoard/component/ImageUploadBox';
 import HostAddress from './HostAddress';
@@ -121,89 +121,76 @@ const MemChange = () => {
 
     <div className="container">
 
-    <div className="container px-4 px-lg-5 my-5 h-100" >
-      <h1>호스트 전환</h1><br />
-      <h5>관리자 승인 후, 호스트 페이지를 이용하실 수 있습니다.</h5><br />
+      <div className="container px-4 px-lg-5 my-5 h-100" >
+        <h2>호스트 전환</h2><br />
+        <h5>관리자 승인 후, 호스트 페이지를 이용하실 수 있습니다.</h5><br />
 
-        <div className="row d-flex justify-content-end align-items-end ">
-          <label className="col-md-2 col-form-label">이메일</label>
-          <div className='col-4 text-center'>
-            <input type='email' name='HOST_EMAIL' placeholder="name@example.com"  
-                  value={insertHost.HOST_EMAIL} className="form-control" onChange={onChange}></input></div>
-          <div className='col-4'></div>
+        <div className="row d-flex justify-content-end align-items-center ">
+          <label className="col-md-3 col-form-label">이메일</label>
+          <div className='col-md-5 text-center'>
+            <input type='email' name='HOST_EMAIL' placeholder="name@example.com"
+              value={insertHost.HOST_EMAIL} className="form-control" onChange={onChange}></input></div>
+          <div className='col-md-4'></div>
         </div><br />
 
-        <div className="row d-flex justify-content-end align-items-end ">
-          <label className="col-md-2 col-form-label">우편번호</label>
-          <div className='col-4 text-center'>
-            <input type='text' name='HOST_POST' 
-                  value={insertHost.HOST_POST} className="form-control" placeholder="우편번호 입력" onChange={onChange}></input></div>
-          <div className='col-4'>
+        <div className="row d-flex justify-content-end align-items-center ">
+          <label className="col-md-3 col-form-label">우편번호</label>
+          <div className='col-md-5 text-center'>
+            <input type='text' name='HOST_POST'
+              value={insertHost.HOST_POST} className="form-control" placeholder="우편번호 입력" onChange={onChange}></input></div>
+          <div className='col-md-4'>
             <Button variant="btn btn-outline-primary" onClick={() => setShowAddrModal(true)}>우편번호 찾기</Button> </div>
         </div><br />
 
-        <div className="row d-flex justify-content-end align-items-end ">
-          <label className="col-md-2 col-form-label">기본 주소</label>
-          <div className='col-4 text-center'>
+        <div className="row d-flex justify-content-end align-items-center ">
+          <label className="col-md-3 col-form-label">기본 주소</label>
+          <div className='col-md-5 text-center'>
             <input type='text' name='HOST_ADDR1' placeholder="기본 주소"
-                  value={insertHost.HOST_ADDR1} className="form-control"  onChange={onChange}></input></div>
-          <div className='col-4'></div>
+              value={insertHost.HOST_ADDR1} className="form-control" onChange={onChange}></input></div>
+          <div className='col-md-4'></div>
         </div><br />
 
-        <div className="row d-flex justify-content-end align-items-end ">
-          <label className="col-md-2 col-form-label">상세 주소</label>
-          <div className='col-4 text-center'>
+        <div className="row d-flex justify-content-end align-items-center ">
+          <label className="col-md-3 col-form-label">상세 주소</label>
+          <div className='col-md-5 text-center'>
             <input type='text' name='HOST_ADDR2' placeholder="상세 주소"
-                  value={insertHost.HOST_ADDR2} className="form-control" onChange={onChange}></input></div>
-          <div className='col-4'></div>
+              value={insertHost.HOST_ADDR2} className="form-control" onChange={onChange}></input></div>
+          <div className='col-md-4'></div>
         </div><br />
 
-        <div className="row d-flex justify-content-end align-items-end ">
-          <label className="col-md-6 col-form-label">주민 등록 번호</label>
-          <div className='col-2 text-center'>
+        <div className="row d-flex justify-content-stretch align-items-center ">
+          <label className="col-md-3 col-form-label">주민 등록 번호</label>
+
+          <div className='col-md-3 text-center'>
             <input type='text' name='HOST_JUMIN1' placeholder="******"
-                  value={insertHost.HOST_ADDR2} className="form-control" onChange={onChange}></input> - </div>
-                 
-                  <div className='col-1 text-center'>
-                  <input type='text' name='HOST_JUMIN2' placeholder="*"
-                  value={insertHost.HOST_ADDR2} className="form-control" onChange={onChange}></input> ****** </div>
-          <div className='col-2'></div>
+              value={insertHost.HOST_JUMIN1} className="form-control" onChange={onChange}></input></div> -
+
+          <div className='col-md-1 text-center'>
+            <input type='text' name='HOST_JUMIN2' placeholder="*"
+              value={insertHost.HOST_JUMIN2} className="form-control" onChange={onChange}></input></div>  ******
+
+          <div className='col-md-5'></div>
         </div><br />
 
-        {/* <div className='mt-2'>주민 등록 번호</div>
-        <div class="row">
-          <div class="col-sm-6 mt-2">
-            <input type="number" class="form-control" placeholder="주민 등록 번호 앞자리" name="HOST_JUMIN1" value={insertHost.HOST_JUMIN1} onChange={onChange} />
-          </div>
-          <div class="col-sm-1 mt-3">
-            -
-          </div>
-          <div class="col-sm-2 mt-2">
-            <input type="number" class="form-control" placeholder="1" name="HOST_JUMIN2" value={insertHost.HOST_JUMIN2} onChange={onChange} />
-          </div>
-          <div class="col-sm-1 mt-3">
-            ******
-          </div>
-        </div> */}
-
-        <div className="row d-flex justify-content-end align-items-end ">
-          <label className="col-md-2 col-form-label">소개글</label>
-          <div className='col-4 text-center'>
+        <div className="row d-flex justify-content-end align-items-center ">
+          <label className="col-md-3 col-form-label">소개글</label>
+          <div className='col-md-5 text-center'>
             <textarea class="form-control" id="exampleTextarea" name='HOST_INTRO' placeholder="본인 소개글 (경력, 자격증, 포부, 자기소개 등)"
-                      value={insertHost.HOST_INTRO} onChange={onChange} rows="4"></textarea></div>
-          <div className='col-4'></div>
+              value={insertHost.HOST_INTRO} onChange={onChange} rows="4"></textarea></div>
+          <div className='col-md-4'></div>
         </div><br />
 
-        <div className="row d-flex justify-content-center align-items-center ">
+        <div className="row d-flex justify-content-start align-items-center ">
           <div className="col-md-8">
-            <label className="col-4 col-form-label">호스트 사진 및 소개글 관련 사진</label>
+            <label className="col-md-4 col-form-label">호스트 사진 및 소개글 관련 사진</label>
             {/* 사진 첨부 */}
             <ImageUploadBox getImages={getImages} />
-          </div></div><br />
+          </div></div>
+        <br /><br />
 
         <div className="row d-flex justify-content-end align-items-end ">
-          <label className="col-md-2 col-form-label">은행명</label>
-          <div className='col-4 text-center'>
+          <label className="col-md-3 col-form-label">은행명</label>
+          <div className='col-md-5 text-center'>
             <select class="form-select" id="exampleSelect1" onChange={onChange} name="HOST_BANK" value={insertHost.HOST_BANK}>
               <option>은행명을 선택하세요</option>
               <option>신한</option>
@@ -216,15 +203,15 @@ const MemChange = () => {
         </div><br />
 
         <div className="row d-flex justify-content-end align-items-end ">
-          <label className="col-md-2 col-form-label">계좌번호</label>
-          <div className='col-4 text-center'>
+          <label className="col-md-3 col-form-label">계좌번호</label>
+          <div className='col-md-5 text-center'>
             <input type='text' name='HOST_ACCOUNT' placeholder="계좌번호 입력"
-                  value={insertHost.HOST_ACCOUNT} className="form-control" onChange={onChange}></input></div>
-          <div className='col-4'></div>
+              value={insertHost.HOST_ACCOUNT} className="form-control" onChange={onChange}></input></div>
+          <div className='col-md-4'></div>
         </div><br /><br />
 
         <div className="row d-flex justify-content-center align-items-end">
-          <div className='col-md-2'>
+          <div className='col-md-6'>
             <Button className="btn btn-primary " type="button"
               onClick={insertOnClick}>
               전환요청</Button> &nbsp;

@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import SelectFileList from '../../commons/Files/SelectFileList';
 import Carousel from 'react-bootstrap/Carousel';
 import { Button } from 'react-bootstrap';
-
-
 
 const AdminHostConfirmDetail = () => {
 
@@ -83,7 +81,7 @@ const AdminHostConfirmDetail = () => {
     <div className="container">
 
       <div className="container px-4 px-lg-5 my-5 h-100" >
-        <h1>호스트 회원 등록요청 상세보기</h1>
+        <h2>호스트 회원 등록요청 상세보기</h2>
 
         <div className="row d-flex justify-content-center align-items-center ">
           <div className="col-md-8">
@@ -161,7 +159,7 @@ const AdminHostConfirmDetail = () => {
           <div className='col-md-4'>
             <Button className="btn btn-primary " type="button"
               onClick={hostResSuccess}>
-              <Link to='/admin/adminHostConfirmListt' style={{ textDecoration: "none", color: "white" }}>승인</Link>
+              <Link to='/admin/adminHostConfirmList' style={{ textDecoration: "none", color: "white" }}>승인</Link>
             </Button> &nbsp;&nbsp;
             <Button className="btn btn-success " type="button"
               onClick={hostResFail}>

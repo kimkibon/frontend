@@ -86,11 +86,11 @@ const HostInfo = () => {
     <div className="container">
 
       <div className="container px-4 px-lg-5 my-5 h-100" >
-        <h1>회원정보 보기(HOST)</h1><br />
+        <h2>회원정보 보기(HOST)</h2><br />
 
         <div className="row d-flex justify-content-center align-items-center ">
           <div className="col-md-8">
-            <label className="col-2 col-form-label">호스트 사진</label>
+            <label className="col-md-2 col-form-label">호스트 사진</label>
             <Carousel>
               {file.map(url => {
                 return (
@@ -110,68 +110,68 @@ const HostInfo = () => {
           </div></div></div><br />
 
       <div className="row d-flex justify-content-center align-items-center ">
-        <label className="col-2 col-form-label">아이디</label>
-        <div className='col-4 text-center'>
+        <label className="col-md-3 col-form-label">아이디</label>
+        <div className='col-md-5 text-center'>
           <input type='text' value={hostDetail.MEM_ID} className="form-control" readOnly></input></div>
       </div><br />
 
       <div className="row d-flex justify-content-center align-items-center">
-        <label className="col-2 col-form-label">이름</label>
-        <div className='col-4 text-center'>
+        <label className="col-md-3 col-form-label">이름</label>
+        <div className='col-md-5 text-center'>
           <input type='text' value={hostDetail.MEM_NAME} className="form-control" readOnly></input></div>
       </div><br />
 
       <div class="row d-flex justify-content-center align-items-center">
-        <label class="col-2 col-form-label">비밀번호</label>
-        <div className='col-4 text-center'>
+        <label class="col-md-3 col-form-label">비밀번호</label>
+        <div className='col-md-5 text-center'>
           <input type='text' value={hostDetail.MEM_PW} className="form-control" readOnly></input></div>
       </div><br />
 
       <div className="row d-flex justify-content-center align-items-center">
-        <label className="col-2 col-form-label">휴대폰 번호</label>
-        <div className='col-4 text-center'>
+        <label className="col-md-3 col-form-label">휴대폰 번호</label>
+        <div className='col-md-5 text-center'>
           <input type='text' value={hostDetail.MEM_PHONE} className="form-control" readOnly></input></div>
       </div><br />
 
       <div className="row d-flex justify-content-center align-items-center">
-        <label className="col-2 col-form-label">이메일</label>
-        <div className='col-4 text-center'>
+        <label className="col-md-3 col-form-label">이메일</label>
+        <div className='col-md-5 text-center'>
           <input type='text' value={hostDetail.HOST_EMAIL} className="form-control" readOnly></input></div>
       </div><br />
 
       <div className="row d-flex justify-content-center align-items-center">
-        <label className="col-2 col-form-label">우편번호</label>
-        <div className='col-4 text-center'>
+        <label className="col-md-3 col-form-label">우편번호</label>
+        <div className='col-md-5 text-center'>
           <input type='text' value={hostDetail.HOST_POST} className="form-control" readOnly></input></div>
       </div><br />
 
       <div className="row d-flex justify-content-center align-items-center">
-        <label className="col-2 col-form-label">기본주소</label>
-        <div className='col-4 text-center'>
+        <label className="col-md-3 col-form-label">기본주소</label>
+        <div className='col-md-5 text-center'>
           <input type='text' value={hostDetail.HOST_ADDR1} className="form-control" readOnly></input></div>
       </div><br />
 
       <div className="row d-flex justify-content-center align-items-center">
-        <label className="col-2 col-form-label">상세주소</label>
-        <div className='col-4 text-center'>
-          <input type='text' value={hostDetail.HOST_ADDR2} className="form-control" readOnly></input></div>
+        <label className="col-md-3 col-form-label">상세주소</label>
+        <div className='col-md-5 text-center'>
+        <input type='text' value={hostDetail.HOST_ADDR2} className="form-control" readOnly></input></div>
       </div><br />
 
       <div className="row d-flex justify-content-center align-items-center">
-        <label className="col-2 col-form-label">소개글</label>
-        <div className='col-4 text-center'>
-          <input type='textarea' value={hostDetail.HOST_INTRO} className="form-control" readOnly></input></div>
+        <label className="col-md-3 col-form-label">소개글</label>
+        <div className='col-md-5 text-center'>
+        <textarea type='textarea' value={hostDetail.HOST_INTRO} className="form-control" rows="4" readOnly></textarea></div>
       </div><br />
 
       <div className="row d-flex justify-content-center align-items-center">
-        <label className="col-2 col-form-label">은행명</label>
-        <div className='col-4 text-center'>
+        <label className="col-md-3 col-form-label">은행명</label>
+        <div className='col-md-5 text-center'>
           <input type='text' value={hostDetail.HOST_BANK} className="form-control" readOnly></input></div>
       </div><br />
 
       <div className="row d-flex justify-content-center align-items-center">
-        <label className="col-2 col-form-label">계좌번호</label>
-        <div className='col-4 text-center'>
+        <label className="col-md-3 col-form-label">계좌번호</label>
+        <div className='col-md-5 text-center'>
           <input type='text' value={hostDetail.HOST_ACCOUNT} className="form-control" readOnly></input></div>
       </div><br /><br />
 
@@ -179,14 +179,14 @@ const HostInfo = () => {
 
       <div className="row">
         <div className="row d-flex justify-content-center align-items-center">
-          <div className='col-lg-1'>
+          <div className='col-md-2'>
             <Button className="btn btn-primary " type="button">
               <Link to={'../HostModify'} style={{ textDecoration: "none", color: "white" }} state={{ mem: hostDetail, file: file }}>수정</Link>
             </Button> &nbsp;
 
           </div></div>
         <div className="row d-flex justify-content-end align-items-end">
-          <div className='col-lg-2'>
+          <div className='col-md-2'>
             <button type="button" className="btn btn-link" style={{ color: "lightgray" }} onClick={handleShow}>탈퇴</button>
           </div></div>
       </div>

@@ -11,9 +11,9 @@ const MemModify = () => {
   const [passwordCheck, setPasswordCheck] = useState(''); // '수정할 비밀번호 확인'
   const [passwordError, setPasswordError] = useState(false); // 수정된 비밀번호 불일치 할 때 에러
 
-  const [modifyPhoneOK, setModifyPhoneOK] = useState("1"); //미인증:0 인증:1 폰인증 됐는지?
-  const [InputVerifyCode, setInputVerifyCode] = useState(""); //입력한 인증번호
-  const [RealVerifyCode, setRealVerifyCode] = useState(""); //서버에서 넘어온 VerifyCode
+  const [modifyPhoneOK, setModifyPhoneOK] = useState("1"); // 미인증:0 인증:1 폰인증 됐는지?
+  const [InputVerifyCode, setInputVerifyCode] = useState(""); // 입력한 인증번호
+  const [RealVerifyCode, setRealVerifyCode] = useState(""); // 서버에서 넘어온 VerifyCode
 
   const [show, setShow] = useState(false);
 
@@ -155,35 +155,35 @@ const MemModify = () => {
 
       <div className="container px-4 px-lg-5 my-5">
 
-        <h1>회원정보 수정</h1><br />
+        <h2>회원정보 수정</h2><br />
 
         <div className="row d-flex justify-content-end align-items-end ">
           <label className="col-md-2 col-form-label">아이디</label>
-          <div className='col-4'>
+          <div className='col-md-4'>
             <input type='text' value={memModify.MEM_ID} className="form-control" readOnly></input>
           </div>
-          <div className='col-4'></div>
+          <div className='col-md-4'></div>
         </div><br />
 
         <div className="row d-flex justify-content-end align-items-end ">
           <label className="col-md-2 col-form-label">이름</label>
-          <div className='col-4 text-center'>
+          <div className='col-md-4 text-center'>
             <input type='text' name='MEM_NAME' value={memModify.MEM_NAME} className="form-control" onChange={onChange}></input></div>
-          <div className='col-4'></div>
+          <div className='col-md-4'></div>
         </div><br />
 
         <div className="row d-flex justify-content-end align-items-end ">
           <label className="col-md-2 col-form-label">비밀번호</label>
-          <div className='col-4 text-center'>
+          <div className='col-md-4 text-center'>
             <input type='password' value={memModify.MEM_PW} className="form-control"></input>
           </div>
-          <div className='col-4'>
+          <div className='col-md-4'>
             <Button variant="btn btn-outline-primary" onClick={handleShow}>비밀번호 수정</Button> </div>
         </div><br />
 
         <div className="row d-flex justify-content-end align-items-end ">
           <label className="col-md-2 col-form-label">휴대폰 번호</label>
-          <div className='col-4 text-center'>
+          <div className='col-md-4 text-center'>
             <input type='text' name='MEM_PHONE' value={memModify.MEM_PHONE} className="form-control"
               onChange={(e) => {
                 onChange(e)
@@ -195,22 +195,22 @@ const MemModify = () => {
 
         <div className="row d-flex justify-content-end align-items-end ">
           <label className="col-md-2 col-form-label">인증 번호</label>
-          <div className='col-4 text-center'>
+          <div className='col-md-4 text-center'>
             <input type='text' name='Verify' onChange={getInputVerifyCode} value={InputVerifyCode} className="form-control">
             </input></div>
-          <div className='col-4'>
+          <div className='col-md-4'>
             <Button variant="btn btn-outline-primary" onClick={modifyVerify}>인증 확인</Button> </div>
         </div>
       </div><br />
 
       <div className="row d-flex justify-content-center align-items-end">
-        <div className='col-md-2'>
+        <div className='col-md-3'>
           <Button className="btn btn-primary " type="button" onClick={ModifySuccess}>수정완료</Button> &nbsp;
           <Button type="button" className="btn btn-secondary" ariant="secondary">
             <Link to='../member/MemDetail' style={{ textDecoration: "none", color: "white" }}>취소</Link>
           </Button>
         </div>
-        </div>
+      </div>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
