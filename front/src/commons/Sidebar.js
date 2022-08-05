@@ -8,6 +8,7 @@ import Auth from '../login/Auth';
 import { Col } from 'react-bootstrap';
 import AdminSidebar from './AdminSidebar';
 import Logout from '../login/Logout';
+import Offside from './Offside';
 
 
 // react-icons names -> fa로 통일
@@ -53,61 +54,8 @@ const Sidebar = () => {
         </div>
       }
       {((localStorage.getItem('MEM_ID') !== undefined) && (memberLevel.MEM_LEVEL !== 0)) &&
-        <div className='navigation'>
-          <ul className='big_menu1'>
-
-            <div>
-              <li>
-                <Link to='/myPage/ReserveListPage'>
-                  <span className='icon'><BsFillAlarmFill className='fa' /></span>
-                  <span className='title'>RESERVATION</span>
-                </Link>
-              </li>
-
-              <li>
-                <Link to="/myPage/memUseListPage">
-                  <span className='icon'><BsFillCalendarCheckFill className='fa' /></span>
-                  <span className='title'>이용내역</span>
-                </Link>
-              </li>
-
-              <li>
-                <Link to="/myPage/qna">
-                  <span className='icon'><BsFillQuestionCircleFill className='fa' /></span>
-                  <span className='title'> QNA </span>
-                </Link>
-              </li>
-
-              <li>
-                <Link to="/myPage/report">
-                  <span className='icon'><BsFillMegaphoneFill className='fa' /></span>
-                  <span className='title'>REPORT</span>
-                </Link>
-              </li>
-
-              <li>
-                <Link to="/myPage/member/MemDetail">
-                  <span className='icon'><BsFillInfoCircleFill className='fa' /></span>
-                  <span className='title'>회원정보보기</span>
-                </Link>
-              </li>
-
-              <li>
-                <Link to="/myPage/member/MemChange">
-                  <span className='icon'><BsFillPeopleFill className='fa' /></span>
-                  <span className='title'>호스트전환</span>
-                </Link>
-              </li>
-            </div>
-
-          </ul>
-
-          {/* ----------------------------------------------------------------------------------------- */}
-
-
-          <li></li>
-        </div>
-      }
+      <Offside/>
+    }
       {/* <div class="toggle"><AiOutlineMenu className='fa' onClick={toggleMenu()}/></div> */}
       {MEM_LEVEL === 1 && <HostSidebar />}
       {MEM_LEVEL === 0 && <AdminSidebar />}

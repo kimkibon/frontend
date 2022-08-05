@@ -8,12 +8,6 @@ import BoardList from './boardList/BoardList'
 const BoardIndex = () => {
   return (
     <div>
-      
-        <Link to=''><li>boardList</li></Link>
-        <Link to='detail'><li>boardDetail</li></Link>
-        <Link to='res'><li>reserve</li></Link>
-        <Link to='resDetail'><li>resDetail</li></Link>
-        
         <Routes>
         <Route path='/' element={<BoardList/>}/>
         <Route path='/detail' element={<BoardDetail/>}/>

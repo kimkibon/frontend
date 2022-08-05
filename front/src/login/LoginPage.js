@@ -86,8 +86,8 @@ const Login = () => {
               console.log(Response.data.MEM_LEVEL);
 
               localStorage.setItem("MEM_ID", Response.data.MEM_ID); //MEM_ID만 로컬스토리지에 저장
-              console.log(localStorage);
-              navigate('/');
+              window.location.replace("/")
+              
             }
           })
           .catch((err) => {

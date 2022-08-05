@@ -1,9 +1,9 @@
 import React from 'react'
 import './sidestyle.css'
-import { AiFillInteraction, AiOutlineDown} from "react-icons/ai";
-import { BsFillAlarmFill, BsFillCalendarCheckFill, BsFillInfoCircleFill, BsFillHddStackFill } from "react-icons/bs";
+import { BsFillAlarmFill, BsFillCalendarCheckFill, BsFillInfoCircleFill, BsFillHddStackFill, BsFillQuestionCircleFill, BsFillMegaphoneFill, BsFillPeopleFill } from "react-icons/bs";
 import { Link } from 'react-router-dom';
 import 'bootstrap'
+import { AiFillInteraction, AiOutlineDown } from 'react-icons/ai';
 // react-icons names -> fa로 통일
 
 
@@ -16,7 +16,41 @@ const HostSidebar = () => {
       
         <div className='navigation'>                   
           <ul className='big_menu2'>
-          
+          <li>
+                <Link to='/myPage/ReserveListPage'>
+                  <span className='icon'><BsFillAlarmFill className='fa' /></span>
+                  <span className='title'>RESERVATION</span>
+                </Link>
+              </li>
+
+              <li>
+                <Link to="/myPage/memUseListPage">
+                  <span className='icon'><BsFillCalendarCheckFill className='fa' /></span>
+                  <span className='title'>이용내역</span>
+                </Link>
+              </li>
+
+              <li>
+                <Link to="/myPage/qna">
+                  <span className='icon'><BsFillQuestionCircleFill className='fa' /></span>
+                  <span className='title'> QNA </span>
+                </Link>
+              </li>
+
+              <li>
+                <Link to="/myPage/report">
+                  <span className='icon'><BsFillMegaphoneFill className='fa' /></span>
+                  <span className='title'>REPORT</span>
+                </Link>
+              </li>
+
+              <li>
+                <Link to="/myPage/member/MemDetail">
+                  <span className='icon'><BsFillInfoCircleFill className='fa' /></span>
+                  <span className='title'>회원정보보기</span>
+                </Link>
+              </li>
+
           <label className='hostmenu' htmlFor='hostmenu'>
             <span className='icon'><AiOutlineDown className='fa'/></span>
             <span className='title'>
@@ -25,7 +59,6 @@ const HostSidebar = () => {
             </label>
           <input id="hostmenu" type="checkbox"></input> 
         
-
             <ul className="small_menu">
               <li>
                 <Link to="host/myPage">

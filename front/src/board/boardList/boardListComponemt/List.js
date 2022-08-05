@@ -14,9 +14,9 @@ const List = (board) => {
               <div className="card shadow-sm">
                 
                   <img
-                    className="d-block"
-                    width='350px'
-                    height='200px'
+                    className="d-block img-fluid"
+                    width='500px'
+                    height='270px'
                     src={list.URL}
                     alt=""
                   />
