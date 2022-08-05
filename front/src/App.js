@@ -7,35 +7,24 @@ import MyPageIndex from './myPage/MyPageIndex';
 import LoginIndex from './login/LoginIndex';
 import BoardIndex from './board/BoardIndex';
 import AdminIndex from './admin/AdminIndex';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, Collapse } from 'react-bootstrap';
 import Sidebar from './commons/Sidebar';
+import LogOutComponent from './commons/LogOutComponent';
 
 function App() {
   const [open, setOpen] = useState(false);
 
+  const openCollapse = () => {
+    setOpen(!open);
+  }
 
   return (
     <div>
       <BrowserRouter>
-        <div className='row'>
-          <div className='col col-sm-1'>
-            {!!localStorage.getItem('MEM_ID') &&
-              <Button
-                className='mt-5'
-                onClick={() => setOpen(!open)}
-                aria-controls="example-collapse-text"
-                aria-expanded={open}
-              >
-                myPage
-              </Button>
-            }
-          </div>
-          <div className='col col-sm-10'>
-            <Header />
-          </div>
-          <div className='col col-sm-1'></div>
-        </div>
+
+            <Header props={openCollapse}/>
+          
         <div className="container-fluid min-vh-100">
           <div className='row'>
             <Collapse className='col col-sm-2' in={open} dimension="width">
@@ -50,7 +39,7 @@ function App() {
                 <Route path='/join/*' element={<Join />} />
                 <Route path='/login/*' element={<LoginIndex />} />
                 <Route path='/myPage/*' element={<MyPageIndex />} />
-
+                <Route path='/LogOutComponent' element={<LogOutComponent/>}/>
                 <Route path='/board/*' element={<BoardIndex />} />
 
                 <Route path='/admin/*' element={<AdminIndex />} />
