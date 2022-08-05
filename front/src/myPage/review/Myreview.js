@@ -46,11 +46,13 @@ const Myreview =() => {
                     <div className='App'>
                         <Rating allowHalfIcon ratingValue={myreview.SCORE*20} readonly size={50} showTooltip/>
                     </div>
+
                     <p/>
-                    <div class="row p-2 bg-white border rounded align-items-center">
+                    <div class="row p-2 bg-white border rounded align-items-center" style={{height: 100 + 'px'}}>
                     {myreview.REVIEW_CONTENT}<br/>
                     </div>
                     <p/>
+
                     {new Date().getTime()<after_date && 
                         <Link to ={'ModifyReview'} state={{'REVIEW_IDX': myreview.REVIEW_IDX, 'SCORE':myreview.SCORE, 'REVIEW_CONTENT':myreview.REVIEW_CONTENT}}>
                             <button type="button" class="btn btn-primary">수정</button>
