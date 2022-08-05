@@ -23,7 +23,6 @@ const Sidebar = () => {
   const [memberLevel, setMemberLevel] = useState({
     MEM_LEVEL: ''
   });
-  console.log(mem_id);
 
   const { MEM_LEVEL } = memberLevel;
 
@@ -39,20 +38,12 @@ const Sidebar = () => {
       })
     }
   }, []);
-  console.log(memberLevel);
 
 
 
   return (
 
     <Col>
-
-      {localStorage.getItem('MEM_ID') !== undefined &&
-        <div className='container'>
-          <span>안녕하세요. {mem_id}님 </span>
-          <Logout />
-        </div>
-      }
       {((localStorage.getItem('MEM_ID') !== undefined) && (memberLevel.MEM_LEVEL !== 0)) &&
       <Offside/>
     }

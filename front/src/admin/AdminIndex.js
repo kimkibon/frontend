@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
-import { Link, Route, Routes, useNavigate } from 'react-router-dom'
-import AdminSidebar from '../commons/AdminSidebar'
+import { Route, Routes, useNavigate } from 'react-router-dom'
 import AdminBoardReview from './adminHostBoard/AdminBoardReview'
 import AdminHostBoardDetail from './adminHostBoard/AdminHostBoardDetail'
 import AdminHostBoardList from './adminHostBoard/AdminHostBoardList'
@@ -25,32 +24,7 @@ const AdminIndex = () => {
   }, [])
   //admin 페이지에 접속하려 했을 경우 권한 검사 
   return (
-    <div class="container-fluid">
-      <div class="row">
-
-
-        <div className='col-lg-8'>
-          <Link to=''><li>admin index</li></Link>
-
-          <Link to='adminBoardReview'><li>adminBoardReview</li></Link>
-          <Link to='adminBoardDetail'><li>adminBoardDetail</li></Link>
-          <Link to='adminBoardList'><li>adminBoardList</li></Link>
-
-          <Link to='adminHostConfirmList'><li>adminHostConfirmList</li></Link>
-          <Link to='adminHostConfirmDetail'><li>adminHostConfirmDetail</li></Link>
-
-          <Link to='adminMemberList'><li>adminMemberList</li></Link>
-          <Link to='adminMemberDetail'><li>adminMemberDetail</li></Link>
-
-          <Link to='adminQnaList'><li>adminQnaList</li></Link>
-          <Link to='adminQnaDetail'><li>adminQnaDetail</li></Link>
-
-          <Link to='adminReportList'><li>adminReportList</li></Link>
-          <Link to='adminReportDetail'><li>adminReportDetail</li></Link>
-
-          <Link to='adminAllResList'><li>adminAllResList</li></Link>
-
-
+    <div className="container-fluid">
 
           <Routes>
             <Route path='/admin' element={<AdminIndex />} />
@@ -59,13 +33,13 @@ const AdminIndex = () => {
             <Route path='/adminBoardList' element={<AdminHostBoardList />} />
 
             <Route path='/adminHostConfirmList' element={<AdminHostConfirmList />} />
-            <Route path='/adminHostConfirmDetail/*' element={<AdminHostConfirmDetail />} />
+            <Route path='/adminHostConfirmDetail/:MEM_IDX' element={<AdminHostConfirmDetail />} />
 
             <Route path='/adminMemberList' element={<AdminMemberList />} />
-            <Route path='/adminMemberDetail/*' element={<AdminMemberDetail />} />
+            <Route path='/adminMemberDetail/:MEM_IDX' element={<AdminMemberDetail />} />
 
             <Route path='/adminQnaList' element={<AdminQnaList />} />
-            <Route path='/adminQnaDetail/:QNA_IDX' element={<AdminQnaDetail />} />
+            <Route path='/adminQnaList/adminQnaDetail/:QNA_IDX' element={<AdminQnaDetail />} />
 
             <Route path='/adminReportList' element={<AdminReportList />} />
             <Route path='/adminReportDetail/:REPORT_IDX' element={<AdminReportDetail />} />
@@ -76,13 +50,7 @@ const AdminIndex = () => {
 
 
           </Routes>
-        </div>
 
-        <div class='col-lg-2' />
-
-
-
-      </div>
     </div>
   )
 }

@@ -176,7 +176,7 @@ const BoardDetail = () => {
             {/* 게시글 수정 링크 */}
 
             {/* 어드민 확인 */}
-            {((author.MEM_LEVEL === 0) && (author.MEM_LEVEL !== undefined) &&(boardDetail.BOARD_CONFIRM !== 1)) &&
+            {((author.MEM_LEVEL === 0) && (author.MEM_LEVEL !== undefined) && (boardDetail.BOARD_CONFIRM !== 1)) &&
               <>
                 <button className="btn btn-danger" type="button" onClick={() => setRefuseModal(true)}>
                   등록 거절
@@ -248,10 +248,12 @@ const BoardDetail = () => {
         {/* 등록 거절 모달창 */}
 
 
-
-        <div className="col">
-          <Review prop={review} auth={author} />
+        <div className='row'>
+          <div className="col">
+            <h2 className="fw-bolder mb-4">Reviews</h2>            
+          </div>
         </div>
+        <Review prop={review} auth={author} />
         {/* 리뷰 리스트 출력 */}
       </div>
     </>

@@ -40,9 +40,9 @@ const AdminBoardList = (board) => {
                             <div className="card shadow-sm">
 
                                 <img
-                                    className="d-block img-fluid"
-                                    width='350px'
-                                    height='200px'
+                                    className="d-block img-fluid rounded p-1"
+                                    width='700px'
+                                    height='400px'
                                     src={list.URL}
                                     alt=""
                                 />
@@ -51,7 +51,7 @@ const AdminBoardList = (board) => {
                                     <h4 className="card-text">
                                         {list.BOARD_TITLE}
                                     </h4>
-                                    <figure class="text-end">
+                                    <figure className="text-end">
                                         <p>
                                             {state(list.BOARD_CONFIRM)}
                                         </p>

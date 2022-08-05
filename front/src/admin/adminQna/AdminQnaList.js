@@ -37,7 +37,7 @@ const AdminQnaList = () => {
     
     const SelectBox = () => {
         if(selected === '2' ) {
-          setQnaListcopy(qnaList);
+          setQnaListcopy(qnaList);  
       } else if(selected === '0'){
         const listData = qnaList.filter((list) =>
         list.QNA_STATE.includes('미답변'));
@@ -91,14 +91,11 @@ const AdminQnaList = () => {
       {qnaListcopy.map((list)=> {
       return (
         <tbody>
-                        <tr>
-                        {/* onClick={handleDetail} */}
+                        <tr onClick={()=>{window.location.href="./adminQnaList/adminQnaDetail/"+list.QNA_IDX}}>
                         <td width="50px">{list.QNA_IDX}</td>
                         <td width="50px">{list.QNA_ID}</td>
                         <td width="200px">
-                            <Link to = {"/admin/adminQnaDetail/"+list.QNA_IDX} state = {{'QNA_IDX' : list.QNA_IDX}}>
                                  {list.QNA_TITLE}
-                            </Link>
                         </td>
                         <td width="100px">{list.QNA_DATE}</td>
                         <td width="70px">{list.QNA_STATE}</td>

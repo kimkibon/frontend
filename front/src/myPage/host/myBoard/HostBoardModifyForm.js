@@ -19,9 +19,6 @@ const HostBoardModifyForm = () => {
     //변경 내용 저장 확인
     // 일단 호스트 아이디로 호스트 정보를 가져온다?
     const {
-        BOARD_NO,
-        BOARD_HOST_ID,
-        BOARD_HOST_IDX,
         BOARD_TITLE,
         BOARD_CONTENT,
         BOARD_ADDR1,
@@ -29,8 +26,6 @@ const HostBoardModifyForm = () => {
         BOARD_POST,
         BOARD_PRICE,
         BOARD_CARE_NO,
-        BOARD_DATE_START,
-        BOARD_DATE_END
     } = insertBoard;
     //변수 초기화 
 
