@@ -205,15 +205,6 @@ const HostModify = () => {
           <div className='col-4'></div>
         </div><br /><br />
 
-        <ModifyHost
-          show={insertModal}
-          onHide={() => setInsertModal(false)}
-          props={{
-            'hostModify': hostModify,
-            'updateFiles': insertFiles,
-            'fileType': '1',
-          }} />
-
         <div className="row d-flex justify-content-center align-items-end">
           <div className='col-md-2'>
             <Button className="btn btn-primary " type="button"
@@ -227,7 +218,18 @@ const HostModify = () => {
             </Button>
           </div>
         </div>
-        {/* 입력확인창 모달로 띄우기 !  */} {/* 주소 검색 모달 */}
+
+      {/* 입력확인창 모달로 띄우기 !  */} 
+        <ModifyHost
+          show={insertModal}
+          onHide={() => setInsertModal(false)}
+          props={{
+            'hostModify': hostModify,
+            'updateFiles': insertFiles,
+            'fileType': '1',
+          }} />
+
+       {/* 주소 검색 모달 */}
         <Modal
           show={showAddrModal}
           onHide={() => setShowAddrModal(false)}>
