@@ -1,62 +1,60 @@
-import React, { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Offcanvas from 'react-bootstrap/Offcanvas';
-import Accordion from 'react-bootstrap/Accordion';
-import {AiFillAlert, AiFillDatabase, AiFillCarryOut, AiFillEye, AiFillNotification, AiFillInteraction, AiOutlineDown} from "react-icons/ai";
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { BsFillAlarmFill, BsFillCalendarCheckFill, BsFillMegaphoneFill, BsFillQuestionCircleFill, BsFillInfoCircleFill, BsFillPeopleFill } from "react-icons/bs";
+import './sidestyle.css'
 
-const Offside =()=> {
-  const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
+const Offside = () => {
   return (
-    <>
-      <Button variant="primary" onClick={handleShow}>
-        MENU
-      </Button>
+<div className='navigation'>
+        <ul className='big_menu1'>
 
-      <Offcanvas show={show} onHide={handleClose}>
-        <Offcanvas.Header closeButton>
-          <Offcanvas.Title>MENU</Offcanvas.Title>
-        </Offcanvas.Header>
-        <Offcanvas.Body>
-          <Accordion defaultActiveKey="0">
-              <Accordion.Item eventKey="0">
-                <Accordion.Header>myPage</Accordion.Header>
-                  <Accordion.Body>
-                      <Link to='/myPage/ReserveListPage' className='text-decoration-none'>
-                        <span className='title'>RESERVATION</span>
-                      </Link><br/>
+            <div>
+              <li>
+                <Link to='/myPage/ReserveListPage'>
+                  <span className='icon'><BsFillAlarmFill className='fa' /></span>
+                  <span className='title'>RESERVATION</span>
+                </Link>
+              </li>
 
-                    <Link to="/myPage/memUseListPage" className='text-decoration-none'>
-                      <span className='title'>이용내역</span>
-                    </Link><br/>
+              <li>
+                <Link to="/myPage/memUseListPage">
+                  <span className='icon'><BsFillCalendarCheckFill className='fa' /></span>
+                  <span className='title'>이용내역</span>
+                </Link>
+              </li>
 
-                    <Link to="/myPage/qna" className='text-decoration-none'>
-                      <span className='title'> QNA </span>
-                    </Link><br/>
+              <li>
+                <Link to="/myPage/qna">
+                  <span className='icon'><BsFillQuestionCircleFill className='fa' /></span>
+                  <span className='title'> QNA </span>
+                </Link>
+              </li>
 
-                  
-                    
-                  </Accordion.Body>
-                </Accordion.Item>
+              <li>
+                <Link to="/myPage/report">
+                  <span className='icon'><BsFillMegaphoneFill className='fa' /></span>
+                  <span className='title'>REPORT</span>
+                </Link>
+              </li>
 
-            <Accordion.Item eventKey="1">
-              <Accordion.Header>Accordion Item #2</Accordion.Header>
-                <Accordion.Body>
+              <li>
+                <Link to="/myPage/member/MemDetail">
+                  <span className='icon'><BsFillInfoCircleFill className='fa' /></span>
+                  <span className='title'>회원정보보기</span>
+                </Link>
+              </li>
 
-                </Accordion.Body>
-            </Accordion.Item>
-          </Accordion>
+              <li>
+                <Link to="/myPage/member/MemChange">
+                  <span className='icon'><BsFillPeopleFill className='fa' /></span>
+                  <span className='title'>호스트전환</span>
+                </Link>
+              </li>
+            </div>
           
-        </Offcanvas.Body>
-
-      </Offcanvas>
-    </>
-  );
+        </ul>
+      </div>  )
 }
 
-//render(<Offside/>);
-export default Offside;
+export default Offside
