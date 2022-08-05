@@ -65,7 +65,7 @@ const AdminIndex = () => {
             <Route path='/adminMemberDetail/*' element={<AdminMemberDetail />} />
 
             <Route path='/adminQnaList' element={<AdminQnaList />} />
-            <Route path='/adminQnaDetail/:QNA_IDX' element={<AdminQnaDetail />} />
+            <Route path='/adminQnaList/adminQnaDetail/:QNA_IDX' element={<AdminQnaDetail />} />
 
             <Route path='/adminReportList' element={<AdminReportList />} />
             <Route path='/adminReportDetail/:REPORT_IDX' element={<AdminReportDetail />} />
