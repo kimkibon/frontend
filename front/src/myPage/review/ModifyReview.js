@@ -66,7 +66,7 @@ const ModifyReview =() => {
         </div>
         <br/>
         <h3>내용 : </h3>      
-        <input name="review" placeholder="후기" onChange={onChange} value={review}/>
+        <input type="textarea" name="review" placeholder="후기" onChange={onChange} value={review}/>
         <button onClick={updatereview}>수정완료</button>
         <button onClick={(e)=>{
                 e.preventDefault();
