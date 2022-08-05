@@ -25,19 +25,8 @@ const Join = () => {
   };
 
   const getJoinID = (event) => {
-    let value = event.target.value;
-
-    if (value === "") {
-      setJoinID(value);
-      return;
-    }
-    let length = value.length;
-    if (dataRuleCheckForID(value[length - 1]) === false) return;
-
+    let value = event.target.value.toUpperCase();
     setJoinID(value);
-    setJoinIDCheck(1);
-
-    return;
   };
 
   const getJoinPassword = (event) => {
