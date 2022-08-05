@@ -90,7 +90,7 @@ const BoardList = () => {
       <div className='container'>
         <div className='row m-2 p-2'>
           <div className='d-flex justify-content-end float-end row'>
-            <div className='col offset-md-6 col-mb-3 input-group mb-3'>
+            <div className='col offset-md-3 col-mb-3 input-group mb-3'>
               <span
                 class="input-group-text"
                 id="basic-addon1"
@@ -119,9 +119,10 @@ const BoardList = () => {
               </span>
               <input className='form-control' type='text' value={state.BOARD_ADDR1} onChange={(e) => setADDR(e)} />
             </div>
+            <div className='col'></div>
           </div>
           <div className='float-end row'>
-            <div className='col offset-md-6 input-group mb-3'>
+            <div className='col offset-md-3 input-group mb-4'>
             <span className='input-group-text'>기간 선택</span>
               <span className='form-control'>
                 {<DatePicker
@@ -137,6 +138,7 @@ const BoardList = () => {
               </span>
               <Button className='btn' onClick={() => Search()}>검색</Button>
             </div>
+            <div className='col input-group mb-2'></div>
           </div>
         </div>
       </div>
