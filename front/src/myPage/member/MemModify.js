@@ -178,7 +178,7 @@ const MemModify = () => {
             <input type='password' value={memModify.MEM_PW} className="form-control"></input>
           </div>
           <div className='col-4'>
-            <Button variant="primary" onClick={handleShow}>비밀번호 수정</Button> </div>
+            <Button variant="btn btn-outline-primary" onClick={handleShow}>비밀번호 수정</Button> </div>
         </div><br />
 
         <div className="row d-flex justify-content-end align-items-end ">
@@ -190,7 +190,7 @@ const MemModify = () => {
                 onChangePhone(e)
               }}></input></div>
           <div className='col-4'>
-            <Button variant="primary" onClick={send}>휴대폰 인증</Button> </div>
+            <Button variant="btn btn-outline-primary" onClick={send}>휴대폰 인증</Button> </div>
         </div><br />
 
         <div className="row d-flex justify-content-end align-items-end ">
@@ -199,14 +199,14 @@ const MemModify = () => {
             <input type='text' name='Verify' onChange={getInputVerifyCode} value={InputVerifyCode} className="form-control">
             </input></div>
           <div className='col-4'>
-            <Button variant="primary" onClick={modifyVerify}>인증 확인</Button> </div>
+            <Button variant="btn btn-outline-primary" onClick={modifyVerify}>인증 확인</Button> </div>
         </div>
-      </div>
+      </div><br />
 
-      <div className="row d-flex justify-content-end align-items-end">
-        <div className='col-lg-4'>
-          <Button className="btn btn-secondary " type="button" onClick={ModifySuccess}>수정완료</Button> &nbsp;
-          <Button type="button" className="btn btn-light" ariant="secondary">
+      <div className="row d-flex justify-content-center align-items-end">
+        <div className='col-md-2'>
+          <Button className="btn btn-primary " type="button" onClick={ModifySuccess}>수정완료</Button> &nbsp;
+          <Button type="button" className="btn btn-secondary" ariant="secondary">
             <Link to='../member/MemDetail' style={{ textDecoration: "none", color: "white" }}>취소</Link>
           </Button>
         </div>

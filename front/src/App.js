@@ -21,7 +21,6 @@ function App() {
   const [memberLevel, setMemberLevel] = useState({
     MEM_LEVEL:''
   });
-  console.log(mem_id);
   const {MEM_LEVEL} = memberLevel;
  
   //level 1 -> 호스트,,,,
@@ -33,7 +32,6 @@ function App() {
             })
           })
   }, []);
-  console.log(memberLevel);
 
   return (
     <div>
@@ -46,7 +44,7 @@ function App() {
               aria-controls="example-collapse-text"
               aria-expanded={open}
             >
-              click
+              myPage
             </Button>
           </div>
           <div className='col col-sm-11'>

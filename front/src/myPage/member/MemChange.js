@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { Modal } from 'react-bootstrap';
+import { Modal, Button, Form } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import ImageUploadBox from '../host/myBoard/component/ImageUploadBox';
 import HostAddress from './HostAddress';
 import InsertHost from './InsertHost';
-import { Button, Form } from 'react-bootstrap';
 import Auth from '../../login/Auth';
 
 const MemChange = () => {
@@ -120,41 +119,58 @@ const MemChange = () => {
 
   return (
 
-    <div className="col-md-12">
-      <h2>호스트 전환하기</h2>
-      <div>
-        <Form.Group>
-          <Form.Label>이메일 주소</Form.Label>
-          <Form.Control type="email" placeholder="name@example.com"
-            onChange={onChange} name="HOST_EMAIL" value={insertHost.HOST_EMAIL} />
-        </Form.Group>
+    <div className="container">
 
-        <div class="row">
-          <div className='col-lg-6 col-sm-12'>
-            <Form.Group>
-              <Form.Label>우편번호 </Form.Label>
-              <Form.Control type="text" placeholder="우편번호 입력"
-                onChange={onChange} name="HOST_POST" value={insertHost.HOST_POST}
-                aria-describedby="button-addon" className="input-group mb-3"></Form.Control>
+    <div className="container px-4 px-lg-5 my-5 h-100" >
+      <h1>호스트 전환</h1><br />
+      <h5>관리자 승인 후, 호스트 페이지를 이용하실 수 있습니다.</h5><br />
 
-            </Form.Group>
-          </div>
-          <div className='col-md-6 mt-4'>
-            <button className="btn btn-primary" type="button" id="button-addon" onClick={() => setShowAddrModal(true)}>우편번호 찾기</button>
-          </div>
-        </div>
-        <Form.Group>
-          <Form.Label>기본 주소</Form.Label>
-          <Form.Control type="text" placeholder="기본 주소"
-            onChange={onChange} name="HOST_ADDR1" value={insertHost.HOST_ADDR1} />
-        </Form.Group>
+        <div className="row d-flex justify-content-end align-items-end ">
+          <label className="col-md-2 col-form-label">이메일</label>
+          <div className='col-4 text-center'>
+            <input type='email' name='HOST_EMAIL' placeholder="name@example.com"  
+                  value={insertHost.HOST_EMAIL} className="form-control" onChange={onChange}></input></div>
+          <div className='col-4'></div>
+        </div><br />
 
+        <div className="row d-flex justify-content-end align-items-end ">
+          <label className="col-md-2 col-form-label">우편번호</label>
+          <div className='col-4 text-center'>
+            <input type='text' name='HOST_POST' 
+                  value={insertHost.HOST_POST} className="form-control" placeholder="우편번호 입력" onChange={onChange}></input></div>
+          <div className='col-4'>
+            <Button variant="btn btn-outline-primary" onClick={() => setShowAddrModal(true)}>우편번호 찾기</Button> </div>
+        </div><br />
 
-        <div className='mt-2'>상세 주소</div>
-        <input type="text" class="form-control" placeholder="상세 주소" name="HOST_ADDR2" value={insertHost.HOST_ADDR2} onChange={onChange} />
+        <div className="row d-flex justify-content-end align-items-end ">
+          <label className="col-md-2 col-form-label">기본 주소</label>
+          <div className='col-4 text-center'>
+            <input type='text' name='HOST_ADDR1' placeholder="기본 주소"
+                  value={insertHost.HOST_ADDR1} className="form-control"  onChange={onChange}></input></div>
+          <div className='col-4'></div>
+        </div><br />
 
+        <div className="row d-flex justify-content-end align-items-end ">
+          <label className="col-md-2 col-form-label">상세 주소</label>
+          <div className='col-4 text-center'>
+            <input type='text' name='HOST_ADDR2' placeholder="상세 주소"
+                  value={insertHost.HOST_ADDR2} className="form-control" onChange={onChange}></input></div>
+          <div className='col-4'></div>
+        </div><br />
 
-        <div className='mt-2'>주민 등록 번호</div>
+        <div className="row d-flex justify-content-end align-items-end ">
+          <label className="col-md-6 col-form-label">주민 등록 번호</label>
+          <div className='col-2 text-center'>
+            <input type='text' name='HOST_JUMIN1' placeholder="******"
+                  value={insertHost.HOST_ADDR2} className="form-control" onChange={onChange}></input> - </div>
+                 
+                  <div className='col-1 text-center'>
+                  <input type='text' name='HOST_JUMIN2' placeholder="*"
+                  value={insertHost.HOST_ADDR2} className="form-control" onChange={onChange}></input> ******</div>
+          <div className='col-2'></div>
+        </div><br />
+
+        {/* <div className='mt-2'>주민 등록 번호</div>
         <div class="row">
           <div class="col-sm-6 mt-2">
             <input type="number" class="form-control" placeholder="주민 등록 번호 앞자리" name="HOST_JUMIN1" value={insertHost.HOST_JUMIN1} onChange={onChange} />
@@ -168,35 +184,55 @@ const MemChange = () => {
           <div class="col-sm-1 mt-3">
             ******
           </div>
+        </div> */}
+
+        <div className="row d-flex justify-content-end align-items-end ">
+          <label className="col-md-2 col-form-label">소개글</label>
+          <div className='col-4 text-center'>
+            <textarea class="form-control" id="exampleTextarea" name='HOST_INTRO' placeholder="본인 소개글 (경력, 자격증, 포부, 자기소개 등)"
+                      value={insertHost.HOST_INTRO} onChange={onChange} rows="4"></textarea></div>
+          <div className='col-4'></div>
+        </div><br />
+
+        <div className="row d-flex justify-content-center align-items-center ">
+          <div className="col-md-8">
+            <label className="col-4 col-form-label">호스트 사진 및 소개글 관련 사진</label>
+            {/* 사진 첨부 */}
+            <ImageUploadBox getImages={getImages} />
+          </div></div><br />
+
+        <div className="row d-flex justify-content-end align-items-end ">
+          <label className="col-md-2 col-form-label">은행명</label>
+          <div className='col-4 text-center'>
+            <select class="form-select" id="exampleSelect1" onChange={onChange} name="HOST_BANK" value={insertHost.HOST_BANK}>
+              <option>은행명을 선택하세요</option>
+              <option>신한</option>
+              <option>국민</option>
+              <option>우리</option>
+              <option>하나</option>
+              <option>농협</option>
+            </select></div>
+          <div className='col-4'></div>
+        </div><br />
+
+        <div className="row d-flex justify-content-end align-items-end ">
+          <label className="col-md-2 col-form-label">계좌번호</label>
+          <div className='col-4 text-center'>
+            <input type='text' name='HOST_ACCOUNT' placeholder="계좌번호 입력"
+                  value={insertHost.HOST_ACCOUNT} className="form-control" onChange={onChange}></input></div>
+          <div className='col-4'></div>
+        </div><br /><br />
+
+        <div className="row d-flex justify-content-center align-items-end">
+          <div className='col-md-2'>
+            <Button className="btn btn-primary " type="button"
+              onClick={insertOnClick}>
+              전환요청</Button> &nbsp;
+            <Button className="btn btn-secondary" type="button">
+              <Link to={'/'} style={{ textDecoration: "none", color: "white" }}>취소</Link>
+            </Button>
+          </div>
         </div>
-
-        <div class="form-group">
-          <label for="exampleTextarea" class="form-label mt-4">본인 소개</label>
-          <textarea class="form-control" id="exampleTextarea" rows="4" placeholder="본인 소개글" onChange={onChange} value={insertHost.HOST_INTRO}></textarea>
-        </div>
-
-        <Form.Group>
-          <Form.Label>호스트 사진 및 소개 파일</Form.Label>
-          <ImageUploadBox getImages={getImages} />
-        </Form.Group>
-
-        <div class="form-group col-sm-3">
-          <label for="exampleSelect1" class="form-label mt-4">은행명</label>
-          <select class="form-select" id="exampleSelect1" onChange={onChange} name="HOST_BANK" value={insertHost.HOST_BANK}>
-            <option>은행명을 선택하세요</option>
-            <option>신한</option>
-            <option>국민</option>
-            <option>우리</option>
-            <option>하나</option>
-            <option>농협</option>
-          </select>
-        </div>
-
-        <Form.Group>
-          <Form.Label>계좌번호</Form.Label>
-          <Form.Control type="text" placeholder="계좌번호 입력"
-            onChange={onChange} name="HOST_ACCOUNT" value={insertHost.HOST_ACCOUNT} />
-        </Form.Group>
 
         <InsertHost
           show={insertModal}
@@ -218,19 +254,6 @@ const MemChange = () => {
         </Modal>
       </div>
       <br />
-      
-      <div class="row">
-        <div className='col-lg-6 col-sm-12 text-lg-start'>
-          <Button variant="primary" type="submit" onClick={insertOnClick}>
-            등록하기
-          </Button>
-        </div>
-        <div className='col-lg-6 col-sm-12 text-lg-end'>
-          <Button variant="secondary" type="submit">
-            <Link to='/'>취소</Link>
-          </Button>
-        </div>
-      </div>
 
     </div >
 

@@ -177,15 +177,18 @@ const HostInfo = () => {
 
       {/* 주민등록번호는 회원정보에 띄우지 않았음..! */}
 
-      <div className="row d-flex justify-content-end align-items-end">
-        <div className='col-lg-2'>
-          <Button className="btn btn-primary " type="button">
-            <Link to={'../HostModify'} style={{ textDecoration: "none", color: "white" }} state={{ mem: hostDetail, file: file }}>수정</Link>
-          </Button> &nbsp;
-          <Button className="btn btn-success" type="button" onClick={handleShow}>
-            탈퇴
-          </Button>
-        </div>
+      <div className="row">
+        <div className="row d-flex justify-content-center align-items-center">
+          <div className='col-lg-1'>
+            <Button className="btn btn-primary " type="button">
+              <Link to={'../HostModify'} style={{ textDecoration: "none", color: "white" }} state={{ mem: hostDetail, file: file }}>수정</Link>
+            </Button> &nbsp;
+
+          </div></div>
+        <div className="row d-flex justify-content-end align-items-end">
+          <div className='col-lg-2'>
+            <button type="button" className="btn btn-link" style={{ color: "lightgray" }} onClick={handleShow}>탈퇴</button>
+          </div></div>
       </div>
 
       <Modal show={show} onHide={handleClose}>
@@ -202,8 +205,8 @@ const HostInfo = () => {
           </input>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="success" onClick={PWCHECK}>탈퇴</Button>
           <Button variant="secondary" onClick={handleClose}>취소</Button>
+          <Button variant="light" onClick={PWCHECK}>탈퇴</Button>
         </Modal.Footer>
       </Modal>
     </div>

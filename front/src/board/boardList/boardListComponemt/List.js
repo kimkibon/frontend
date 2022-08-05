@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 const List = (board) => {
-
   //상위 컴포넌트에서 받아온 데이터를 표시 
 
   return (

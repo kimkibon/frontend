@@ -250,7 +250,7 @@ const BoardDetail = () => {
 
 
         <div className="col">
-          <Review prop={review} />
+          <Review prop={review} auth={author} />
         </div>
         {/* 리뷰 리스트 출력 */}
       </div>
