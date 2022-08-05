@@ -7,7 +7,7 @@ const LogOutComponent = () => {
     navigate('/');
 },[])
   return (
-    <div>LogOutComponent</div>
+    <div></div>
   )
 }
 

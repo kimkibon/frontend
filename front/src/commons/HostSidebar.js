@@ -1,6 +1,6 @@
 import React from 'react'
 import './sidestyle.css'
-import { BsFillAlarmFill, BsFillCalendarCheckFill, BsFillInfoCircleFill, BsFillHddStackFill, BsFillQuestionCircleFill, BsFillMegaphoneFill, BsFillPeopleFill } from "react-icons/bs";
+import { BsFillAlarmFill, BsFillCalendarCheckFill, BsFillInfoCircleFill, BsFillHddStackFill, BsFillQuestionCircleFill, BsFillMegaphoneFill } from "react-icons/bs";
 import { Link } from 'react-router-dom';
 import 'bootstrap'
 import { AiFillInteraction, AiOutlineDown } from 'react-icons/ai';

@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { useLocation } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
 import SelectOneFile from '../../../commons/Files/SelectOneFile';
 import AdminBoardList from '../../../admin/adminHostBoard/adminComponent/AdminBoardList';
 

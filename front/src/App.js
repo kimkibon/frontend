@@ -7,8 +7,8 @@ import MyPageIndex from './myPage/MyPageIndex';
 import LoginIndex from './login/LoginIndex';
 import BoardIndex from './board/BoardIndex';
 import AdminIndex from './admin/AdminIndex';
-import { useEffect, useState } from 'react';
-import { Button, Collapse } from 'react-bootstrap';
+import { useState } from 'react';
+import { Collapse } from 'react-bootstrap';
 import Sidebar from './commons/Sidebar';
 import LogOutComponent from './commons/LogOutComponent';
 
