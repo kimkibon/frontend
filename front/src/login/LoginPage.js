@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import "./login.css";
 import axios from "axios";
+import FindId from "./FindId";
+import FindPwOK from "./FindPwOK";
     
 
 
@@ -18,6 +20,9 @@ const Login = () => {
     autoComplete: "current-password",
   }); //type과 autoComplete를 변경하기 위한 useState
   const [capsLockFlag, setCapsLockFlag] = useState(false); //caps lock감지를 위한 flag
+  const [findIdClick, setfindIdClick] = React.useState(false); // 모달창 온오프 변수 
+  const [findPwOKClick, setfindPwOKClick] = React.useState(false); // 모달창 온오프 변수 
+
   const navigate = useNavigate();
 
   //getModifierState로 bool값을 얻어 CapsLockFlag로 set
@@ -56,6 +61,7 @@ const Login = () => {
     navigate('/Join');
 
   }
+
 
   //로그인 버튼 눌렀을 때
   const loginClick = () => {
@@ -173,12 +179,17 @@ const Login = () => {
                     checked={saveIDFlag}
                     onChange={handleSaveIDFlag}
                   />
-                  <label className="form-check-label" for="form1Example3">
+                  <label className="form-check-label" htmlFor="form1Example3">
                     {" "}
                     Remember me{" "}
                   </label>
                 </div>
-                <a href="#!">Forgot password?</a>
+                <span>
+                  forgot&nbsp;
+                <a href="#" onClick={()=>setfindIdClick(true)}>ID</a> /&nbsp;
+                <a href="#" onClick={()=>setfindPwOKClick(true)}>PassWord</a>
+                &nbsp;?
+                </span>
               </div>
               <div className="form-outline mb-3">
               <button
@@ -200,6 +211,18 @@ const Login = () => {
           </div>
         </div>
       </div>
+
+      <FindId
+        show={findIdClick}
+        onHide={() => setfindIdClick(false)}
+      
+      /> 
+
+      <FindPwOK
+        show={findPwOKClick}
+        onHide={() => setfindPwOKClick(false)}
+      
+      /> 
     </section>
   );
 };
