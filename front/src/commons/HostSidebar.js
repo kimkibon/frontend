@@ -12,7 +12,6 @@ const HostSidebar = () => {
 
 
   return (
-    <div className='col'>
       
         <div className='navigation'>                   
           <ul className='big_menu2'>
@@ -100,7 +99,6 @@ const HostSidebar = () => {
         </div>
         
               
-</div>
 
   )
 }

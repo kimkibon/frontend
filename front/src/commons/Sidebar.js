@@ -48,9 +48,11 @@ const Sidebar = () => {
     <Col>
 
       {localStorage.getItem('MEM_ID') !== undefined &&
-        <div className='container'>
+        <div className='container ms-4'>
           <span>안녕하세요. {mem_id}님 </span>
+          <span className='btn btn-danger mt-2 ms-4'>
           <Logout />
+          </span>
         </div>
       }
       {((localStorage.getItem('MEM_ID') !== undefined) && (memberLevel.MEM_LEVEL !== 0)) &&

@@ -1,25 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import SelectFileList from '../../commons/Files/SelectFileList';
 import Carousel from 'react-bootstrap/Carousel';
 import { Button, Modal } from 'react-bootstrap';
 
 const AdminMemberDetail = () => {
 
-  const location = useLocation();
   const [mem_LEV, setMem_LEV] = useState('');
-  const mem_idx = location.state.MEM_IDX;
   const [file, setFile] = useState([]);
+  const {MEM_IDX} = useParams();
 
-  const [getMem, setGetMem] = useState({ // MEM_IDX는 list에서 넘어온 값으로 초기값 지정
-    MEM_IDX: mem_idx,
-    MEM_ID: '',
-    MEM_PW: '',
-    MEM_LEVEL: '',
-    MEM_NAME: '',
-    MEM_PHONE: ''
-  });
+  const [getMem, setGetMem] = useState([]);
 
   useEffect(() => { // 해당 MEM_IDX로 나머지 정보 가져옴
     axios({
@@ -27,10 +19,9 @@ const AdminMemberDetail = () => {
       url: '/GareBnB/Admin/MemDetail.do',
       contentType: "application/json; charset=UTF-8",
       params: {
-        MEM_IDX: getMem.MEM_IDX
+        MEM_IDX: MEM_IDX
       }
     })
-
       .then(Response => {
         console.log(Response.data);
         setGetMem(Response.data);
@@ -185,6 +176,7 @@ const AdminMemberDetail = () => {
         </div><br />
 
         <li>주민번호 : {getMem.HOST_JUMIN1}-{getMem.HOST_JUMIN2}</li>
+        {/* 주민번호 수정해야함!!!!!! */}
 
         <div className="row d-flex justify-content-center align-items-end">
           <div className='col-md-2'>

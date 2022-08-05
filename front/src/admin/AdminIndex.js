@@ -59,10 +59,10 @@ const AdminIndex = () => {
             <Route path='/adminBoardList' element={<AdminHostBoardList />} />
 
             <Route path='/adminHostConfirmList' element={<AdminHostConfirmList />} />
-            <Route path='/adminHostConfirmDetail/*' element={<AdminHostConfirmDetail />} />
+            <Route path='/adminHostConfirmDetail/:MEM_IDX' element={<AdminHostConfirmDetail />} />
 
             <Route path='/adminMemberList' element={<AdminMemberList />} />
-            <Route path='/adminMemberDetail/*' element={<AdminMemberDetail />} />
+            <Route path='/adminMemberDetail/:MEM_IDX' element={<AdminMemberDetail />} />
 
             <Route path='/adminQnaList' element={<AdminQnaList />} />
             <Route path='/adminQnaList/adminQnaDetail/:QNA_IDX' element={<AdminQnaDetail />} />
