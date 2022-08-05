@@ -17,21 +17,26 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-      <div className='row'>
-      <Button
-        onClick={() => setOpen(!open)}
-        aria-controls="example-collapse-text"
-        aria-expanded={open}
-      >
-        click
-      </Button>
-        <Header />
-</div>
+        <div className='row'>
+          <div className='col col-sm-1'>
+            <Button
+              className='m-5'
+              onClick={() => setOpen(!open)}
+              aria-controls="example-collapse-text"
+              aria-expanded={open}
+            >
+              click
+            </Button>
+          </div>
+          <div className='col col-sm-11'>
+            <Header />
+          </div>
+        </div>
         <div className="container-fluid min-vh-100">
           <div className='row'>
-            <Collapse className='col col-sm-2'  in={open} dimension="width">
+            <Collapse className='col col-sm-2' in={open} dimension="width">
               <div className='z-index-2000'>
-                <Sidebar style={{ width: '300px' }}/>
+                <Sidebar style={{ width: '300px' }} />
               </div>
             </Collapse>
             <div className='col'>
