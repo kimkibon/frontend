@@ -48,24 +48,30 @@ const Myreview =() => {
                     </div>
 
                     <p/>
-                    <div class="row p-2 bg-white border rounded align-items-center" style={{height: 100 + 'px'}}>
-                    {myreview.REVIEW_CONTENT}<br/>
-                    </div>
-                    <p/>
 
+                    <div className='row mx-auto'>
+                    <div class="bg-white border rounded align-items-center col-10" style={{height: 120 + 'px'}} >
+                        {myreview.REVIEW_CONTENT}
+                    </div>
+                    <div className='col-2'>
                     {new Date().getTime()<after_date && 
-                        <Link to ={'ModifyReview'} state={{'REVIEW_IDX': myreview.REVIEW_IDX, 'SCORE':myreview.SCORE, 'REVIEW_CONTENT':myreview.REVIEW_CONTENT}}>
-                            <button type="button" class="btn btn-primary">수정</button>
-                        </Link> 
-                    } 
-                    &nbsp; 
-                    <Link to ={'DeleteReview'} state={{'REVIEW_IDX': myreview.REVIEW_IDX}}>
-                        <button type="button" class="btn btn-secondary">삭제</button>
-                    </Link>
-                    &nbsp; 
-                    <button type="button" class="btn btn-primary" onClick={(e)=>{
-                            e.preventDefault();
-                            navigate(-1); }}>확인</button>
+                            <Link to ={'ModifyReview'} state={{'REVIEW_IDX': myreview.REVIEW_IDX, 'SCORE':myreview.SCORE, 'REVIEW_CONTENT':myreview.REVIEW_CONTENT}}>
+                                <button type="button" class="btn btn-success">수정</button>
+                            </Link> 
+                        } 
+                         
+                        <Link to ={'DeleteReview'} state={{'REVIEW_IDX': myreview.REVIEW_IDX}}>
+                            <button type="button" class="btn btn-secondary ">삭제</button>
+                        </Link>
+                    </div>
+                    </div>
+
+                    <p/>
+                    <div className='text-lg-center'>
+                        <button type="button" class="btn btn-primary" onClick={(e)=>{
+                                e.preventDefault();
+                                navigate(-1); }}>확인</button>
+                    </div>
 
                 </div>
 
