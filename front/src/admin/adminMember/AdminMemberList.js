@@ -57,10 +57,10 @@ const AdminMemberList = () => {
       {/* 검색창 기능(ID와 이름으로 검색 가능) */}
       <form onSubmit={e => onSearch(e)}>
         <div className="row d-flex justify-content-center align-items-center">
-          <label className="col-2 col-form-label">검색어(ID/이름)</label>
+          <label className="col-2 col-form-label">검색어 (아이디 / 이름)</label>
           <div className='col-5 text-center'>
             <input className="form-control" type="text" value={search} placeholder="검색어 입력" onChange={onChangeSearch}></input></div> &nbsp;
-          <div className='col-3'>
+          <div className='col-2'>
             <Button className="btn btn-primary " type="submit">검색</Button> &nbsp;
             <Button className="btn btn-secondary " type="submit" onClick={reset}>초기화</Button><br /></div>
         </div></form>
