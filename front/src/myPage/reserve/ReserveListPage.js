@@ -157,7 +157,7 @@ const ReserveListPage = () => {
                 {stateChange(resstate)}
 
 
-                <div class="row p-2 bg-white border rounded">
+                <div class="row p-2 bg-white border rounded align-items-center">
 
                   <div class="col-md-3 mt-1 mt-2 d-flex flex-column align-items-center align-content-center">
                     <img class="img-fluid img-responsive rounded product-image" src={list.URL} width="200px" height="auto" /><p />
@@ -166,7 +166,7 @@ const ReserveListPage = () => {
                     {[1, 2, 3].includes(resstate) && 
                       <button 
                       type="button" 
-                      class="btn btn-success" 
+                      class="btn btn-warning" 
                       onClick={() => hostModal(list.HOST_ID)}
                       >
                         호스트정보
@@ -175,50 +175,73 @@ const ReserveListPage = () => {
                   
                   </div>
                   <div class="col-md-7 mt-1">
-                    <h5>예약번호  {list.RES_IDX}</h5><br />
-                    주소 : {list.ADDR1}{list.ADDR2}<br />
-                    이용날짜 : {list.RES_DATE_START} ~ {list.RES_DATE_END}<br />
-                    맡긴 동물 수 : {list.RES_CARE_NO}<br />
-                    가격 : {list.PRICE} 원<br />
-                    세부 요청 사항 : {list.REQ_DETAIL}<br />
+                    예약번호 {list.RES_IDX}<br/>
+                    <h4>{list.BOARD_TITLE}</h4><br/>
+                    <table>                  
+                        <tr>
+                          <td>주소</td>
+                          <td>{list.ADDR1}{list.ADDR2}</td>
+
+                        </tr>
+                        <tr>
+                          <td>이용날짜</td>
+                          <td>{list.RES_DATE_START} ~ {list.RES_DATE_END}</td>
+                        </tr>
+                        <tr>
+                          <td>케어요청 동물 수</td>
+                          <td>{list.RES_CARE_NO}</td>
+                        </tr>
+                        <tr>
+                          <td>가격</td>
+                          <td>{list.PRICE} 원</td>
+                        </tr>
+                        <tr>
+                          <td>세부 요청 사항</td>
+                          <td>{list.REQ_DETAIL}</td>
+                        </tr>
+                      
+                    </table>
                   </div>
-                  <div class="align-items-center align-content-center col-md-2 border-left mt-1">
+                  <div class="align-items-center align-content-center col-md-2">
                     <div class="d-flex flex-column mt-4">
-                      {[0, 1, 2].includes(resstate) &&
-                        <Link to={'resCancel'} state={{ 'res_idx': list.RES_IDX }}>
-                          <button type="button" class="btn btn-primary">예약취소</button>
-                        </Link>}
+
+                      {/* 예약승인상태 */}
+                      {resstate === 1 &&
+                        <div>
+                          <Link to={'resConfirm'} state={{ 'res_idx': list.RES_IDX }}><button type="button" class="btn btn-primary m-1">예약확정</button></Link>
+                        </div>
+                      }
 
 
                       {/* 예약요청상태 */}
                       {resstate === 0 &&
                         <div>
-                          <button type="button" class="btn btn-outline-primary" disabled>요청대기</button>
+                          <button type="button" class="btn btn-outline-primary m-1" disabled>요청대기</button>
+                        </div>}   
 
-                        </div>}
 
 
-                      {/* 예약승인상태 */}
-                      {resstate === 1 &&
-                        <div>
-                          <Link to={'resConfirm'} state={{ 'res_idx': list.RES_IDX }}><button type="button" class="btn btn-primary">예약확정</button></Link>
-                        </div>
-                      }
+                      {[0, 1, 2].includes(resstate) &&
+                        <Link to={'resCancel'} state={{ 'res_idx': list.RES_IDX }}>
+                          <button type="button" class="btn btn-secondary m-1">예약취소</button>
+                        </Link>}
 
+         
 
                       {/* 결제대기상태 */}
                       {resstate === 2 &&
                         <Payment price={list.PRICE} title={list.BOARD_TITLE} booker={mem_id} res_idx={list.RES_IDX} />
                       }
 
+                       
 
                       {/* 예약취소상태 */}
                       {resstate === 4 && <div>예약이 취소되었습니다.<p /></div>}
                       {resstate === 4 && (list.RES_REJ) != null &&
                         <div>
-                          <button type="button" class="btn btn-warning" onClick={() => { alert(list.RES_REJ) }}>거절사유</button>
+                          <button type="button" class="btn btn-warning m-1" onClick={() => { alert(list.RES_REJ) }}>거절사유</button>
                         </div>}
-
+                      
 
                     </div>
                   </div>

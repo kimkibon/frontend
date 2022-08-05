@@ -6,13 +6,14 @@ import {Button} from 'react-bootstrap';
 
 const ComReportList = (props) => {
     const {REPORT_IDX, REPORT_ID, REPORT_TITLE, REPORT_DATE, REPORT_STATE} = props.list;
-
+    const report_date = new Date(REPORT_DATE);
+    
     const handleRemove = (e) => { //버튼이 눌리면 실행이될
         e.preventDefault();
         if (window.confirm("정말 삭제합니까?")) {
           axios({ //통신으로 정보 받아오기
               method : 'post' ,
-              url : '/GareBnB/mypage/deleteQna.do' ,
+              url : '/GareBnB/mypage/deleteReport.do' ,
               contentType:"application/json;charset=UTF-8",
               params : {
                   REPORT_IDX : REPORT_IDX
@@ -42,7 +43,7 @@ const ComReportList = (props) => {
                             {REPORT_TITLE}
                           </Link>
                         </td>
-                        <td width="100px">{REPORT_DATE}</td>
+                        <td width="100px">{report_date.toISOString().slice(0,10).replace(/-/g,"/")}</td>
                         <td width="70px">{REPORT_STATE}</td>
                         <td width="70px">
                             <Button onClick={handleRemove}> 삭제 </Button>

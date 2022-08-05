@@ -153,9 +153,11 @@ const BoardDetail = () => {
           <div className='btn-group'>
             {/* 클라이언트 예약 */}
             <>
-              <button className="btn btn-success" type="button" onClick={() => setModalShow(true)}>
-                예약하기
-              </button>
+              {(boardDetail.BOARD_HOST_ID !== localStorage.getItem('MEM_ID')) &&
+                <button className="btn btn-success" type="button" onClick={() => setModalShow(true)}>
+                  예약하기
+                </button>
+              }
             </>
             {/* 모달창 온오프 */}
 
@@ -174,7 +176,7 @@ const BoardDetail = () => {
             {/* 게시글 수정 링크 */}
 
             {/* 어드민 확인 */}
-            {((author.MEM_LEVEL === 0) && (author.MEM_LEVEL !== undefined)) &&
+            {((author.MEM_LEVEL === 0) && (author.MEM_LEVEL !== undefined) &&(boardDetail.BOARD_CONFIRM !== 1)) &&
               <>
                 <button className="btn btn-danger" type="button" onClick={() => setRefuseModal(true)}>
                   등록 거절
@@ -248,7 +250,7 @@ const BoardDetail = () => {
 
 
         <div className="col">
-          <Review prop={review} />
+          <Review prop={review} auth={author} />
         </div>
         {/* 리뷰 리스트 출력 */}
       </div>

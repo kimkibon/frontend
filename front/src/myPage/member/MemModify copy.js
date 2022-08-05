@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useLocation, Link } from 'react-router-dom';
 import { Button, Modal } from 'react-bootstrap';
 
-// 회원정보 보기 -> 수정
+// 회원정보 보기 - 수정
 
 const MemModify = () => {
 
@@ -157,60 +157,58 @@ const MemModify = () => {
 
         <h1>회원정보 수정</h1><br />
 
-        <div className="row d-flex justify-content-end align-items-end ">
-          <label className="col-md-2 col-form-label">아이디</label>
-          <div className='col-4'>
-            <input type='text' value={memModify.MEM_ID} className="form-control" readOnly></input>
+        <div class="row d-flex justify-content-center align-items-center ">
+          <label class="col-2 col-form-label">아이디</label>
+          <div className='col-4 text-center'>
+            <input type='text' value={memModify.MEM_ID} class="form-control" readOnly></input></div>
+        </div><br />
+
+        <div class="row d-flex justify-content-center align-items-center ">
+          <label class="col-2 col-form-label">이름</label>
+          <div className='col-4 text-center'>
+            <input type='text' name='MEM_NAME' value={memModify.MEM_NAME} class="form-control" onChange={onChange}></input></div>
+        </div><br />
+
+        <div class="row d-flex justify-content-center align-items-center ">
+          <label class="col-2 col-form-label">비밀번호</label>
+          <div className='col-md-4'>
+            <input type='password' value={memModify.MEM_PW} class="form-control"></input>
           </div>
-          <div className='col-4'></div>
+          <div className='col-md-4'>
+            <Button variant="primary" onClick={handleShow}>비밀번호 수정</Button> </div>
         </div><br />
 
-        <div className="row d-flex justify-content-end align-items-end ">
-          <label className="col-md-2 col-form-label">이름</label>
-          <div className='col-4 text-center'>
-            <input type='text' name='MEM_NAME' value={memModify.MEM_NAME} className="form-control" onChange={onChange}></input></div>
-          <div className='col-4'></div>
-        </div><br />
-
-        <div className="row d-flex justify-content-end align-items-end ">
-          <label className="col-md-2 col-form-label">비밀번호</label>
-          <div className='col-4 text-center'>
-            <input type='password' value={memModify.MEM_PW} className="form-control"></input>
-          </div>
-          <div className='col-4'>
-            <Button variant="btn btn-outline-primary" onClick={handleShow}>비밀번호 수정</Button> </div>
-        </div><br />
-
-        <div className="row d-flex justify-content-end align-items-end ">
-          <label className="col-md-2 col-form-label">휴대폰 번호</label>
-          <div className='col-4 text-center'>
-            <input type='text' name='MEM_PHONE' value={memModify.MEM_PHONE} className="form-control"
+        <div class="row d-flex justify-content-center align-items-center ">
+          <label for="staticEmail" class="col-md-4 col-form-label">휴대폰 번호</label>
+          <div className='col-md-4'>
+            <input type='text' name='MEM_PHONE' value={memModify.MEM_PHONE} class="form-control"
               onChange={(e) => {
                 onChange(e)
                 onChangePhone(e)
               }}></input></div>
-          <div className='col-4'>
-            <Button variant="btn btn-outline-primary" onClick={send}>휴대폰 인증</Button> </div>
+          <div className='col-md-4'>
+            <Button variant="primary" onClick={send}>휴대폰 인증</Button> </div>
         </div><br />
 
-        <div className="row d-flex justify-content-end align-items-end ">
-          <label className="col-md-2 col-form-label">인증 번호</label>
-          <div className='col-4 text-center'>
-            <input type='text' name='Verify' onChange={getInputVerifyCode} value={InputVerifyCode} className="form-control">
+        <div class="row d-flex justify-content-center align-items-center ">
+          <label for="staticEmail" class="col-md-4 col-form-label">인증 번호</label>
+          <div className='col-md-4'>
+            <input type='text' name='Verify' onChange={getInputVerifyCode} value={InputVerifyCode} class="form-control">
             </input></div>
-          <div className='col-4'>
-            <Button variant="btn btn-outline-primary" onClick={modifyVerify}>인증 확인</Button> </div>
+          <div className='col-md-4'>
+            <Button variant="primary" onClick={modifyVerify}>인증 확인</Button> </div>
         </div>
-      </div><br />
+      </div>
 
-      <div className="row d-flex justify-content-center align-items-end">
-        <div className='col-md-2'>
-          <Button className="btn btn-primary " type="button" onClick={ModifySuccess}>수정완료</Button> &nbsp;
-          <Button type="button" className="btn btn-secondary" ariant="secondary">
-            <Link to='../member/MemDetail' style={{ textDecoration: "none", color: "white" }}>취소</Link>
+      <div class="row d-flex justify-content-center align-items-center ">
+        <div className='col-lg-6 col-sm-12 text-lg-start'>
+          <Button type="button" className="btn btn-light" onClick={ModifySuccess}>수정완료</Button>
+        </div>
+        <div className='col-lg-6 col-sm-12 text-lg-end'>
+          <Button type="button" className="btn btn-light" ariant="secondary">
+            <Link to='../member/MemDetail' style={{ textDecoration: "none" }}>취소</Link>
           </Button>
-        </div>
-        </div>
+        </div> </div>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -218,8 +216,8 @@ const MemModify = () => {
         </Modal.Header>
         <Modal.Body>
           <h5>확인 버튼을 클릭하시면 비밀번호가 변경됩니다.</h5>
-          수정할 비밀번호<input id='PW' type="password" name='password' defaulutValue={password} onChange={onChangePassword} className="form-control"></input>
-          수정할 비밀번호 확인<input type="password" name='passwordcheck' defaulutValue={passwordCheck} onChange={onChangePasswordChk} className="form-control"></input>
+          수정할 비밀번호<input id='PW' type="password" name='password' defaulutValue={password} onChange={onChangePassword} class="form-control"></input>
+          수정할 비밀번호 확인<input type="password" name='passwordcheck' defaulutValue={passwordCheck} onChange={onChangePasswordChk} class="form-control"></input>
           {passwordError && <div style={{ color: 'red' }}>비밀번호가 일치하지 않습니다.</div>}
 
         </Modal.Body>

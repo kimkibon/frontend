@@ -59,7 +59,7 @@ const MemUseListPage = () => {
                     <div class="container mt-5 mb-5">
                         <div class="d-flex justify-content-center row">
                             <div class="col-md-10">
-                                <div class="row p-2 bg-white border rounded">
+                                <div class="row p-2 bg-white border rounded align-items-center">
                                     <MemUseList list={list }/>
                                     
 
@@ -67,18 +67,18 @@ const MemUseListPage = () => {
                                         <div class="d-flex flex-column mt-4">
                                             <Link to ={'InsertReport'} 
                                                 state={{'REPORT_ID': list.RES_CLI_ID, 'REPORT_RES_NO': list.RES_IDX,'REPORT_MEM_IDX':list.RES_HOST_ID}}>
-                                                <button class="btn btn-danger">신고하기</button></Link>
+                                                <button class="btn btn-danger m-1">신고하기</button></Link>
                                             
                                             <Link to ={'Myreview'} 
                                                 state={{'CLI_ID': list.RES_CLI_ID, 'RES_IDX': list.RES_IDX,'after_date':after_date,'reviewcheck':review_check}}>
-                                                <button type="button" class="btn btn-primary">리뷰확인</button></Link>                    
+                                                <button type="button" class="btn btn-primary m-1">리뷰확인</button></Link>                    
                                             
                                             {new Date().getTime()<after_date ?
                                                                         (review_check===0 ? 
                                                                                         <Link to ={'InsertReview'} state={{'REVIEW_MEM_ID': list.RES_CLI_ID, 'BOARD_NO': list.RES_BOARD_NO,'RES_IDX': list.RES_IDX}}>
-                                                                                        <button type="button" class="btn btn-primary">리뷰쓰기</button></Link>
-                                                                                            :<Link to="" className="disable-link"><button type="button" class="btn btn-outline-primary" disabled>리뷰쓰기</button></Link>)
-                                                                            :<Link to="" className="disable-link"><button type="button" class="btn btn-outline-primary" disabled>리뷰쓰기</button></Link>}
+                                                                                        <button type="button" class="btn btn-primary m-1">리뷰쓰기</button></Link>
+                                                                                            :<Link to="" className="disable-link"><button type="button" class="btn btn-outline-primary m-1" disabled>리뷰쓰기</button></Link>)
+                                                                            :<Link to="" className="disable-link"><button type="button" class="btn btn-outline-primary m-1" disabled>리뷰쓰기</button></Link>}
                                         </div>
                                     </div>            
                                 </div>

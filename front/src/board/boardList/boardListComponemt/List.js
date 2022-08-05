@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 const List = (board) => {
-
   //상위 컴포넌트에서 받아온 데이터를 표시 
 
   return (
@@ -15,7 +14,9 @@ const List = (board) => {
               <div className="card shadow-sm">
                 
                   <img
-                    className="d-block w-100"
+                    className="d-block"
+                    width='350px'
+                    height='200px'
                     src={list.URL}
                     alt=""
                   />

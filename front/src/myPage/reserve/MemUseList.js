@@ -23,14 +23,35 @@ const MemUseList = (props) => {
   return (
     <>
       <div class="col-md-3 mt-2 d-flex flex-column align-items-center align-content-center">
-        <img src={list.URL} width="200px" height="auto"/><p/>
+        <img class="img-fluid img-responsive rounded product-image" src={list.URL} width="200px" height="auto"/><p/>
       </div>
       <div class="col-md-7 mt-1 align-items-center align-content-center">
-        <h5>예약번호 : {list.RES_IDX}</h5><br/>
-        주소 : {list.BOARD_ADDR}<br/>
-        이용날짜 : {list.RES_DATE_START} ~ {list.RES_DATE_END}<br/>
-        맡긴 동물 수 : {list.RES_CARE_NO}<br/>
-        결제가격 : {list.PRICE} 원         
+                  예약번호 {list.RES_IDX}<br/>
+                  <h4>{list.BOARD_TITLE}</h4><br/>
+                    <table>                  
+                        <tr>
+                          <td>주소</td>
+                          <td>{list.ADDR1}{list.ADDR2}</td>
+
+                        </tr>
+                        <tr>
+                          <td>이용날짜</td>
+                          <td>{list.RES_DATE_START} ~ {list.RES_DATE_END}</td>
+                        </tr>
+                        <tr>
+                          <td>맡긴 동물 수</td>
+                          <td>{list.RES_CARE_NO}</td>
+                        </tr>
+                        <tr>
+                          <td>결제금액</td>
+                          <td>{list.PRICE} 원</td>
+                        </tr>
+                        <tr>
+                          <td>세부 요청 사항</td>
+                          <td>{list.REQ_DETAIL}</td>
+                        </tr>
+                      
+                    </table>          
       </div>
     </>
   )

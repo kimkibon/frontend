@@ -2,7 +2,6 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { useLocation } from 'react-router-dom';
 import SelectOneFile from '../../../commons/Files/SelectOneFile';
 
 const HostDetailModal =(props) => {
@@ -10,10 +9,8 @@ const HostDetailModal =(props) => {
     const [hostDetail, setHostDetail] = useState([]);
     const [url,setUrl] = useState(); //이미지파일 불러오기
   
-
-    const close=props.onHide;
     //호스트아이디
-    const hostId = props.state.hostId;
+    //const hostId = props.state.hostId;
 
     const gender=(num)=>{
       if(num===1){
@@ -25,8 +22,8 @@ const HostDetailModal =(props) => {
     }
      
     useEffect(() => {
-  
-      if(props.state.hostId !== undefined){
+      setUrl('')
+      if(!!props.state.hostId){
       //호스트정보 가져오기
       axios({
   
@@ -69,20 +66,22 @@ const HostDetailModal =(props) => {
             <Modal.Body>
             <div className="container">
                 <div className="row">
-                    <div className="col-4">
-                        <img src={hostDetail.URL}/>
+                    <div className="col-sm-4">
+                        <img src={hostDetail.URL} width="300px" height="300px"/>
                     </div>
-                    <div className='col-8'>
+                    <div className='col-sm-8 align-self-center' >
+                      <h5 className='float-end'>
                         이름 : {hostDetail.MEM_NAME}<br/>
                         전화번호 : {hostDetail.MEM_PHONE}<br/>
                         호스트 성별 : {gender(hostDetail.HOST_JUMIN2)}<br/>
+                      </h5>
                     </div>
                 </div>
             </div>
 
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={()=>{setUrl('');close();}}>확인</Button>
+            <Button onClick={props.onHide}>확인</Button>
           </Modal.Footer>
         </Modal>
       )

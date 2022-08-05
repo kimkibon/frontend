@@ -19,7 +19,7 @@ body
 {
     /* position: fixed */
     position: absolute;
-    width: 260px;
+    width: 200px;
     /* 넓이 80px로 맞추고 아래 동적 nav */
     height: 100%;
     background:#ffffff;
@@ -60,7 +60,7 @@ body
 {
     position: relative;
     width: 100%;
-    list-style: none;
+    list-style: none; 
 }
 
 
@@ -107,7 +107,7 @@ label.hostmenu:hover {
 {
     position: relative;
     display: block;
-    min-width: 60px;
+    min-width: 20px;
     height: 60px;
     line-height: 60px;
     text-align: center;
@@ -116,16 +116,17 @@ label.hostmenu:hover {
 /* 아이콘 이미지 */
 .navigation ul li a .icon .fa
 {
-    font-size: 30px;
+    font-size: 20px;
+    margin-right: 10px;
 }
 
-/*  */
+/* title있는 칸 */
 .navigation ul li a .title
 {
     position: relative;
     display: block;
     padding: 10 30px;
-    height: 60px;
+    height: 40px;
     line-height: 60px;
     text-align: start;
     white-space: nowrap;
@@ -133,8 +134,7 @@ label.hostmenu:hover {
 
 /* 사이드바 서브메뉴 */
 .big_menu2 .small_menu {
-    margin-left: 14px;
-    padding-top: 8px;
+    margin-left: 5px;
 }
 
 

@@ -37,24 +37,28 @@ const Myreview =() => {
 
 
     return (
-        <div>
+        <div class="d-flex justify-content-center row">
+        <div class="col-md-4 ">
             <h1>리뷰 확인</h1>
-            {review_check===0 ? <h3>작성한 리뷰가 없습니다.</h3> 
+            {review_check===0 
+            ? <div><h3>작성한 리뷰가 없습니다.</h3><br/><button type="button" class="btn btn-primary" onClick={(e)=>{e.preventDefault();navigate(-1); }}>확인</button></div>
             :   <div>
                     <div className='App'>
                         <Rating allowHalfIcon ratingValue={myreview.SCORE*20} readonly size={50} showTooltip/>
                     </div>
                     <p/>
-                    후기: {myreview.REVIEW_CONTENT}<br/>
+                    <div class="row p-2 bg-white border rounded align-items-center">
+                    {myreview.REVIEW_CONTENT}<br/>
+                    </div>
                     <p/>
                     {new Date().getTime()<after_date && 
                         <Link to ={'ModifyReview'} state={{'REVIEW_IDX': myreview.REVIEW_IDX, 'SCORE':myreview.SCORE, 'REVIEW_CONTENT':myreview.REVIEW_CONTENT}}>
-                            <button type="button" class="btn btn-primary">수정하기</button>
+                            <button type="button" class="btn btn-primary">수정</button>
                         </Link> 
                     } 
                     &nbsp; 
                     <Link to ={'DeleteReview'} state={{'REVIEW_IDX': myreview.REVIEW_IDX}}>
-                        <button type="button" class="btn btn-primary">삭제하기</button>
+                        <button type="button" class="btn btn-secondary">삭제</button>
                     </Link>
                     &nbsp; 
                     <button type="button" class="btn btn-primary" onClick={(e)=>{
@@ -64,6 +68,7 @@ const Myreview =() => {
                 </div>
 
             }
+            </div>
         </div>
 
     )

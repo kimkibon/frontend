@@ -37,7 +37,7 @@ const AdminResInfo =() => {
 
     return (
         <div>
-            <h1>예약정보</h1>
+            <h3>예약정보</h3>
             <table  class="table">
                 <tbody>
                 <tr>
@@ -133,7 +133,7 @@ const AdminResInfo =() => {
                         결제금액
                     </td>
                     <td>
-                        {resInfo.PAY_PRICE}
+                        {resInfo.PAY_PRICE} 원
                     </td>    
                 </tr>
                 <tr>

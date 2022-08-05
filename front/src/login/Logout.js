@@ -11,7 +11,7 @@ const Logout = () => {
         console.log(localStorage.getItem("MEM_ID"))
     return(
         
-        <button onClick={()=>onClick()}>로그아웃</button>
+        <button className="btn btn-danger m-4" onClick={()=>onClick()}>로그아웃</button>
     )
     }
     else {
