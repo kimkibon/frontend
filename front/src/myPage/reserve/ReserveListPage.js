@@ -157,7 +157,7 @@ const ReserveListPage = () => {
                 {stateChange(resstate)}
 
 
-                <div class="row p-2 bg-white border rounded">
+                <div class="row p-2 bg-white border rounded align-items-center">
 
                   <div class="col-md-3 mt-1 mt-2 d-flex flex-column align-items-center align-content-center">
                     <img class="img-fluid img-responsive rounded product-image" src={list.URL} width="200px" height="auto" /><p />

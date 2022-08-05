@@ -211,12 +211,14 @@ const MemChange = () => {
         <Modal
           show={showAddrModal}
           onHide={() => setShowAddrModal(false)}>
+
           {/* 주소 검색 모달 */}
           <HostAddress
             setAddrInfo={setAddrInfo} />
         </Modal>
       </div>
       <br />
+      
       <div class="row">
         <div className='col-lg-6 col-sm-12 text-lg-start'>
           <Button variant="primary" type="submit" onClick={insertOnClick}>

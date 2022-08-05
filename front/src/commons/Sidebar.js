@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import './sidestyle.css'
-import {AiFillInteraction} from "react-icons/ai";
 import { BsFillAlarmFill, BsFillCalendarCheckFill, BsFillMegaphoneFill, BsFillQuestionCircleFill,BsFillInfoCircleFill,BsFillPeopleFill  } from "react-icons/bs";
 import { Link, useNavigate } from 'react-router-dom';
 import '../../node_modules/bootstrap/dist/js/bootstrap'
 import HostSidebar from './HostSidebar';
 import Auth from '../login/Auth';
 import { Col } from 'react-bootstrap';
+
 
 // react-icons names -> fa로 통일
 
@@ -86,13 +85,7 @@ const Sidebar = () => {
                 <span className='title'>호스트전환</span>
               </Link>
           </li>
-          
-          <li>
-              <Link to="/admin">
-                <span className='icon'><AiFillInteraction/></span>
-                <span className='title'>admin 메뉴들</span>
-              </Link>
-          </li>
+
           </ul>
 
           {/* ----------------------------------------------------------------------------------------- */}
