@@ -49,7 +49,7 @@ const AdminMemberList = () => {
   }
 
   return (
-    <div className='container px-4 px-lg-5 my-5 h-100'>
+    <div className='container'>
       <hr />
       <h3>회원 관리</h3>
       <hr />

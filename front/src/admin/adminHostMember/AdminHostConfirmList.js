@@ -22,7 +22,7 @@ const AdminHostConfirmList = () => {
   }, []);
 
   return (
-    <div className='container px-4 px-lg-5 my-5 h-100'>
+    <div className='container'>
 
       <hr />
       <h3>호스트 등록 요청 리스트</h3>
