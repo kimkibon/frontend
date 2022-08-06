@@ -66,10 +66,10 @@ const HostDetailModal = (props) => {
       <Modal.Body>
         <div className="container">
           <div className="row d-flex justify-content-center align-self-center">
-            <div className="col-sm-5">
+            <div className="col-sm-6">
               <img src={hostDetail.URL} width="300px" height="300px" />
             </div>
-            <div className='row col-sm-7' >
+            <div className='row col-sm-6' >
               <label className="col-md-4 col-form-label mt-5">이름</label>
               <div className='col-md-6 text-center mt-5'>
                 <input value={hostDetail.MEM_NAME} className="form-control" readOnly></input>
