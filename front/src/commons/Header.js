@@ -23,7 +23,7 @@ const Header = (props) => {
             <span className='icon'><IoPerson className='logIcon' /></span>
           </a>
           <div className="dropdown-menu" data-popper-placement="bottom-start" style={{ margin: 0 }} >
-            <Link to='/myPage'>
+            <Link to='/myPage' style={{ textDecoration: "none" }}>
               <div className="dropdown-item">myPage</div>
             </Link>
             <div className="dropdown-divider"></div>
