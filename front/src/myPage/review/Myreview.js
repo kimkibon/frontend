@@ -37,33 +37,33 @@ const Myreview =() => {
 
 
     return (
-        <div class="d-flex justify-content-center row">
-        <div class="col-md-4 ">
+        <div class="d-flex justify-content-center">
+        <div class="col-4 ">
             <h1>리뷰 확인</h1>
             {review_check===0 
             ? <div><h3>작성한 리뷰가 없습니다.</h3><br/><button type="button" class="btn btn-primary" onClick={(e)=>{e.preventDefault();navigate(-1); }}>확인</button></div>
-            :   <div>
+            :   <div className='col-12'>
                     <div className='App'>
                         <Rating allowHalfIcon ratingValue={myreview.SCORE*20} readonly size={50} showTooltip/>
                     </div>
 
                     <p/>
 
-                    <div className='row mx-auto'>
-                    <div class="bg-white border rounded align-items-center col-10" style={{height: 120 + 'px'}} >
-                        {myreview.REVIEW_CONTENT}
-                    </div>
-                    <div className='col-2'>
-                    {new Date().getTime()<after_date && 
-                            <Link to ={'ModifyReview'} state={{'REVIEW_IDX': myreview.REVIEW_IDX, 'SCORE':myreview.SCORE, 'REVIEW_CONTENT':myreview.REVIEW_CONTENT}}>
-                                <button type="button" class="btn btn-success">수정</button>
-                            </Link> 
-                        } 
-                         
-                        <Link to ={'DeleteReview'} state={{'REVIEW_IDX': myreview.REVIEW_IDX}}>
-                            <button type="button" class="btn btn-secondary ">삭제</button>
-                        </Link>
-                    </div>
+                    <div>
+                        <div class="border rounded col-8" style={{height: 120 + 'px'}} >
+                            {myreview.REVIEW_CONTENT}
+                        </div>
+                        <div className='col-3'>
+                        {new Date().getTime()<after_date && 
+                                <Link to ={'ModifyReview'} state={{'REVIEW_IDX': myreview.REVIEW_IDX, 'SCORE':myreview.SCORE, 'REVIEW_CONTENT':myreview.REVIEW_CONTENT}}>
+                                    <button type="button" class="btn btn-success">수정</button><br/>
+                                </Link> 
+                            } 
+                            
+                            <Link to ={'DeleteReview'} state={{'REVIEW_IDX': myreview.REVIEW_IDX}}>
+                                <button type="button" class="btn btn-secondary ">삭제</button>
+                            </Link>
+                        </div>
                     </div>
 
                     <p/>
