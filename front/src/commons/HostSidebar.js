@@ -94,6 +94,20 @@ const HostSidebar = () => {
                 </Link>
               </li>
 
+              <li>
+                <Link to="/myPage/host/hostBoardForm">
+                  <span className='icon'><BsFillInfoCircleFill className='fa'/></span> 
+                  <span className='title'>게시글 작성</span>
+                </Link>
+              </li>
+
+              <li>
+                <Link to="/myPage/host/hostBoardModify">
+                  <span className='icon'><BsFillInfoCircleFill className='fa'/></span> 
+                  <span className='title'>hostBoardModify</span>
+                </Link>
+              </li>
+
             </ul>
         </ul>
         </div>
