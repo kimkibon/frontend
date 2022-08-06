@@ -17,13 +17,13 @@ const Header = (props) => {
 
     return (
       <>
-
+      
         <div className="nav-item dropdown">
           <a className="nav-link show" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
             <span className='icon'><IoPerson className='logIcon' /></span>
           </a>
           <div className="dropdown-menu" data-popper-placement="bottom-start" style={{ margin: 0 }} >
-            <Link to='/myPage'>
+            <Link to='/myPage' style={{ textDecoration: "none" }}>
               <div className="dropdown-item">myPage</div>
             </Link>
             <div className="dropdown-divider"></div>
@@ -38,9 +38,17 @@ const Header = (props) => {
         <div className='headerLogin'>
           님
         </div>
-        <div className='btn btn-danger'>
-          <Logout />
-        </div>
+        <div className='col col-sm-1'>
+            {!!localStorage.getItem('MEM_ID') &&
+              <Button
+                className='mt-1'
+                onClick={() => props.props()}
+                aria-controls="example-collapse-text"
+              >
+                myPage
+              </Button>
+            }
+          </div>
       </>
     )
 
@@ -53,7 +61,7 @@ const Header = (props) => {
       <div className='header'>
         <div className='row'>
 
-          <div className='col col-sm-1'>
+          {/* <div className='col col-sm-1'>
             {!!localStorage.getItem('MEM_ID') &&
               <Button
                 className='mt-5'
@@ -63,7 +71,7 @@ const Header = (props) => {
                 myPage
               </Button>
             }
-          </div>
+          </div> */}
           <div className='col col-sm-10'>
             <Link to='/'>
               <img src={logoImage} alt="Gare" className="img-logo" />
