@@ -5,6 +5,9 @@ import Payment from "./payment/Payment";
 import SelectOneFile from "../../commons/Files/SelectOneFile";
 import './resstyle.css'
 import HostDetailModal from "./Modals/HostDetailModal";
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Popover from 'react-bootstrap/Popover';
+
 
 //예약상태
 // const ResState = (state) => {
@@ -233,16 +236,24 @@ const ReserveListPage = () => {
                         <Payment price={list.PRICE} title={list.BOARD_TITLE} booker={mem_id} res_idx={list.RES_IDX} />
                       }
 
-                       
+                      
 
                       {/* 예약취소상태 */}
                       {resstate === 4 && <div>예약이 취소되었습니다.<p /></div>}
                       {resstate === 4 && (list.RES_REJ) != null &&
-                        <div>
-                          <button type="button" class="btn btn-warning m-1" onClick={() => { alert(list.RES_REJ) }}>거절사유</button>
-                        </div>}
                       
-
+                        <OverlayTrigger trigger="click" placement="bottom"
+                        overlay={
+                          <Popover id='popover-positioned-bottom'>
+                            <Popover.Header as="h3">{list.HOST_ID}</Popover.Header>
+                            <Popover.Body>
+                              {list.RES_REJ}
+                            </Popover.Body>
+                          </Popover>
+                        }>
+                          <button type="button" class="btn btn-warning m-1">거절사유</button>
+                      </OverlayTrigger>}
+                        
                     </div>
                   </div>
 
