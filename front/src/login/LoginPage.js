@@ -4,6 +4,7 @@ import "./login.css";
 import axios from "axios";
 import FindId from "./FindId";
 import FindPwOK from "./FindPwOK";
+import { Alert } from "react-bootstrap";
 
 
 
@@ -133,6 +134,12 @@ const Login = () => {
       });
   }, [passwordOption]);
 
+  const handleKeyPress = (e) => { // 비밀번호 입력 후, 엔터키를 누르면 로그인 함수 실행
+    if (e.key === 'Enter') {
+      loginClick();
+    }
+  }
+  
   return (
     <section className="vh-100">
       <div className="container py-5 h-74">
@@ -166,6 +173,7 @@ const Login = () => {
                   autoComplete={passwordInputType.autoComplete}
                   value={loginPassword}
                   onChange={(e) => setLoginPassword(e.target.value)}
+                  onKeyPress = {handleKeyPress}
                 />
               </div>
 
@@ -226,7 +234,6 @@ const Login = () => {
       <FindPwOK
         show={findPwOKClick}
         onHide={() => setfindPwOKClick(false)}
-
       />
     </section>
   );
