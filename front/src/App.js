@@ -23,7 +23,7 @@ function App() {
     <div>
       <BrowserRouter>
 
-            <Header props={openCollapse}/>
+            <Header props={{'openCollapse' : openCollapse , 'open' : open}}/>
           
         <div className="container-fluid min-vh-100">
           <div className='row'>

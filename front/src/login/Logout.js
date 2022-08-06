@@ -1,27 +1,29 @@
 import React from "react"
 import { useNavigate } from "react-router-dom"
 
-const Logout = () => {
+const Logout = (props) => {
     const navigate = useNavigate();
-    function onClick(){
-        
-    localStorage.removeItem("MEM_ID")
-    localStorage.removeItem("JWT")
-    
-    navigate('/LogOutComponent');
+    function onClick() {
+
+        localStorage.removeItem("MEM_ID");
+        localStorage.removeItem("JWT");
+        if (props.props.open === true) {
+            props.props.openCollapse();
+        }
+        navigate('/LogOutComponent');
 
     }
-    if(localStorage.getItem("MEM_ID") !== null){
+    if (localStorage.getItem("MEM_ID") !== null) {
         console.log(localStorage.getItem("MEM_ID"))
-        
-    return(
-        
-        <span href='#' onClick={()=>onClick()}>로그아웃</span>
-    )
+
+        return (
+
+            <span href='#' onClick={() => onClick()}>로그아웃</span>
+        )
     }
     else {
-        return(<div></div>)
+        return (<div></div>)
     }
-  }
+}
 
-  export default Logout;
+export default Logout;

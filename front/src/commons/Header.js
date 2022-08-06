@@ -27,7 +27,7 @@ const Header = (props) => {
               <div className="dropdown-item">myPage</div>
             </Link>
             <div className="dropdown-divider"></div>
-            <div className="dropdown-item" ><Logout /></div>
+            <div className="dropdown-item" ><Logout props={props.props} /></div>
           </div>
         </div>
 
@@ -42,7 +42,7 @@ const Header = (props) => {
             {!!localStorage.getItem('MEM_ID') &&
               <Button
                 className='mt-1'
-                onClick={() => props.props()}
+                onClick={() => props.props.openCollapse()}
                 aria-controls="example-collapse-text"
               >
                 myPage
@@ -72,7 +72,7 @@ const Header = (props) => {
               </Button>
             }
           </div> */}
-          <div className='col col-sm-10'>
+          <div className='col col-sm-12'>
             <Link to='/'>
               <img src={logoImage} alt="Gare" className="img-logo" />
             </Link>
