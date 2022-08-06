@@ -4,7 +4,7 @@ import "./login.css";
 import axios from "axios";
 import FindId from "./FindId";
 import FindPwOK from "./FindPwOK";
-    
+
 
 
 const LS_KEY_ID = "LS_KEY_ID"; //로컬스토리지에 저장할 ID
@@ -31,7 +31,7 @@ const Login = () => {
     setCapsLockFlag(capsLock);
   };
 
-  if(!!localStorage.getItem('MEM_ID')){
+  if (!!localStorage.getItem('MEM_ID')) {
     navigate('/');
   }
 
@@ -57,7 +57,7 @@ const Login = () => {
     setSaveIDFlag(!saveIDFlag);
   };
 
-  const JoinClick = () =>{
+  const JoinClick = () => {
     navigate('/Join');
 
   }
@@ -93,7 +93,7 @@ const Login = () => {
               localStorage.setItem("MEM_ID", Response.data.MEM_ID); //MEM_ID만 로컬스토리지에 저장
               localStorage.setItem("JWT", Response.data.JWT);
               navigate('/')
-              
+
             }
           })
           .catch((err) => {
@@ -186,27 +186,32 @@ const Login = () => {
                 </div>
                 <span>
                   forgot&nbsp;
-                <a href="#" onClick={()=>setfindIdClick(true)}>ID</a> /&nbsp;
-                <a href="#" onClick={()=>setfindPwOKClick(true)}>PassWord</a>
-                &nbsp;?
+                  <a href="#" onClick={() => setfindIdClick(true)}>ID</a> /&nbsp;
+                  <a href="#" onClick={() => setfindPwOKClick(true)}>PassWord</a>
+                  &nbsp;?
                 </span>
               </div>
-              <div className="form-outline mb-3">
-              <button
-                type="button"
-                className="btn btn-primary btn-lg btn-block"
-                onClick={()=>loginClick()}
-              >
-                Sign in
-              </button>
-              <button
-                type="button"
-                className="btn btn-primary btn-lg btn-block"
-                onClick={()=>JoinClick()}
-              >
-                Sign UP
-              </button>
-              </div>
+
+              <div className="form-outline mb-1">
+                <div className="row d-flex justify-content-center align-items-center">
+                  <div className='col-md-6'>
+                    <button
+                      type="button"
+                      className="btn btn-primary btn-lg btn-block"
+                      onClick={() => loginClick()}
+                    >
+                      Sign In
+                    </button>
+                    &emsp;
+                    <button
+                      type="button"
+                      className="btn btn-primary btn-lg btn-block"
+                      onClick={() => JoinClick()}
+                    >
+                      Sign Up
+                    </button>
+                  </div>
+                </div> </div>
             </form>
           </div>
         </div>
@@ -215,14 +220,14 @@ const Login = () => {
       <FindId
         show={findIdClick}
         onHide={() => setfindIdClick(false)}
-      
-      /> 
+
+      />
 
       <FindPwOK
         show={findPwOKClick}
         onHide={() => setfindPwOKClick(false)}
-      
-      /> 
+
+      />
     </section>
   );
 };
