@@ -75,7 +75,7 @@ const Footer = () => {
                         </div>
                     </div>
 
-
+                    <br/>
                     <div className="row ">
                         <div className="col-md-12">
                             <div className="copyright d-flex justify-content-start align-items-center">
