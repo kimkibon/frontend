@@ -205,7 +205,7 @@ const Login = () => {
                   <div className='col-md-6'>
                     <button
                       type="button"
-                      className="btn btn-primary btn-lg btn-block"
+                      className="btn btn-primary btn-md btn-block"
                       onClick={() => loginClick()}
                     >
                       Sign In
@@ -213,7 +213,7 @@ const Login = () => {
                     &emsp;
                     <button
                       type="button"
-                      className="btn btn-primary btn-lg btn-block"
+                      className="btn btn-primary btn-md btn-block"
                       onClick={() => JoinClick()}
                     >
                       Sign Up
