@@ -42,7 +42,7 @@ const Header = (props) => {
             {!!localStorage.getItem('MEM_ID') &&
               <Button
                 className='mt-1'
-                onClick={() => props.props()}
+                onClick={() => props.props.openCollapse()}
                 aria-controls="example-collapse-text"
               >
                 myPage
