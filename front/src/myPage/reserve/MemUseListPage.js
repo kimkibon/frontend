@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import InsertReviewModal from "../review/Modals/InsertReviewModal";
 import Reviewcheck from "../review/Reviewcheck";
 import MemUseList from "./MemUseList";
 
@@ -8,6 +9,14 @@ import MemUseList from "./MemUseList";
 const MemUseListPage = () => {
     const [resComList, setResComList] = useState([]);
     const mem_id = localStorage.getItem("MEM_ID");
+
+
+    //리뷰쓰기
+    const [modalShow, setModalShow] = useState(false);
+    const [boardno, setBoardno] = useState();
+    const [residx, setResidx] = useState();
+
+
     //이용내역
     useEffect(() => {
 
@@ -48,6 +57,8 @@ const MemUseListPage = () => {
         
         <div>
             <h1>이용내역</h1>
+            <InsertReviewModal show={modalShow} onHide={() => setModalShow(false)} 
+                                state={{'REVIEW_MEM_ID': mem_id, 'BOARD_NO': boardno,'RES_IDX': residx}}/>
             {resComList[0] !==undefined && resComList.map((list)=>{
 
                 const end_date = new Date(list.RES_DATE_END);//예약마지막날짜
@@ -75,8 +86,8 @@ const MemUseListPage = () => {
                                             
                                             {new Date().getTime()<after_date ?
                                                                         (review_check===0 ? 
-                                                                                        <Link to ={'InsertReview'} state={{'REVIEW_MEM_ID': list.RES_CLI_ID, 'BOARD_NO': list.RES_BOARD_NO,'RES_IDX': list.RES_IDX}}>
-                                                                                        <button type="button" class="btn btn-primary m-1">리뷰쓰기</button></Link>
+                                                                            <Link to="" className="disable-link"><button type="button" class="btn btn-primary m-1" 
+                                                                                                onClick={()=>{setResidx(list.RES_IDX);setBoardno(list.RES_BOARD_NO);setModalShow(true);}}>리뷰쓰기</button></Link>
                                                                                             :<Link to="" className="disable-link"><button type="button" class="btn btn-outline-primary m-1" disabled>리뷰쓰기</button></Link>)
                                                                             :<Link to="" className="disable-link"><button type="button" class="btn btn-outline-primary m-1" disabled>리뷰쓰기</button></Link>}
                                         </div>

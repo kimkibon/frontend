@@ -64,24 +64,6 @@ const HostReserveList = () => {
   } ,[]);
   
 
-  //거절사유입력
-  const reject=(rej_content,res_idx)=>{
-    axios({
-
-      method : 'post' ,
-      url : '/GareBnB/host/mypage/resRejectPut.do' ,
-      contentType:"application/json;charset=UTF-8",
-      params : {
-        RES_REJ : rej_content,
-        RES_IDX : res_idx
-      }
-  }).then(Response => {
-      window.location.href="/myPage/host/hostReserve"
-  });
-  }
-
-
-
   //예약 상태에 따른 step bar 변화
   const stateChange = (state) => {
     let a, b, c, d
