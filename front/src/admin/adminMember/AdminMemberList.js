@@ -48,6 +48,12 @@ const AdminMemberList = () => {
     setSearch('');
   }
 
+  const handleKeyPress = (e) => { // 비밀번호 입력 후, 엔터키를 누르면 로그인 함수 실행
+    if (e.key === 'Enter') {
+      onSearch(e);
+    }
+  }
+
   return (
     <div className='container'>
       <hr />
@@ -59,7 +65,8 @@ const AdminMemberList = () => {
         <div className="row d-flex justify-content-center align-items-center">
           <label className="col-2 col-form-label">검색어 (아이디 / 이름)</label>
           <div className='col-5 text-center'>
-            <input className="form-control" type="text" value={search} placeholder="검색어 입력" onChange={onChangeSearch}></input></div> &nbsp;
+            <input className="form-control" type="text" value={search} placeholder="검색어 입력" 
+                    onChange={onChangeSearch} onKeyPress = {handleKeyPress}></input></div> &nbsp;
           <div className='col-2'>
             <Button className="btn btn-primary " type="submit">검색</Button> &nbsp;
             <Button className="btn btn-secondary " type="submit" onClick={reset}>초기화</Button><br /></div>
