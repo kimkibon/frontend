@@ -27,7 +27,7 @@ const Header = (props) => {
               <div className="dropdown-item">myPage</div>
             </Link>
             <div className="dropdown-divider"></div>
-            <div className="dropdown-item" ><Logout /></div>
+            <div className="dropdown-item" ><Logout props={props.props} /></div>
           </div>
         </div>
 

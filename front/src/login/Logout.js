@@ -1,13 +1,13 @@
 import React from "react"
 import { useNavigate } from "react-router-dom"
 
-const Logout = () => {
+const Logout = (props) => {
     const navigate = useNavigate();
     function onClick(){
         
-    localStorage.removeItem("MEM_ID")
-    localStorage.removeItem("JWT")
-    
+    localStorage.removeItem("MEM_ID");
+    localStorage.removeItem("JWT");
+    props.props();
     navigate('/LogOutComponent');
 
     }
