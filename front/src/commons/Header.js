@@ -72,7 +72,7 @@ const Header = (props) => {
               </Button>
             }
           </div> */}
-          <div className='col col-sm-10'>
+          <div className='col col-sm-12'>
             <Link to='/'>
               <img src={logoImage} alt="Gare" className="img-logo" />
             </Link>
