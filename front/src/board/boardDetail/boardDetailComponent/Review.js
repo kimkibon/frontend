@@ -82,13 +82,6 @@ const Review = (review) => {
                   <div className='col'>
                     <span>첫 리뷰를 작성해주세요!</span>
                   </div>
-                  {review.auth.MEM_LEVEL === 0 &&
-                    <div className='col col-sm-1'>
-                      <button className='btn - btn-danger' >
-                        삭제
-                      </button>
-                    </div>
-                  }
                 </div>
               </div>
               <div className="card-footer p-4 pt-0 border-top-0 bg-transparent">
