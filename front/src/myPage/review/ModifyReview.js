@@ -66,9 +66,9 @@ const ModifyReview =() => {
                     <Rating transition onClick={handleRating} size={50} ratingValue={rating} allowHalfIcon showTooltip/>
                 </div>
                 <p/>
-                    <div class="d-flex justify-content-start border rounded col-12" style={{height: 120 + 'px'}}>
-                    <textarea name="review" placeholder="후기" onChange={onChange} value={review} style={{height: 110 + 'px',resize:'none', border:'none'}}/>
-                    </div>
+                    
+                    <textarea class="d-flex justify-content-start border rounded col-12" name="review" placeholder="후기" onChange={onChange} value={review} style={{height: 120 + 'px',resize:'none', border:'none'}}/>
+                    
                 <p/>
                     
                 <div className='text-lg-center m-4'>
