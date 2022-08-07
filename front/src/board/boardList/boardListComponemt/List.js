@@ -1,14 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-const List = (board) => {
+import SelectOneFile from '../../../commons/Files/SelectOneFile';
+const List = (props) => {
   //상위 컴포넌트에서 받아온 데이터를 표시 
 
-  return (
-    <div className="container">
+  const list = props.list;
 
-      <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        {board[0] !== undefined && board.map(list => {
-          return (
+  const [url,setUrl] = useState();
+
+
+  useEffect(()=>{
+
+    SelectOneFile('0',list.BOARD_NO,list.BOARD_MODIFY_NO).then(Res=>{
+      setUrl("data:image/;base64,"+Res.URL);
+      // setUrl(url);
+    });
+
+  },[])
+ 
+  list['URL'] = url;
+
+  return (
 
             <div className="col" key={list.BOARD_NO}>
               <div className="card shadow-sm">
@@ -41,17 +53,6 @@ const List = (board) => {
                 </div>
               </div>
             </div>
-
-
-
-          )
-        })}
-
-        {/* example */}
-
-        {/*  */}
-      </div>
-    </div>
 
   )
 }

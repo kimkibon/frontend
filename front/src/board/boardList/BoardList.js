@@ -61,20 +61,20 @@ const BoardList = () => {
       }
       //서버에서 리스트 요청
     }).then(Response => {
-      // setBoard(Response.data);
-      const url = Response.data.map(async list => {
+      setBoard(Response.data);
+      // const url = Response.data.map(async list => {
 
-        await SelectOneFile('0', list.BOARD_NO, list.BOARD_MODIFY_NO).then(Res => {
-          //요청된 리스트의 게시글 넘버로 메인 이미지 요청
+      //   await SelectOneFile('0', list.BOARD_NO, list.BOARD_MODIFY_NO).then(Res => {
+      //     //요청된 리스트의 게시글 넘버로 메인 이미지 요청
 
-          list['URL'] = "data:image/;base64," + Res.URL
-        })
-        //변수에 URL 요소를 추가하고 서버로부터 리턴 받은 이미지를 문자화해서 저장
-        return list
-      })
+      //     list['URL'] = "data:image/;base64," + Res.URL
+      //   })
+      //   //변수에 URL 요소를 추가하고 서버로부터 리턴 받은 이미지를 문자화해서 저장
+      //   return list
+      // })
 
-      Promise.all(url).then((data) => { setBoard(data) });
-      // async - await 로 받아온 객체는 promise 객체이므로 이를 변환해서 저장 
+      // Promise.all(url).then((data) => { setBoard(data) });
+      // // async - await 로 받아온 객체는 promise 객체이므로 이를 변환해서 저장 
     })
 
   }
@@ -125,7 +125,7 @@ const BoardList = () => {
           <div className='float-end row'>
             <div className='col col-md-3'></div>
             <div className='col input-group mb-4'>
-            <span className='input-group-text'>기간 선택</span>
+              <span className='input-group-text'>기간 선택</span>
               <span className='form-control'>
                 {<DatePicker
                   className='form-control'
@@ -144,7 +144,16 @@ const BoardList = () => {
           </div>
         </div>
       </div>
-      {List(board)}
+      <div className="container">
+
+        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          {board[0] !== undefined && board.map(list => {
+            return (
+              <List list={list} />
+            )
+          })}
+        </div>
+      </div>
     </Container>
   )
 }

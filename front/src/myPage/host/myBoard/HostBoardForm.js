@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Modal } from 'react-bootstrap';
 import ReactDatePicker from 'react-datepicker';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Auth from '../../../login/Auth';
 import Address from './Address';
 import ImageUploadBox from './component/ImageUploadBox';
@@ -40,14 +40,14 @@ const HostBoardForm = () => {
     BOARD_CARE_NO,
   } = insertBoard;
   // 변수 초기화 
-  useEffect(()=>{
-    Auth(2 , Navigate).then(Res =>{
+  useEffect(() => {
+    Auth(2, Navigate).then(Res => {
       setInsertBoard({
         ...insertBoard,
-        'BOARD_HOST_IDX' : Res.MEM_IDX
+        'BOARD_HOST_IDX': Res.MEM_IDX
       })
     })
-  },[])
+  }, [])
   const setAddrInfo = (data) => {
     setInsertBoard({
       ...insertBoard,
@@ -273,15 +273,25 @@ const HostBoardForm = () => {
             </div>
           </div>
         </section>
-        <div className='row align-items-end'>
+        <div className='row d-inline-flex'>
           <div className='col'>
             <button
-              className="btn btn-outline-dark"
+              className="btn btn-primary"
               type="button"
               onClick={() => insertOnClick()}>
               <i className="bi-cart-fill me-1"></i>
               등록하기
             </button>
+          </div>
+          <div className='col'>
+            <Link to={'/myPage/host/hostBoardList'}>
+              <button
+                className="btn btn-danger"
+                type="button">
+                <i className="bi-cart-fill me-1"></i>
+                취소하기
+              </button>
+            </Link>
           </div>
         </div>
 

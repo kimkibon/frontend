@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import SelectOneFile from '../../commons/Files/SelectOneFile';
 import AdminBoardList from './adminComponent/AdminBoardList';
 
 const AdminHostBoardList = () => {
@@ -29,22 +28,8 @@ const AdminHostBoardList = () => {
       }
       //서버에서 리스트 요청
     }).then(Response => {
-      setBoard(Response.data)
-      setShowBoard(Response.data)
-      const url = Response.data.map(async list => {
-
-        await SelectOneFile('0', list.BOARD_NO, list.BOARD_MODIFY_NO).then(Res => {
-          //요청된 리스트의 게시글 넘버로 메인 이미지 요청
-
-          list['URL'] = "data:image/;base64," + Res.URL
-        })
-          //변수에 URL 요소를 추가하고 서버로부터 리턴 받은 이미지를 문자화해서 저장
-        return list
-      })
-
-      Promise.all(url).then((data) => { setBoard(data) });
-      Promise.all(url).then((data) => { setShowBoard(data) });
-      //async - await 로 받아온 객체는 promise 객체이므로 이를 변환해서 저장 
+      setBoard(Response.data);
+      setShowBoard(Response.data);
     })
   }, [])
 
@@ -75,7 +60,15 @@ const AdminHostBoardList = () => {
         </button>
         {/* 어드민 계정에서 사용 가능한 버튼 모음 */}
       </div>
-      {AdminBoardList(showBoard)}
+      <div className="container">
+            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      
+      {showBoard[0]!==undefined && 
+      showBoard.map(list => {return(
+      <AdminBoardList list={list}/>
+      )})}
+      </div>
+      </div>
     </div>
   )
 }

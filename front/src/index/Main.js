@@ -3,6 +3,7 @@ import ReactDatePicker from 'react-datepicker';
 import { Link } from 'react-router-dom';
 import pets_dark from '../commons/images/pets_dark.jpg';
 import '../commons/style.css'
+import main from '../commons/images/main.jpeg';
 
 const Main = () => {
   const [startDate, setStartDate] = useState(new Date());
@@ -40,7 +41,7 @@ const Main = () => {
     <section className="row banner-area">
       {/* <!--Banner Area Start --> */}
       <div className="banner-area__img">
-        <img src={pets_dark} alt="banner-img" className="img-fluid" />
+        <img src={main} alt="banner-img" className="img-fluid" />
         <div className="banner-area__content">
           <div className='number'>
             <div className='row'>

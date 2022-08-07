@@ -1,49 +1,45 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import 'react-datepicker/dist/react-datepicker.css';
-import SelectOneFile from '../../../commons/Files/SelectOneFile';
 import AdminBoardList from '../../../admin/adminHostBoard/adminComponent/AdminBoardList';
+import { Link } from 'react-router-dom';
 
 
 const HostBoardList = () => {
   const [board, setBoard] = useState([]); //변수 초기화
   const memId = localStorage.getItem('MEM_ID');
-
-  const Search = () => {
+  useEffect(() => {
     axios({
       method: 'get',
       url: '/GareBnB/host/mypage/myboardList.do',
       params: {
-        'MEM_ID' : memId
+        'MEM_ID': memId
       }
       //서버에서 리스트 요청
     }).then(Response => {
-
-      const url = Response.data.map(async list => {
-        await SelectOneFile('0', list.BOARD_NO, list.BOARD_MODIFY_NO).then(Res => {
-          //요청된 리스트의 게시글 넘버로 메인 이미지 요청
-
-          list['URL'] = "data:image/;base64," + Res.URL
-        })
-        //변수에 URL 요소를 추가하고 서버로부터 리턴 받은 이미지를 문자화해서 저장
-        return list
-      })
-
-      Promise.all(url).then((data) => { setBoard(data) });
-      //async - await 로 받아온 객체는 promise 객체이므로 이를 변환해서 저장 
+      console.log(Response.data);
+      setBoard(Response.data)
     })
-
-  }
-
-  useEffect(()=>{
-    Search();
-  },[])
+  }, [])
 
 
 
   return (
-    <div>
-      {AdminBoardList(board)}
+    <div className="container">
+      <h1>내 게시글</h1>
+      <div className='row d-inline-flex'>
+        <div className='col float-end mt-5 mb-2'>
+          <Link to={'/mypage/host/hostBoardForm'}>
+            <button className='btn btn-primary'>게시글 작성</button>
+          </Link>
+        </div>
+      </div>
+      <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        {board[0] !== undefined && board.map(list => {
+          {return(<AdminBoardList list={list} />)}
+        })}
+      </div>
+      
     </div>
   )
 }
