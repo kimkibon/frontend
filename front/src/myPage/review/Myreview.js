@@ -2,16 +2,20 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Rating } from 'react-simple-star-rating';
+import DeleteReviewModal from './Modals/DeleteReviewModal';
 
 const Myreview =() => {
     const location = useLocation();
     const mem_id = location.state.CLI_ID;
     const res_idx = location.state.RES_IDX;
     const after_date = location.state.after_date;
-    const review_check = location.state.reviewcheck;
     
 
     const [myreview, setMyreview] = useState([]);
+
+    //리뷰삭제 모달
+    const [modalShow, setModalShow] = useState(false);
+
 
     useEffect(() => {
         axios({
@@ -40,34 +44,41 @@ const Myreview =() => {
         <div class="d-flex justify-content-center">
         <div class="col-4 ">
             <h1>리뷰 확인</h1>
-            {review_check===0 
-            ? <div><h3>작성한 리뷰가 없습니다.</h3><br/><button type="button" class="btn btn-primary" onClick={(e)=>{e.preventDefault();navigate(-1); }}>확인</button></div>
-            :   <div className='col-12'>
+            <div>
                     <div className='App'>
                         <Rating allowHalfIcon ratingValue={myreview.SCORE*20} readonly size={50} showTooltip/>
                     </div>
 
                     <p/>
 
-                    <div>
-                        <div class="border rounded col-8" style={{height: 120 + 'px'}} >
+                    <div className="d-flex justify-content-start">
+                        <div class="border rounded  col-11" style={{height: 120 + 'px'}} >
                             {myreview.REVIEW_CONTENT}
                         </div>
-                        <div className='col-3'>
-                        {new Date().getTime()<after_date && 
-                                <Link to ={'ModifyReview'} state={{'REVIEW_IDX': myreview.REVIEW_IDX, 'SCORE':myreview.SCORE, 'REVIEW_CONTENT':myreview.REVIEW_CONTENT}}>
-                                    <button type="button" class="btn btn-success">수정</button><br/>
-                                </Link> 
-                            } 
-                            
-                            <Link to ={'DeleteReview'} state={{'REVIEW_IDX': myreview.REVIEW_IDX}}>
-                                <button type="button" class="btn btn-secondary ">삭제</button>
-                            </Link>
-                        </div>
-                    </div>
+                        
+                        <div class="btn-group-vertical col-3 m-1">
 
-                    <p/>
-                    <div className='text-lg-center'>
+                            {new Date().getTime() < after_date &&
+                                <Link to={'ModifyReview'} state={{
+                                    'REVIEW_IDX': myreview.REVIEW_IDX,
+                                    'SCORE': myreview.SCORE, 'REVIEW_CONTENT': myreview.REVIEW_CONTENT
+                                }}>
+                                    <button type="button" class="btn btn-info">
+                                        수정</button><br /><br />
+                                </Link>
+                            }
+                            <DeleteReviewModal show={modalShow} onHide={() => setModalShow(false)} 
+                                state={{ 'REVIEW_IDX': myreview.REVIEW_IDX }}/>
+                            
+                                <button type="button" 
+                                    style={{width:58+'px',height:38+'px',backgroundColor:'#F3969A',border:'none',color:'white',borderRadius:0.4+'em'}} 
+                                    onClick={()=>{setModalShow(true)}}>삭제</button>
+                            
+
+                        </div>
+                        
+                    </div>
+                    <div className='text-lg-center m-4'>
                         <button type="button" class="btn btn-primary" onClick={(e)=>{
                                 e.preventDefault();
                                 navigate(-1); }}>확인</button>
@@ -75,7 +86,7 @@ const Myreview =() => {
 
                 </div>
 
-            }
+            
             </div>
         </div>
 

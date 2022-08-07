@@ -1,12 +1,11 @@
 import axios from 'axios';
-import { useLocation} from 'react-router-dom';
+import React from 'react';
+import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
+const DeleteReviewModal =(props) => {
 
-//예약취소 모달
-const ReserveCancel =(props) => {
-
-    const res_idx = props.state.RES_IDX;
+    const review_idx = props.state.REVIEW_IDX;
 
     return (
         <Modal
@@ -17,21 +16,21 @@ const ReserveCancel =(props) => {
             <Modal.Header closeButton>
             </Modal.Header>
             <Modal.Body>
-                예약을 취소하시겠습니까?
+                리뷰를 삭제하시겠습니까?
             </Modal.Body>
             <Modal.Footer>
                 <button type="button" class="btn btn-secondary "  onClick={props.onHide}>취소</button>
                 <button type="button" class="btn btn-primary " 
                         onClick={async() => {
-                            await  axios({
+                            await axios({
                                 method : 'post' ,
-                                url : '/GareBnB/mypage/ResCancel.do' ,
+                                url : '/GareBnB/mypage/deleteReview.do' ,
                                 contentType:"application/json;charset=UTF-8",
                                 params : {
-                                    RES_IDX : res_idx
+                                    REVIEW_IDX : review_idx
                                 }
                             }).then(Response => {
-                                window.location.href="/myPage"
+                                window.location.href="/myPage/memUseListPage"
                             });
                         }}>
                     확인
@@ -40,4 +39,4 @@ const ReserveCancel =(props) => {
         </Modal>
       )
 }
-export default ReserveCancel;
+export default DeleteReviewModal;

@@ -81,7 +81,7 @@ const InsertReviewModal =(props) => {
                 </div>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant='danger' onClick={()=>{setInputs(null);props.onHide();}}>취소</Button>
+                <Button variant='danger' onClick={()=>{setInputs('');props.onHide();}}>취소</Button>
                 <Button variant="primary" onClick={async() => {await inputreview()}}>
                     확인
                 </Button>
