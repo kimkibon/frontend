@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import SelectOneFile from '../../commons/Files/SelectOneFile';
 import AdminBoardList from './adminComponent/AdminBoardList';
 
 const AdminHostBoardList = () => {

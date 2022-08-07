@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import SelectOneFile from '../../../commons/Files/SelectOneFile';
 const AdminBoardList = (props) => {
 
+    console.log(props.list);
     const list = props.list;
 
     const [url,setUrl] = useState();
@@ -10,7 +11,7 @@ const AdminBoardList = (props) => {
     console.log(props);
     useEffect(()=>{
   
-      SelectOneFile('0',list.RES_BOARD_NO,list.RES_BOARD_MODIFY_NO).then(Res=>{
+      SelectOneFile('0',list.BOARD_NO,list.BOARD_MODIFY_NO).then(Res=>{
         setUrl("data:image/;base64,"+Res.URL);
         // setUrl(url);
       });
