@@ -5,13 +5,12 @@ import {useLocation} from 'react-router-dom';
  import Table from 'react-bootstrap/Table';
  import {Button,Form} from 'react-bootstrap';
  import { useNavigate } from 'react-router-dom';
+ import { useParams } from 'react-router-dom';
 
 
 const AdminReportDetail = () => {
 
-    const location = useLocation();
-    const report_idx = location.state.REPORT_IDX;
-    //console.log(qna_idx);
+    const {REPORT_IDX} = useParams();
 
     const [detail, setDetail] = useState([]);
     useEffect(() => {
@@ -20,7 +19,7 @@ const AdminReportDetail = () => {
               url : '/GareBnB/Admin/reportDetail.do' ,
               contentType:"application/json;charset=UTF-8",
               params : {
-                  REPORT_IDX : report_idx
+                  REPORT_IDX : REPORT_IDX
               }
           }).then(Response => {
               console.log(Response.data);
@@ -34,7 +33,7 @@ const AdminReportDetail = () => {
 
       //-------comment 업데이트
       const [reportUpdate , setReportUpdate] = useState({
-        comment : ''
+        comment : '',
       });
 
       const handleChange = (e) => { //이벤트 e 선언 폼의 text들이 change 될 때마다 e의 값이 넘어감
@@ -56,7 +55,7 @@ const AdminReportDetail = () => {
         contentType:"apllication/json; charset=UTF-8",
         params : {
           REPORT_COMMENT : (reportUpdate.comment),  //입력된 값이 넘어가야함
-          REPORT_IDX : report_idx
+          REPORT_IDX : REPORT_IDX
         }
       }).then(Response => {
         console.log(Response.data);
@@ -72,9 +71,9 @@ const AdminReportDetail = () => {
       const CommentForm =() => {
         return(
         <div className='commentF'>
+          <div> <h3>답변하기</h3>
         <Form onSubmit={adminUpdateReport}>
         <Form.Group controlId="formBasicEmail">
-        <Form.Label>답변하기</Form.Label>
         <Form.Control type="text" placeholder="답변내용을 등록하세요" 
         onChange={handleChange} name="comment" value={reportUpdate.comment} />
       </Form.Group>
@@ -83,6 +82,7 @@ const AdminReportDetail = () => {
         입력하기
       </Button>
       </Form>
+      </div>
       </div>
         )
       }
@@ -122,7 +122,7 @@ const AdminReportDetail = () => {
 
 
     <div>
-     {state===0 ? <h1><CommentForm/></h1>:
+     {state===0 ?<CommentForm/>:
       <>
       <label htmlFor="exampleTextarea" className="form-label mt-4"><h3>문의답변</h3></label>
       <div className="card border-success mb-3">
