@@ -5,7 +5,6 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useLocation } from 'react-router-dom';
 import { Button, Container } from 'react-bootstrap';
-import SelectOneFile from '../../commons/Files/SelectOneFile';
 
 
 const BoardList = () => {
