@@ -44,8 +44,8 @@ const Main = () => {
         <img src={main} alt="banner-img" className="img-fluid" />
         <div className="banner-area__content">
           <div className='number'>
-            <div className='row'>
-              <div className='col input-group mb-3'>
+            <div className='col col-sm-10 mt-5'>
+              <div className='col input-group mb-4'>
                 <span className="input-group-text" id="basic-addon1">케어링</span>
                 <input
                   className='form-control'
@@ -57,7 +57,7 @@ const Main = () => {
                 />
                 <span className="input-group-text" id="basic-addon1">마리 이상</span>
               </div>
-              <div className='col input-group mb-3'>
+              <div className='col col-sm-8 input-group mb-4'>
                 <span className='input-group-text'>지역</span>
                 <input
                   className='form-control'
@@ -68,22 +68,23 @@ const Main = () => {
                 />
               </div>
             </div>
-            <div className='input-group mb-1'>
+            <div className='input-group mb-4'>
               <span className='input-group-text'>예약 날짜</span>
-              <span className='form-control'>
-                {<ReactDatePicker
-                  className='form-control'
-                  minDate={new Date()}
-                  selected={startDate}
-                  onChange={onChange}
-                  startDate={startDate}
-                  endDate={endDate}
-                  selectsRange
-                  dateFormat={'yyyy년 MM월 dd일'}
-                />}
-              </span>
-              <button className='btn btn-danger'>
-                <Link to='/board' state={state} style={{ textDecoration: "none", color: "white" }}>Search
+              <ReactDatePicker
+                className='form-control'
+                minDate={new Date()}
+                selected={startDate}
+                onChange={onChange}
+                startDate={startDate}
+                endDate={endDate}
+                selectsRange
+                dateFormat={'yyyy년 MM월 dd일'}
+              />
+            </div>
+            <div className='col offset-8'>
+              <button className='btn btn-primary'>
+                <Link to='/board' state={state} style={{ textDecoration: "none", color: "white" }}>
+                  Search
                 </Link>
               </button>
             </div>
