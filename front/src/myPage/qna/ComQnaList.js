@@ -36,14 +36,12 @@ const ComQnaList = (props) => {
             <div>               
                 <Table width="920px" height="50px" className="table table-hover">
                     <tbody>
-                        <tr>
+                        <tr onClick={()=>{window.location.href="./qna/DetailQna/"+QNA_IDX}}>
                         {/* onClick={handleDetail} */}
                         <td width="50px">{QNA_IDX}</td>
                         <td width="70px">{QNA_ID}</td>
                         <td className='title' width="200px"> 
-                            <Link to ={"./DetailQna/"+QNA_IDX} >
                                  {QNA_TITLE}
-                                </Link>
                         </td>
                         <td width="100px">{QNA_DATE}</td>
                         <td width="70px">{QNA_STATE}</td>
