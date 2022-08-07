@@ -84,12 +84,8 @@ const MemUseListPage = () => {
 
                                     <div class="align-items-center align-content-center col-md-2 border-left mt-1">
                                         <div class="d-flex flex-column mt-4">
-                                            <Link to ={'InsertReport'} 
-                                                state={{'REPORT_ID': list.RES_CLI_ID, 'REPORT_RES_NO': list.RES_IDX,'REPORT_MEM_IDX':list.RES_HOST_ID}}>
-                                                <button class="btn btn-danger m-1">신고하기</button></Link>
+
                                             
-
-
                                             {/* 리뷰확인 */}
                                             {review_check === 1 ?
                                                 <Link to ={'Myreview'} 
@@ -111,6 +107,11 @@ const MemUseListPage = () => {
                                                                                                 onClick={()=>{setResidx(list.RES_IDX);setBoardno(list.RES_BOARD_NO);setModalShow(true);}}>리뷰쓰기</button>
                                                                                             :<Link to="" className="disable-link"><button type="button" class="btn btn-outline-primary m-1" disabled>리뷰쓰기</button></Link>)
                                                                             :<Link to="" className="disable-link"><button type="button" class="btn btn-outline-primary m-1" disabled>리뷰쓰기</button></Link>}
+                                        
+                                            
+                                            <Link to ={'InsertReport'} 
+                                                    state={{'REPORT_ID': list.RES_CLI_ID, 'REPORT_RES_NO': list.RES_IDX,'REPORT_MEM_IDX':list.RES_HOST_ID}}>
+                                                    <button class="btn btn-danger m-1">신고하기</button></Link>
                                         </div>
                                     </div>            
                                 </div>
