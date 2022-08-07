@@ -153,9 +153,7 @@ const MemModify = () => {
   return (
     <div className="container">
 
-      <div className="container px-4 px-lg-5 my-5">
-
-        <h2>회원정보 수정</h2><br />
+        <h2>회원정보 수정</h2><br /><br />
 
         <div className="row d-flex justify-content-end align-items-end ">
           <label className="col-md-2 col-form-label">아이디</label>
@@ -201,7 +199,7 @@ const MemModify = () => {
           <div className='col-md-4'>
             <Button variant="btn btn-outline-primary" onClick={modifyVerify}>인증 확인</Button> </div>
         </div>
-      </div><br />
+      <br /><br />
 
       <div className="row d-flex justify-content-center align-items-end">
         <div className='col-md-3'>
