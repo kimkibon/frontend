@@ -9,7 +9,6 @@ const Myreview =() => {
     const mem_id = location.state.CLI_ID;
     const res_idx = location.state.RES_IDX;
     const after_date = location.state.after_date;
-    const review_check = location.state.reviewcheck;
     
 
     const [myreview, setMyreview] = useState([]);
@@ -45,9 +44,7 @@ const Myreview =() => {
         <div class="d-flex justify-content-center">
         <div class="col-4 ">
             <h1>리뷰 확인</h1>
-            {review_check===0 
-            ? <div><h3>작성한 리뷰가 없습니다.</h3><br/><button type="button" class="btn btn-primary" onClick={(e)=>{e.preventDefault();navigate(-1); }}>확인</button></div>
-            :   <div>
+            <div>
                     <div className='App'>
                         <Rating allowHalfIcon ratingValue={myreview.SCORE*20} readonly size={50} showTooltip/>
                     </div>
@@ -89,7 +86,7 @@ const Myreview =() => {
 
                 </div>
 
-            }
+            
             </div>
         </div>
 
