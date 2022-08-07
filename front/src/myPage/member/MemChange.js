@@ -211,10 +211,10 @@ const MemChange = () => {
         </div><br /><br />
 
         <div className="row d-flex justify-content-center align-items-end">
-          <div className='col-md-6'>
+          <div className='col-md-7'>
             <Button className="btn btn-primary " type="button"
               onClick={insertOnClick}>
-              전환요청</Button> &nbsp;
+              전환요청</Button> &emsp;&emsp;&emsp;
             <Button className="btn btn-secondary" type="button">
               <Link to={'/'} style={{ textDecoration: "none", color: "white" }}>취소</Link>
             </Button>

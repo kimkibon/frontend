@@ -85,12 +85,11 @@ const HostInfo = () => {
   return (
     <div className="container">
 
-      <div className="container px-4 px-lg-5 my-5 h-100" >
         <h2>회원정보 보기(HOST)</h2><br />
 
         <div className="row d-flex justify-content-center align-items-center ">
           <div className="col-md-8">
-            <label className="col-md-2 col-form-label">호스트 사진</label>
+            <label className="col-md-4 col-form-label">호스트 사진 및 소개글 관련 사진</label>
             <Carousel>
               {file.map(url => {
                 return (
@@ -107,7 +106,7 @@ const HostInfo = () => {
                 )
               })}
             </Carousel>
-          </div></div></div><br />
+          </div></div><br />
 
       <div className="row d-flex justify-content-center align-items-center ">
         <label className="col-md-3 col-form-label">아이디</label>
@@ -154,13 +153,13 @@ const HostInfo = () => {
       <div className="row d-flex justify-content-center align-items-center">
         <label className="col-md-3 col-form-label">상세주소</label>
         <div className='col-md-5 text-center'>
-        <input type='text' value={hostDetail.HOST_ADDR2} className="form-control" readOnly></input></div>
+          <input type='text' value={hostDetail.HOST_ADDR2} className="form-control" readOnly></input></div>
       </div><br />
 
       <div className="row d-flex justify-content-center align-items-center">
         <label className="col-md-3 col-form-label">소개글</label>
         <div className='col-md-5 text-center'>
-        <textarea type='textarea' value={hostDetail.HOST_INTRO} className="form-control" rows="4" readOnly></textarea></div>
+          <textarea type='textarea' value={hostDetail.HOST_INTRO} className="form-control" rows="4" readOnly></textarea></div>
       </div><br />
 
       <div className="row d-flex justify-content-center align-items-center">
@@ -179,7 +178,7 @@ const HostInfo = () => {
 
       <div className="row">
         <div className="row d-flex justify-content-center align-items-center">
-          <div className='col-md-2'>
+          <div className='col-md-1'>
             <Button className="btn btn-primary " type="button">
               <Link to={'../HostModify'} style={{ textDecoration: "none", color: "white" }} state={{ mem: hostDetail, file: file }}>수정</Link>
             </Button> &nbsp;
