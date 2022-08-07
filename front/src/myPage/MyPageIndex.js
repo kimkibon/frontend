@@ -40,8 +40,8 @@ const MyPageIndex = () => {
   })
 },[])
   return (
-    <div class="container-fluid">
-      <div class="row">
+    <div className="container-fluid">
+      <div className="row">
         
         {/* <div class='col-lg-2'>
           <Sidebar />
