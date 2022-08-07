@@ -107,137 +107,136 @@ const HostModify = () => {
   return (
     <div className="container">
 
-      <div className="container px-4 px-lg-5 my-5 h-100" >
-        <h2>회원정보 수정(HOST)</h2><br />
-        <h5>이름, 비밀번호, 휴대폰번호는 일반회원 페이지에서 수정하실 수 있습니다.</h5><br />
+      <h2>회원정보 수정(HOST)</h2><br />
+      <h5>이름, 비밀번호, 휴대폰번호는 일반회원 페이지에서 수정하실 수 있습니다.</h5><br />
 
 
-        <div className="row d-flex justify-content-center align-items-center ">
-          <div className="col-md-9">
-            <label className="col-md-2 col-form-label">호스트 사진</label>
-            {/* 사진 첨부 */}
-            <ImageUploadBox getImages={getImages} beforeImages={hostfile} />
-          </div></div><br />
+      <div className="row d-flex justify-content-center align-items-center ">
+        <div className="col-md-8">
+          <label className="col-md-4 col-form-label">호스트 사진 및 소개글 관련 사진</label>
+          {/* 사진 첨부 */}
+          <ImageUploadBox getImages={getImages} beforeImages={hostfile} />
+        </div></div><br />
 
-        <div className="row d-flex justify-content-end align-items-end ">
-          <label className="col-md-3 col-form-label">아이디</label>
-          <div className='col-md-5'>
-            <input type='text' value={MEM_ID} className="form-control" readOnly></input>
-          </div>
-          <div className='col-md-4'></div>
-        </div><br />
-
-        <div className="row d-flex justify-content-end align-items-end ">
-          <label className="col-md-3 col-form-label">이름</label>
-          <div className='col-md-5 text-center'>
-            <input type='text' name='MEM_NAME' value={MEM_NAME} className="form-control" readOnly></input></div>
-          <div className='col-md-4'></div>
-        </div><br />
-
-        <div className="row d-flex justify-content-end align-items-end ">
-          <label className="col-md-3 col-form-label">비밀번호</label>
-          <div className='col-md-5 text-center'>
-            <input type='text' name='MEM_PW' value={MEM_PW} className="form-control" readOnly></input></div>
-          <div className='col-md-4'></div>
-        </div><br />
-
-        <div className="row d-flex justify-content-end align-items-end ">
-          <label className="col-md-3 col-form-label">휴대폰 번호</label>
-          <div className='col-md-5 text-center'>
-            <input type='text' name='MEM_PHONE' value={MEM_PHONE} className="form-control" readOnly></input></div>
-          <div className='col-md-4'></div>
-        </div><br />
-
-        <div className="row d-flex justify-content-end align-items-end ">
-          <label className="col-md-3 col-form-label">이메일</label>
-          <div className='col-md-5 text-center'>
-            <input type='text' name='HOST_EMAIL' value={HOST_EMAIL} className="form-control" onChange={onChange}></input></div>
-          <div className='col-md-4'></div>
-        </div><br />
-
-        <div className="row d-flex justify-content-end align-items-end ">
-          <label className="col-md-3 col-form-label">우편번호</label>
-          <div className='col-md-5 text-center'>
-            <input type='text' name='HOST_POST' value={HOST_POST} className="form-control" onChange={onChange}></input></div>
-          <div className='col-md-4'>
-            <Button variant="btn btn-outline-primary" onClick={() => setShowAddrModal(true)}>우편번호 찾기</Button> </div>
-        </div><br />
-
-        <div className="row d-flex justify-content-end align-items-end ">
-          <label className="col-md-3 col-form-label">기본주소</label>
-          <div className='col-md-5 text-center'>
-            <input type='text' name='HOST_ADDR1' value={HOST_ADDR1} className="form-control" onChange={onChange}></input></div>
-          <div className='col-md-4'></div>
-        </div><br />
-
-        <div className="row d-flex justify-content-end align-items-end ">
-          <label className="col-md-3 col-form-label">상세주소</label>
-          <div className='col-md-5 text-center'>
-            <input type='text' name='HOST_ADDR2' value={HOST_ADDR2} className="form-control" onChange={onChange}></input></div>
-          <div className='col-md-4'></div>
-        </div><br />
-
-        <div className="row d-flex justify-content-end align-items-center ">
-          <label className="col-md-3 col-form-label">소개글</label>
-          <div className='col-md-5 text-center'>
-            <textarea className="form-control" id="exampleTextarea" name='HOST_INTRO' value={HOST_INTRO} onChange={onChange} rows="3"></textarea></div>
-          <div className='col-md-4'></div>
-        </div><br />
-
-        <div className="row d-flex justify-content-end align-items-end ">
-          <label className="col-md-3 col-form-label">은행명</label>
-          <div className='col-md-5 text-center'>
-            <select className="form-select" id="exampleSelect1" onChange={onChange} name="HOST_BANK" value={HOST_BANK}>
-              <option>은행명을 선택하세요</option>
-              <option>신한</option>
-              <option>국민</option>
-              <option>우리</option>
-              <option>하나</option>
-              <option>농협</option>
-            </select></div>
-          <div className='col-md-4'></div>
-        </div><br />
-
-        <div className="row d-flex justify-content-end align-items-end ">
-          <label className="col-md-3 col-form-label">계좌번호</label>
-          <div className='col-md-5 text-center'>
-            <input type='text' name='HOST_ACCOUNT' value={HOST_ACCOUNT} className="form-control" onChange={onChange}></input></div>
-          <div className='col-md-4'></div>
-        </div><br /><br />
-
-        <div className="row d-flex justify-content-center align-items-end">
-          <div className='col-md-5'>
-            <Button className="btn btn-primary " type="button"
-              onClick={(e) => {
-                e.preventDefault();
-                updateOnClick();
-              }}>
-              수정완료</Button> &nbsp;
-            <Button className="btn btn-secondary" type="button">
-              <Link to={'../hostInfo'} style={{ textDecoration: "none", color: "white" }}>취소</Link>
-            </Button>
-          </div>
+      <div className="row d-flex justify-content-end align-items-end ">
+        <label className="col-md-2 col-form-label">아이디</label>
+        <div className='col-md-5'>
+          <input type='text' value={MEM_ID} className="form-control" readOnly></input>
         </div>
+        <div className='col-md-3'></div>
+      </div><br />
 
-      {/* 입력확인창 모달로 띄우기 !  */} 
-        <ModifyHost
-          show={insertModal}
-          onHide={() => setInsertModal(false)}
-          props={{
-            'hostModify': hostModify,
-            'updateFiles': insertFiles,
-            'fileType': '1',
-          }} />
+      <div className="row d-flex justify-content-end align-items-end ">
+        <label className="col-md-2 col-form-label">이름</label>
+        <div className='col-md-5 text-center'>
+          <input type='text' name='MEM_NAME' value={MEM_NAME} className="form-control" readOnly></input></div>
+        <div className='col-md-3'></div>
+      </div><br />
 
-       {/* 주소 검색 모달 */}
-        <Modal
-          show={showAddrModal}
-          onHide={() => setShowAddrModal(false)}>
-          <HostAddress
-            setAddrInfo={setAddrInfo} />
-        </Modal>
+      <div className="row d-flex justify-content-end align-items-end ">
+        <label className="col-md-2 col-form-label">비밀번호</label>
+        <div className='col-md-5 text-center'>
+          <input type='text' name='MEM_PW' value={MEM_PW} className="form-control" readOnly></input></div>
+        <div className='col-md-3'></div>
+      </div><br />
 
-      </div></div>
+      <div className="row d-flex justify-content-end align-items-end ">
+        <label className="col-md-2 col-form-label">휴대폰 번호</label>
+        <div className='col-md-5 text-center'>
+          <input type='text' name='MEM_PHONE' value={MEM_PHONE} className="form-control" readOnly></input></div>
+        <div className='col-md-3'></div>
+      </div><br />
+
+      <div className="row d-flex justify-content-end align-items-end ">
+        <label className="col-md-2 col-form-label">이메일</label>
+        <div className='col-md-5 text-center'>
+          <input type='text' name='HOST_EMAIL' value={HOST_EMAIL} className="form-control" onChange={onChange}></input></div>
+        <div className='col-md-3'></div>
+      </div><br />
+
+      <div className="row d-flex justify-content-end align-items-end ">
+        <label className="col-md-2 col-form-label">우편번호</label>
+        <div className='col-md-5 text-center'>
+          <input type='text' name='HOST_POST' value={HOST_POST} className="form-control" onChange={onChange}></input></div>
+        <div className='col-md-3'>
+          <Button variant="btn btn-outline-primary" onClick={() => setShowAddrModal(true)}>우편번호 찾기</Button> </div>
+      </div><br />
+
+      <div className="row d-flex justify-content-end align-items-end ">
+        <label className="col-md-2 col-form-label">기본주소</label>
+        <div className='col-md-5 text-center'>
+          <input type='text' name='HOST_ADDR1' value={HOST_ADDR1} className="form-control" onChange={onChange}></input></div>
+        <div className='col-md-3'></div>
+      </div><br />
+
+      <div className="row d-flex justify-content-end align-items-end ">
+        <label className="col-md-2 col-form-label">상세주소</label>
+        <div className='col-md-5 text-center'>
+          <input type='text' name='HOST_ADDR2' value={HOST_ADDR2} className="form-control" onChange={onChange}></input></div>
+        <div className='col-md-3'></div>
+      </div><br />
+
+      <div className="row d-flex justify-content-end align-items-center ">
+        <label className="col-md-2 col-form-label">소개글</label>
+        <div className='col-md-5 text-center'>
+          <textarea className="form-control" id="exampleTextarea" name='HOST_INTRO' value={HOST_INTRO} onChange={onChange} rows="3"></textarea></div>
+        <div className='col-md-3'></div>
+      </div><br />
+
+      <div className="row d-flex justify-content-end align-items-end ">
+        <label className="col-md-2 col-form-label">은행명</label>
+        <div className='col-md-5 text-center'>
+          <select className="form-select" id="exampleSelect1" onChange={onChange} name="HOST_BANK" value={HOST_BANK}>
+            <option>은행명을 선택하세요</option>
+            <option>신한</option>
+            <option>국민</option>
+            <option>우리</option>
+            <option>하나</option>
+            <option>농협</option>
+          </select></div>
+        <div className='col-md-3'></div>
+      </div><br />
+
+      <div className="row d-flex justify-content-end align-items-end ">
+        <label className="col-md-2 col-form-label">계좌번호</label>
+        <div className='col-md-5 text-center'>
+          <input type='text' name='HOST_ACCOUNT' value={HOST_ACCOUNT} className="form-control" onChange={onChange}></input></div>
+        <div className='col-md-3'></div>
+      </div><br /><br />
+
+      <div className="row d-flex justify-content-center align-items-end">
+        <div className='col-md-3'>
+          <Button className="btn btn-primary " type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              updateOnClick();
+            }}>
+            수정완료</Button> &emsp;&emsp;&emsp;
+          <Button className="btn btn-secondary" type="button">
+            <Link to={'../hostInfo'} style={{ textDecoration: "none", color: "white" }}>취소</Link>
+          </Button>
+        </div>
+      </div>
+
+      {/* 입력확인창 모달로 띄우기 !  */}
+      <ModifyHost
+        show={insertModal}
+        onHide={() => setInsertModal(false)}
+        props={{
+          'hostModify': hostModify,
+          'updateFiles': insertFiles,
+          'fileType': '1',
+        }} />
+
+      {/* 주소 검색 모달 */}
+      <Modal
+        show={showAddrModal}
+        onHide={() => setShowAddrModal(false)}>
+        <HostAddress
+          setAddrInfo={setAddrInfo} />
+      </Modal>
+
+    </div>
   )
 }
 

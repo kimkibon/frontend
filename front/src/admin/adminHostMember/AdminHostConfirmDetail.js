@@ -9,7 +9,7 @@ const AdminHostConfirmDetail = () => {
 
   const [url, setUrl] = useState();
   const [file, setFile] = useState([]);
-  const {MEM_IDX} = useParams();
+  const { MEM_IDX } = useParams();
 
   const [getHostMem, setGetHostMem] = useState([]);
 
@@ -80,98 +80,100 @@ const AdminHostConfirmDetail = () => {
   return (
     <div className="container">
 
-      <div className="container px-4 px-lg-5 my-5 h-100" >
-        <h2>호스트 회원 등록요청 상세보기</h2>
 
-        <div className="row d-flex justify-content-center align-items-center ">
-          <div className="col-md-8">
-            <label className="col-4 col-form-label">호스트 사진</label>
-            <Carousel>
-              {file.map(url => {
-                return (
-                  <Carousel.Item key={url.FILE_LEVEL}>
-                    <img
-                      className="d-block w-100"
-                      src={url.URL}
-                      width='700px'
-                      height='400px'
-                      alt=""
-                    />
-                    {/* fileList 에서 받아온 정보를 표시.  */}
-                  </Carousel.Item>
-                )
-              })}
-            </Carousel>
-          </div></div><br />
+      <h2>호스트 회원 등록요청 상세보기</h2>
 
-        <div className="row d-flex justify-content-center align-items-center ">
-          <label className="col-2 col-form-label">번호(IDX)</label>
-          <div className='col-6 text-center'>
-            <input type='text' value={getHostMem.MEM_IDX} className="form-control" readOnly></input></div>
-          <div className='col-2'></div>
-        </div><br />
+      <div className="row d-flex justify-content-center align-items-center ">
+        <div className="col-md-6">
+          <label className="col-4 col-form-label">호스트 사진 및 소개글 관련 사진</label>
+          <Carousel>
+            {file.map(url => {
+              return (
+                <Carousel.Item key={url.FILE_LEVEL}>
+                  <img
+                    className="d-block w-100"
+                    src={url.URL}
+                    width='700px'
+                    height='400px'
+                    alt=""
+                  />
+                  {/* fileList 에서 받아온 정보를 표시.  */}
+                </Carousel.Item>
+              )
+            })}
+          </Carousel>
+        </div></div><br />
 
-        <div className="row d-flex justify-content-center align-items-center ">
-          <label className="col-2 col-form-label">아이디</label>
-          <div className='col-6 text-center'>
-            <input type='text' value={getHostMem.MEM_ID} className="form-control" readOnly></input></div>
-          <div className='col-2'></div>
-        </div><br />
+      <div className="row d-flex justify-content-center align-items-center ">
+        <label className="col-2 col-form-label">번호(IDX)</label>
+        <div className='col-6 text-center'>
+          <input type='text' value={getHostMem.MEM_IDX} className="form-control" readOnly></input></div>
+        <div className='col-1'></div>
+      </div><br />
 
-        <div className="row d-flex justify-content-center align-items-center ">
-          <label className="col-2 col-form-label">이름</label>
-          <div className='col-6 text-center'>
-            <input type='text' value={getHostMem.MEM_NAME} className="form-control" readOnly></input></div>
-          <div className='col-2'></div>
-        </div><br />
+      <div className="row d-flex justify-content-center align-items-center ">
+        <label className="col-2 col-form-label">아이디</label>
+        <div className='col-6 text-center'>
+          <input type='text' value={getHostMem.MEM_ID} className="form-control" readOnly></input></div>
+        <div className='col-1'></div>
+      </div><br />
 
-        <div className="row d-flex justify-content-center align-items-center ">
-          <label className="col-2 col-form-label">휴대폰 번호</label>
-          <div className='col-6 text-center'>
-            <input type='text' value={getHostMem.MEM_PHONE} className="form-control" readOnly></input></div>
-          <div className='col-2'></div>
-        </div><br />
+      <div className="row d-flex justify-content-center align-items-center ">
+        <label className="col-2 col-form-label">이름</label>
+        <div className='col-6 text-center'>
+          <input type='text' value={getHostMem.MEM_NAME} className="form-control" readOnly></input></div>
+        <div className='col-1'></div>
+      </div><br />
 
-        <div className="row d-flex justify-content-center align-items-center ">
-          <label className="col-2 col-form-label">이메일</label>
-          <div className='col-6 text-center'>
-            <input type='text' value={getHostMem.HOST_EMAIL} className="form-control" readOnly></input></div>
-          <div className='col-2'></div>
-        </div><br />
+      <div className="row d-flex justify-content-center align-items-center ">
+        <label className="col-2 col-form-label">휴대폰 번호</label>
+        <div className='col-6 text-center'>
+          <input type='text' value={getHostMem.MEM_PHONE} className="form-control" readOnly></input></div>
+        <div className='col-1'></div>
+      </div><br />
 
-        <div className="row d-flex justify-content-center align-items-center ">
-          <label className="col-2 col-form-label">주소</label>
-          <div className='col-6 text-center'>
-            <input type='text' value={getHostMem.HOST_ADDR1} className="form-control" readOnly></input>
-            <input type='text' value={getHostMem.HOST_ADDR2} className="form-control" readOnly></input></div>
-          <div className='col-2'></div>
-        </div><br />
+      <div className="row d-flex justify-content-center align-items-center ">
+        <label className="col-2 col-form-label">이메일</label>
+        <div className='col-6 text-center'>
+          <input type='text' value={getHostMem.HOST_EMAIL} className="form-control" readOnly></input></div>
+        <div className='col-1'></div>
+      </div><br />
 
-        <div className="row d-flex justify-content-center align-items-center ">
-          <label className="col-2 col-form-label">계좌번호</label>
-          <div className='col-6 text-center'>
-            <input type='text' value={getHostMem.HOST_BANK} className="form-control" readOnly></input>
-            <input type='text' value={getHostMem.HOST_ACCOUNT} className="form-control" readOnly></input></div>
-          <div className='col-2'></div>
-        </div><br />
+      <div className="row d-flex justify-content-center align-items-center ">
+        <label className="col-2 col-form-label">주소</label>
+        <div className='col-3 text-center'>
+          <input type='text' value={getHostMem.HOST_ADDR1} className="form-control" readOnly></input></div>
+          <div className='col-3 text-center'>
+          <input type='text' value={getHostMem.HOST_ADDR2} className="form-control" readOnly></input></div>
+        <div className='col-1'></div>
+      </div><br />
 
-        <div className="row d-flex justify-content-center align-items-end">
-          <div className='col-md-4'>
-            <Button className="btn btn-primary " type="button"
-              onClick={hostResSuccess}>
-              <Link to='/admin/adminHostConfirmList' style={{ textDecoration: "none", color: "white" }}>승인</Link>
-            </Button> &nbsp;&nbsp;
-            <Button className="btn btn-success " type="button"
-              onClick={hostResFail}>
-              <Link to='/admin/adminHostConfirmList' style={{ textDecoration: "none", color: "white" }}>거절</Link>
-            </Button> &nbsp;&nbsp;
-            <Button className="btn btn-secondary" type="button">
-              <Link to='/admin/adminHostConfirmList' style={{ textDecoration: "none", color: "white" }}>취소</Link>
-            </Button>
-          </div>
+      <div className="row d-flex justify-content-center align-items-center ">
+        <label className="col-2 col-form-label">계좌번호</label>
+        <div className='col-2 text-center'>
+          <input type='text' value={getHostMem.HOST_BANK} className="form-control" readOnly></input></div>
+          <div className='col-4 text-center'>
+          <input type='text' value={getHostMem.HOST_ACCOUNT} className="form-control" readOnly></input></div>
+        <div className='col-1'></div>
+      </div><br /><br />
+
+      <div className="row d-flex justify-content-center align-items-end">
+        <div className='col-md-2'>
+          <Button className="btn btn-primary " type="button"
+            onClick={hostResSuccess}>
+            <Link to='/admin/adminHostConfirmList' style={{ textDecoration: "none", color: "white" }}>승인</Link>
+          </Button> &nbsp;&nbsp;
+          <Button className="btn btn-success " type="button"
+            onClick={hostResFail}>
+            <Link to='/admin/adminHostConfirmList' style={{ textDecoration: "none", color: "white" }}>거절</Link>
+          </Button> &nbsp;&nbsp;
+          <Button className="btn btn-secondary" type="button">
+            <Link to='/admin/adminHostConfirmList' style={{ textDecoration: "none", color: "white" }}>취소</Link>
+          </Button>
         </div>
+      </div>
 
-      </div></div>
+    </div>
   );
 }
 

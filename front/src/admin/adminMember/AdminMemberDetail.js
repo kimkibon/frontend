@@ -116,9 +116,9 @@ const AdminMemberDetail = () => {
 
         <h4>호스트 회원 정보</h4>
         <br />
-        <div className="row d-flex justify-content-center align-items-center ">
+        <div className="row d-flex justify-content-start align-items-center ">
           <div className="col-md-8">
-            <label className="col-md-4 col-form-label">호스트 사진</label>
+            <label className="col-md-4 col-form-label">호스트 사진 및 소개글 관련 사진</label>
             <Carousel>
               {file.map(url => {
                 return (
@@ -202,11 +202,11 @@ const AdminMemberDetail = () => {
         </div><br /><br />
 
         <div className="row d-flex justify-content-center align-items-end">
-          <div className='col-md-5'>
+          <div className='col-md-6'> 
             <Button className="btn btn-primary " type="button"
               onClick={adminModifySuccess}>
               <Link to='/admin/adminMemberList' style={{ textDecoration: "none", color: "white" }}>확인</Link>
-            </Button> &nbsp;
+            </Button> &emsp;&emsp;&emsp;
             <Button className="btn btn-secondary" type="button">
               <Link to='/admin/adminMemberList' style={{ textDecoration: "none", color: "white" }}>취소</Link>
             </Button>
