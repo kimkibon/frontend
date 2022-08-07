@@ -66,7 +66,7 @@ const AdminSidebar = () => {
           </Link>
         </li>
       </ul>
-      {/* <div class="toggle"><AiOutlineMenu className='fa' onClick={toggleMenu()}/></div> */}
+      {/* <div className="toggle"><AiOutlineMenu className='fa' onClick={toggleMenu()}/></div> */}
     </div>
 
 

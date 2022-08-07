@@ -106,22 +106,22 @@ const HostReserveList = () => {
 
 
     return (
-      <div class="stepper-wrapper">
-        <div class={a}>
-          <div class="step-counter">1</div>
-          <div class="step-name">예약요청</div>
+      <div className="stepper-wrapper">
+        <div className={a}>
+          <div className="step-counter">1</div>
+          <div className="step-name">예약요청</div>
         </div>
-        <div class={b}>
-          <div class="step-counter">2</div>
-          <div class="step-name">예약승인</div>
+        <div className={b}>
+          <div className="step-counter">2</div>
+          <div className="step-name">예약승인</div>
         </div>
-        <div class={c}>
-          <div class="step-counter">3</div>
-          <div class="step-name">결제대기</div>
+        <div className={c}>
+          <div className="step-counter">3</div>
+          <div className="step-name">결제대기</div>
         </div>
-        <div class={d}>
-          <div class="step-counter">4</div>
-          <div class="step-name">결제/예약완료</div>
+        <div className={d}>
+          <div className="step-counter">4</div>
+          <div className="step-name">결제/예약완료</div>
         </div>
       </div>
     )
@@ -142,18 +142,18 @@ const HostReserveList = () => {
         let resstate = list.RES_LEVEL;
         
         return(
-          <div class="container mt-5 mb-5">
-            <div class="d-flex justify-content-center row">
-                <div class="col-md-10">
+          <div className="container mt-5 mb-5">
+            <div className="d-flex justify-content-center row">
+                <div className="col-md-10">
 
                   {stateChange(resstate)}
 
-                  <div class="row p-2 bg-white border rounded align-items-center">
-                    <div class="col-md-3 mt-2 d-flex flex-column align-items-center align-content-center">
-                      <img class="img-fluid img-responsive rounded product-image" src={list.URL} width="200px" height="auto"/>
+                  <div className="row p-2 bg-white border rounded align-items-center">
+                    <div className="col-md-3 mt-2 d-flex flex-column align-items-center align-content-center">
+                      <img className="img-fluid img-responsive rounded product-image" src={list.URL} width="200px" height="auto"/>
                     </div>  
 
-                    <div class="col-md-7 mt-1">
+                    <div className="col-md-7 mt-1">
                       예약번호 {list.RES_IDX}<br/>
                       <h4>{list.BOARD_TITLE}</h4><br/>
                       <table>                  
@@ -189,14 +189,14 @@ const HostReserveList = () => {
                       </table>
                     </div>
                     
-                    <div class="align-items-center align-content-center col-md-2">
-                        <div class="d-flex flex-column mt-4">
+                    <div className="align-items-center align-content-center col-md-2">
+                        <div className="d-flex flex-column mt-4">
                           {/* 예약요청상태 */}
                           {resstate === 0 && 
                           <div>
-                            <button type="button" class="btn btn-primary" 
+                            <button type="button" className="btn btn-primary" 
                               onClick={()=>{resApprove(list.RES_IDX)}}>예약승인</button><p/>
-                            <button type="button" class="btn btn-secondary" 
+                            <button type="button" className="btn btn-secondary" 
                             onClick={()=>{setResidx(list.RES_IDX);setModalShow(true);}}>
                               예약거절</button>
                           </div>}
@@ -210,7 +210,7 @@ const HostReserveList = () => {
                           {[1,2,3,4].includes(resstate) && 
                             <Link to ={'HostInsertReport'} 
                             state={{'REPORT_ID': mem_id, 'REPORT_RES_NO': list.RES_IDX,'REPORT_MEM_IDX':list.RES_CLI_ID}}>
-                              <button class="btn btn-danger">신고하기</button>
+                              <button className="btn btn-danger">신고하기</button>
                             </Link>
                           }
 

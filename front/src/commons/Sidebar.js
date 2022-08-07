@@ -46,7 +46,7 @@ const Sidebar = () => {
       {((localStorage.getItem('MEM_ID') !== undefined) && (memberLevel.MEM_LEVEL !== 0)) &&
       <Offside/>
     }
-      {/* <div class="toggle"><AiOutlineMenu className='fa' onClick={toggleMenu()}/></div> */}
+      {/* <div className="toggle"><AiOutlineMenu className='fa' onClick={toggleMenu()}/></div> */}
       {MEM_LEVEL === 1 && <HostSidebar />}
       {MEM_LEVEL === 0 && <AdminSidebar />}
     </Col>

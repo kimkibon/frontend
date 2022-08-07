@@ -52,7 +52,7 @@ const DetailReport = () => {
       </div>
 
       <hr/>
-      <div class="con mt-3">
+      <div className="con mt-3">
         <label className="content mt-2 pl-4" >
         {detail.REPORT_CONTENT}
         </label>
@@ -61,7 +61,7 @@ const DetailReport = () => {
       <hr/>
 
       <p>문의답변</p>
-      <div class="com mt-1">
+      <div className="com mt-1">
         <div className="comcom" >
           {state === '미답변' ?
            <p>답변이 등록되지 않았습니다.</p>:
@@ -73,7 +73,7 @@ const DetailReport = () => {
       <br/>
 
       <div className='col-lg-12 text-lg-center'>
-        <button type="button" class="btn btn-success"  
+        <button type="button" className="btn btn-success"  
         onClick={(e)=>{ e.preventDefault(); navigate(-1); }}>확인</button>
       </div> 
           

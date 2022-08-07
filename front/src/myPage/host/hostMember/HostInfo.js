@@ -121,8 +121,8 @@ const HostInfo = () => {
           <input type='text' value={hostDetail.MEM_NAME} className="form-control" readOnly></input></div>
       </div><br />
 
-      <div class="row d-flex justify-content-center align-items-center">
-        <label class="col-md-3 col-form-label">비밀번호</label>
+      <div className="row d-flex justify-content-center align-items-center">
+        <label className="col-md-3 col-form-label">비밀번호</label>
         <div className='col-md-5 text-center'>
           <input type='text' value={hostDetail.MEM_PW} className="form-control" readOnly></input></div>
       </div><br />

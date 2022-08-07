@@ -108,22 +108,22 @@ const ReserveListPage = () => {
     }
 
     return (
-      <div class="stepper-wrapper">
-        <div class={a}>
-          <div class="step-counter">1</div>
-          <div class="step-name">예약요청</div>
+      <div className="stepper-wrapper">
+        <div className={a}>
+          <div className="step-counter">1</div>
+          <div className="step-name">예약요청</div>
         </div>
-        <div class={b}>
-          <div class="step-counter">2</div>
-          <div class="step-name">예약승인</div>
+        <div className={b}>
+          <div className="step-counter">2</div>
+          <div className="step-name">예약승인</div>
         </div>
-        <div class={c}>
-          <div class="step-counter">3</div>
-          <div class="step-name">결제대기</div>
+        <div className={c}>
+          <div className="step-counter">3</div>
+          <div className="step-name">결제대기</div>
         </div>
-        <div class={d}>
-          <div class="step-counter">4</div>
-          <div class="step-name">결제/예약완료</div>
+        <div className={d}>
+          <div className="step-counter">4</div>
+          <div className="step-name">결제/예약완료</div>
         </div>
       </div>
     )
@@ -154,24 +154,24 @@ const ReserveListPage = () => {
       {resList[0] !== undefined && resList.map((list,index) => {
         let resstate = list.RES_LEVEL;
         return (
-          <div class="container mt-5 mb-5" key={index}>
+          <div className="container mt-5 mb-5" key={index}>
       
-            <div class="d-flex justify-content-center row">
-              <div class="col-md-10">
+            <div className="d-flex justify-content-center row">
+              <div className="col-md-10">
 
                 {stateChange(resstate)}
 
 
-                <div class="row p-2 bg-white border rounded align-items-center">
+                <div className="row p-2 bg-white border rounded align-items-center">
 
-                  <div class="col-md-3 mt-1 mt-2 d-flex flex-column align-items-center align-content-center">
-                    <img class="img-fluid img-responsive rounded product-image" src={list.URL} width="200px" height="auto" /><p />
+                  <div className="col-md-3 mt-1 mt-2 d-flex flex-column align-items-center align-content-center">
+                    <img className="img-fluid img-responsive rounded product-image" src={list.URL} width="200px" height="auto" /><p />
                     
                     
                     {[1, 2, 3].includes(resstate) && 
                       <button 
                       type="button" 
-                      class="btn btn-warning" 
+                      className="btn btn-warning" 
                       onClick={() => hostModal(list.HOST_ID)}
                       >
                         호스트정보
@@ -179,7 +179,7 @@ const ReserveListPage = () => {
                       }                  
                   
                   </div>
-                  <div class="col-md-7 mt-1">
+                  <div className="col-md-7 mt-1">
                     예약번호 {list.RES_IDX}<br/>
                     <h4>{list.BOARD_TITLE}</h4><br/>
                     <table>                  
@@ -207,13 +207,13 @@ const ReserveListPage = () => {
                       
                     </table>
                   </div>
-                  <div class="align-items-center align-content-center col-md-2">
-                    <div class="d-flex flex-column mt-4">
+                  <div className="align-items-center align-content-center col-md-2">
+                    <div className="d-flex flex-column mt-4">
 
                       {/* 예약승인상태 */}
                       {resstate === 1 &&
                         <div>
-                          <Link to={'resConfirm'} state={{ 'res_idx': list.RES_IDX }}><button type="button" class="btn btn-primary m-1">예약확정</button></Link>
+                          <Link to={'resConfirm'} state={{ 'res_idx': list.RES_IDX }}><button type="button" className="btn btn-primary m-1">예약확정</button></Link>
                         </div>
                       }
 
@@ -221,7 +221,7 @@ const ReserveListPage = () => {
                       {/* 예약요청상태 */}
                       {resstate === 0 &&
                         <div>
-                          <button type="button" class="btn btn-outline-primary m-1" disabled>요청대기</button>
+                          <button type="button" className="btn btn-outline-primary m-1" disabled>요청대기</button>
                         </div>}   
 
 
@@ -230,7 +230,7 @@ const ReserveListPage = () => {
                       <div>
                         {/* 모달 */}
                         <ReserveCancel show={cancelmodalShow} onHide={() => setCancelmodalShow(false)} state={{ 'RES_IDX': list.RES_IDX }}/>
-                        <button type="button" class="btn btn-secondary m-1" onClick={()=>{setCancelmodalShow(true)}}>예약취소</button>
+                        <button type="button" className="btn btn-secondary m-1" onClick={()=>{setCancelmodalShow(true)}}>예약취소</button>
                       </div>}
                         
          
@@ -255,7 +255,7 @@ const ReserveListPage = () => {
                             </Popover.Body>
                           </Popover>
                         }>
-                          <button type="button" class="btn btn-warning m-1">거절사유</button>
+                          <button type="button" className="btn btn-warning m-1">거절사유</button>
                       </OverlayTrigger>}
                         
                     </div>

@@ -43,7 +43,7 @@ const MyPageIndex = () => {
     <div className="container-fluid">
       <div className="row">
         
-        {/* <div class='col-lg-2'>
+        {/* <div className='col-lg-2'>
           <Sidebar />
         </div> */}
         

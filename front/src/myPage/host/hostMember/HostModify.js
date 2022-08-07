@@ -180,14 +180,14 @@ const HostModify = () => {
         <div className="row d-flex justify-content-end align-items-center ">
           <label className="col-md-3 col-form-label">소개글</label>
           <div className='col-md-5 text-center'>
-            <textarea class="form-control" id="exampleTextarea" name='HOST_INTRO' value={HOST_INTRO} onChange={onChange} rows="3"></textarea></div>
+            <textarea className="form-control" id="exampleTextarea" name='HOST_INTRO' value={HOST_INTRO} onChange={onChange} rows="3"></textarea></div>
           <div className='col-md-4'></div>
         </div><br />
 
         <div className="row d-flex justify-content-end align-items-end ">
           <label className="col-md-3 col-form-label">은행명</label>
           <div className='col-md-5 text-center'>
-            <select class="form-select" id="exampleSelect1" onChange={onChange} name="HOST_BANK" value={HOST_BANK}>
+            <select className="form-select" id="exampleSelect1" onChange={onChange} name="HOST_BANK" value={HOST_BANK}>
               <option>은행명을 선택하세요</option>
               <option>신한</option>
               <option>국민</option>

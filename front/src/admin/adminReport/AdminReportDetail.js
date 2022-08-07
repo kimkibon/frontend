@@ -108,7 +108,7 @@ const AdminReportDetail = () => {
       </div>
 
       <hr/>
-      <div class="con mt-3">
+      <div className="con mt-3">
           {detail.REPORT_CONTENT}
       </div>
 
@@ -124,14 +124,14 @@ const AdminReportDetail = () => {
     <div>
      {state===0 ? <h1><CommentForm/></h1>:
       <>
-      <label htmlFor="exampleTextarea" class="form-label mt-4"><h3>문의답변</h3></label>
+      <label htmlFor="exampleTextarea" className="form-label mt-4"><h3>문의답변</h3></label>
       <div className="card border-success mb-3">
         <div className="card-body">
           <p className="card-text">{detail.REPORT_COMMENT}</p>
         </div>
       </div>
       <div className='col-lg-12 text-lg-center'>
-        <button type="button" class="btn btn-success"  
+        <button type="button" className="btn btn-success"  
         onClick={(e)=>{ e.preventDefault(); navigate(-1); }}>확인</button>
       </div> 
       </>
@@ -180,7 +180,7 @@ const AdminReportDetail = () => {
 //     <div>
 //      {state===0 ? <h1><CommentForm/></h1>:
 //       <>
-//       <label htmlFor="exampleTextarea" class="form-label mt-4"><h3>문의답변</h3></label>
+//       <label htmlFor="exampleTextarea" className="form-label mt-4"><h3>문의답변</h3></label>
 //       <div className="card border-success mb-3">
 //         <div className="card-body">
 //           <p className="card-text">{detail.REPORT_COMMENT}</p>
@@ -189,7 +189,7 @@ const AdminReportDetail = () => {
 //       </>
 //       }
 //       <div className='col-lg-12 text-lg-center'>
-//         <button type="button" class="btn btn-success"  
+//         <button type="button" className="btn btn-success"  
 //         onClick={(e)=>{ e.preventDefault(); navigate(-1); }}>확인</button>
 //       </div> 
 //       </div>  

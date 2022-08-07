@@ -68,7 +68,7 @@ const AdminReportList = () => {
             <td width="100px">등록일</td>
 
             <td width="100px">
-              <div class="form-group" onChange={handleSelected}>
+              <div className="form-group" onChange={handleSelected}>
               <select className="form-select">
                 <option key={2} value="2">전체답변</option>
                 <option key={0} value="0">미답변</option>

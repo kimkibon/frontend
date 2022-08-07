@@ -19,8 +19,8 @@ const DeleteReviewModal =(props) => {
                 리뷰를 삭제하시겠습니까?
             </Modal.Body>
             <Modal.Footer>
-                <button type="button" class="btn btn-secondary "  onClick={props.onHide}>취소</button>
-                <button type="button" class="btn btn-primary " 
+                <button type="button" className="btn btn-secondary "  onClick={props.onHide}>취소</button>
+                <button type="button" className="btn btn-primary " 
                         onClick={async() => {
                             await axios({
                                 method : 'post' ,

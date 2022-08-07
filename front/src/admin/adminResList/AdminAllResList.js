@@ -85,7 +85,7 @@ const AdminAllResList =() => {
                         <td width="20%">호스트ID</td>
                         <td width="20%"align='center'>게시글번호</td>
                         <td width="20%" align='center'>
-                            <div class="form-group" onChange={handleSelected}>
+                            <div className="form-group" onChange={handleSelected}>
                                 <select className="form-select">
                                     <option key={6} value="6">예약상태</option>
                                     <option key={0} value="0">예약요청</option>

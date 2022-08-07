@@ -7,11 +7,11 @@ const DeleteReview =() => {
     const navigate = useNavigate();
 
     return (
-        <div class="d-flex justify-content-center row">
-            <div class="col-md-4 ">
+        <div className="d-flex justify-content-center row">
+            <div className="col-md-4 ">
                 <h1>리뷰를 삭제하시겠습니까?</h1>
                 <p/>
-                <button type="button" class="btn btn-primary" onClick={(e)=>{
+                <button type="button" className="btn btn-primary" onClick={(e)=>{
                     e.preventDefault();
                     axios({
                             method : 'post' ,
@@ -25,7 +25,7 @@ const DeleteReview =() => {
                         });
                 }}> 확인 </button>
                 &nbsp;
-                <button type="button" class="btn btn-secondary" onClick={(e)=>{
+                <button type="button" className="btn btn-secondary" onClick={(e)=>{
                     e.preventDefault();
                     navigate(-1); }}>취소</button>
             </div>

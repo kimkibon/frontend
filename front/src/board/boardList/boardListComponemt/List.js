@@ -25,7 +25,7 @@ const List = (board) => {
                   <h4 className="card-text">
                     {list.BOARD_TITLE}
                   </h4>
-                  <figure class="text-end">
+                  <figure className="text-end">
                     <p>
                       {list.BOARD_PRICE}원/일
                     </p>

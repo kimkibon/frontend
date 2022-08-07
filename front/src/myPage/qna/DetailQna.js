@@ -54,7 +54,7 @@ const DetailQna = () => {
       </div>
 
       <hr/>
-      <div class="con mt-3">
+      <div className="con mt-3">
           {detail.QNA_CONTENT}
       </div>
 
@@ -76,7 +76,7 @@ const DetailQna = () => {
       <br/>
 
       <div className='col-lg-12 text-lg-center'>
-        <button type="button" class="btn btn-success"  
+        <button type="button" className="btn btn-success"  
         onClick={(e)=>{ e.preventDefault(); navigate(-1); }}>확인</button>
       </div> 
           

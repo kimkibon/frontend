@@ -175,7 +175,7 @@ const MemChange = () => {
         <div className="row d-flex justify-content-end align-items-center ">
           <label className="col-md-3 col-form-label">소개글</label>
           <div className='col-md-5 text-center'>
-            <textarea class="form-control" id="exampleTextarea" name='HOST_INTRO' placeholder="본인 소개글 (경력, 자격증, 포부, 자기소개 등)"
+            <textarea className="form-control" id="exampleTextarea" name='HOST_INTRO' placeholder="본인 소개글 (경력, 자격증, 포부, 자기소개 등)"
               value={insertHost.HOST_INTRO} onChange={onChange} rows="4"></textarea></div>
           <div className='col-md-4'></div>
         </div><br />
@@ -191,7 +191,7 @@ const MemChange = () => {
         <div className="row d-flex justify-content-end align-items-end ">
           <label className="col-md-3 col-form-label">은행명</label>
           <div className='col-md-5 text-center'>
-            <select class="form-select" id="exampleSelect1" onChange={onChange} name="HOST_BANK" value={insertHost.HOST_BANK}>
+            <select className="form-select" id="exampleSelect1" onChange={onChange} name="HOST_BANK" value={insertHost.HOST_BANK}>
               <option>은행명을 선택하세요</option>
               <option>신한</option>
               <option>국민</option>

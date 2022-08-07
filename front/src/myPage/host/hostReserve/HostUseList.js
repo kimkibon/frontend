@@ -49,15 +49,15 @@ const HostUseList = () => {
             {resComList[0] !==undefined && resComList.map((list)=>{
                 
                 return(
-                    <div class="container mt-5 mb-5">
-                        <div class="d-flex justify-content-center row">
-                            <div class="col-md-10">
-                                <div class="row p-2 bg-white border rounded  align-items-center">
-                                    <div class="col-md-3 mt-2 d-flex flex-column align-items-center align-content-center">
-                                    <img class="img-fluid img-responsive rounded product-image" src={list.URL} width="200px" height="auto"/>
+                    <div className="container mt-5 mb-5">
+                        <div className="d-flex justify-content-center row">
+                            <div className="col-md-10">
+                                <div className="row p-2 bg-white border rounded  align-items-center">
+                                    <div className="col-md-3 mt-2 d-flex flex-column align-items-center align-content-center">
+                                    <img className="img-fluid img-responsive rounded product-image" src={list.URL} width="200px" height="auto"/>
                                     </div>
 
-                                    <div class="col-md-7 mt-1">
+                                    <div className="col-md-7 mt-1">
                                         예약번호 {list.RES_IDX}<br/>
                                         <h4>{list.BOARD_TITLE}</h4><br/>
                                         <table>                  
@@ -93,11 +93,11 @@ const HostUseList = () => {
                                         </table>
                                     </div>
 
-                                    <div class="align-items-center align-content-center col-md-2 border-left mt-1">
-                                        <div class="d-flex flex-column mt-4">
+                                    <div className="align-items-center align-content-center col-md-2 border-left mt-1">
+                                        <div className="d-flex flex-column mt-4">
                                             <Link to ={'InsertReport'} 
                                             state={{'REPORT_ID': mem_id, 'REPORT_RES_NO': list.RES_IDX,'REPORT_MEM_IDX':list.RES_CLI_ID}}>
-                                                <button class="btn btn-danger">신고하기</button>
+                                                <button className="btn btn-danger">신고하기</button>
                                             </Link>
                                         </div>
                                     </div>

@@ -93,7 +93,7 @@ const BoardList = () => {
             <div className='col-md-3'></div>
             <div className='col input-group mb-3'>
               <span
-                class="input-group-text"
+                className="input-group-text"
                 id="basic-addon1"
               >
                 케어링

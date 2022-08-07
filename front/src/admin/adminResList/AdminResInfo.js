@@ -38,7 +38,7 @@ const AdminResInfo =() => {
     return (
         <div>
             <h3>예약정보</h3>
-            <table  class="table">
+            <table  className="table">
                 <tbody>
                 <tr>
                     <td>
@@ -148,11 +148,11 @@ const AdminResInfo =() => {
             </table>
             <div className='text-lg-center'>
                 <Link to ={'resCancel'} state={{'res_idx': resInfo.RES_IDX}}>
-                    {[3,5].includes(resInfo.RES_LEVEL) && <button type="button" class="btn btn-primary">환불하기</button> }           
-                    {[0,1,2].includes(resInfo.RES_LEVEL) && <button type="button" class="btn btn-primary">예약취소</button>}
+                    {[3,5].includes(resInfo.RES_LEVEL) && <button type="button" className="btn btn-primary">환불하기</button> }           
+                    {[0,1,2].includes(resInfo.RES_LEVEL) && <button type="button" className="btn btn-primary">예약취소</button>}
                 </Link>
                 &nbsp;
-                <button type="button" class="btn btn-primary" 
+                <button type="button" className="btn btn-primary" 
                 onClick={(e)=>{e.preventDefault();window.location.href="/admin/adminAllResList"}}>확인</button>
             </div>            
         </div>

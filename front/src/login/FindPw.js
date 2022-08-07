@@ -85,7 +85,7 @@ const FindPw = (props) => {
       <Modal.Body>
         <div className="container ">
           <div className="row p-4">
-            <div class="col-sm-3 offset-2 ">
+            <div className="col-sm-3 offset-2 ">
               <label htmlFor="inputchangePW" className="control-label">
                 비밀번호
               </label>
@@ -102,7 +102,7 @@ const FindPw = (props) => {
           </div>
 
           <div className="row p-4">
-            <div class="col-sm-3 offset-2 ">
+            <div className="col-sm-3 offset-2 ">
               <label for="inputChangePWOK" className="control-label">
                 비밀번호 확인
               </label>

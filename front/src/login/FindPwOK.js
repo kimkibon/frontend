@@ -90,7 +90,7 @@ const FindPwOK = (Login) => {
         <div className="container ">
 
         <div className="row p-4">
-            <div class="col-sm-1 offset-3 ">
+            <div className="col-sm-1 offset-3 ">
               <label for="inputName" className="control-label">
                 ID
               </label>
@@ -107,7 +107,7 @@ const FindPwOK = (Login) => {
           </div>
           
           <div className="row p-4">
-            <div class="col-sm-1 offset-3 ">
+            <div className="col-sm-1 offset-3 ">
               <label for="inputName" className="control-label">
                 NAME
               </label>
@@ -124,7 +124,7 @@ const FindPwOK = (Login) => {
           </div>
 
           <div className="row p-4">
-            <div class="col-sm-1 offset-3 ">
+            <div className="col-sm-1 offset-3 ">
               <label for="inputPhone" className="col-sm-2 control-label">
                 PHONE
               </label>

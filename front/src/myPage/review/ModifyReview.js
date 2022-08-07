@@ -59,21 +59,21 @@ const ModifyReview =() => {
 
 
     return (
-        <div class="d-flex justify-content-center row">
-            <div class="col-4 ">
+        <div className="d-flex justify-content-center row">
+            <div className="col-4 ">
                 <h1>리뷰수정</h1>
                 <div className='App'>
                     <Rating transition onClick={handleRating} size={50} ratingValue={rating} allowHalfIcon showTooltip/>
                 </div>
                 <p/>
                     
-                    <textarea class="d-flex justify-content-start border rounded col-12" name="review" placeholder="후기" onChange={onChange} value={review} style={{height: 120 + 'px',resize:'none', border:'none'}}/>
+                    <textarea className="d-flex justify-content-start border rounded col-12" name="review" placeholder="후기" onChange={onChange} value={review} style={{height: 120 + 'px',resize:'none', border:'none'}}/>
                     
                 <p/>
                     
                 <div className='text-lg-center m-4'>
-                <button class="btn btn-primary" onClick={updatereview}>수정완료</button>&nbsp;
-                <button class="btn btn-secondary" onClick={(e)=>{
+                <button className="btn btn-primary" onClick={updatereview}>수정완료</button>&nbsp;
+                <button className="btn btn-secondary" onClick={(e)=>{
                         e.preventDefault();
                         navigate(-1); }}>취소</button>
                 </div>

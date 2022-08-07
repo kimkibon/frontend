@@ -41,8 +41,8 @@ const Myreview =() => {
 
 
     return (
-        <div class="d-flex justify-content-center">
-        <div class="col-4 ">
+        <div className="d-flex justify-content-center">
+        <div className="col-4 ">
             <h1>리뷰 확인</h1>
             <div>
                     <div className='App'>
@@ -52,18 +52,18 @@ const Myreview =() => {
                     <p/>
 
                     <div className="d-flex justify-content-start">
-                        <div class="border rounded  col-11" style={{height: 120 + 'px'}} >
+                        <div className="border rounded  col-11" style={{height: 120 + 'px'}} >
                             {myreview.REVIEW_CONTENT}
                         </div>
                         
-                        <div class="btn-group-vertical col-3 m-1">
+                        <div className="btn-group-vertical col-3 m-1">
 
                             {new Date().getTime() < after_date &&
                                 <Link to={'ModifyReview'} state={{
                                     'REVIEW_IDX': myreview.REVIEW_IDX,
                                     'SCORE': myreview.SCORE, 'REVIEW_CONTENT': myreview.REVIEW_CONTENT
                                 }}>
-                                    <button type="button" class="btn btn-info">
+                                    <button type="button" className="btn btn-info">
                                         수정</button><br /><br />
                                 </Link>
                             }
@@ -79,7 +79,7 @@ const Myreview =() => {
                         
                     </div>
                     <div className='text-lg-center m-4'>
-                        <button type="button" class="btn btn-primary" onClick={(e)=>{
+                        <button type="button" className="btn btn-primary" onClick={(e)=>{
                                 e.preventDefault();
                                 navigate(-1); }}>확인</button>
                     </div>

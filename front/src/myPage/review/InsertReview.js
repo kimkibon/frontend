@@ -74,7 +74,7 @@ const InsertReview = () => {
       <br/> 
       <textarea rows="4" cols="50" name="review" placeholder="후기를 작성하세요" onChange={onChange} value={review}/>
       <br/>
-      <button type="button" class="btn btn-primary" onClick={inputreview}>등록하기</button>
+      <button type="button" className="btn btn-primary" onClick={inputreview}>등록하기</button>
     </div>
     
   )

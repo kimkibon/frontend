@@ -154,7 +154,7 @@ const Join = () => {
   return (
     <div className="container ">
       <div className="row p-4">
-        <div class="col-sm-1 offset-3">
+        <div className="col-sm-1 offset-3">
           <label for="inputID" className="control-label">
             ID
           </label>
@@ -182,7 +182,7 @@ const Join = () => {
       </div>
 
       <div className="row p-4">
-        <div class="col-sm-1 offset-3">
+        <div className="col-sm-1 offset-3">
           <label for="inputPW" className="col-sm-2 control-label">
             PW
           </label>
@@ -198,7 +198,7 @@ const Join = () => {
         </div>
       </div>
       <div className="row p-4">
-        <div class="col-sm-1 offset-3">
+        <div className="col-sm-1 offset-3">
           <label for="inputPWCheck" className="col-sm-2 control-label">
             PWCheck
           </label>
@@ -214,7 +214,7 @@ const Join = () => {
         </div>
       </div>
       <div className="row p-4">
-        <div class="col-sm-1 offset-3">
+        <div className="col-sm-1 offset-3">
           <label for="inputName" className="col-sm-2 control-label">
             Name
           </label>
@@ -230,7 +230,7 @@ const Join = () => {
         </div>
       </div>
       <div className="row p-4">
-        <div class="col-sm-1 offset-3">
+        <div className="col-sm-1 offset-3">
           <label for="inputPhone" className="col-sm-2 control-label">
             Phone
           </label>
@@ -251,7 +251,7 @@ const Join = () => {
         </div>
       </div>
       <div className="row p-4">
-        <div class="col-sm-1 offset-3">
+        <div className="col-sm-1 offset-3">
           <label for="inputPhone" className="col-sm-2 control-label"></label>
         </div>
         <div className="col-sm-3">

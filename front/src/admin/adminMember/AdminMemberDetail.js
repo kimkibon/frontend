@@ -182,7 +182,7 @@ const AdminMemberDetail = () => {
         <div className="row d-flex justify-content-end align-items-center ">
           <label className="col-md-3 col-form-label">소개글</label>
           <div className='col-md-5 text-center'>
-            <textarea class="form-control" id="exampleTextarea" name='HOST_INTRO' placeholder="본인 소개글 (경력, 자격증, 포부, 자기소개 등)"
+            <textarea className="form-control" id="exampleTextarea" name='HOST_INTRO' placeholder="본인 소개글 (경력, 자격증, 포부, 자기소개 등)"
               value={getMem.HOST_INTRO} readOnly rows="4"></textarea></div>
           <div className='col-md-4'></div>
         </div><br />
