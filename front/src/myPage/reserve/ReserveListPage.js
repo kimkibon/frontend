@@ -7,6 +7,7 @@ import './resstyle.css'
 import HostDetailModal from "./Modals/HostDetailModal";
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
+import ReserveCancel from "./ResCancel";
 
 
 //예약상태
@@ -29,8 +30,6 @@ const ReserveListPage = () => {
   //const [author, setAuthor] = useState({});
   //const navigate = useNavigate();
 
-
-  const [modalShow, setModalShow] = useState(false);
 
   useEffect(() => {
 
@@ -133,6 +132,9 @@ const ReserveListPage = () => {
 
 //////////모달!!!!!!!!!!!!!!!!!!!!
 //////////////hostid 셋팅
+  const [modalShow, setModalShow] = useState(false);
+  const [cancelmodalShow, setCancelmodalShow] = useState(false);
+
   const [hostt, setHostt] = useState();
 
   const hostModal=(host)=>{
@@ -225,10 +227,12 @@ const ReserveListPage = () => {
 
 
                       {[0, 1, 2].includes(resstate) &&
-                        <Link to={'resCancel'} state={{ 'res_idx': list.RES_IDX }}>
-                          <button type="button" class="btn btn-secondary m-1">예약취소</button>
-                        </Link>}
-
+                      <div>
+                        {/* 모달 */}
+                        <ReserveCancel show={cancelmodalShow} onHide={() => setCancelmodalShow(false)} state={{ 'RES_IDX': list.RES_IDX }}/>
+                        <button type="button" class="btn btn-secondary m-1" onClick={()=>{setCancelmodalShow(true)}}>예약취소</button>
+                      </div>}
+                        
          
 
                       {/* 결제대기상태 */}
