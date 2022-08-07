@@ -44,7 +44,7 @@ const Main = () => {
         <img src={main} alt="banner-img" className="img-fluid" />
         <div className="banner-area__content">
           <div className='number'>
-            <div className='col col-sm-10 mt-5'>
+            <div className='col col-sm-11 mt-5'>
               <div className='col input-group mb-4'>
                 <span className="input-group-text" id="basic-addon1">케어링</span>
                 <input
@@ -57,7 +57,7 @@ const Main = () => {
                 />
                 <span className="input-group-text" id="basic-addon1">마리 이상</span>
               </div>
-              <div className='col col-sm-8 input-group mb-4'>
+              <div className='col col-sm11 input-group mb-4'>
                 <span className='input-group-text'>지역</span>
                 <input
                   className='form-control'
@@ -68,8 +68,10 @@ const Main = () => {
                 />
               </div>
             </div>
-            <div className='input-group mb-4'>
+            <div className='input-group'>
               <span className='input-group-text'>예약 날짜</span>
+            </div>
+            <div className='col col-sm-11 mb-4'>
               <ReactDatePicker
                 className='form-control'
                 minDate={new Date()}
