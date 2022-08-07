@@ -50,7 +50,7 @@ const MemUseListPage = () => {
 
     },[]);
   
-    //신고
+
 
 
     return (
@@ -86,8 +86,8 @@ const MemUseListPage = () => {
                                             
                                             {new Date().getTime()<after_date ?
                                                                         (review_check===0 ? 
-                                                                            <Link to="" className="disable-link"><button type="button" class="btn btn-primary m-1" 
-                                                                                                onClick={()=>{setResidx(list.RES_IDX);setBoardno(list.RES_BOARD_NO);setModalShow(true);}}>리뷰쓰기</button></Link>
+                                                                            <button type="button" class="btn btn-primary m-1" style={{width:90+'px'}}
+                                                                                                onClick={()=>{setResidx(list.RES_IDX);setBoardno(list.RES_BOARD_NO);setModalShow(true);}}>리뷰쓰기</button>
                                                                                             :<Link to="" className="disable-link"><button type="button" class="btn btn-outline-primary m-1" disabled>리뷰쓰기</button></Link>)
                                                                             :<Link to="" className="disable-link"><button type="button" class="btn btn-outline-primary m-1" disabled>리뷰쓰기</button></Link>}
                                         </div>

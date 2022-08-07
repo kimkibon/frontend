@@ -72,15 +72,15 @@ const HostDetailModal = (props) => {
             <div className='row col-sm-6' >
               <label className="col-md-4 col-form-label mt-5">이름</label>
               <div className='col-md-6 text-center mt-5'>
-                <input value={hostDetail.MEM_NAME} className="form-control" readOnly></input>
+                <input value={hostDetail.MEM_NAME} className="form-control" disabled/>
               </div>
               <label className="col-md-4 col-form-label">휴대폰 번호</label>
               <div className='col-md-6 text-center'>
-                <input type='text' value={hostDetail.MEM_PHONE} className="form-control" readOnly></input>
+                <input type='text' value={hostDetail.MEM_PHONE} className="form-control" disabled/>
               </div>
               <label className="col-md-4 col-form-label">호스트 성별</label>
               <div className='col-md-6 text-center'>
-                <input type='text' value={gender(hostDetail.HOST_JUMIN2)} className="form-control" readOnly></input>
+                <input type='text' value={gender(hostDetail.HOST_JUMIN2)} className="form-control" disabled/>
               </div>
             </div></div>
         </div>

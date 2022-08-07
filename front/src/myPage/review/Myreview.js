@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Rating } from 'react-simple-star-rating';
+import DeleteReviewModal from './Modals/DeleteReviewModal';
 
 const Myreview =() => {
     const location = useLocation();
@@ -12,6 +13,10 @@ const Myreview =() => {
     
 
     const [myreview, setMyreview] = useState([]);
+
+    //리뷰삭제 모달
+    const [modalShow, setModalShow] = useState(false);
+
 
     useEffect(() => {
         axios({
@@ -65,9 +70,13 @@ const Myreview =() => {
                                         수정</button><br /><br />
                                 </Link>
                             }
-                            <Link to={'DeleteReview'} state={{ 'REVIEW_IDX': myreview.REVIEW_IDX }}>
-                                <button type="button" class="btn btn-secondary ">삭제</button>
-                            </Link>
+                            <DeleteReviewModal show={modalShow} onHide={() => setModalShow(false)} 
+                                state={{ 'REVIEW_IDX': myreview.REVIEW_IDX }}/>
+                            
+                                <button type="button" 
+                                    style={{width:58+'px',height:38+'px',backgroundColor:'#F3969A',border:'none',color:'white',borderRadius:0.4+'em'}} 
+                                    onClick={()=>{setModalShow(true)}}>삭제</button>
+                            
 
                         </div>
                         
