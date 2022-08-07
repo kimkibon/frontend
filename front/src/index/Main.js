@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import ReactDatePicker from 'react-datepicker';
 import { Link } from 'react-router-dom';
 import homeImage from '../commons/images/homeImage.png';
+import pets from '../commons/images/pets.jpg';
 import '../commons/style.css'
 
 const Main = () => {
@@ -40,7 +41,7 @@ const Main = () => {
     <section className="row banner-area">
       {/* <!--Banner Area Start --> */}
       <div className="banner-area__img">
-        <img src={homeImage} alt="banner-img" className="img-fluid" />
+        <img src={pets} alt="banner-img" className="img-fluid" />
         <div className="banner-area__content">
           <div className='number'>
             <div className='row'>
@@ -67,23 +68,25 @@ const Main = () => {
                 />
               </div>
             </div>
-            <div className='input-group mb-3'>
-              <span className='input-group-text'>예약 날짜</span>
-              <span className='form-control'>
-                {<ReactDatePicker
-                  className='form-control'
-                  minDate={new Date()}
-                  selected={startDate}
-                  onChange={onChange}
-                  startDate={startDate}
-                  endDate={endDate}
-                  selectsRange
-                  dateFormat={'yyyy년 MM월 dd일'}
-                />}
-              </span>
-              <Link to='/board' state={state} className='btn btn-danger'>
-                Search
-              </Link>
+            <div className='row align-items-center'>
+              <div className='input-group mb-1'>
+                <span className='input-group-text'>예약 날짜</span>
+                <span className='form-control'>
+                  {<ReactDatePicker
+                    className='form-control'
+                    minDate={new Date()}
+                    selected={startDate}
+                    onChange={onChange}
+                    startDate={startDate}
+                    endDate={endDate}
+                    selectsRange
+                    dateFormat={'yyyy년 MM월 dd일'}
+                  />}
+                </span>
+                <Link to='/board' state={state} className='btn btn-danger'>
+                  Search
+                </Link>
+              </div>
             </div>
           </div>
         </div>
