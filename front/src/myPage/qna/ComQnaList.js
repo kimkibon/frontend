@@ -15,7 +15,7 @@ const ComQnaList = (props) => {
                     method : 'post' ,
                     url : '/GareBnB/mypage/deleteQna.do' ,
                     contentType:"application/json;charset=UTF-8",
-                    params : {
+                    params : { 
                         QNA_IDX : QNA_IDX
                     }
         
