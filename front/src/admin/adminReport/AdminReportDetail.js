@@ -129,7 +129,7 @@ const AdminReportDetail = () => {
         <div className="card-body">
           <p className="card-text">{detail.REPORT_COMMENT}</p>
         </div>
-      </div>
+      </div> 
       <div className='col-lg-12 text-lg-center'>
         <button type="button" className="btn btn-success"  
         onClick={(e)=>{ e.preventDefault(); navigate(-1); }}>확인</button>
