@@ -30,8 +30,8 @@ const AdminSidebar = () => {
 
         <li>
           <Link to="/Admin/adminHostConfirmList">
-            <span className='icon'><AiFillNotification /></span>
-            <span className='title'> 호스트 등록요청 </span>
+            <span className='icon'><AiFillNotification className='fa'/></span>
+            <span className='title'>호스트 등록요청 </span>
           </Link>
         </li>
 
@@ -54,14 +54,14 @@ const AdminSidebar = () => {
 
         <li>
           <Link to="/Admin/adminQnaList">
-            <span className='icon'><AiFillEye /></span>
+            <span className='icon'><AiFillEye className='fa'/></span>
             <span className='title'>QNA 관리</span>
           </Link>
         </li>
 
         <li>
           <Link to="/Admin/adminReportList">
-            <span className='icon'><AiFillInteraction /></span>
+            <span className='icon'><AiFillInteraction className='fa'/></span>
             <span className='title'>신고 관리</span>
           </Link>
         </li>
