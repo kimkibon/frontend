@@ -68,73 +68,74 @@ const MemDetail = () => {
     }
 
     return (
-        <div className="container">
-            <hr/>
-            <h3>회원정보 보기</h3>
-            <hr/> <br /><br />
+        <div>
+            <div className="container">
+                <hr />
+                <h3>회원정보 보기</h3>
+                <hr /> <br /><br />
 
-            <div className="row d-flex justify-content-end align-items-end ">
-                <label className="col-md-2 col-form-label">아이디</label>
-                <div className='col-md-4 text-center'>
-                    <input type='text' value={memDetail.MEM_ID} className="form-control" readOnly></input></div>
+                <div className="row d-flex justify-content-end align-items-end ">
+                    <label className="col-md-2 col-form-label">아이디</label>
+                    <div className='col-md-4 text-center'>
+                        <input type='text' value={memDetail.MEM_ID} className="form-control" readOnly></input></div>
                     <div className='col-md-4'></div>
-            </div><br />
+                </div><br />
 
-            <div className="row d-flex justify-content-end align-items-end">
-                <label className="col-md-2 col-form-label">이름</label>
-                <div className='col-md-4 text-center'>
-                    <input type='text' value={memDetail.MEM_NAME} className="form-control" readOnly></input></div>
-                    <div className='col-md-4'></div>
-            </div><br />
-
-            <div className="row d-flex justify-content-end align-items-end">
-                <label className="col-md-2 col-form-label">비밀번호</label>
-                <div className='col-md-4 text-center'>
-                    <input type='text' value={memDetail.MEM_PW} className="form-control" readOnly></input></div>
-                    <div className='col-md-4'></div>
-            </div><br />
-
-            <div className="row d-flex justify-content-end align-items-end">
-                <label className="col-md-2 col-form-label">휴대폰 번호</label>
-                <div className='col-md-4 text-center'>
-                    <input type='text' value={memDetail.MEM_PHONE} className="form-control" readOnly></input></div>
-                    <div className='col-md-4'></div>
-            </div><br /><br />
-
-
-            <div className="row">
-                <div className="row d-flex justify-content-center align-items-center">
-                    <div className='col-md-3'>
-                        <Button className="btn btn-primary " type="button">
-                            <Link to={'../member/MemModify'} style={{ textDecoration: "none", color: "white" }} state={{ mem: memDetail }}>수정</Link>
-                        </Button> &nbsp;
-
-                    </div></div>
                 <div className="row d-flex justify-content-end align-items-end">
-                    <div className='col-md-2'>
-                        <button type="button" className="btn btn-link" style={{ color: "lightgray" }} onClick={handleShow}>탈퇴</button>
-                    </div></div>
+                    <label className="col-md-2 col-form-label">이름</label>
+                    <div className='col-md-4 text-center'>
+                        <input type='text' value={memDetail.MEM_NAME} className="form-control" readOnly></input></div>
+                    <div className='col-md-4'></div>
+                </div><br />
+
+                <div className="row d-flex justify-content-end align-items-end">
+                    <label className="col-md-2 col-form-label">비밀번호</label>
+                    <div className='col-md-4 text-center'>
+                        <input type='text' value={memDetail.MEM_PW} className="form-control" readOnly></input></div>
+                    <div className='col-md-4'></div>
+                </div><br />
+
+                <div className="row d-flex justify-content-end align-items-end">
+                    <label className="col-md-2 col-form-label">휴대폰 번호</label>
+                    <div className='col-md-4 text-center'>
+                        <input type='text' value={memDetail.MEM_PHONE} className="form-control" readOnly></input></div>
+                    <div className='col-md-4'></div>
+                </div><br /><br />
+
+
+                <div className="row">
+                    <div className="row d-flex justify-content-center align-items-center">
+                        <div className='col-md-3'>
+                            <Button className="btn btn-primary " type="button">
+                                <Link to={'../member/MemModify'} style={{ textDecoration: "none", color: "white" }} state={{ mem: memDetail }}>수정</Link>
+                            </Button> &nbsp;
+
+                        </div></div>
+                    <div className="row d-flex justify-content-end align-items-end">
+                        <div className='col-md-2'>
+                            <button type="button" className="btn btn-link" style={{ color: "lightgray" }} onClick={handleShow}>탈퇴</button>
+                        </div></div>
+                </div>
+
+                <Modal show={show} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>정말로 탈퇴하시겠습니까?</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div style={{ color: 'red' }}>
+                            탈퇴 후에는 해당 아이디로 다시 가입할 수 없으며, <br /> 아이디와 데이터는 복구할 수 없습니다. <br /><br /></div>
+                        <div>
+                            <h5>비밀번호 재확인</h5></div>
+                        <input type="password" placeholder='비밀번호를 입력하세요' onChange={e => setOriginPw(e.target.value)} className="form-control">
+                        </input>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={handleClose}>취소</Button>
+                        <Button variant="light" onClick={PWCHECK} style={{ color: "white" }}>탈퇴</Button>
+                    </Modal.Footer>
+                </Modal>
+
             </div>
-
-            <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>정말로 탈퇴하시겠습니까?</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <div style={{ color: 'red' }}>
-                        탈퇴 후에는 해당 아이디로 다시 가입할 수 없으며, <br /> 아이디와 데이터는 복구할 수 없습니다. <br /><br /></div>
-                    <div>
-                        <h5>비밀번호 재확인</h5></div>
-                    <input type="password" placeholder='비밀번호를 입력하세요' onChange={e => setOriginPw(e.target.value)} className="form-control">
-                    </input>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>취소</Button>
-                    <Button variant="light" onClick={PWCHECK} style={{ color: "white" }}>탈퇴</Button>
-                </Modal.Footer>
-            </Modal>
-
-
         </div>
     )
 }

@@ -146,6 +146,7 @@ const ReserveListPage = () => {
   
   return (
     <div>
+    <div className="container">
       <hr/>
         <h3>예약내역</h3>
       <hr/>
@@ -273,7 +274,7 @@ const ReserveListPage = () => {
 
       })
       }
-
+      </div>
     </div>
   )
 }

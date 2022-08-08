@@ -10,6 +10,7 @@ const List = (props) => {
 
 
   useEffect(() => {
+    console.log('render')
     SelectOneFile('0', list.BOARD_NO, list.BOARD_MODIFY_NO).then(Res => {
       setUrl("data:image/;base64," + Res.URL);
       // setUrl(url);
