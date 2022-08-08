@@ -85,14 +85,12 @@ const AdminReportList = () => {
       {reportListcopy[0] !== undefined && reportListcopy.map((list)=> {
       return (
         <tbody>
-                        <tr>
+                        <tr onClick={()=>{window.location.href="/admin/adminReportDetail/"+list.REPORT_IDX}}>
                         {/* onClick={handleDetail} */}
                         <td width="60px">{list.REPORT_IDX}</td>
                         <td width="50px">{list.REPORT_ID}</td>
                         <td width="200px">
-                            <Link to = {"/admin/adminReportDetail/"+list.REPORT_IDX} state = {{'REPORT_IDX' : list.REPORT_IDX}}>
                                  {list.REPORT_TITLE}
-                            </Link>
                         </td>
                         <td width="100px">{list.REPORT_DATE}</td>
                         <td width="100px">{list.REPORT_STATE}</td> 
