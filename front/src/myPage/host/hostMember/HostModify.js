@@ -88,9 +88,6 @@ const HostModify = () => {
                     if (hostModify.HOST_ACCOUNT === '') {
                       alert('계좌번호를 입력해주세요.')
                     } else {
-                      if (insertFiles[1] === undefined) {
-                        alert('사진을 두 장 이상 입력해주세요')
-                      } else {
                         setInsertModal(true);
                       }
                     }
@@ -102,7 +99,7 @@ const HostModify = () => {
         }
       }
     }
-  }
+
 
   return (
     <div className="container">
