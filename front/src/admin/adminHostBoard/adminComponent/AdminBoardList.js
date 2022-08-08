@@ -3,12 +3,10 @@ import { Link } from 'react-router-dom'
 import SelectOneFile from '../../../commons/Files/SelectOneFile';
 const AdminBoardList = (props) => {
 
-    console.log(props.list);
     const list = props.list;
 
     const [url, setUrl] = useState();
 
-    console.log(props);
     useEffect(() => {
 
         SelectOneFile('0', list.BOARD_NO, list.BOARD_MODIFY_NO).then(Res => {
@@ -49,15 +47,15 @@ const AdminBoardList = (props) => {
     //컴펌 레벨에 따른 종류 표시 
     return (
 
-        <div className="col" key={list.BOARD_NO}>
-            <div className="card h-100 shadow-sm">
-                <Link to='/board/detail' state={list}>
+            <div className="card h-100 shadow-sm" >
+                <Link to='/board/detail' state={list} >
                     <img
-                        className="d-block w-100 rounded p-1"
-                        width='700px'
-                        height='400px'
+                        className="d-block rounded p-1"
+                        width='100%'
+                        height='270px'
                         src={list.URL}
                         alt=""
+                        style={{ 'objectFit': 'cover' }}
                     />
                 </Link>
                 <div className="card-body">
@@ -71,6 +69,9 @@ const AdminBoardList = (props) => {
                         <p>
                             {list.BOARD_HOST_ID}
                         </p>
+                        <p>
+                            {list.BOARD_ADDR1} {list.BOARD_ADDR2}
+                        </p>
                     </figure>
                     <div className="d-flex justify-content-between align-items-center">
                         <div className="btn-group">
@@ -82,7 +83,6 @@ const AdminBoardList = (props) => {
                     </div>
                 </div>
             </div>
-        </div>
 
     )
 }

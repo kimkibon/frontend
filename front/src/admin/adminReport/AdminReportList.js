@@ -61,11 +61,11 @@ const AdminReportList = () => {
       
       <Table striped width="900px" height="30px" className="table table-hover">
         <thead>
-          <tr>
-            <td width="60px">번호</td>
-            <td width="50px">아이디</td>
+          <tr align='center'>
+            <td width="100px">번호</td>
+            <td width="100px">아이디</td>
             <td width="200px">신고제목</td>
-            <td width="100px">등록일</td>
+            <td width="150px">등록일</td>
 
             <td width="100px">
               <div className="form-group" onChange={handleSelected}>
@@ -78,7 +78,7 @@ const AdminReportList = () => {
               </div>
             </td>
             
-            <td width="50px"></td>
+            <td width="10px"></td>
           </tr>
         </thead>
       

@@ -18,7 +18,7 @@ const HostSidebar = () => {
           <li>
                 <Link to='/myPage/ReserveListPage'>
                   <span className='icon'><BsFillAlarmFill className='fa' /></span>
-                  <span className='title'>RESERVATION</span>
+                  <span className='title'>예약내역</span>
                 </Link>
               </li>
 
@@ -53,7 +53,7 @@ const HostSidebar = () => {
           <label className='hostmenu' htmlFor='hostmenu'>
             <span className='icon'><AiOutlineDown className='fa'/></span>
             <span className='title'>
-              host 메뉴
+              &nbsp; host 메뉴
             </span>
             </label>
           <input id="hostmenu" type="checkbox"></input> 

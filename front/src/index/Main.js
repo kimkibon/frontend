@@ -32,6 +32,7 @@ const Main = () => {
       setEndDate(end);
 
       setState({
+        ...state,
         'START_DATE': start,
         'END_DATE': end
       })
