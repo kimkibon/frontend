@@ -38,49 +38,54 @@ const DetailQna = () => {
 
 
   return (
-    <div className='container'>
-      <div className='top'>
-          <h5>상세보기</h5>
-        <hr/>
+    <>
+      <div className='container mt-5 mb-5'>
+          <div className="d-flex justify-content-center row">
+            <div className='col-md-10 '>
+              <div className='top'>
+                  <h5>상세보기</h5>
+                <hr/>
 
-        <div className='dtitle'>
-          <h2>{detail.QNA_TITLE}</h2>
-        </div>
+                <div className='dtitle'>
+                  <h2>{detail.QNA_TITLE}</h2>
+                </div>
 
-        <div className='row'>
-          <div className='col-lg-10'>{detail.QNA_ID}</div>
-          <div className='col-lg-2'>{detail.QNA_DATE}</div>
+                <div className='row'>
+                  <div className='col-lg-10'>{detail.QNA_ID}</div>
+                  <div className='col-lg-2'>{detail.QNA_DATE}</div>
+                </div>
+              </div>
+
+              <hr/>
+              <div className="con mt-3">
+                  {detail.QNA_CONTENT}
+              </div>
+
+              <hr/>
+
+              <p>문의답변</p>
+              <div className="com mt-1">
+                <div className='comcom'>
+                  {state === '미답변' ?
+                  <p>답변이 등록되지 않았습니다.</p>:
+                  comment
+                  } 
+                </div>
+              </div>
+
+              {/* 
+                          상태 : {detail.QNA_STATE}<br/>
+                          번호 : {detail.QNA_IDX}<br/> */}
+              <br/>
+
+              <div className='col-lg-12 text-lg-center'>
+                <button type="button" className="btn btn-success"  
+                onClick={(e)=>{ e.preventDefault(); navigate(-1); }}>확인</button>
+              </div>
+          </div>
         </div>
       </div>
-
-      <hr/>
-      <div className="con mt-3">
-          {detail.QNA_CONTENT}
-      </div>
-
-      <hr/>
-
-      <p>문의답변</p>
-      <div className="com mt-1">
-        <div className='comcom'>
-          {state === '미답변' ?
-           <p>답변이 등록되지 않았습니다.</p>:
-           comment
-           } 
-        </div>
-      </div>
-
-      {/* 
-                  상태 : {detail.QNA_STATE}<br/>
-                  번호 : {detail.QNA_IDX}<br/> */}
-      <br/>
-
-      <div className='col-lg-12 text-lg-center'>
-        <button type="button" className="btn btn-success"  
-        onClick={(e)=>{ e.preventDefault(); navigate(-1); }}>확인</button>
-      </div> 
-          
-    </div>          
+    </>          
   );
 };
 

@@ -45,6 +45,7 @@ const HostUseList = () => {
     return (
         
         <div>
+            <div className="container">
             <hr/>
                 <h3>이용내역</h3>
             <hr/>
@@ -111,6 +112,7 @@ const HostUseList = () => {
                 )
             
             })}
+            </div>
         </div>
     )
 }

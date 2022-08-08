@@ -67,11 +67,11 @@ const AdminQnaList = () => {
       
       <Table striped width="900px" height="30px" className="table table-hover">
         <thead>
-          <tr>
-            <td width="60px">문의번호</td>
-            <td width="50px">아이디</td>
+          <tr align='center'>
+            <td width="100px">문의번호</td>
+            <td width="100px">아이디</td>
             <td width="200px">문의제목</td>
-            <td width="100px">등록일</td>
+            <td width="150px">등록일</td>
 
             <td width="100px">
               <div className="form-group" onChange={handleSelected}>
@@ -84,14 +84,15 @@ const AdminQnaList = () => {
     </div>
             </td>
             
-            <td width="50px"></td>
+            <td width="10px"></td>
           </tr>
         </thead>
       
       {qnaListcopy.map((list)=> {
       return (
         <tbody>
-                        <tr onClick={()=>{window.location.href="./adminQnaList/adminQnaDetail/"+list.QNA_IDX}}>
+                        <tr onClick={()=>{window.location.href="./adminQnaList/adminQnaDetail/"+list.QNA_IDX}}
+                             align='center'>
                         <td width="50px">{list.QNA_IDX}</td>
                         <td width="50px">{list.QNA_ID}</td>
                         <td width="200px">

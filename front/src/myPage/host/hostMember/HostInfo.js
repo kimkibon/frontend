@@ -83,6 +83,7 @@ const HostInfo = () => {
 
 
   return (
+    <div>
     <div className="container">
       <hr/>
         <h3>회원정보 보기(HOST)</h3>
@@ -209,6 +210,7 @@ const HostInfo = () => {
           <Button variant="light" onClick={PWCHECK}>탈퇴</Button>
         </Modal.Footer>
       </Modal>
+    </div>
     </div>
   )
 }

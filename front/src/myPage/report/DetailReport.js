@@ -36,48 +36,53 @@ const DetailReport = () => {
 
   return (
 
-    <div className='container'>
-      <div className='top'>
-          <h5>상세보기</h5>
-        <hr/>
+    <>
+      <div className='container mt-5 mb-5'>
+          <div className="d-flex justify-content-center row">
+            <div className='col-md-10 '>
+              <div className='top'>
+                  <h5>상세보기</h5>
+                <hr/>
 
-        <div className='title'>
-          <h2>{detail.REPORT_TITLE}</h2>
+                <div className='title'>
+                  <h2>{detail.REPORT_TITLE}</h2>
+                </div>
+
+                <div className='row'>
+                  <div className='col-lg-10'>{detail.REPORT_ID}</div>
+                  <div className='col-lg-2'>{detail.REPORT_DATE}</div>
+                </div>
+              </div>
+
+              <hr/>
+              <div className="con mt-3">
+                <label className="content mt-2 pl-4" >
+                {detail.REPORT_CONTENT}
+                </label>
+              </div>
+
+              <hr/>
+
+              <p>문의답변</p>
+              <div className="com mt-1">
+                <div className="comcom" >
+                  {state === '미답변' ?
+                  <p>답변이 등록되지 않았습니다.</p>:
+                  comment
+                  } 
+                </div>
+              </div>
+              
+              <br/>
+
+            <div className='col-lg-12 text-lg-center'>
+              <button type="button" className="btn btn-success"  
+              onClick={(e)=>{ e.preventDefault(); navigate(-1); }}>확인</button>
+            </div> 
+          </div>
         </div>
-
-        <div className='row'>
-          <div className='col-lg-10'>{detail.REPORT_ID}</div>
-          <div className='col-lg-2'>{detail.REPORT_DATE}</div>
-        </div>
-      </div>
-
-      <hr/>
-      <div className="con mt-3">
-        <label className="content mt-2 pl-4" >
-        {detail.REPORT_CONTENT}
-        </label>
-      </div>
-
-      <hr/>
-
-      <p>문의답변</p>
-      <div className="com mt-1">
-        <div className="comcom" >
-          {state === '미답변' ?
-           <p>답변이 등록되지 않았습니다.</p>:
-           comment
-           } 
-        </div>
-      </div>
-      
-      <br/>
-
-      <div className='col-lg-12 text-lg-center'>
-        <button type="button" className="btn btn-success"  
-        onClick={(e)=>{ e.preventDefault(); navigate(-1); }}>확인</button>
-      </div> 
-          
-    </div>    
+      </div>  
+    </>  
 
     //         제목 : {detail.REPORT_TITLE}<br/>
     //         내용 : {detail.REPORT_CONTENT}<br/>
