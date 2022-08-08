@@ -10,7 +10,6 @@ const List = (props) => {
 
 
   useEffect(() => {
-
     SelectOneFile('0', list.BOARD_NO, list.BOARD_MODIFY_NO).then(Res => {
       setUrl("data:image/;base64," + Res.URL);
       // setUrl(url);
@@ -26,11 +25,12 @@ const List = (props) => {
       <Link to='/board/detail' state={list}>
 
         <img
-          className="d-block card-img-top rounded p-1"
-          width='700px'
-          height='400px'
+          className="d-block rounded p-1"
+          width='100%'
+          height='270px'
           src={list.URL}
           alt=""
+          style={{'objectFit' : 'cover'}}
         />
       </Link>
       <div className="card-body">
@@ -41,6 +41,10 @@ const List = (props) => {
           <p>
             {list.BOARD_PRICE}원/일
           </p>
+          <p>
+            {list.BOARD_ADDR1} {list.BOARD_ADDR2}
+          </p>
+          
         </figure>
         <div className="d-flex justify-content-between align-items-center">
           <div className="btn-group">

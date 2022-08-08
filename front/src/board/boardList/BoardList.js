@@ -10,6 +10,7 @@ import { Button, Container } from 'react-bootstrap';
 const BoardList = () => {
   const location = useLocation().state;
   const [board, setBoard] = useState([]); //변수 초기화
+  const [showBoard , setShowBoard] = useState([]);
   const [startDate, setStartDate] = useState(location.START_DATE);
   const [endDate, setEndDate] = useState(location.END_DATE); // 날짜 정보 초기화
 
@@ -60,20 +61,8 @@ const BoardList = () => {
       }
       //서버에서 리스트 요청
     }).then(Response => {
-      setBoard(Response.data);
-      // const url = Response.data.map(async list => {
-
-      //   await SelectOneFile('0', list.BOARD_NO, list.BOARD_MODIFY_NO).then(Res => {
-      //     //요청된 리스트의 게시글 넘버로 메인 이미지 요청
-
-      //     list['URL'] = "data:image/;base64," + Res.URL
-      //   })
-      //   //변수에 URL 요소를 추가하고 서버로부터 리턴 받은 이미지를 문자화해서 저장
-      //   return list
-      // })
-
-      // Promise.all(url).then((data) => { setBoard(data) });
-      // // async - await 로 받아온 객체는 promise 객체이므로 이를 변환해서 저장 
+      setBoard(Response.data); 
+      setShowBoard(Response.data);
     })
 
   }
@@ -82,7 +71,15 @@ const BoardList = () => {
     Search();
   }, [])
 
-
+  const sort = (e) =>{
+    const sortBoard = board
+    if(e==='1') {
+      sortBoard.sort(function(a,b){return a.BOARD_PRICE - b.BOARD_PRICE})
+    } else if(e==='0'){
+      sortBoard.sort(function(a,b){return b.BOARD_PRICE - a.BOARD_PRICE})
+    }
+    setShowBoard(sortBoard);
+  }
 
   return (
     <Container>
@@ -143,12 +140,25 @@ const BoardList = () => {
           </div>
         </div>
       </div>
+      <div className='row mt-2 mb-4'>
+        <div className='col offset-9'>
+          <div className='btn-group'>
+            <button className='btn btn-warning' value='0' onClick={(e)=>{sort(e.target.value)}}>
+              높은 가격순
+            </button>
+            <button className='btn btn-warning' value='1' onClick={(e)=>{sort(e.target.value)}}>
+              낮은 가격순
+            </button>
+          </div>
+        </div>
+      </div>
       <div className="container">
 
         <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-          {board[0] !== undefined && board.map(list => {
+          {showBoard.map((list,index) => {
+            console.log(list.BOARD_PRICE)
             return (
-              <div className='col' key={list.BOARD_NO}>
+              <div className='col' key={index}>
                 <List list={list} />
               </div>
             )
