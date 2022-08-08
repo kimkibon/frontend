@@ -50,14 +50,15 @@ const AdminBoardList = (props) => {
     return (
 
         <div className="col" key={list.BOARD_NO}>
-            <div className="card h-100 shadow-sm">
-                <Link to='/board/detail' state={list}>
+            <div className="card h-100 shadow-sm" >
+                <Link to='/board/detail' state={list} >
                     <img
-                        className="d-block w-100 rounded p-1"
-                        width='700px'
-                        height='400px'
+                        className="d-block rounded p-1"
+                        width='100%'
+                        height='270px'
                         src={list.URL}
                         alt=""
+                        style={{ 'objectFit': 'cover' }}
                     />
                 </Link>
                 <div className="card-body">
@@ -70,6 +71,9 @@ const AdminBoardList = (props) => {
                         </p>
                         <p>
                             {list.BOARD_HOST_ID}
+                        </p>
+                        <p>
+                            {list.BOARD_ADDR1} {list.BOARD_ADDR2}
                         </p>
                     </figure>
                     <div className="d-flex justify-content-between align-items-center">

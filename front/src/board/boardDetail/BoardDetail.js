@@ -136,13 +136,13 @@ const BoardDetail = () => {
 
               <div className="col-md-6 text-end">
                 <h1 className=" display-5 fw-bolder">{boardDetail.BOARD_TITLE} 제목</h1>
-                <div className="small mb-1">{boardDetail.BOARD_ADDR1}-{boardDetail.BOARD_ADDR2} [주소]</div>
+                <div className="small mb-1">{boardDetail.BOARD_ADDR1} {boardDetail.BOARD_ADDR2}</div>
                 <div className="fs-5 mb-5">
                   <span>{boardDetail.BOARD_PRICE}원/1일 [가격]</span>
                   <br />
                   <span>최대 {boardDetail.BOARD_CARE_NO} 마리</span>
                 </div>
-                <p className="text-start lead">{boardDetail.BOARD_CONTENT}컨텐츠</p>
+                <h5 className="text-start m-2 p-2">{boardDetail.BOARD_CONTENT}</h5>
                 <div className="fs-5 mb-5 ">
                 </div>
               </div>
@@ -153,7 +153,7 @@ const BoardDetail = () => {
           <div className='btn-group'>
             {/* 클라이언트 예약 */}
             <>
-              {((boardDetail.BOARD_HOST_ID !== localStorage.getItem('MEM_ID')&&(boardDetail.BOARD_CONFIRM === 1))) &&
+              {((boardDetail.BOARD_66OST_ID !== localStorage.getItem('MEM_ID')&&(boardDetail.BOARD_CONFIRM === 1))) &&
                 <button className="btn btn-success" type="button" onClick={() => setModalShow(true)}>
                   예약하기
                 </button>

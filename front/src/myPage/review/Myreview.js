@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
+import { Button } from 'react-bootstrap';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Rating } from 'react-simple-star-rating';
 import DeleteReviewModal from './Modals/DeleteReviewModal';
@@ -56,24 +57,32 @@ const Myreview =() => {
                             {myreview.REVIEW_CONTENT}
                         </div>
                         
-                        <div className="btn-group-vertical col-3 m-1">
+                        <div className='col-4 m-2'>
 
                             {new Date().getTime() < after_date &&
-                                <Link to={'ModifyReview'} state={{
-                                    'REVIEW_IDX': myreview.REVIEW_IDX,
-                                    'SCORE': myreview.SCORE, 'REVIEW_CONTENT': myreview.REVIEW_CONTENT
-                                }}>
-                                    <button type="button" className="btn btn-info">
-                                        수정</button><br /><br />
-                                </Link>
-                            }
-                            <DeleteReviewModal show={modalShow} onHide={() => setModalShow(false)} 
-                                state={{ 'REVIEW_IDX': myreview.REVIEW_IDX }}/>
-                            
-                                <button type="button" 
+                                //     <Link to={'ModifyReview'} state={{
+                                //         'REVIEW_IDX': myreview.REVIEW_IDX,
+                                //         'SCORE': myreview.SCORE, 'REVIEW_CONTENT': myreview.REVIEW_CONTENT
+                                //     }}>
+                                //         <button type="button" className="btn btn-info">
+                                //             수정</button><br /><br />
+                                //     </Link>
+                                // }
+                                <Button className="btn btn-secondary" type="button">
+                                    <Link to={'ModifyReview'} style={{ textDecoration: "none", color: "white" }}
+                                        state={{ 'REVIEW_IDX': myreview.REVIEW_IDX, 'SCORE': myreview.SCORE, 'REVIEW_CONTENT': myreview.REVIEW_CONTENT }}>수정</Link>
+                                </Button>
+                            } <br /><br />
+
+                            <DeleteReviewModal show={modalShow} onHide={() => setModalShow(false)}
+                                state={{ 'REVIEW_IDX': myreview.REVIEW_IDX }} />
+
+                            {/* <button type="button" 
                                     style={{width:58+'px',height:38+'px',backgroundColor:'#F3969A',border:'none',color:'white',borderRadius:0.4+'em'}} 
-                                    onClick={()=>{setModalShow(true)}}>삭제</button>
-                            
+                                    onClick={()=>{setModalShow(true)}}>삭제</button> */}
+                            <Button className="btn btn-primary " type="button"
+                                onClick={() => { setModalShow(true) }}>
+                                삭제</Button>
 
                         </div>
                         
