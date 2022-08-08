@@ -6,51 +6,52 @@ const List = (props) => {
 
   const list = props.list;
 
-  const [url,setUrl] = useState();
+  const [url, setUrl] = useState();
 
 
-  useEffect(()=>{
+  useEffect(() => {
 
-    SelectOneFile('0',list.BOARD_NO,list.BOARD_MODIFY_NO).then(Res=>{
-      setUrl("data:image/;base64,"+Res.URL);
+    SelectOneFile('0', list.BOARD_NO, list.BOARD_MODIFY_NO).then(Res => {
+      setUrl("data:image/;base64," + Res.URL);
       // setUrl(url);
     });
 
-  },[])
- 
+  }, [])
+
   list['URL'] = url;
 
   return (
 
-              <div className="card shadow-sm">
-                
-                  <img
-                    className="d-block w-100 rounded p-1"
-                    width='700px'
-                    height='400px'
-                    src={list.URL}
-                    alt=""
-                  />
+    <div className="card h-100 shadow-sm">
+      <Link to='/board/detail' state={list}>
 
-                <div className="card-body">
-                  <h4 className="card-text">
-                    {list.BOARD_TITLE}
-                  </h4>
-                  <figure className="text-end">
-                    <p>
-                      {list.BOARD_PRICE}원/일
-                    </p>
-                  </figure>
-                  <div className="d-flex justify-content-between align-items-center">
-                    <div className="btn-group">
-                      <Link to='/board/detail' state={list}>
-                        <button type="button" className="btn btn-sm btn-outline-secondary">View</button>
-                      </Link>
-                    </div>
-                    <small className="text-muted">{list.BOARD_SCORE}</small>
-                  </div>
-                </div>
-              </div>
+        <img
+          className="d-block card-img-top rounded p-1"
+          width='700px'
+          height='400px'
+          src={list.URL}
+          alt=""
+        />
+      </Link>
+      <div className="card-body">
+        <h4 className="card-text">
+          {list.BOARD_TITLE}
+        </h4>
+        <figure className="text-end">
+          <p>
+            {list.BOARD_PRICE}원/일
+          </p>
+        </figure>
+        <div className="d-flex justify-content-between align-items-center">
+          <div className="btn-group">
+            <Link to='/board/detail' state={list}>
+              <button type="button" className="btn btn-sm btn-outline-secondary">View</button>
+            </Link>
+          </div>
+          <small className="text-muted">{list.BOARD_SCORE}</small>
+        </div>
+      </div>
+    </div>
 
   )
 }

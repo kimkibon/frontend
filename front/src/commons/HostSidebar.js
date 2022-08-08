@@ -101,12 +101,12 @@ const HostSidebar = () => {
                 </Link>
               </li> */}
 
-              <li>
+              {/* <li>
                 <Link to="/myPage/host/hostBoardModify">
                   <span className='icon'><BsFillInfoCircleFill className='fa'/></span> 
                   <span className='title'>hostBoardModify</span>
                 </Link>
-              </li>
+              </li> */}
 
             </ul>
         </ul>
