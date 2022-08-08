@@ -153,7 +153,7 @@ const BoardDetail = () => {
           <div className='btn-group'>
             {/* 클라이언트 예약 */}
             <>
-              {(boardDetail.BOARD_HOST_ID !== localStorage.getItem('MEM_ID')) &&
+              {((boardDetail.BOARD_HOST_ID !== localStorage.getItem('MEM_ID')&&(boardDetail.BOARD_CONFIRM === 1))) &&
                 <button className="btn btn-success" type="button" onClick={() => setModalShow(true)}>
                   예약하기
                 </button>

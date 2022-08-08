@@ -148,7 +148,9 @@ const BoardList = () => {
         <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
           {board[0] !== undefined && board.map(list => {
             return (
-              <List list={list} />
+              <div className='col' key={list.BOARD_NO}>
+                <List list={list} />
+              </div>
             )
           })}
         </div>

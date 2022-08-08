@@ -6,19 +6,19 @@ const AdminBoardList = (props) => {
     console.log(props.list);
     const list = props.list;
 
-    const [url,setUrl] = useState();
-  
+    const [url, setUrl] = useState();
+
     console.log(props);
-    useEffect(()=>{
-  
-      SelectOneFile('0',list.BOARD_NO,list.BOARD_MODIFY_NO).then(Res=>{
-        setUrl("data:image/;base64,"+Res.URL);
-        // setUrl(url);
-      });
-  
-    },[])
-   
-    list['URL'] = url;
+    useEffect(() => {
+
+        SelectOneFile('0', list.BOARD_NO, list.BOARD_MODIFY_NO).then(Res => {
+            list['URL'] = "data:image/;base64," + Res.URL;
+            setUrl("data:image/;base64," + Res.URL);
+        });
+
+    }, [])
+
+
 
 
 
@@ -49,40 +49,39 @@ const AdminBoardList = (props) => {
     //컴펌 레벨에 따른 종류 표시 
     return (
 
-                       <div className="col" key={list.BOARD_NO}>
-                            <div className="card shadow-sm">
+        <div className="col" key={list.BOARD_NO}>
+            <div className="card shadow-sm">
 
-                                <img
-                                    className="d-block img-fluid rounded p-1"
-                                    width='700px'
-                                    height='400px'
-                                    src={list.URL}
-                                    alt=""
-                                />
+                <img
+                    className="d-block img-fluid rounded p-1"
+                    height='100%'
+                    src={list.URL}
+                    alt=""
+                />
 
-                                <div className="card-body">
-                                    <h4 className="card-text">
-                                        {list.BOARD_TITLE}
-                                    </h4>
-                                    <figure className="text-end">
-                                        <p>
-                                            {state(list.BOARD_CONFIRM)}
-                                        </p>
-                                        <p>
-                                            {list.BOARD_HOST_ID}
-                                        </p>
-                                    </figure>
-                                    <div className="d-flex justify-content-between align-items-center">
-                                        <div className="btn-group">
-                                            <Link to='/board/detail' state={list}>
-                                                <button type="button" className="btn btn-sm btn-outline-secondary">View</button>
-                                            </Link>
-                                        </div>
-                                        <small className="text-muted">{list.BOARD_SCORE}</small>
-                                    </div>
-                                </div>
-                            </div>
+                <div className="card-body">
+                    <h4 className="card-text">
+                        {list.BOARD_TITLE}
+                    </h4>
+                    <figure className="text-end">
+                        <p>
+                            {state(list.BOARD_CONFIRM)}
+                        </p>
+                        <p>
+                            {list.BOARD_HOST_ID}
+                        </p>
+                    </figure>
+                    <div className="d-flex justify-content-between align-items-center">
+                        <div className="btn-group">
+                            <Link to='/board/detail' state={list}>
+                                <button type="button" className="btn btn-sm btn-outline-secondary">View</button>
+                            </Link>
                         </div>
+                        <small className="text-muted">{list.BOARD_SCORE}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     )
 }
