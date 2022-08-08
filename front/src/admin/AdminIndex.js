@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react'
 import { Route, Routes, useNavigate } from 'react-router-dom'
-import AdminBoardReview from './adminHostBoard/AdminBoardReview'
-import AdminHostBoardDetail from './adminHostBoard/AdminHostBoardDetail'
 import AdminHostBoardList from './adminHostBoard/AdminHostBoardList'
 import AdminHostConfirmDetail from './adminHostMember/AdminHostConfirmDetail'
 import AdminHostConfirmList from './adminHostMember/AdminHostConfirmList'
@@ -28,8 +26,6 @@ const AdminIndex = () => {
 
           <Routes>
             <Route path='/admin' element={<AdminIndex />} />
-            <Route path='/adminBoardReview' element={<AdminBoardReview />} />
-            <Route path='/adminBoardDetail' element={<AdminHostBoardDetail />} />
             <Route path='/adminBoardList' element={<AdminHostBoardList />} />
 
             <Route path='/adminHostConfirmList' element={<AdminHostConfirmList />} />

@@ -36,6 +36,9 @@ const AdminHostBoardList = () => {
 
   return (
     <div className='row'>
+      <hr/>
+      <h3>등록 글 리스트</h3>
+      <hr/>
       <div className='btn-group mb-5 mt-5'>
         <button className='btn btn-primary' onClick={(e) => searchConfirm(e.target.value)} value='0'>
           등록 요청

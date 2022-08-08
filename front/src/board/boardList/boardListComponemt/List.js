@@ -22,11 +22,10 @@ const List = (props) => {
 
   return (
 
-            <div className="col" key={list.BOARD_NO}>
               <div className="card shadow-sm">
                 
                   <img
-                    className="d-block img-fluid rounded p-1"
+                    className="d-block w-100 rounded p-1"
                     width='700px'
                     height='400px'
                     src={list.URL}
@@ -52,7 +51,6 @@ const List = (props) => {
                   </div>
                 </div>
               </div>
-            </div>
 
   )
 }
