@@ -50,15 +50,16 @@ const AdminBoardList = (props) => {
     return (
 
         <div className="col" key={list.BOARD_NO}>
-            <div className="card shadow-sm">
-
-                <img
-                    className="d-block img-fluid rounded p-1"
-                    height='100%'
-                    src={list.URL}
-                    alt=""
-                />
-
+            <div className="card h-100 shadow-sm">
+                <Link to='/board/detail' state={list}>
+                    <img
+                        className="d-block w-100 rounded p-1"
+                        width='700px'
+                        height='400px'
+                        src={list.URL}
+                        alt=""
+                    />
+                </Link>
                 <div className="card-body">
                     <h4 className="card-text">
                         {list.BOARD_TITLE}
