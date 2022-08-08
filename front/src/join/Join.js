@@ -5,7 +5,7 @@ import axios from "axios";
 const Join = () => {
   const [JoinID, setJoinID] = useState("");
   const [JoinIDCheck, setJoinIDCheck] = useState("1"); //0: 중복체크 완료 , 1: 중복체크 미완료
-  const [JoinPassword, setJoinPassword] = useState("");
+  const [JoinPassword, setJoinPassword] = useState(""); 
   const [JoinPwCheck, setJoinPwCheck] = useState("");
   const [JoinName, setJoinName] = useState("");
   const [JoinPhone, setJoinPhone] = useState(""); //입력한 폰번호
@@ -14,55 +14,44 @@ const Join = () => {
   const [RealVerifyCode, setRealVerifyCode] = useState(""); //서버에서 넘어온 VerifyCode
   const navigate = useNavigate();
 
-  const dataRuleCheckForID = (ch) => {
-    let ascii = ch.charCodeAt(0);
-    if (48 /* 0 */ <= ascii && ascii <= 57 /* 9 */) return true;
-    if (65 /* A */ <= ascii && ascii <= 90 /* Z */) return true;
-    if (97 /* a */ <= ascii && ascii <= 122 /* z */) return true;
-    if (ch === ".") return true;
-
-    return false;
-  };
-
-  const getJoinID = (event) => {
+  const getJoinID = (event) => {  //아이디 Input
     let value = event.target.value.toUpperCase();
     setJoinID(value);
+    setJoinIDCheck("1"); //아이디 중복확인 후에 아이디창을 건드리면 다시 1로 돌아감
   };
 
-  const getJoinPassword = (event) => {
+  const getJoinPassword = (event) => {  //비밀번호 Input
     let value = event.target.value;
     setJoinPassword(value);
   };
-  const getJoinPwCheck = (event) => {
+  const getJoinPwCheck = (event) => {  //비밀번호확인 Input
     let value = event.target.value;
     setJoinPwCheck(value);
   };
-  const getJoinName = (event) => {
+  const getJoinName = (event) => {  //이름확인 Input
     let value = event.target.value;
     setJoinName(value);
   };
-  const getJoinPhone = (event) => {
+  const getJoinPhone = (event) => { //폰번호 Input
     let value = event.target.value;
     setJoinPhone(value);
   };
-  const getInputVerifyCode = (event) => {
+  const getInputVerifyCode = (event) => {  //인증번호 Input
     let value = event.target.value;
     setInputVerifyCode(value);
   };
 
-  const send = () => {
+  const send = () => {  //인증번호 전송
     axios({
       method: "post",
       url: "/GareBnB/PhoneNumberCheck.do",
       contentType: "application/json;charset=UTF-8",
       params: {
-        to: JoinPhone,
+        to: JoinPhone,  //Input 핸드폰 번호 전달
       },
     })
-      .then((Response) => {
-        console.log(Response.data);
-        console.log(Response.data.value);
-        setRealVerifyCode(Response.data);
+      .then((Response) => { 
+        setRealVerifyCode(Response.data);  //인증번호 반환하여 RealVerifyCode에 저장
       })
       .catch((err) => {
         console.log(err);
@@ -70,31 +59,27 @@ const Join = () => {
       });
   };
 
-  const verify = () => {
-    if (InputVerifyCode == RealVerifyCode) {
+  const verify = () => {  //인증번호로 검증
+    if (InputVerifyCode == RealVerifyCode) {  //입력한 번호 InputVerifyCode, 전달받은 번호 RealVerifyCode
       alert("인증이 완료되었습니다.");
-      setPhoneOK(1);
-      console.log(PhoneOK);
+      setPhoneOK(1); //인증이 완료됨
     } else {
       alert("인증에 실패하였습니다.");
-      console.log(RealVerifyCode);
-      console.log(InputVerifyCode);
     }
   };
 
-  const IDDupCheck = () => {
+  const IDDupCheck = () => {  //아이디 중복체크
     if (JoinID !== "") {
       axios({
         method: "post",
         url: "/GareBnB/confirmId.do",
         contentType: "application/json;charset=UTF-8",
         params: {
-          MEM_ID: JoinID,
+          MEM_ID: JoinID,  //Input 아이디 전달
         },
       })
         .then((Response) => {
-          console.log(Response.data);
-          if (Response.data === 0) {
+          if (Response.data === 0) {  //중복된 아이디 없을시 0
             alert("아이디를 사용하실 수 있습니다.");
             setJoinIDCheck(0);
           } else {
@@ -107,7 +92,7 @@ const Join = () => {
     } else alert("아이디를 입력하세요");
   };
 
-  const dataRuleCheckForPW = () => {
+  const dataRuleCheckForPW = () => { //비밀번호 8자 이상
     return JoinPassword.length >= 8 ? true : false;
   };
   const SameCheckForPW = () => {

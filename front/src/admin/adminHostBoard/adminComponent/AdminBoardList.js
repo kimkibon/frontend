@@ -3,12 +3,10 @@ import { Link } from 'react-router-dom'
 import SelectOneFile from '../../../commons/Files/SelectOneFile';
 const AdminBoardList = (props) => {
 
-    console.log(props.list);
     const list = props.list;
 
     const [url, setUrl] = useState();
 
-    console.log(props);
     useEffect(() => {
 
         SelectOneFile('0', list.BOARD_NO, list.BOARD_MODIFY_NO).then(Res => {
@@ -49,7 +47,6 @@ const AdminBoardList = (props) => {
     //컴펌 레벨에 따른 종류 표시 
     return (
 
-        <div className="col" key={list.BOARD_NO}>
             <div className="card h-100 shadow-sm" >
                 <Link to='/board/detail' state={list} >
                     <img
@@ -86,7 +83,6 @@ const AdminBoardList = (props) => {
                     </div>
                 </div>
             </div>
-        </div>
 
     )
 }

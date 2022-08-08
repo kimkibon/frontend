@@ -44,12 +44,14 @@ const BoardList = () => {
     setEndDate(end);
     if (start !== null && end !== null)
       setState({
+        ...state,
         'START_DATE': dates[0].getTime(),
         'END_DATE': dates[1].getTime()
       })
   };
 
   const Search = () => {
+    console.log(state)
     axios({
       method: 'get',
       url: '/GareBnB/board/boardList.do',
@@ -72,11 +74,17 @@ const BoardList = () => {
   }, [])
 
   const sort = (e) =>{
-    const sortBoard = board
+    const sortBoard = []
     if(e==='1') {
-      sortBoard.sort(function(a,b){return a.BOARD_PRICE - b.BOARD_PRICE})
+      showBoard.sort(function(a,b){return a.BOARD_PRICE - b.BOARD_PRICE})
+      showBoard.map(list => {
+        sortBoard.push(list)
+      })
     } else if(e==='0'){
-      sortBoard.sort(function(a,b){return b.BOARD_PRICE - a.BOARD_PRICE})
+      showBoard.sort(function(a,b){return b.BOARD_PRICE - a.BOARD_PRICE})
+      showBoard.map(list => {
+        sortBoard.push(list)
+      })
     }
     setShowBoard(sortBoard);
   }
@@ -155,10 +163,9 @@ const BoardList = () => {
       <div className="container">
 
         <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-          {showBoard.map((list,index) => {
-            console.log(list.BOARD_PRICE)
+          {showBoard.map((list) => {
             return (
-              <div className='col' key={index}>
+              <div className='col' key={list.BOARD_NO}>
                 <List list={list} />
               </div>
             )
