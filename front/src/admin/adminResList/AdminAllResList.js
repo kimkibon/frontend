@@ -79,12 +79,12 @@ const AdminAllResList =() => {
             <hr/>
             <Table striped width="900px" height="30px" className="table table-hover">
                 <thead>
-                    <tr>
+                    <tr align='center'>
                         <td width="20%">예약번호</td>
                         <td width="20%">예약자ID</td>
                         <td width="20%">호스트ID</td>
-                        <td width="20%"align='center'>게시글번호</td>
-                        <td width="20%" align='center'>
+                        <td width="20%">게시글번호</td>
+                        <td width="20%">
                             <div className="form-group" onChange={handleSelected}>
                                 <select className="form-select">
                                     <option key={6} value="6">예약상태</option>
@@ -109,12 +109,12 @@ const AdminAllResList =() => {
                 {copyresList[0] !==undefined && copyresList.map((list)=>{
                 return(
                     <tbody>
-                        <tr onClick={()=>{window.location.href="./adminAllResList/adminResInfo/"+list.RES_IDX}}>
+                        <tr  align='center' onClick={()=>{window.location.href="./adminAllResList/adminResInfo/"+list.RES_IDX}}>
                             <td>{list.RES_IDX}</td>
                             <td>{list.RES_CLI_ID}</td>
                             <td>{list.RES_HOST_ID}</td>
-                            <td align='center'>{list.RES_BOARD_NO}_{list.RES_BOARD_MODIFY_NO}</td>
-                            <td align='center'>{ResState(list.RES_LEVEL)}</td>
+                            <td>{list.RES_BOARD_NO}_{list.RES_BOARD_MODIFY_NO}</td>
+                            <td>{ResState(list.RES_LEVEL)}</td>
                         </tr>
                     </tbody>                    
                 )
