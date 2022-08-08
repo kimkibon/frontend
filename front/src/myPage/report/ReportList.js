@@ -42,27 +42,33 @@ const ReportList = () => {
 
   return ( 
         <>
-            <hr/>
-            <h3> 신고 내역 </h3>
-            <hr/>
-            <Table striped width="920px" height="30px">
-              <tbody>
-                <tr>
-                  <td width="50px">IDX</td> 
-                  <td width="70px">ID</td>
-                  <td width="200px">TITLE</td>
-                  <td width="100px">DATE</td>
-                  <td width="70px">STATE</td>
-                  <td width="70px"></td>
-                </tr>
-              </tbody>
-            </Table>          
+          <div className='container mt-5 mb-5'>
+          <div className="d-flex justify-content-center row">
+            <div className='col-md-10 '>
+              <hr/>
+              <h3> REPORT LIST </h3>
+              <hr/>
+              <Table striped width="920px" height="30px">
+                <tbody>
+                  <tr>
+                    <td width="50px">IDX</td> 
+                    <td width="70px">ID</td>
+                    <td width="200px">TITLE</td>
+                    <td width="100px">DATE</td>
+                    <td width="70px">STATE</td>
+                    <td width="70px"></td>
+                  </tr>
+                </tbody>
+              </Table>          
 
-          {/* ReportList불러오기 */}
-          {reportList[0]!==undefined && reportList.map((list) => (
-            <ComReportList key={list.REPORT_IDX} list={list}/>
-          ))}
-          </>
+            {/* ReportList불러오기 */}
+            {reportList[0]!==undefined && reportList.map((list) => (
+              <ComReportList key={list.REPORT_IDX} list={list}/>
+            ))}
+            </div>
+          </div>
+        </div>
+      </>
   );
 };
 export default ReportList;
