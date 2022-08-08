@@ -28,7 +28,7 @@ const HostIndex = () => {
         
 
         <Routes>
-            <Route path='/host' element={<HostIndex/>}/>
+            {/* <Route path='/host' element={<HostIndex/>}/> */}
             <Route path='/hostDelete' element={<HostDelete/>}/>
             <Route path='/hostInfo' element={<HostInfo/>}/>
             <Route path='/hostModify' element={<HostModify/>}/>
