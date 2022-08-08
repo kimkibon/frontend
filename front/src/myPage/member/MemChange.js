@@ -119,7 +119,9 @@ const MemChange = () => {
     <div className="container">
 
       <div className="container px-4 px-lg-5 my-5 h-100" >
-        <h2>호스트 전환</h2><br />
+        <hr/>
+        <h3>호스트 전환</h3>
+        <hr/><br />
         <h5>관리자 승인 후, 호스트 페이지를 이용하실 수 있습니다.</h5><br />
 
         <div className="row d-flex justify-content-end align-items-center ">
