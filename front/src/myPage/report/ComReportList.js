@@ -36,14 +36,14 @@ const ComReportList = (props) => {
                 <Table width="920px" height="30px" className='table table-hover'>
                     <tbody>
                         <tr onClick={()=>{window.location.href="./report/DetailReport/"+REPORT_IDX}}>
-                        <td width="50px">{REPORT_IDX}</td>
-                        <td width="70px">{REPORT_ID}</td>
-                        <td width="200px">
+                        <td width="50px" valign='middle'>{REPORT_IDX}</td>
+                        <td width="70px" valign='middle'>{REPORT_ID}</td>
+                        <td width="200px" valign='middle'>
                             {REPORT_TITLE}
                         </td>
-                        <td width="100px">{report_date.toISOString().slice(0,10).replace(/-/g,"/")}</td>
-                        <td width="70px">{REPORT_STATE}</td>
-                        <td width="70px">
+                        <td width="100px" valign='middle'>{report_date.toISOString().slice(0,10).replace(/-/g,"/")}</td>
+                        <td width="70px" valign='middle'>{REPORT_STATE}</td>
+                        <td width="70px" valign='middle'>
                             <Button onClick={handleRemove}> 삭제 </Button>
                         </td> 
                         </tr>
