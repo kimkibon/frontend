@@ -84,8 +84,9 @@ const HostInfo = () => {
 
   return (
     <div className="container">
-
-        <h2>회원정보 보기(HOST)</h2><br />
+      <hr/>
+        <h3>회원정보 보기(HOST)</h3>
+      <hr/><br />
 
         <div className="row d-flex justify-content-center align-items-center ">
           <div className="col-md-8">

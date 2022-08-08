@@ -45,7 +45,7 @@ const Header = (props) => {
                 onClick={() => props.props.openCollapse()}
                 aria-controls="example-collapse-text"
               >
-                myPage
+                Menu
               </Button>
             }
           </div>

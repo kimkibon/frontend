@@ -43,35 +43,41 @@ const QnaList = () => { //QnaList 함수 생성
 
     return (
         <>
-            <hr/>
-            <h3>QNA LIST</h3>
-            <hr/>
-            <Table striped width="920px" height="30px">
-              <tbody>
-                <tr>
-                  <td width="50px">IDX</td>
-                  <td width="70px">ID</td>
-                  <td width="200px">TITLE</td>
-                  <td width="100px">DATE</td>
-                  <td width="70px">STATE</td>
-                  <td width="70px"></td>
-                </tr>
-              </tbody>
-            </Table>  
+        <div className='container mt-5 mb-5'>
+          <div className="d-flex justify-content-center row">
+            <div className='col-md-10 '>
+              <hr/>
+              <h3>QNA LIST</h3>
+              <hr/>
+              <Table striped width="920px" height="30px" >
+                <tbody>
+                  <tr>
+                    <td width="50px">IDX</td>
+                    <td width="70px">ID</td>
+                    <td width="200px">TITLE</td>
+                    <td width="100px">DATE</td>
+                    <td width="70px">STATE</td>
+                    <td width="70px"></td>
+                  </tr>
+                </tbody>
+              </Table>  
 
-          <div className='qnatable'>
-          {/* qnaList불러오기 */}
-          {qnaList[0]!==undefined && qnaList.map((list) => (
-            <ComQnaList key={list.QNA_IDX} list={list}/>
-          ))}
+            <div className='qnatable'>
+            {/* qnaList불러오기 */}
+            {qnaList[0]!==undefined && qnaList.map((list) => (
+              <ComQnaList key={list.QNA_IDX} list={list}/>
+            ))}
+            </div>
+
+            <hr/>
+              <InsertQna/>
+              {/* <Link to ={'DeleteQna'} state={{'QNA_IDX': qnaList.QNA_IDX}}>
+                            <button>삭제</button>
+              </Link> */}
+            <hr/>
+            </div>
           </div>
-
-        <hr/>
-          <InsertQna/>
-          {/* <Link to ={'DeleteQna'} state={{'QNA_IDX': qnaList.QNA_IDX}}>
-                        <button>삭제</button>
-          </Link> */}
-        <hr/>
+        </div>
         </>
 
     );

@@ -26,7 +26,9 @@ const HostBoardList = () => {
 
   return (
     <div className="container">
-      <h1>내 게시글</h1>
+      <hr/>
+        <h3>내 게시글</h3>
+      <hr/>
       <div className='row d-inline-flex'>
         <div className='col float-end mt-5 mb-2'>
           <Link to={'/mypage/host/hostBoardForm'}>
