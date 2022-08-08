@@ -70,8 +70,9 @@ const Myreview =() => {
                             <DeleteReviewModal show={modalShow} onHide={() => setModalShow(false)} 
                                 state={{ 'REVIEW_IDX': myreview.REVIEW_IDX }}/>
                             
-                                <Link to=''><button type="button" className='btn btn-secondary' 
-                                    onClick={()=>{setModalShow(true)}}>삭제</button></Link>
+                                <button type="button" 
+                                    style={{width:58+'px',height:38+'px',backgroundColor:'#F3969A',border:'none',color:'white',borderRadius:0.4+'em'}} 
+                                    onClick={()=>{setModalShow(true)}}>삭제</button>
                             
 
                         </div>
