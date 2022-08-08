@@ -63,7 +63,9 @@ const MemUseListPage = () => {
     return (
         
         <div>
-            <h1>이용내역</h1>
+            <hr/>
+                <h3>이용내역</h3>
+            <hr/>
             <InsertReviewModal show={modalShow} onHide={() => setModalShow(false)} 
                                 state={{'REVIEW_MEM_ID': mem_id, 'BOARD_NO': boardno,'RES_IDX': residx}}/>
 

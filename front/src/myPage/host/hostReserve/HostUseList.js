@@ -45,7 +45,9 @@ const HostUseList = () => {
     return (
         
         <div>
-            <h1>이용내역</h1>
+            <hr/>
+                <h3>이용내역</h3>
+            <hr/>
             {resComList[0] !==undefined && resComList.map((list)=>{
                 
                 return(

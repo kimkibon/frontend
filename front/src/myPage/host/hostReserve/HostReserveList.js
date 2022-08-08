@@ -134,7 +134,9 @@ const HostReserveList = () => {
 
   return (
     <div>
-      <h1>예약내역</h1>
+      <hr/>
+        <h3>예약내역</h3>
+      <hr/>
       <HostResRejModal show={modalShow} onHide={() => setModalShow(false)} state={{'residx':residx }}/>
 
       {resList[0] !==undefined && resList.map((list)=>{

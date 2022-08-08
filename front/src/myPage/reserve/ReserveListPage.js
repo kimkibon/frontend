@@ -146,7 +146,9 @@ const ReserveListPage = () => {
   
   return (
     <div>
-      <h1>예약내역</h1>
+      <hr/>
+        <h3>예약내역</h3>
+      <hr/>
 
       <HostDetailModal show={modalShow} onHide={() => setModalShow(false)} state={{ 'hostId': hostt }}/>
 
