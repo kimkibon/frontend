@@ -38,14 +38,14 @@ const ComQnaList = (props) => {
                     <tbody>
                         <tr onClick={()=>{window.location.href="./qna/DetailQna/"+QNA_IDX}}>
                         {/* onClick={handleDetail} */}
-                        <td width="50px">{QNA_IDX}</td>
-                        <td width="70px">{QNA_ID}</td>
-                        <td className='title' width="200px"> 
+                        <td width="50px" valign='middle'>{QNA_IDX}</td>
+                        <td width="70px" valign='middle'>{QNA_ID}</td>
+                        <td className='title' width="200px" valign='middle'> 
                                  {QNA_TITLE}
                         </td>
-                        <td width="100px">{QNA_DATE}</td>
-                        <td width="70px">{QNA_STATE}</td>
-                        <td width="70px">
+                        <td width="100px" valign='middle'>{QNA_DATE}</td>
+                        <td width="70px" valign='middle'>{QNA_STATE}</td>
+                        <td width="70px" valign='middle'>
                             <Button onClick={handleRemove}> 삭제 </Button>
                         </td>
                         </tr>
