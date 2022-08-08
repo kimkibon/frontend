@@ -41,10 +41,8 @@ const ReportList = () => {
 
 
   return ( 
-        <>
-          <div className='container mt-5 mb-5'>
-          <div className="d-flex justify-content-center row">
-            <div className='col-md-10 '>
+        <div>
+          <div className='container'>
               <hr/>
               <h3> REPORT LIST </h3>
               <hr/>
@@ -65,10 +63,8 @@ const ReportList = () => {
             {reportList[0]!==undefined && reportList.map((list) => (
               <ComReportList key={list.REPORT_IDX} list={list}/>
             ))}
-            </div>
-          </div>
         </div>
-      </>
+      </div>
   );
 };
 export default ReportList;

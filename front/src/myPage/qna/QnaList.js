@@ -42,13 +42,12 @@ const QnaList = () => { //QnaList 함수 생성
 
 
     return (
-        <>
-        <div className='container mt-5 mb-5'>
-          <div className="d-flex justify-content-center row">
-            <div className='col-md-10 '>
-              <hr/>
-              <h3>QNA LIST</h3>
-              <hr/>
+        <div>
+        <div className='container'>
+          <hr/>
+            <h3>QNA LIST</h3>
+          <hr/>
+              
               <Table striped width="920px" height="30px" >
                 <tbody>
                   <tr>
@@ -75,10 +74,8 @@ const QnaList = () => { //QnaList 함수 생성
                             <button>삭제</button>
               </Link> */}
             <hr/>
-            </div>
-          </div>
         </div>
-        </>
+        </div>
 
     );
 };
