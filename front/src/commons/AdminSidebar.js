@@ -14,12 +14,12 @@ const AdminSidebar = () => {
 
     <div className='navigation mt-2'>
       <ul>
-        <li>
+        {/* <li>
           <Link to='/Admin'>
             <span className='icon'><AiFillDatabase className='fa' /></span>
             <span className='title'>INDEX</span>
           </Link>
-        </li>
+        </li> */}
 
         <li>
           <Link to="/Admin/adminMemberList">

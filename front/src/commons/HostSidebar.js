@@ -59,12 +59,12 @@ const HostSidebar = () => {
           <input id="hostmenu" type="checkbox"></input> 
         
             <ul className="small_menu">
-              <li>
+              {/* <li>
                 <Link to="host/myPage">
                   <span className='icon'><AiFillInteraction className='fa'/></span>
                   <span className='title'>호스트 메뉴</span>
                 </Link>
-              </li>
+              </li> */}
 
               <li>
                 <Link to="/myPage/host/hostBoardList">
@@ -94,19 +94,19 @@ const HostSidebar = () => {
                 </Link>
               </li>
 
-              <li>
+              {/* <li>
                 <Link to="/myPage/host/hostBoardForm">
                   <span className='icon'><BsFillInfoCircleFill className='fa'/></span> 
                   <span className='title'>게시글 작성</span>
                 </Link>
-              </li>
+              </li> */}
 
-              <li>
+              {/* <li>
                 <Link to="/myPage/host/hostBoardModify">
                   <span className='icon'><BsFillInfoCircleFill className='fa'/></span> 
                   <span className='title'>hostBoardModify</span>
                 </Link>
-              </li>
+              </li> */}
 
             </ul>
         </ul>
