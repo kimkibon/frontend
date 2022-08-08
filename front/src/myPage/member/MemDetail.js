@@ -69,8 +69,9 @@ const MemDetail = () => {
 
     return (
         <div className="container">
-
-            <h2>회원정보 보기</h2> <br /><br />
+            <hr/>
+            <h3>회원정보 보기</h3>
+            <hr/> <br /><br />
 
             <div className="row d-flex justify-content-end align-items-end ">
                 <label className="col-md-2 col-form-label">아이디</label>
