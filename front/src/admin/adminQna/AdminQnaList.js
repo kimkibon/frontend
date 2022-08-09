@@ -68,12 +68,12 @@ const AdminQnaList = () => {
       <Table striped width="900px" height="30px" className="table table-hover">
         <thead>
           <tr align='center'>
-            <td width="100px">문의번호</td>
-            <td width="100px">아이디</td>
-            <td width="200px">문의제목</td>
-            <td width="150px">등록일</td>
+            <td width="10%">문의번호</td>
+            <td width="20%">아이디</td>
+            <td width="30%">문의제목</td>
+            <td width="20%">등록일</td>
 
-            <td width="100px">
+            <td width="20%">
               <div className="form-group" onChange={handleSelected}>
               <select className="form-select">
                 <option key={2} value="2">전체답변</option>
@@ -81,10 +81,9 @@ const AdminQnaList = () => {
                 <option key={1} value="1">답변완료</option>
               </select>
               <SelectBox/>
-    </div>
+              </div>
             </td>
             
-            <td width="10px"></td>
           </tr>
         </thead>
       
@@ -93,16 +92,13 @@ const AdminQnaList = () => {
         <tbody>
                         <tr onClick={()=>{window.location.href="./adminQnaList/adminQnaDetail/"+list.QNA_IDX}}
                              align='center'>
-                        <td width="50px">{list.QNA_IDX}</td>
-                        <td width="50px">{list.QNA_ID}</td>
-                        <td width="200px">
+                        <td>{list.QNA_IDX}</td>
+                        <td>{list.QNA_ID}</td>
+                        <td>
                                  {list.QNA_TITLE}
                         </td>
-                        <td width="100px">{list.QNA_DATE}</td>
-                        <td width="70px">{list.QNA_STATE}</td>
-                        <td width="50px">
-                            {/* <button onClick={handleUpdate}> 삭제 </button> */}
-                        </td>
+                        <td>{list.QNA_DATE}</td>
+                        <td>{list.QNA_STATE}</td>
                         </tr>
                     </tbody>
                     )

@@ -80,10 +80,10 @@ const AdminAllResList =() => {
             <Table striped width="900px" height="30px" className="table table-hover">
                 <thead>
                     <tr align='center'>
-                        <td width="20%">예약번호</td>
+                        <td width="10%">예약번호</td>
                         <td width="20%">예약자ID</td>
                         <td width="20%">호스트ID</td>
-                        <td width="20%">게시글번호</td>
+                        <td width="30%">게시글번호</td>
                         <td width="20%">
                             <div className="form-group" onChange={handleSelected}>
                                 <select className="form-select">
