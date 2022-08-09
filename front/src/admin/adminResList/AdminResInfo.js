@@ -39,7 +39,7 @@ const AdminResInfo =() => {
         <div>
             <h3>예약정보</h3>
             <table  className="table">
-                <tbody>
+                <tbody align='center'>
                 <tr>
                     <td>
                         예약번호

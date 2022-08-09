@@ -4,13 +4,13 @@ import List from '../boardList/boardListComponemt/List';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useLocation } from 'react-router-dom';
-import { Button, Container } from 'react-bootstrap';
+import { Button, Container, Dropdown, DropdownButton } from 'react-bootstrap';
 
 
 const BoardList = () => {
   const location = useLocation().state;
   const [board, setBoard] = useState([]); //변수 초기화
-  const [showBoard , setShowBoard] = useState([]);
+  const [showBoard, setShowBoard] = useState([]);
   const [startDate, setStartDate] = useState(location.START_DATE);
   const [endDate, setEndDate] = useState(location.END_DATE); // 날짜 정보 초기화
 
@@ -51,7 +51,6 @@ const BoardList = () => {
   };
 
   const Search = () => {
-    console.log(state)
     axios({
       method: 'get',
       url: '/GareBnB/board/boardList.do',
@@ -63,7 +62,8 @@ const BoardList = () => {
       }
       //서버에서 리스트 요청
     }).then(Response => {
-      setBoard(Response.data); 
+      console.log(Response.data)
+      setBoard(Response.data);
       setShowBoard(Response.data);
     })
 
@@ -73,19 +73,48 @@ const BoardList = () => {
     Search();
   }, [])
 
-  const sort = (e) =>{
+  const sort = (e) => {    
+    // 0 = 높은 가격순
+    // 1 = 낮은 가격순
+    // 2 = 높은 별점순
+    // 3 = 낮은 별점순
+    // 4 = 높은 이용순
+    // 5 = 낮은 이용순
+    // 6 = 최근 등록순 ??
+    // 7 = 오래된 등록순 ??
     const sortBoard = []
-    if(e==='1') {
-      showBoard.sort(function(a,b){return a.BOARD_PRICE - b.BOARD_PRICE})
+    if (e === '0') {
+      showBoard.sort(function (a, b) { return b.BOARD_PRICE - a.BOARD_PRICE })
       showBoard.map(list => {
         sortBoard.push(list)
       })
-    } else if(e==='0'){
-      showBoard.sort(function(a,b){return b.BOARD_PRICE - a.BOARD_PRICE})
+    } else if (e === '1') {
+      showBoard.sort(function (a, b) { return a.BOARD_PRICE - b.BOARD_PRICE })
+      showBoard.map(list => {
+        sortBoard.push(list)
+      })
+    } else if (e === '2') {
+      showBoard.sort(function (a, b) { return b.AVG_SCORE - a.AVG_SCORE })
+      showBoard.map(list => {
+        sortBoard.push(list)
+      })
+    } else if (e === '3') {
+      showBoard.sort(function (a, b) { return a.AVG_SCORE - b.AVG_SCORE })
+      showBoard.map(list => {
+        sortBoard.push(list)
+      })
+    } else if( e==='4') {
+      showBoard.sort(function (a, b) { return b.RES_COUNT - a.RES_COUNT })
+      showBoard.map(list => {
+        sortBoard.push(list)
+      })
+    } else if (e==='5'){
+      showBoard.sort(function (a, b) { return a.RES_COUNT - b.RES_COUNT })
       showBoard.map(list => {
         sortBoard.push(list)
       })
     }
+    console.log(sortBoard);
     setShowBoard(sortBoard);
   }
 
@@ -150,14 +179,26 @@ const BoardList = () => {
       </div>
       <div className='row mt-2 mb-4'>
         <div className='col offset-9'>
-          <div className='btn-group'>
-            <button className='btn btn-warning' value='0' onClick={(e)=>{sort(e.target.value)}}>
-              높은 가격순
-            </button>
-            <button className='btn btn-warning' value='1' onClick={(e)=>{sort(e.target.value)}}>
+          <DropdownButton id="dropdown-basic-button" title="게시글 정렬">
+            <Dropdown.Item id='0' onClick={(e) => {sort(e.currentTarget.id)}}>
+               높은 가격순 
+            </Dropdown.Item>
+            <Dropdown.Item id='1' onClick={(e) => {sort(e.currentTarget.id)}}>
               낮은 가격순
-            </button>
-          </div>
+            </Dropdown.Item>
+            <Dropdown.Item id='2' onClick={(e) => {sort(e.currentTarget.id)}}>
+              높은 별점순
+            </Dropdown.Item>
+            <Dropdown.Item id='3' onClick={(e) => {sort(e.currentTarget.id)}}>
+              낮은 별점순
+            </Dropdown.Item>
+            <Dropdown.Item id='4' onClick={(e) => {sort(e.currentTarget.id)}}>
+              높은 이용순
+            </Dropdown.Item>
+            <Dropdown.Item id='5' onClick={(e) => {sort(e.currentTarget.id)}}>
+              낮은 이용순
+            </Dropdown.Item>
+          </DropdownButton>
         </div>
       </div>
       <div className="container">

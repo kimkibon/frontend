@@ -19,6 +19,7 @@ const AdminHostConfirmList = () => {
   }, []);
 
   return (
+    <div>
     <div className='container'>
 
       <hr />
@@ -49,6 +50,7 @@ const AdminHostConfirmList = () => {
         })}
 
       </Table>
+      </div>
     </div>
   )
 }

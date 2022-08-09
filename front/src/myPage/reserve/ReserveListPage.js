@@ -168,8 +168,9 @@ const ReserveListPage = () => {
                 <div className="row p-2 bg-white border rounded align-items-center">
 
                   <div className="col-md-3 mt-1 mt-2 d-flex flex-column align-items-center align-content-center">
+                  <Link to='/board/detail' state={{ 'BOARD_NO': list.RES_BOARD_NO,'BOARD_MODIFY_NO':list.RES_BOARD_MODIFY_NO }}>
                     <img className="img-fluid img-responsive rounded product-image" src={list.URL} width="200px" height="auto" /><p />
-                    
+                  </Link>
                     
                     {[1, 2, 3].includes(resstate) && 
                       <button 
@@ -182,9 +183,13 @@ const ReserveListPage = () => {
                       }                  
                   
                   </div>
+
+
                   <div className="col-md-7 mt-1">
                     예약번호 {list.RES_IDX}<br/>
-                    <h4>{list.BOARD_TITLE}</h4><br/>
+
+                      <h4>{list.BOARD_TITLE}</h4><br/>
+                    
                     <table>                  
                         <tr>
                           <td width={30+'%'}>주소</td>

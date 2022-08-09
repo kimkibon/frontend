@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Rating } from 'react-simple-star-rating';
 import SelectOneFile from '../../../commons/Files/SelectOneFile';
 const List = (props) => {
   //상위 컴포넌트에서 받아온 데이터를 표시 
@@ -10,7 +11,6 @@ const List = (props) => {
 
 
   useEffect(() => {
-    console.log('render')
     SelectOneFile('0', list.BOARD_NO, list.BOARD_MODIFY_NO).then(Res => {
       setUrl("data:image/;base64," + Res.URL);
       // setUrl(url);
@@ -35,20 +35,29 @@ const List = (props) => {
         />
       </Link>
       <div className="card-body">
+        <div className='row mb-3'>
+          <div className='col col-sm-8'>
         <h4 className="card-text">
           {list.BOARD_TITLE}
         </h4>
+        </div>
+        <div className='col col-sm-4'>
+        <Rating initialValue={(list.AVG_SCORE)} readonly  size='20px' className='mb-2'  />
+        </div>
+        </div>
         <figure className="text-end">
+        <p>
+            {list.BOARD_ADDR1} {list.BOARD_ADDR2}
+          </p>
           <p>
             {list.BOARD_PRICE}원/일
           </p>
-          <p>
-            {list.BOARD_ADDR1} {list.BOARD_ADDR2}
-          </p>
-          
         </figure>
         <div className="d-flex justify-content-between align-items-center">
-          <div className="btn-group">
+          <div className='col col-sm-10'>
+            지금까지 {list.RES_COUNT}명이 이용했어요!
+          </div>
+          <div className="col col-sm-2 btn-group">
             <Link to='/board/detail' state={list}>
               <button type="button" className="btn btn-sm btn-outline-secondary">View</button>
             </Link>
