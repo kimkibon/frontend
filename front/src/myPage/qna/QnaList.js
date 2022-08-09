@@ -31,7 +31,6 @@ const QnaList = () => { //QnaList 함수 생성
                 MEM_ID : mem_id ////auth로 받아옴
             }
         }).then(Response => {
-            console.log(Response.data);
             setQnaList(Response.data);
             //응답이 들어왔을 때 SetQnaList 함수를 사용해서 
             //response의 data를 qnaList의 정보로 변경

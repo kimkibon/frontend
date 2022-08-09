@@ -14,7 +14,6 @@ const Logout = (props) => {
 
     }
     if (localStorage.getItem("MEM_ID") !== null) {
-        console.log(localStorage.getItem("MEM_ID"))
 
         return (
 

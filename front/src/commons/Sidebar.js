@@ -29,7 +29,6 @@ const Sidebar = () => {
   useEffect(() => { // 레벨 4 이하인(일반,호스트,관리자) 접근 가능. MEM_IDX 받아오기
     if (!!localStorage.getItem('MEM_ID')) {
       Auth(4, navigate).then(Res => {
-        console.log(Res);
         setMemberLevel({
           ...memberLevel,
           'MEM_LEVEL': Res.MEM_LEVEL,
@@ -44,8 +43,8 @@ const Sidebar = () => {
 
     <Col>
       {((localStorage.getItem('MEM_ID') !== undefined) && (memberLevel.MEM_LEVEL !== 0)) &&
-      <Offside/>
-    }
+        <Offside />
+      }
       {/* <div className="toggle"><AiOutlineMenu className='fa' onClick={toggleMenu()}/></div> */}
       {MEM_LEVEL === 1 && <HostSidebar />}
       {MEM_LEVEL === 0 && <AdminSidebar />}

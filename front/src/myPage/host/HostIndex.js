@@ -1,6 +1,5 @@
 import React from 'react'
-import { Link, Route, Routes } from 'react-router-dom'
-import HostDelete from './hostMember/HostDelete'
+import { Route, Routes } from 'react-router-dom'
 import HostInfo from './hostMember/HostInfo'
 import HostModify from './hostMember/HostModify'
 import HostReport from './hostReport/HostReport'
@@ -29,7 +28,6 @@ const HostIndex = () => {
 
         <Routes>
             {/* <Route path='/host' element={<HostIndex/>}/> */}
-            <Route path='/hostDelete' element={<HostDelete/>}/>
             <Route path='/hostInfo' element={<HostInfo/>}/>
             <Route path='/hostModify' element={<HostModify/>}/>
             <Route path='/hostReport' element={<HostReport/>}/>

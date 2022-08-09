@@ -51,7 +51,6 @@ const HostModify = () => {
       'HOST_POST': data.HOST_POST
     })
     setShowAddrModal(false)
-    console.log(hostModify)
   }
 
   const getImages = (image) => {   // 미리보기로 만들어진 이미지를 저장 
@@ -88,8 +87,7 @@ const HostModify = () => {
                     if (hostModify.HOST_ACCOUNT === '') {
                       alert('계좌번호를 입력해주세요.')
                     } else {
-                        setInsertModal(true);
-                      }
+                      setInsertModal(true);
                     }
                   }
                 }
@@ -99,6 +97,7 @@ const HostModify = () => {
         }
       }
     }
+  }
 
 
   return (

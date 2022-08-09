@@ -5,7 +5,7 @@ import axios from "axios";
 const Join = () => {
   const [JoinID, setJoinID] = useState("");
   const [JoinIDCheck, setJoinIDCheck] = useState("1"); //0: 중복체크 완료 , 1: 중복체크 미완료
-  const [JoinPassword, setJoinPassword] = useState(""); 
+  const [JoinPassword, setJoinPassword] = useState("");
   const [JoinPwCheck, setJoinPwCheck] = useState("");
   const [JoinName, setJoinName] = useState("");
   const [JoinPhone, setJoinPhone] = useState(""); //입력한 폰번호
@@ -51,7 +51,7 @@ const Join = () => {
         to: JoinPhone,  //Input 핸드폰 번호 전달
       },
     })
-      .then((Response) => { 
+      .then((Response) => {
         setRealVerifyCode(Response.data);  //인증번호 반환하여 RealVerifyCode에 저장
         alert("인증번호가 전송되었습니다")
       })
@@ -105,7 +105,6 @@ const Join = () => {
   };
 
   const Join = () => {  //회원가입함수
-    console.log({ JoinID, JoinPassword });
     if (JoinIDCheck === 0) {
       if (dataRuleCheckForPW()) {
         if (SameCheckForPW()) {
@@ -247,7 +246,7 @@ const Join = () => {
         </div>
         <div className="col-sm-3">
           <input
-            type="text" 
+            type="text"
             className="form-control"
             placeholder="인증번호 입력"
             value={InputVerifyCode}

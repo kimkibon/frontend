@@ -15,7 +15,6 @@ const AdminHostBoardList = () => {
         putArray.push(list)
       }
     })
-    console.log(showBoard)
     setShowBoard(putArray);
   }
 
@@ -41,37 +40,37 @@ const AdminHostBoardList = () => {
         <hr />
         <h3>등록 글 리스트</h3>
         <hr />
-     
-      <div className='row'>
-        <div className='btn-group mb-5 mt-5'>
-          <button className='btn btn-primary' onClick={(e) => searchConfirm(e.target.value)} value='0'>
-            등록 요청
-          </button>
-          <button className='btn btn-success' onClick={(e) => searchConfirm(e.target.value)} value='1'>
-            등록 완료
-          </button>
-          <button className='btn btn-warning' onClick={(e) => searchConfirm(e.target.value)} value='2'>
-            등록 거절
-          </button>
-          <button className='btn btn-info' onClick={(e) => searchConfirm(e.target.value)} value='3'>
-            수정 요청
-          </button>
-          <button className='btn btn-danger' onClick={(e) => searchConfirm(e.target.value)} value='4'>
-            삭제 완료
-          </button>
-          <button className='btn btn-secondary' onClick={(e) => searchConfirm(e.target.value)} value='5'>
-            수정 취소
-          </button>
-          <button className='btn btn-light' onClick={(e) => searchConfirm(e.target.value)} value='6'>
-            전체 글
-          </button>
-          {/* 어드민 계정에서 사용 가능한 버튼 모음 */}
-        </div></div> </div>
+
+        <div className='row'>
+          <div className='btn-group mb-5 mt-5'>
+            <button className='btn btn-primary' onClick={(e) => searchConfirm(e.target.value)} value='0'>
+              등록 요청
+            </button>
+            <button className='btn btn-success' onClick={(e) => searchConfirm(e.target.value)} value='1'>
+              등록 완료
+            </button>
+            <button className='btn btn-warning' onClick={(e) => searchConfirm(e.target.value)} value='2'>
+              등록 거절
+            </button>
+            <button className='btn btn-info' onClick={(e) => searchConfirm(e.target.value)} value='3'>
+              수정 요청
+            </button>
+            <button className='btn btn-danger' onClick={(e) => searchConfirm(e.target.value)} value='4'>
+              삭제 완료
+            </button>
+            <button className='btn btn-secondary' onClick={(e) => searchConfirm(e.target.value)} value='5'>
+              수정 취소
+            </button>
+            <button className='btn btn-light' onClick={(e) => searchConfirm(e.target.value)} value='6'>
+              전체 글
+            </button>
+            {/* 어드민 계정에서 사용 가능한 버튼 모음 */}
+          </div></div> </div>
       <div className="container">
         <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
           {showBoard[0] !== undefined &&
-            showBoard.map((list,index) => {
+            showBoard.map((list, index) => {
               return (
                 <div className='col' key={index}>
                   <AdminBoardList list={list} />

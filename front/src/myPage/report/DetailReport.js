@@ -20,7 +20,6 @@ const DetailReport = () => {
                 REPORT_IDX : REPORT_IDX
             }
         }).then(Response => {
-            console.log(Response.data);
             setDetail(Response.data);
             //응답이 들어왔을 때 SetQnaList 함수를 사용해서 
             //response의 data를 detail의 정보로 변경

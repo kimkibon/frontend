@@ -4,79 +4,72 @@ import { Link } from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
 
 //예약상태
-const ResState=(state)=>{
-    switch(state){
-      case 0: return '예약요청'
-      case 1: return '예약승인'
-      case 2: return '결제대기'
-      case 3: return '결제/예약완료'
-      case 4: return '예약취소'
-      case 5: return '이용완료'
+const ResState = (state) => {
+    switch (state) {
+        case 0: return '예약요청'
+        case 1: return '예약승인'
+        case 2: return '결제대기'
+        case 3: return '결제/예약완료'
+        case 4: return '예약취소'
+        case 5: return '이용완료'
     }
 }
 
-const AdminAllResList =() => {
+const AdminAllResList = () => {
     const [resList, setResList] = useState([]);
-    const [copyresList,setCopyresList] = useState([]);
+    const [copyresList, setCopyresList] = useState([]);
 
     useEffect(() => {
         axios({
-            method : 'post' ,
-            url : '/GareBnB/Admin/allresList.do' ,
-            contentType:"application/json;charset=UTF-8",
+            method: 'post',
+            url: '/GareBnB/Admin/allresList.do',
+            contentType: "application/json;charset=UTF-8",
         }).then(Response => {
             setResList(Response.data);
             setCopyresList(Response.data);
         });
-    },[]);
+    }, []);
 
 
     //selectbox
     const [selected, setSelected] = useState([]); //선택된 값
-    const handleSelected = (e)=> { //셀렉트박스 선택됐을때 ,, eventhandler
-      //e.preventDefault(); //페이지가 자동 리프레시 되는 것을 막음
-      console.log(e.target.value);
-      setSelected(e.target.value); //e.target.value 값이 setSelected,, search에 들어감
+    const handleSelected = (e) => { //셀렉트박스 선택됐을때 ,, eventhandler
+        //e.preventDefault(); //페이지가 자동 리프레시 되는 것을 막음
+        setSelected(e.target.value); //e.target.value 값이 setSelected,, search에 들어감
     };
-    
+
     const SelectBox = () => {
-        
-        if(selected === '6' ) {
+
+        if (selected === '6') {
             setCopyresList(resList);
-        } else if(selected === '0'){
-            const listData = resList.filter(list=>list.RES_LEVEL===0 && true);
+        } else if (selected === '0') {
+            const listData = resList.filter(list => list.RES_LEVEL === 0 && true);
             setCopyresList(listData);
 
-            console.log(listData);
-        } else if (selected === '1'){
-            const listData = resList.filter(list=>list.RES_LEVEL===1 && true);
+        } else if (selected === '1') {
+            const listData = resList.filter(list => list.RES_LEVEL === 1 && true);
             setCopyresList(listData);
-            console.log(listData);
-        } else if (selected === '2'){
-            const listData = resList.filter(list=>list.RES_LEVEL===2 && true);
+        } else if (selected === '2') {
+            const listData = resList.filter(list => list.RES_LEVEL === 2 && true);
             setCopyresList(listData);
-            console.log(listData);
-        } else if (selected === '3'){
-            const listData = resList.filter(list=>list.RES_LEVEL===3 && true);
+        } else if (selected === '3') {
+            const listData = resList.filter(list => list.RES_LEVEL === 3 && true);
             setCopyresList(listData);
-            console.log(listData);
-        } else if (selected === '4'){
-            const listData = resList.filter(list=>list.RES_LEVEL===4 && true);
+        } else if (selected === '4') {
+            const listData = resList.filter(list => list.RES_LEVEL === 4 && true);
             setCopyresList(listData);
-            console.log(listData);
-        } else if (selected === '5'){
-            const listData = resList.filter(list=>list.RES_LEVEL===5 && true);
+        } else if (selected === '5') {
+            const listData = resList.filter(list => list.RES_LEVEL === 5 && true);
             setCopyresList(listData);
-            console.log(listData);
         }
         setSelected('');
     };
-    
+
     return (
         <div className='container'>
-            <hr/>
-                <h3>예약 리스트</h3> 
-            <hr/>
+            <hr />
+            <h3>예약 리스트</h3>
+            <hr />
             <Table striped width="900px" height="30px" className="table table-hover">
                 <thead>
                     <tr align='center'>
@@ -96,32 +89,32 @@ const AdminAllResList =() => {
                                     <option key={5} value="5">이용완료</option>
 
                                 </select>
-                                <SelectBox/>
+                                <SelectBox />
                             </div>
                         </td>
 
 
                     </tr>
                 </thead>
-   
 
-               
-                {copyresList[0] !==undefined && copyresList.map((list)=>{
-                return(
-                    <tbody>
-                        <tr  align='center' onClick={()=>{window.location.href="./adminAllResList/adminResInfo/"+list.RES_IDX}}>
-                            <td>{list.RES_IDX}</td>
-                            <td>{list.RES_CLI_ID}</td>
-                            <td>{list.RES_HOST_ID}</td>
-                            <td>{list.RES_BOARD_NO}_{list.RES_BOARD_MODIFY_NO}</td>
-                            <td>{ResState(list.RES_LEVEL)}</td>
-                        </tr>
-                    </tbody>                    
-                )
-            })}
 
-            </Table>    
-            
+
+                {copyresList[0] !== undefined && copyresList.map((list) => {
+                    return (
+                        <tbody>
+                            <tr align='center' onClick={() => { window.location.href = "./adminAllResList/adminResInfo/" + list.RES_IDX }}>
+                                <td>{list.RES_IDX}</td>
+                                <td>{list.RES_CLI_ID}</td>
+                                <td>{list.RES_HOST_ID}</td>
+                                <td>{list.RES_BOARD_NO}_{list.RES_BOARD_MODIFY_NO}</td>
+                                <td>{ResState(list.RES_LEVEL)}</td>
+                            </tr>
+                        </tbody>
+                    )
+                })}
+
+            </Table>
+
         </div>
 
     )

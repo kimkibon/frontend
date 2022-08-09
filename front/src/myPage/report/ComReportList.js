@@ -20,7 +20,6 @@ const ComReportList = (props) => {
               }
   
           }).then(Response => {
-              console.log(Response.data);
               window.location.href ="./report";
               //응답이 들어왔을 때 SetForm 함수를 사용해서 
               //response의 data를 setForm의 정보로 변경

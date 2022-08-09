@@ -23,30 +23,28 @@ import Member from './member/Member';
 import MemDetail from './member/MemDetail';
 import MemChange from './member/MemChange';
 import MemModify from './member/MemModify';
-import MemDelete from './member/MemDelete';
 import DetailQna from './qna/DetailQna';
 import DetailReport from './report/DetailReport';
-import Sidebar from '../commons/Sidebar';
 import Auth from '../login/Auth';
 //import Layout from './Layout';
 
 const MyPageIndex = () => {
-  const [author , setAuthor] = useState();
+  const [author, setAuthor] = useState();
   const navigate = useNavigate();
 
-  useEffect(()=>{
-  Auth(4,navigate).then(Res => {
-    setAuthor(Res);
-  })
-},[])
+  useEffect(() => {
+    Auth(4, navigate).then(Res => {
+      setAuthor(Res);
+    })
+  }, [])
   return (
     <div className="container-fluid">
       <div className="row">
-        
+
         {/* <div className='col-lg-2'>
           <Sidebar />
         </div> */}
-        
+
         {/* <Layout>
         <Link to='host'><li>Host</li></Link>
         <Link to=''><li>MyPage</li></Link>
@@ -57,43 +55,42 @@ const MyPageIndex = () => {
         <Link to='memUseListPage'><li>MemUseListPage</li></Link>
         <Link to='reviewList'><li>reviewList</li></Link>
         </Layout> */}
-        
-          <Routes>
-            <Route path='/' element={<MyPage/>}/>
 
-            <Route path='/host/*' element={<HostIndex/>}/>
+        <Routes>
+          <Route path='/' element={<MyPage />} />
 
-            <Route path='/member/*' element={<Member/>}/>
-            <Route path='/member/MemDetail' element={<MemDetail/>}/>
-            <Route path='/member/MemChange' element={<MemChange/>}/>
-            <Route path='/member/MemModify' element={<MemModify/>}/>
-            <Route path='/member/MemDelete' element={<MemDelete/>}/>
-            
-            <Route path='/report' element={<ReportList/>}/>  
-            <Route path='/memUseListPage/insertReport' element={<InsertReport/>}/>
-            <Route path='/report/DetailReport/:REPORT_IDX' element={<DetailReport/>}/>
+          <Route path='/host/*' element={<HostIndex />} />
+
+          <Route path='/member/*' element={<Member />} />
+          <Route path='/member/MemDetail' element={<MemDetail />} />
+          <Route path='/member/MemChange' element={<MemChange />} />
+          <Route path='/member/MemModify' element={<MemModify />} />
+
+          <Route path='/report' element={<ReportList />} />
+          <Route path='/memUseListPage/insertReport' element={<InsertReport />} />
+          <Route path='/report/DetailReport/:REPORT_IDX' element={<DetailReport />} />
 
 
-            <Route path='/qna' element={<QnaList/>}/>
-            <Route path='/insertQna' element={<InsertQna/>}/>
-            <Route path='/qna/DetailQna/:QNA_IDX' element={<DetailQna/>}/>
+          <Route path='/qna' element={<QnaList />} />
+          <Route path='/insertQna' element={<InsertQna />} />
+          <Route path='/qna/DetailQna/:QNA_IDX' element={<DetailQna />} />
 
-            <Route path='/ReserveListPage' element={<ReserveListPage/>}/>
-            <Route path='/ReserveListPage/resCancel' element={<ResCancel/>}/>
-            <Route path='/ReserveListPage/resConfirm' element={<ResConfirm/>}/>
+          <Route path='/ReserveListPage' element={<ReserveListPage />} />
+          <Route path='/ReserveListPage/resCancel' element={<ResCancel />} />
+          <Route path='/ReserveListPage/resConfirm' element={<ResConfirm />} />
 
-            <Route path='/memUseListPage' element={<MemUseListPage/>}/>
-            <Route path='/memUseListPage/memUseList' element={<MemUseList/>}/>
-            
+          <Route path='/memUseListPage' element={<MemUseListPage />} />
+          <Route path='/memUseListPage/memUseList' element={<MemUseList />} />
 
-            <Route path='/memUseListPage/myreview' element={<Myreview/>}/>
-            <Route path='/memUseListPage/myreview/ModifyReview' element={<ModifyReview/>}/>
-            <Route path='/memUseListPage/myreview/DeleteReview' element={<DeleteReview/>}/>
-            <Route path='/memUseListPage/insertReview' element={<InsertReview/>}/>
-            <Route path='/reviewList' element={<ReviewList/>}/>
-          </Routes>
-        
-        
+
+          <Route path='/memUseListPage/myreview' element={<Myreview />} />
+          <Route path='/memUseListPage/myreview/ModifyReview' element={<ModifyReview />} />
+          <Route path='/memUseListPage/myreview/DeleteReview' element={<DeleteReview />} />
+          <Route path='/memUseListPage/insertReview' element={<InsertReview />} />
+          <Route path='/reviewList' element={<ReviewList />} />
+        </Routes>
+
+
 
 
       </div>

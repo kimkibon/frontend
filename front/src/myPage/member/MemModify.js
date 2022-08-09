@@ -45,7 +45,6 @@ const MemModify = () => {
       if (password.length < 8) { // 수정할 비밀번호가 8자 미만일 때
         alert("비밀번호를 8자 이상 입력해주세요.")
       } else {
-        console.log(password);
         setMemModify({
           ...memModify,
           'MEM_PW': password // password == passwordcheck면 password를 MEM_PW에 넣기
@@ -78,8 +77,6 @@ const MemModify = () => {
         'to': MEM_PHONE
       }
     }).then(Response => {
-      console.log(Response.data)
-      console.log(Response.data.value)
       setRealVerifyCode(Response.data)
     }).catch(err => {
       console.log(err);
@@ -89,21 +86,17 @@ const MemModify = () => {
 
   const onChangePhone = (e) => { // 휴대폰 번호 바뀌면 미인증 상태로 변경됨 => 휴대폰 인증 진행해야함
     setModifyPhoneOK(0)
-    console.log(modifyPhoneOK)
   }
 
   const modifyVerify = () => { // 인증확인 버튼 눌렀을 때
     if (modifyPhoneOK == 0) {
       alert("인증에 실패하였습니다. 인증을 다시 시도해주세요")
-      // console.log(modifyPhoneOK)
     } else {
       if (InputVerifyCode == RealVerifyCode) { // 입력할 인증번호 == 서버에서 온 인증번호면 인증 ok
         alert("인증이 완료되었습니다.")
         setModifyPhoneOK(1)
       } else {
         alert("인증에 실패하였습니다.")
-        // console.log(RealVerifyCode)
-        // console.log(InputVerifyCode)
       }
     }
   }

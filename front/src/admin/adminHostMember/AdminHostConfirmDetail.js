@@ -25,7 +25,6 @@ const AdminHostConfirmDetail = () => {
       }
     })
       .then(Response => {
-        console.log(Response.data);
         setGetHostMem(Response.data);
         // SelectFileList에서 여러 개의 파일을 map으로 가져와서 1개씩 보여줌
         SelectFileList('1', Response.data.MEM_IDX, '0').then(Response => {
@@ -52,7 +51,6 @@ const AdminHostConfirmDetail = () => {
       }
     })
       .then(Response => {
-        console.log(Response.data);
         setHostConfirm(Response.data);
         alert("승인")
       })
@@ -70,7 +68,6 @@ const AdminHostConfirmDetail = () => {
       }
     })
       .then(Response => {
-        console.log(Response.data);
         setHostDeny(Response.data);
         alert("거절")
       })
@@ -143,7 +140,7 @@ const AdminHostConfirmDetail = () => {
         <label className="col-2 col-form-label">주소</label>
         <div className='col-3 text-center'>
           <input type='text' value={getHostMem.HOST_ADDR1} className="form-control" readOnly></input></div>
-          <div className='col-3 text-center'>
+        <div className='col-3 text-center'>
           <input type='text' value={getHostMem.HOST_ADDR2} className="form-control" readOnly></input></div>
         <div className='col-1'></div>
       </div><br />
@@ -152,7 +149,7 @@ const AdminHostConfirmDetail = () => {
         <label className="col-2 col-form-label">계좌번호</label>
         <div className='col-2 text-center'>
           <input type='text' value={getHostMem.HOST_BANK} className="form-control" readOnly></input></div>
-          <div className='col-4 text-center'>
+        <div className='col-4 text-center'>
           <input type='text' value={getHostMem.HOST_ACCOUNT} className="form-control" readOnly></input></div>
         <div className='col-1'></div>
       </div><br /><br />
