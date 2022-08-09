@@ -105,7 +105,6 @@ const Join = () => {
   };
 
   const Join = () => {  //회원가입함수
-    console.log({ JoinID, JoinPassword });
     if (JoinIDCheck === 0) {
       if (dataRuleCheckForPW()) {
         if (SameCheckForPW()) {
