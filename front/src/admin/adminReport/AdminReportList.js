@@ -62,12 +62,12 @@ const AdminReportList = () => {
       <Table striped width="900px" height="30px" className="table table-hover">
         <thead>
           <tr align='center'>
-            <td width="100px">번호</td>
-            <td width="100px">아이디</td>
-            <td width="200px">신고제목</td>
-            <td width="150px">등록일</td>
+            <td width="20%">번호</td>
+            <td width="20%">아이디</td>
+            <td width="20%">신고제목</td>
+            <td width="20%">등록일</td>
 
-            <td width="100px">
+            <td width="20%">
               <div className="form-group" onChange={handleSelected}>
               <select className="form-select">
                 <option key={2} value="2">전체답변</option>
@@ -77,25 +77,21 @@ const AdminReportList = () => {
               <SelectBox/>
               </div>
             </td>
-            
-            <td width="10px"></td>
           </tr>
         </thead>
       
       {reportListcopy[0] !== undefined && reportListcopy.map((list)=> {
       return (
         <tbody>
-                        <tr onClick={()=>{window.location.href="/admin/adminReportDetail/"+list.REPORT_IDX}}>
+                        <tr align='center' onClick={()=>{window.location.href="/admin/adminReportDetail/"+list.REPORT_IDX}}>
                         {/* onClick={handleDetail} */}
-                        <td width="60px">{list.REPORT_IDX}</td>
-                        <td width="50px">{list.REPORT_ID}</td>
-                        <td width="200px">
+                        <td>{list.REPORT_IDX}</td>
+                        <td>{list.REPORT_ID}</td>
+                        <td>
                                  {list.REPORT_TITLE}
                         </td>
-                        <td width="100px">{list.REPORT_DATE}</td>
-                        <td width="100px">{list.REPORT_STATE}</td> 
-                        <td width="50px">
-                        </td>
+                        <td>{list.REPORT_DATE}</td>
+                        <td>{list.REPORT_STATE}</td> 
                         </tr>
                     </tbody> 
                     )
