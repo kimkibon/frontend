@@ -62,9 +62,9 @@ const AdminReportList = () => {
       <Table striped width="900px" height="30px" className="table table-hover">
         <thead>
           <tr align='center'>
-            <td width="20%">번호</td>
+            <td width="10%">번호</td>
             <td width="20%">아이디</td>
-            <td width="20%">신고제목</td>
+            <td width="30%">신고제목</td>
             <td width="20%">등록일</td>
 
             <td width="20%">

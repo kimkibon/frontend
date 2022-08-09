@@ -68,9 +68,9 @@ const AdminQnaList = () => {
       <Table striped width="900px" height="30px" className="table table-hover">
         <thead>
           <tr align='center'>
-            <td width="20%">문의번호</td>
+            <td width="10%">문의번호</td>
             <td width="20%">아이디</td>
-            <td width="20%">문의제목</td>
+            <td width="30%">문의제목</td>
             <td width="20%">등록일</td>
 
             <td width="20%">
