@@ -12,6 +12,7 @@ const Join = () => {
   const [PhoneOK, setPhoneOK] = useState("0"); //미인증:0 인증:1 폰인증 됐는지?
   const [InputVerifyCode, setInputVerifyCode] = useState(""); //입력한 인증번호
   const [RealVerifyCode, setRealVerifyCode] = useState(""); //서버에서 넘어온 VerifyCode
+  const [IsDisabled, setIsdisabled] = useState(false);
   const navigate = useNavigate();
 
   const getJoinID = (event) => {  //아이디 Input
@@ -52,6 +53,7 @@ const Join = () => {
     })
       .then((Response) => { 
         setRealVerifyCode(Response.data);  //인증번호 반환하여 RealVerifyCode에 저장
+        alert("인증번호가 전송되었습니다")
       })
       .catch((err) => {
         console.log(err);
@@ -63,10 +65,13 @@ const Join = () => {
     if (InputVerifyCode == RealVerifyCode) {  //입력한 번호 InputVerifyCode, 전달받은 번호 RealVerifyCode
       alert("인증이 완료되었습니다.");
       setPhoneOK(1); //인증이 완료됨
+      setIsdisabled(true)  //인증완료시 핸드폰번호와 인증번호 칸 disabled처리
     } else {
       alert("인증에 실패하였습니다.");
     }
   };
+
+
 
   const IDDupCheck = () => {  //아이디 중복체크
     if (JoinID !== "") {
@@ -95,11 +100,11 @@ const Join = () => {
   const dataRuleCheckForPW = () => { //비밀번호 8자 이상
     return JoinPassword.length >= 8 ? true : false;
   };
-  const SameCheckForPW = () => {
+  const SameCheckForPW = () => {  //비밀번호와 비밀번호 확인 동일한지 체크
     return JoinPassword === JoinPwCheck ? true : false;
   };
 
-  const Join = () => {
+  const Join = () => {  //회원가입함수
     console.log({ JoinID, JoinPassword });
     if (JoinIDCheck === 0) {
       if (dataRuleCheckForPW()) {
@@ -119,7 +124,7 @@ const Join = () => {
                   },
                 })
                   .then((Response) => {
-                    navigate("/");
+                    navigate("/");  //메인화면으로
                   })
                   .catch((err) => {
                     console.log(err);
@@ -132,7 +137,7 @@ const Join = () => {
     } else alert("아이디를 확인해주세요");
   };
 
-  const Exit = () => {
+  const Exit = () => {  //취소버튼
     navigate("/");
   };
 
@@ -227,6 +232,7 @@ const Join = () => {
             placeholder="핸드폰 번호"
             value={JoinPhone}
             onChange={(e) => getJoinPhone(e)} //내용이 바뀔떄마다 Phone GET
+            disabled={IsDisabled} //인증완료시 disabled처리
           />
         </div>
         <div className="col-sm-3 offset-1">
@@ -241,11 +247,12 @@ const Join = () => {
         </div>
         <div className="col-sm-3">
           <input
-            type="text"
+            type="text" 
             className="form-control"
             placeholder="인증번호 입력"
             value={InputVerifyCode}
             onChange={(e) => getInputVerifyCode(e)} //내용이 바뀔떄마다 INputVerifyCode GET
+            disabled={IsDisabled}  //인증완료시 disabled처리
           />
         </div>
         <div className="col-sm-3 offset-1">

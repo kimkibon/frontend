@@ -15,6 +15,7 @@ const AdminHostBoardList = () => {
         putArray.push(list)
       }
     })
+    console.log(showBoard)
     setShowBoard(putArray);
   }
 
@@ -70,9 +71,9 @@ const AdminHostBoardList = () => {
         <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
           {showBoard[0] !== undefined &&
-            showBoard.map(list => {
+            showBoard.map((list,index) => {
               return (
-                <div className='col' key={list.BOARD_NO}>
+                <div className='col' key={index}>
                   <AdminBoardList list={list} />
                 </div>
               )
