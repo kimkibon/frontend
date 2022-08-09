@@ -66,7 +66,7 @@ const AdminQnaList = () => {
         <thead>
           <tr align='center'>
             <td width="10%">문의번호</td>
-            <td width="10%">아이디</td>
+            <td width="20%">아이디</td>
             <td width="30%">문의제목</td>
             <td width="20%">등록일</td>
 
@@ -79,8 +79,6 @@ const AdminQnaList = () => {
                 </select>
                 <SelectBox />
               </div>
-            </td>
-            <td width="10%">
             </td>
           </tr>
         </thead>
@@ -97,10 +95,6 @@ const AdminQnaList = () => {
                 </td>
                 <td>{list.QNA_DATE}</td>
                 <td>{list.QNA_STATE}</td>
-                <td>
-                  <Button> 삭제 </Button>
-                  {/*  onClick={handleRemove} */}
-                </td>
               </tr>
             </tbody>
           )

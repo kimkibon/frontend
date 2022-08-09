@@ -32,6 +32,29 @@ const AdminQnaDetail = () => {
   }, []);
 
 
+  const handleRemove = (e) => { //버튼이 눌리면 실행이될
+    e.preventDefault();
+    if (window.confirm("정말 삭제합니까?")) {
+        axios({ //통신으로 정보 받아오기
+            method: 'post',
+            url: '/GareBnB/mypage/deleteQna.do',
+            contentType: "application/json;charset=UTF-8",
+            params: {
+                QNA_IDX: QNA_IDX
+            }
+
+        }).then(Response => {
+            navigate(-1);
+            //응답이 들어왔을 때 SetForm 함수를 사용해서 
+            //response의 data를 setForm의 정보로 변경
+        });
+        alert("삭제되었습니다.");
+    } else {
+        alert("취소합니다.");
+    }
+};
+
+
   const state = detail.QNA_STATE;
   const navigate = useNavigate();
 
@@ -40,8 +63,13 @@ const AdminQnaDetail = () => {
 
     <div className='container'>
       <div className='top'>
-        <h5>상세보기</h5>
+        
+
         <hr />
+        <div className='hbutton text-lg-end'>
+        <button type="button" className="btn btn-success"
+                  onClick={handleRemove}>삭제</button>
+        </div>
 
         <div className='dtitle'>
           <h2>{detail.QNA_TITLE}</h2>
@@ -49,7 +77,9 @@ const AdminQnaDetail = () => {
 
         <div className='row'>
           <div className='col-lg-10'>{detail.QNA_ID}</div>
-          <div className='col-lg-2'>{detail.QNA_DATE}</div>
+          <div className='col-lg-2'>
+            <div className='text-lg-end'>{detail.QNA_DATE}</div>
+          </div>
         </div>
       </div>
 
@@ -65,7 +95,6 @@ const AdminQnaDetail = () => {
                   상태 : {detail.QNA_STATE}<br/>
                   번호 : {detail.QNA_IDX}<br/> */}
       <br />
-
 
       <div>
         {state === '미답변' ? <h1><AdminInsertQna /></h1> :
@@ -83,6 +112,9 @@ const AdminQnaDetail = () => {
           </>
         }
       </div>
+
+      
+
     </div>
   );
 };
