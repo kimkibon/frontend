@@ -54,7 +54,7 @@ const DetailReport = () => {
               </div>
 
               <hr/>
-                <div className='col'>신고받는사람:{detail.REPORT_MEM_IDX}</div>
+                <div className='col'>신고받는사람 : {detail.REPORT_MEM_IDX}</div>
                 <hr/>
               <div className="con mt-3">
                 <label className="content mt-2 pl-4" >

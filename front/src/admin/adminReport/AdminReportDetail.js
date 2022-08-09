@@ -27,6 +27,27 @@ const AdminReportDetail = () => {
   }, []);
 
 
+  const handleRemove = (e) => { //버튼이 눌리면 실행이될
+    e.preventDefault();
+    if (window.confirm("정말 삭제합니까?")) {
+      axios({ //통신으로 정보 받아오기
+          method : 'post' ,
+          url : '/GareBnB/mypage/deleteReport.do' ,
+          contentType:"application/json;charset=UTF-8",
+          params : {
+              REPORT_IDX : REPORT_IDX
+          }
+
+      }).then(Response => {
+          navigate(-1);
+      });
+      alert("삭제되었습니다.");
+        } else {
+        alert("취소합니다.");
+        }
+  };
+
+
 
   const state = detail.REPORT_STATE;
   const navigate = useNavigate();
@@ -36,8 +57,12 @@ const AdminReportDetail = () => {
 
     <div className='container'>
       <div className='top'>
-        <h5>상세보기</h5>
         <hr />
+
+        <div className='hbutton text-lg-end'>
+        <button type="button" className="btn btn-success"
+                  onClick={handleRemove}>삭제</button>
+        </div>
 
         <div className='dtitle'>
           <h2>{detail.REPORT_TITLE}</h2>
@@ -45,11 +70,17 @@ const AdminReportDetail = () => {
 
         <div className='row'>
           <div className='col-lg-10'>{detail.REPORT_ID}</div>
-          <div className='col-lg-2'>{detail.REPORT_DATE}</div>
+          <div className='col-lg-2'>
+            <div className='text-lg-end'>
+              {detail.REPORT_DATE}
+            </div>
+          </div>
         </div>
-      </div>
 
-      <hr />
+        <hr/>
+          <div className='col'>신고받는사람 : {detail.REPORT_MEM_IDX}</div>
+        <hr/>
+      </div>
       <div className="con mt-3">
         {detail.REPORT_CONTENT}
       </div>
@@ -61,8 +92,6 @@ const AdminReportDetail = () => {
                   상태 : {detail.REPORT_STATE}<br/>
                   번호 : {detail.REPORT_IDX}<br/> */}
       <br />
-
-
       <div>
         {state === 0 ? <AdminInsertReport /> :
           <>
@@ -81,61 +110,6 @@ const AdminReportDetail = () => {
       </div>
     </div>
 
-
-
-    //     <div className='container'>
-    //       <hr/>
-    //       <h1>상세보기</h1>
-    //       <hr/>
-
-    //       <Table width="500px" height="30px" >
-    //           <tbody>
-    //             <tr>
-    //               <td width="100px" color='black'>IDX</td>
-    //               <td width="400px">{detail.REPORT_IDX}</td>
-    //             </tr>
-    //             <tr>
-    //               <td width="100px">ID</td>
-    //               <td width="400px">{detail.REPORT_ID}</td>
-    //             </tr>
-    //             <tr>
-    //               <td width="100px">TITLE</td>
-    //               <td width="400px">{detail.REPORT_TITLE}</td>
-    //             </tr>
-    //             <tr>
-    //               <td width="100px">CONTENT</td>
-    //               <td width="400px">{detail.REPORT_CONTENT}</td>
-    //             </tr>
-    //             <tr>
-    //               <td width="100px">STATE</td>
-    //               <td width="400px">{detail.REPORT_STATE}</td>
-    //             </tr>
-    //             <tr>
-    //               <td width="100px">DATE</td>
-    //               <td width="400px">{detail.REPORT_DATE}</td>
-    //             </tr> 
-    //           </tbody>
-
-    //       </Table> 
-
-    // {/* REPORT_STATE 값이 0인경우에만 나오게,, 아니면 TEXTAREA로 */}
-    //     <div>
-    //      {state===0 ? <h1><CommentForm/></h1>:
-    //       <>
-    //       <label htmlFor="exampleTextarea" className="form-label mt-4"><h3>문의답변</h3></label>
-    //       <div className="card border-success mb-3">
-    //         <div className="card-body">
-    //           <p className="card-text">{detail.REPORT_COMMENT}</p>
-    //         </div>
-    //       </div>
-    //       </>
-    //       }
-    //       <div className='col-lg-12 text-lg-center'>
-    //         <button type="button" className="btn btn-success"  
-    //         onClick={(e)=>{ e.preventDefault(); navigate(-1); }}>확인</button>
-    //       </div> 
-    //       </div>  
-    //     </div>          
   );
 };
 
