@@ -55,7 +55,6 @@ const HostBoardForm = () => {
       'BOARD_POST': data.BOARD_POST
     })
     setShowAddrModal(false)
-    console.log(insertBoard)
   }
 
   const onChange = (dates) => {
@@ -75,7 +74,6 @@ const HostBoardForm = () => {
       ...insertBoard,
       [name]: value
     })
-    console.log(insertBoard)
   };
 
   //글 입력 내용이 변경되면 변수에 저장. 

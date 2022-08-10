@@ -35,7 +35,6 @@ const AdminMemberDetail = () => {
       }
     })
       .then(Response => {
-        console.log(Response.data);
         setGetMem(Response.data);
         setMem_LEV(Response.data.MEM_LEVEL);
         SelectFileList('1', Response.data.MEM_IDX, '0').then(Response => {
@@ -61,7 +60,6 @@ const AdminMemberDetail = () => {
       }
     })
       .then(Response => {
-        console.log(Response.data);
         setMemDenyModify(Response.data);
       })
   }
@@ -202,7 +200,7 @@ const AdminMemberDetail = () => {
         </div><br /><br />
 
         <div className="row d-flex justify-content-center align-items-end">
-          <div className='col-md-6'> 
+          <div className='col-md-6'>
             <Button className="btn btn-primary " type="button"
               onClick={adminModifySuccess}>
               <Link to='/admin/adminMemberList' style={{ textDecoration: "none", color: "white" }}>확인</Link>

@@ -17,7 +17,6 @@ const HostBoardList = () => {
       }
       //서버에서 리스트 요청
     }).then(Response => {
-      console.log(Response.data);
       setBoard(Response.data)
     })
   }, [])
@@ -26,9 +25,9 @@ const HostBoardList = () => {
 
   return (
     <div className="container">
-      <hr/>
-        <h3>내 게시글</h3>
-      <hr/>
+      <hr />
+      <h3>내 게시글</h3>
+      <hr />
       <div className='row d-inline-flex'>
         <div className='col float-end mt-5 mb-2'>
           <Link to={'/mypage/host/hostBoardForm'}>
@@ -38,10 +37,16 @@ const HostBoardList = () => {
       </div>
       <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         {board[0] !== undefined && board.map(list => {
-          {return(<AdminBoardList list={list} />)}
+          {
+            return (
+              <div className='col' key={list.BOARD_NO}>
+                <AdminBoardList list={list} />
+              </div>
+            )
+          }
         })}
       </div>
-      
+
     </div>
   )
 }

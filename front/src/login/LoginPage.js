@@ -66,7 +66,6 @@ const Login = () => {
 
   //로그인 버튼 눌렀을 때
   const loginClick = () => {
-    console.log({ loginID, loginPassword });
 
     if (loginID !== "") {
       //아이디가 비어있지 않을 때
@@ -87,10 +86,8 @@ const Login = () => {
             if (Response.data === "") {
               //MEM_ID와 MEM_PW가 맞지않거나 없을 때 null이 리턴됨
               alert("아이디나 비밀번호를 잘못 입력하셨습니다.");
-              console.log("hi");
             } else {
 
-              console.log(Response);
               localStorage.setItem("MEM_ID", Response.data.MEM_ID); //MEM_ID만 로컬스토리지에 저장
               localStorage.setItem("JWT", Response.data.JWT);
               navigate('/')
@@ -139,7 +136,7 @@ const Login = () => {
       loginClick();
     }
   }
-  
+
   return (
     <section className="vh-100">
       <div className="container py-5 h-74">
@@ -173,7 +170,7 @@ const Login = () => {
                   autoComplete={passwordInputType.autoComplete}
                   value={loginPassword}
                   onChange={(e) => setLoginPassword(e.target.value)}
-                  onKeyPress = {handleKeyPress}
+                  onKeyPress={handleKeyPress}
                 />
               </div>
 

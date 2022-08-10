@@ -40,7 +40,7 @@ const FindId = (Login) => {
         if ((Response.data === null)) {
           alert("아이디를 찾을 수 없습니다.");
         } else {
-          console.log(Response.data.MEM_ID);
+
           alert("아이디: "+Response.data.MEM_ID);
           Login.onHide();
         }

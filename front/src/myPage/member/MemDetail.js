@@ -17,7 +17,6 @@ const MemDetail = () => {
     useEffect(() => {// 회원정보 보여주기
         Auth(4, Navigate).then(Response => {
             setAuthor(Response)
-            console.log(author)
             axios({
                 method: 'post',
                 url: '/GareBnB/mypage/MemDetail.do',
@@ -27,7 +26,6 @@ const MemDetail = () => {
                 }
             })
                 .then(Response => {
-                    console.log(Response.data);
                     setMemDetail(Response.data);
                 })
         })// auth
@@ -54,7 +52,6 @@ const MemDetail = () => {
             }
         })
             .then(Response => {
-                console.log(Response.data);
                 setmemDelete(Response.data);
                 window.location.href = '/';
             })

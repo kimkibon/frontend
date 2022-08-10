@@ -32,7 +32,6 @@ const HostBoardModifyForm = () => {
     useEffect(() => {
         setInsertBoard(boardDetail)
         setInsertFiles(file)
-        console.log(file);
     }, location)
 
     //초기값 부여
@@ -276,10 +275,10 @@ const HostBoardModifyForm = () => {
                     show={insertModal}
                     onHide={() => setInsertModal(false)}
                     props={{
-                        'insertBoard' : insertBoard,
-                        'insertFiles' : insertFiles,
-                        'fileType' : '0',
-                        'postUrl' : '/GareBnB/host/mypage/myboardModify.do'
+                        'insertBoard': insertBoard,
+                        'insertFiles': insertFiles,
+                        'fileType': '0',
+                        'postUrl': '/GareBnB/host/mypage/myboardModify.do'
                     }}
                 />
                 {/* 입력확인창 모달로 띄우기 !  */}

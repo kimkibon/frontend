@@ -7,6 +7,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { Button, Modal } from "react-bootstrap";
 import FindPw from "./FindPw";
 
+//비밀번호를 찾을 계정이 있는지 체크 -> 아이디를 findPW로 전달
 const FindPwOK = (Login) => {
   const [inputName, setInputName] = useState("");
   const [inputPhone, setInputPhone] = useState("");
@@ -64,8 +65,6 @@ const FindPwOK = (Login) => {
         if (Response.data === null) {
           alert("계정을 찾을수 없습니다.");
         } else {
-          console.log(Response.data.MEM_PW);
-          // alert("비밀번호: " + Response.data.MEM_PW);
           setfindPwOKClick(true);
         }
       })

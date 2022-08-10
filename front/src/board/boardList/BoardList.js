@@ -62,7 +62,6 @@ const BoardList = () => {
       }
       //서버에서 리스트 요청
     }).then(Response => {
-      console.log(Response.data)
       setBoard(Response.data);
       setShowBoard(Response.data);
     })
@@ -114,7 +113,6 @@ const BoardList = () => {
         sortBoard.push(list)
       })
     }
-    console.log(sortBoard);
     setShowBoard(sortBoard);
   }
 

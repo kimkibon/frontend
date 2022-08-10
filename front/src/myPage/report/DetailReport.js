@@ -20,7 +20,6 @@ const DetailReport = () => {
                 REPORT_IDX : REPORT_IDX
             }
         }).then(Response => {
-            console.log(Response.data);
             setDetail(Response.data);
             //응답이 들어왔을 때 SetQnaList 함수를 사용해서 
             //response의 data를 detail의 정보로 변경
@@ -55,6 +54,8 @@ const DetailReport = () => {
               </div>
 
               <hr/>
+                <div className='col'>신고받는사람 : {detail.REPORT_MEM_IDX}</div>
+                <hr/>
               <div className="con mt-3">
                 <label className="content mt-2 pl-4" >
                 {detail.REPORT_CONTENT}
@@ -91,6 +92,7 @@ const DetailReport = () => {
     //         상태 : {detail.REPORT_STATE}<br/>
     //         아이디 : {detail.REPORT_ID}<br/>
     //         번호 : {detail.REPORT_IDX}<br/>
+    
             
       
   );

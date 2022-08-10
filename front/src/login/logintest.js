@@ -14,7 +14,7 @@ const Logintest = () => {
   const [loginPassword, setLoginPassword] = useState(""); //비밀번호 입력을 위한 선언
   const [saveIDFlag, setSaveIDFlag] = useState(false); //ID저장 checkbox
   const [passwordOption, setPasswordOption] = useState(false); //비밀번호표시 checkBox컨트롤
-  const [passwordInputType, setPasswordInputType] = useState({ 
+  const [passwordInputType, setPasswordInputType] = useState({
     type: "password",
     autoComplete: "current-password",
   }); //type과 autoComplete를 변경하기 위한 useState
@@ -27,7 +27,7 @@ const Logintest = () => {
   };
   const [passwordError, setpasswordError] = useState("");
   const [emailError, setemailError] = useState("");
-  
+
   //ID에 한글입력불가능
   const dataRuleCheckForID = (ch) => {
     let ascii = ch.charCodeAt(0);
@@ -50,7 +50,7 @@ const Logintest = () => {
 
     let length = value.length;
     if (dataRuleCheckForID(value[length - 1]) === false) return;
-   
+
     setLoginID(value);
 
     return;
@@ -60,57 +60,53 @@ const Logintest = () => {
     localStorage.setItem(LS_KEY_SAVE_ID_FLAG, !saveIDFlag);
     setSaveIDFlag(!saveIDFlag);
   };
-  
+
   //로그인 버튼 눌렀을 때 
   const loginClick = () => {
-    console.log({ loginID, loginPassword });
-    
+
     if (loginID !== "") { //아이디가 비어있지 않을 때
-      
+
 
       if (loginPassword !== "") { //패스워드가 비어있지 않을 때
         axios({ //MEM_ID 와 MEM_PW로 확인하고 MEM_ID 로컬스토리지 저장
-          method : 'post' ,
-          url : '/GareBnB/login/login.do' ,
-          contentType:"application/json;charset=UTF-8",
-          params : {
-              'MEM_ID' : loginID ,
-              'MEM_PW' : loginPassword 
+          method: 'post',
+          url: '/GareBnB/login/login.do',
+          contentType: "application/json;charset=UTF-8",
+          params: {
+            'MEM_ID': loginID,
+            'MEM_PW': loginPassword
 
-          }}).then(Response => {
-            if (Response.data === ""){ //MEM_ID와 MEM_PW가 맞지않거나 없을 때 null이 리턴됨
-              alert("아이디나 비밀번호를 잘못 입력하셨습니다.");
-              console.log("hi")
-            }
-            else {
-              console.log(Response)
-              console.log(Response.data.MEM_LEVEL)
-              
-              localStorage.setItem('MEM_ID', Response.data.MEM_ID)  //MEM_ID만 로컬스토리지에 저장
-              console.log(localStorage)
-            
-            }
-          }).catch(err => {
-            console.log(err);
-          });
+          }
+        }).then(Response => {
+          if (Response.data === "") { //MEM_ID와 MEM_PW가 맞지않거나 없을 때 null이 리턴됨
+            alert("아이디나 비밀번호를 잘못 입력하셨습니다.");
+          }
+          else {
+
+            localStorage.setItem('MEM_ID', Response.data.MEM_ID)  //MEM_ID만 로컬스토리지에 저장
+
+          }
+        }).catch(err => {
+          console.log(err);
+        });
 
       }
       else alert("비밀번호를 입력하세요");
 
-      
+
     }
     else alert("아이디를 입력하세요");
-    
-  
 
-   
+
+
+
     //체크박스 v인경우 (saveIDFlag ===true) 로컬스토리지에 loginId를 set
     if (saveIDFlag) localStorage.setItem(LS_KEY_ID, loginID);
 
-    
-    
+
+
   };
-  
+
   /*페이지가 최초 렌더링 될 때 checkbox확인
   idFlag에 따라 checkbox를 변경해주고 false인 경우 ID를 ""로 set
   저장한 Id가 있다면 setLoginId로 ID를 보여준다.*/
@@ -123,7 +119,7 @@ const Logintest = () => {
     let data = localStorage.getItem(LS_KEY_ID);
     if (data !== null) setLoginID(data);
   }, []);
-  
+
   //PasswordOption이 변경될때마다 setPasswordInputType로 type과 autoComplete를 변경한다.
   useEffect(() => {
     if (passwordOption === false)
@@ -131,10 +127,10 @@ const Logintest = () => {
         type: "password",
         autoComplete: "current-password",
       });
-    else 
-      setPasswordInputType({ 
-        type: "text", 
-        autoComplete: "off" 
+    else
+      setPasswordInputType({
+        type: "text",
+        autoComplete: "off"
       });
   }, [passwordOption]);
 

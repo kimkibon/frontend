@@ -53,7 +53,6 @@ const MemChange = () => {
       'HOST_POST': data.HOST_POST
     })
     setShowAddrModal(false)
-    // console.log(insertHost)
   }
 
   const onChange = (e) => {
@@ -62,7 +61,6 @@ const MemChange = () => {
       ...insertHost, // 기존의 input 객체를 복사한 뒤      
       [name]: value // name 키를 가진 값을 value 로 설정    
     });
-    //  console.log(insertHost)
   };
 
   const getImages = (image) => {

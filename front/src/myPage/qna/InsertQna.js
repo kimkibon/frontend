@@ -27,7 +27,7 @@ const InsertQna = ({}) => {
     //폼에서 값을 변경하면 e.target.value 값이 변경되면서 ((((((이렇게 선언하면 오류.,,,))))))
     //e.target.name(->이건 폼의 name 값 title을 말함)으로 들어감
     })
-    //console.log(form); //form 얘한테 title, content가 있음
+    //form 얘한테 title, content가 있음
   };
 
 
@@ -47,12 +47,10 @@ const InsertQna = ({}) => {
                   QNA_COMMENT : ''
               }
       }).then(Response => {
-          //console.log(Response.data);
           setForm(Response.data);
           //응답이 들어왔을 때 SetForm 함수를 사용해서 
           //response의 data를 setForm의 정보로 변경
       });
-      console.log(form);
       window.location.href ="./qna";
       setForm({ //입력하고 난 뒤 초기화
         title:'',

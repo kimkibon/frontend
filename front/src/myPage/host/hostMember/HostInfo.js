@@ -26,7 +26,6 @@ const HostInfo = () => {
       }
     })
       .then(Response => {
-        console.log(Response.data);
         setmemDelete(Response.data);
       })
   };
@@ -84,10 +83,10 @@ const HostInfo = () => {
 
   return (
     <div>
-    <div className="container">
-      <hr/>
+      <div className="container">
+        <hr />
         <h3>회원정보 보기(HOST)</h3>
-      <hr/><br />
+        <hr /><br />
 
         <div className="row d-flex justify-content-center align-items-center ">
           <div className="col-md-8">
@@ -110,107 +109,107 @@ const HostInfo = () => {
             </Carousel>
           </div></div><br />
 
-      <div className="row d-flex justify-content-center align-items-center ">
-        <label className="col-md-3 col-form-label">아이디</label>
-        <div className='col-md-5 text-center'>
-          <input type='text' value={hostDetail.MEM_ID} className="form-control" readOnly></input></div>
-      </div><br />
+        <div className="row d-flex justify-content-center align-items-center ">
+          <label className="col-md-3 col-form-label">아이디</label>
+          <div className='col-md-5 text-center'>
+            <input type='text' value={hostDetail.MEM_ID} className="form-control" readOnly></input></div>
+        </div><br />
 
-      <div className="row d-flex justify-content-center align-items-center">
-        <label className="col-md-3 col-form-label">이름</label>
-        <div className='col-md-5 text-center'>
-          <input type='text' value={hostDetail.MEM_NAME} className="form-control" readOnly></input></div>
-      </div><br />
-
-      <div className="row d-flex justify-content-center align-items-center">
-        <label className="col-md-3 col-form-label">비밀번호</label>
-        <div className='col-md-5 text-center'>
-          <input type='text' value={hostDetail.MEM_PW} className="form-control" readOnly></input></div>
-      </div><br />
-
-      <div className="row d-flex justify-content-center align-items-center">
-        <label className="col-md-3 col-form-label">휴대폰 번호</label>
-        <div className='col-md-5 text-center'>
-          <input type='text' value={hostDetail.MEM_PHONE} className="form-control" readOnly></input></div>
-      </div><br />
-
-      <div className="row d-flex justify-content-center align-items-center">
-        <label className="col-md-3 col-form-label">이메일</label>
-        <div className='col-md-5 text-center'>
-          <input type='text' value={hostDetail.HOST_EMAIL} className="form-control" readOnly></input></div>
-      </div><br />
-
-      <div className="row d-flex justify-content-center align-items-center">
-        <label className="col-md-3 col-form-label">우편번호</label>
-        <div className='col-md-5 text-center'>
-          <input type='text' value={hostDetail.HOST_POST} className="form-control" readOnly></input></div>
-      </div><br />
-
-      <div className="row d-flex justify-content-center align-items-center">
-        <label className="col-md-3 col-form-label">기본주소</label>
-        <div className='col-md-5 text-center'>
-          <input type='text' value={hostDetail.HOST_ADDR1} className="form-control" readOnly></input></div>
-      </div><br />
-
-      <div className="row d-flex justify-content-center align-items-center">
-        <label className="col-md-3 col-form-label">상세주소</label>
-        <div className='col-md-5 text-center'>
-          <input type='text' value={hostDetail.HOST_ADDR2} className="form-control" readOnly></input></div>
-      </div><br />
-
-      <div className="row d-flex justify-content-center align-items-center">
-        <label className="col-md-3 col-form-label">소개글</label>
-        <div className='col-md-5 text-center'>
-          <textarea type='textarea' value={hostDetail.HOST_INTRO} className="form-control" rows="4" readOnly></textarea></div>
-      </div><br />
-
-      <div className="row d-flex justify-content-center align-items-center">
-        <label className="col-md-3 col-form-label">은행명</label>
-        <div className='col-md-5 text-center'>
-          <input type='text' value={hostDetail.HOST_BANK} className="form-control" readOnly></input></div>
-      </div><br />
-
-      <div className="row d-flex justify-content-center align-items-center">
-        <label className="col-md-3 col-form-label">계좌번호</label>
-        <div className='col-md-5 text-center'>
-          <input type='text' value={hostDetail.HOST_ACCOUNT} className="form-control" readOnly></input></div>
-      </div><br /><br />
-
-      {/* 주민등록번호는 회원정보에 띄우지 않았음..! */}
-
-      <div className="row">
         <div className="row d-flex justify-content-center align-items-center">
-          <div className='col-md-1'>
-            <Button className="btn btn-primary " type="button">
-              <Link to={'../HostModify'} style={{ textDecoration: "none", color: "white" }} state={{ mem: hostDetail, file: file }}>수정</Link>
-            </Button> &nbsp;
+          <label className="col-md-3 col-form-label">이름</label>
+          <div className='col-md-5 text-center'>
+            <input type='text' value={hostDetail.MEM_NAME} className="form-control" readOnly></input></div>
+        </div><br />
 
-          </div></div>
-        <div className="row d-flex justify-content-end align-items-end">
-          <div className='col-md-2'>
-            <button type="button" className="btn btn-link" style={{ color: "lightgray" }} onClick={handleShow}>탈퇴</button>
-          </div></div>
+        <div className="row d-flex justify-content-center align-items-center">
+          <label className="col-md-3 col-form-label">비밀번호</label>
+          <div className='col-md-5 text-center'>
+            <input type='text' value={hostDetail.MEM_PW} className="form-control" readOnly></input></div>
+        </div><br />
+
+        <div className="row d-flex justify-content-center align-items-center">
+          <label className="col-md-3 col-form-label">휴대폰 번호</label>
+          <div className='col-md-5 text-center'>
+            <input type='text' value={hostDetail.MEM_PHONE} className="form-control" readOnly></input></div>
+        </div><br />
+
+        <div className="row d-flex justify-content-center align-items-center">
+          <label className="col-md-3 col-form-label">이메일</label>
+          <div className='col-md-5 text-center'>
+            <input type='text' value={hostDetail.HOST_EMAIL} className="form-control" readOnly></input></div>
+        </div><br />
+
+        <div className="row d-flex justify-content-center align-items-center">
+          <label className="col-md-3 col-form-label">우편번호</label>
+          <div className='col-md-5 text-center'>
+            <input type='text' value={hostDetail.HOST_POST} className="form-control" readOnly></input></div>
+        </div><br />
+
+        <div className="row d-flex justify-content-center align-items-center">
+          <label className="col-md-3 col-form-label">기본주소</label>
+          <div className='col-md-5 text-center'>
+            <input type='text' value={hostDetail.HOST_ADDR1} className="form-control" readOnly></input></div>
+        </div><br />
+
+        <div className="row d-flex justify-content-center align-items-center">
+          <label className="col-md-3 col-form-label">상세주소</label>
+          <div className='col-md-5 text-center'>
+            <input type='text' value={hostDetail.HOST_ADDR2} className="form-control" readOnly></input></div>
+        </div><br />
+
+        <div className="row d-flex justify-content-center align-items-center">
+          <label className="col-md-3 col-form-label">소개글</label>
+          <div className='col-md-5 text-center'>
+            <textarea type='textarea' value={hostDetail.HOST_INTRO} className="form-control" rows="4" readOnly></textarea></div>
+        </div><br />
+
+        <div className="row d-flex justify-content-center align-items-center">
+          <label className="col-md-3 col-form-label">은행명</label>
+          <div className='col-md-5 text-center'>
+            <input type='text' value={hostDetail.HOST_BANK} className="form-control" readOnly></input></div>
+        </div><br />
+
+        <div className="row d-flex justify-content-center align-items-center">
+          <label className="col-md-3 col-form-label">계좌번호</label>
+          <div className='col-md-5 text-center'>
+            <input type='text' value={hostDetail.HOST_ACCOUNT} className="form-control" readOnly></input></div>
+        </div><br /><br />
+
+        {/* 주민등록번호는 회원정보에 띄우지 않았음..! */}
+
+        <div className="row">
+          <div className="row d-flex justify-content-center align-items-center">
+            <div className='col-md-1'>
+              <Button className="btn btn-primary " type="button">
+                <Link to={'../HostModify'} style={{ textDecoration: "none", color: "white" }} state={{ mem: hostDetail, file: file }}>수정</Link>
+              </Button> &nbsp;
+
+            </div></div>
+          <div className="row d-flex justify-content-end align-items-end">
+            <div className='col-md-2'>
+              <button type="button" className="btn btn-link" style={{ color: "lightgray" }} onClick={handleShow}>탈퇴</button>
+            </div></div>
+        </div>
+
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>정말로 탈퇴하시겠습니까?</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <div style={{ color: 'red' }}>
+              탈퇴 후에는 해당 아이디로 다시 가입할 수 없으며, <br /> 아이디와 데이터는 복구할 수 없습니다. <br />
+              일반 회원도 탈퇴 처리되므로, 신중한 선택 부탁드립니다. <br /></div><br />
+            <div>
+              <h5>비밀번호 재확인</h5></div>
+            <input type="password" placeholder='비밀번호를 입력하세요' onChange={e => setOriginPw(e.target.value)} className="form-control">
+            </input>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>취소</Button>
+            <Button variant="light" onClick={PWCHECK}>탈퇴</Button>
+          </Modal.Footer>
+        </Modal>
       </div>
-
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>정말로 탈퇴하시겠습니까?</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <div style={{ color: 'red' }}>
-            탈퇴 후에는 해당 아이디로 다시 가입할 수 없으며, <br /> 아이디와 데이터는 복구할 수 없습니다. <br />
-            일반 회원도 탈퇴 처리되므로, 신중한 선택 부탁드립니다. <br /></div><br />
-          <div>
-            <h5>비밀번호 재확인</h5></div>
-          <input type="password" placeholder='비밀번호를 입력하세요' onChange={e => setOriginPw(e.target.value)} className="form-control">
-          </input>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>취소</Button>
-          <Button variant="light" onClick={PWCHECK}>탈퇴</Button>
-        </Modal.Footer>
-      </Modal>
-    </div>
     </div>
   )
 }
