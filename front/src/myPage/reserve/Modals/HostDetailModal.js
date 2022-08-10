@@ -13,7 +13,7 @@ const HostDetailModal = (props) => {
   //const hostId = props.state.hostId;
 
   const gender = (num) => {
-    if (num === 1) {
+    if (num === '1') {
       return '남';
     }
     else {

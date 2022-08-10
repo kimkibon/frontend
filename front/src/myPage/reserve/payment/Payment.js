@@ -77,7 +77,7 @@ const Payment = (props) => {
         }
       }).then(Response => {
 
-        navigate('/myPage/ReserveListPage');
+        navigate(0);
       });
 
     } else {

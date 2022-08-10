@@ -1,11 +1,13 @@
 import axios from 'axios';
+import { useEffect } from 'react';
 import { useLocation, useNavigate} from 'react-router-dom';
 
 const ReserveConfirm =() => {
 
     const location = useLocation();
     const navigate = useNavigate();
-
+        useEffect(()=>{
+            console.log(location)
         axios({
             method : 'post' ,
             url : '/GareBnB/mypage/ResConfirm.do' ,
@@ -16,7 +18,7 @@ const ReserveConfirm =() => {
         }).then(Response => {
             navigate('/myPage/ReserveListPage');
         })
-        
+    },[])
         
 
     

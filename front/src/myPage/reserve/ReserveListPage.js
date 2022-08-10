@@ -15,7 +15,7 @@ const ReserveListPage = () => {
 
   const mem_id = localStorage.getItem("MEM_ID");//로컬스토리지에서 로그인한 계정의 아이디 전달
 
-  const location = useLocation().pathname
+  const location = useLocation().pathname;
 
   useEffect(() => {
 
@@ -40,7 +40,7 @@ const ReserveListPage = () => {
       })
 
       Promise.all(url).then((data) => { setResList(data) });
-      //setResList(Response.data);
+      console.log(Response.data);
 
     });
 
@@ -201,7 +201,7 @@ const ReserveListPage = () => {
                       {/* 예약승인상태 */}
                       {resstate === 1 &&
                         <div>
-                          <Link to={'resConfirm'} state={{ 'res_idx': list.RES_IDX }}><button type="button" className="btn btn-primary m-1">예약확정</button></Link>
+                          <Link to={'/myPage/ReserveListPage/resConfirm'} state={{ 'res_idx': list.RES_IDX }}><button type="button" className="btn btn-primary m-1">예약확정</button></Link>
                         </div>
                       }
 
