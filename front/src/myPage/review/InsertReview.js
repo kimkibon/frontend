@@ -1,37 +1,18 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom';
+import { Rating } from 'react-simple-star-rating';
 
 const InsertReview = () => {
 
   const location = useLocation();
   const mem_id = location.state.REVIEW_MEM_ID;
   const board_no = location.state.BOARD_NO;
-
-
-  //리뷰 체크
-  const [check, setCheck] = useState(0);
-  useEffect(() => {
-    axios({
-
-        method : 'post' ,
-        url : '/GareBnB/mypage/myReview.do' ,
-        contentType:"application/json;charset=UTF-8",
-        params : {
-            MEM_ID : mem_id,
-            BOARD_NO : board_no
-    
-        }
-    }).then(Response => {
-        Response.data ? setCheck(1) : setCheck(0)
-
-    });
-
-  },[]);
+  const res_idx = location.state.RES_IDX;
 
 
   const [inputs, setInputs] = useState({    
-    score: 5,    
+    score: '',    
     review: ''  
   });   
 
@@ -57,29 +38,43 @@ const InsertReview = () => {
         MEM_ID : mem_id,
         BOARD_NO : board_no,
         SCORE : score,
-        REVIEW_CONTENT : review
+        REVIEW_CONTENT : review,
+        RES_IDX : res_idx
       }
     }).then(Response => {
         window.location.href="/myPage/memUseListPage"
+    }).catch(error =>{
+        alert("별점을 선택해주세요!")
     });
   }
 
 
-  //경고 및 페이지 이동
-  const alert_to=(e)=>{
-    e.preventDefault();
-    alert("이미 리뷰를 작성했습니다.");
-    window.location.href="/myPage/memUseListPage"
+  //별점
+  const [rating, setRating] = useState(); // initial rating value
+
+  // Catch Rating value
+  const handleRating = (rate) => {
+
+    const ratee = rate/20
+    setInputs({      
+      ...inputs, // 기존의 input 객체를 복사한 뒤      
+      'score':  ratee// name 키를 가진 값을 value 로 설정    
+    });  
   }
+
+
+
   return (
     <div>
       <h3>리뷰쓰기</h3>
-      <h3>별점 : </h3>
-      <input name="score" placeholder="별점" onChange={onChange} value={score} />
+      <div className='App'>
+        <Rating transition onClick={handleRating} ratingValue={rating} allowHalfIcon showTooltip/>
+
+      </div>
+      <br/> 
+      <textarea rows="4" cols="50" name="review" placeholder="후기를 작성하세요" onChange={onChange} value={review}/>
       <br/>
-      <h3>내용 : </h3>      
-      <input name="review" placeholder="후기" onChange={onChange} value={review}/>
-      {check===0 ? <button onClick={inputreview}>등록하기</button> : <button onClick={alert_to}>등록하기</button>}
+      <button type="button" className="btn btn-primary" onClick={inputreview}>등록하기</button>
     </div>
     
   )

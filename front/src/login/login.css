@@ -1,0 +1,18 @@
+.caps-lock {
+    display: inline-block;
+    vertical-align: baseline;
+    width: 100px;
+    padding: 5px 8px;
+    font-size: 12px;
+    font-weight: 800;
+    color: white;
+    border-radius: 0.5rem;
+    background-color: rgb(21, 170, 21);
+  }  
+  
+  .caps-lock-on {
+    background-color: rgb(250, 125, 125);
+  }
+  html {
+    height: 100%;
+}

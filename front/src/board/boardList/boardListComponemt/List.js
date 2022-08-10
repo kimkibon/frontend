@@ -1,56 +1,70 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-const List = (board) => {
+import { Rating } from 'react-simple-star-rating';
+import SelectOneFile from '../../../commons/Files/SelectOneFile';
+const List = (props) => {
+  //상위 컴포넌트에서 받아온 데이터를 표시 
+
+  const list = props.list;
+
+  const [url, setUrl] = useState();
+
+
+  useEffect(() => {
+    SelectOneFile('0', list.BOARD_NO, list.BOARD_MODIFY_NO).then(Res => {
+      setUrl("data:image/;base64," + Res.URL);
+      // setUrl(url);
+    });
+
+  }, [])
+
+  list['URL'] = url;
 
   return (
 
-    <div className="container border border-primary">
-      {board[0] !== undefined && board.map(list => {
-        return (
+    <div className="card h-100 shadow-sm">
+      <Link to='/board/detail' state={list}>
 
-          <div className="row border border-primary" key={list.BOARD_NO}>
-            <div className="col-md-7">
-              <img className="img-fluid rounded mb-3 mb-md-0" 
-                   width='700px'
-                   height='300px'
-                    
-                   src={list.URL} 
-                   alt="" 
-                   />
-            </div>
-            <div className="col-md-4">
-              <h3>{list.BOARD_TITLE}</h3>
-              <p>{list.BOARD_CONTENT}</p>
-              <h5 className='text-end'>{list.BOARD_PRICE}원/일</h5>
-              <h5 className='text-end'>{list.BOARD_SCORE}</h5>
-              <Link to='Detail' state={list}>
-                <button className="btn btn-primary" href="#">자세한 정보 알아보기</button>
-              </Link>
-            </div>
-          </div>
-
-        )
-      })}
-
-{/* example */}
-      <div className="row">
-        <div className="col-md-7">
-          <img className="img-fluid rounded mb-3 mb-md-0" src="https://via.placeholder.com/700x300" alt="" />
-
+        <img
+          className="d-block rounded p-1"
+          width='100%'
+          height='270px'
+          src={list.URL}
+          alt=""
+          style={{'objectFit' : 'cover'}}
+        />
+      </Link>
+      <div className="card-body">
+        <div className='row mb-3'>
+          <div className='col col-sm-8'>
+        <h4 className="card-text">
+          {list.BOARD_TITLE}
+        </h4>
         </div>
-        <div className="col-md-5">
-          <h3>Project One</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
-          <h5 className='text-end'>PRICE</h5>
-          <h5 className='text-end'>SCORE</h5>
-          <div className='col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0'>
-          <button className="btn btn-primary" href="#">자세한 정보 알아보기</button>
-          </div>
+        <div className='col col-sm-4'>
+        <Rating initialValue={(list.AVG_SCORE)} readonly  size='20px' className='mb-2'  />
         </div>
-
+        </div>
+        <figure className="text-end">
+        <p>
+            {list.BOARD_ADDR1} {list.BOARD_ADDR2}
+          </p>
+          <p>
+            {list.BOARD_PRICE}원/일
+          </p>
+        </figure>
+        <div className="d-flex justify-content-between align-items-center">
+          <div className='col col-sm-10'>
+            지금까지 {list.RES_COUNT}명이 이용했어요!
+          </div>
+          <div className="col col-sm-2 btn-group">
+            <Link to='/board/detail' state={list}>
+              <button type="button" className="btn btn-sm btn-outline-secondary">View</button>
+            </Link>
+          </div>
+          <small className="text-muted">{list.BOARD_SCORE}</small>
+        </div>
       </div>
-{/*  */}
-
     </div>
 
   )

@@ -1,11 +1,12 @@
 import React from 'react';
-import Sidebar from '../commons/Sidebar';
+import ReserveListPage from './reserve/ReserveListPage';
+
 const MyPage = () => {
   return (
-    <>
-    <Sidebar/>
-    <div>MyPage</div>
-    </>
+    <div>
+      <ReserveListPage />
+    </div>
+
   )
 }
 

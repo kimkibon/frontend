@@ -1,0 +1,51 @@
+
+body
+{
+    min-height: 100vh;
+    background: #ffffff;
+}
+
+.top h5 {
+    margin-left: 0;
+    margin-right: 0;
+    text-align: center;
+}
+
+/* list.qnatable */
+.qnatable {
+    height: 250px;
+    overflow: auto;
+}
+
+/* detail.title */
+.dtitle {
+    overflow:hidden;
+    word-break:break-all;
+}
+
+
+/* detail.content */
+.con {
+    height: 250px;
+    overflow:hidden;
+    word-break:break-all;
+}
+
+/* detail.comment */
+.com {
+    height: 150px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #94B49F;
+    border-radius: 8px;
+}
+
+/* detail.comment */
+.comcom {
+    overflow:hidden;
+    word-break:break-all;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+}
