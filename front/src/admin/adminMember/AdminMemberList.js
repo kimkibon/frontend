@@ -10,7 +10,6 @@ const AdminMemberList = () => {
   const [search, setSearch] = useState(""); // 검색 단어
   const location = useLocation().pathname
 
-  console.log(location);
   useEffect(() => { // 전체 회원 리스트이므로, params 생략
     axios({
       method: 'post',
