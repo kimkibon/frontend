@@ -81,9 +81,9 @@ const AdminMemberList = () => {
           </tr>
         </thead>
 
-        {memList[0] !== undefined && memList.map((list) => {
+        {memList[0] !== undefined && memList.map((list,index) => {
           return (
-            <tbody>
+            <tbody key={index}>
               <tr align='center' onClick={() => { window.location.href = '/admin/adminMemberDetail/' + list.MEM_IDX }}>
                 <td> {list.MEM_IDX}</td>
                 <td>{list.MEM_NAME}</td>
