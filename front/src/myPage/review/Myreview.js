@@ -59,14 +59,7 @@ const Myreview = () => {
                         <div className='col-4 m-2'>
 
                             {new Date().getTime() < after_date &&
-                                //     <Link to={'ModifyReview'} state={{
-                                //         'REVIEW_IDX': myreview.REVIEW_IDX,
-                                //         'SCORE': myreview.SCORE, 'REVIEW_CONTENT': myreview.REVIEW_CONTENT
-                                //     }}>
-                                //         <button type="button" className="btn btn-info">
-                                //             수정</button><br /><br />
-                                //     </Link>
-                                // }
+ 
                                 <Button className="btn btn-secondary" type="button">
                                     <Link to={'ModifyReview'} style={{ textDecoration: "none", color: "white" }}
                                         state={{ 'REVIEW_IDX': myreview.REVIEW_IDX, 'SCORE': myreview.SCORE, 'REVIEW_CONTENT': myreview.REVIEW_CONTENT }}>수정</Link>

@@ -2,10 +2,12 @@ import axios from 'axios';
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { useNavigate } from 'react-router-dom';
 
 const DeleteReviewModal =(props) => {
 
     const review_idx = props.state.REVIEW_IDX;
+    const navigate = useNavigate();
 
     return (
         <Modal
@@ -30,7 +32,7 @@ const DeleteReviewModal =(props) => {
                                     REVIEW_IDX : review_idx
                                 }
                             }).then(Response => {
-                                window.location.href="/myPage/memUseListPage"
+                                navigate("/myPage/memUseListPage")
                             });
                         }}>
                     확인

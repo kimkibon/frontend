@@ -40,7 +40,7 @@ const ModifyReview =() => {
             REVIEW_CONTENT : review
         }
         }).then(Response => {
-            window.location.href="/myPage/memUseListPage"
+            navigate("/myPage/memUseListPage")
         });
     }
 

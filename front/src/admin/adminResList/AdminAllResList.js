@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
 
 //예약상태
@@ -19,6 +19,8 @@ const AdminAllResList = () => {
     const [resList, setResList] = useState([]);
     const [copyresList, setCopyresList] = useState([]);
 
+    const location = useLocation().pathname
+
     useEffect(() => {
         axios({
             method: 'post',
@@ -28,7 +30,7 @@ const AdminAllResList = () => {
             setResList(Response.data);
             setCopyresList(Response.data);
         });
-    }, []);
+    }, [location]);
 
 
     //selectbox

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, } from "react-router-dom";
+import { Link, useLocation, } from "react-router-dom";
 import Payment from "./payment/Payment";
 import SelectOneFile from "../../commons/Files/SelectOneFile";
 import './resstyle.css'
@@ -10,33 +10,14 @@ import Popover from 'react-bootstrap/Popover';
 import ReserveCancel from "./ResCancel";
 
 
-//예약상태
-// const ResState = (state) => {
-//   switch (state) {
-//     case 0: return '예약요청'
-//     case 1: return '예약승인'
-//     case 2: return '결제대기'
-//     case 3: return '결제/예약완료'
-//     case 4: return '예약취소'
-//   }
-
-// }
-
 const ReserveListPage = () => {
   const [resList, setResList] = useState([]); //예약리스트 받아오는 변수
 
-  //auth
   const mem_id = localStorage.getItem("MEM_ID");//로컬스토리지에서 로그인한 계정의 아이디 전달
-  //const [author, setAuthor] = useState({});
-  //const navigate = useNavigate();
 
+  const location = useLocation().pathname
 
   useEffect(() => {
-
-    //로그인한 계정의 ID, LEVEL, IDX 가져오기
-    //level 4보다 작은 계정들은 접근 가능
-    //Auth(4 , navigate).then(Response => {
-    //setAuthor(Response)
 
     //예약리스트가져오기
     axios({
@@ -45,7 +26,7 @@ const ReserveListPage = () => {
       url: '/GareBnB/mypage/memReserveList.do',
       contentType: "application/json;charset=UTF-8",
       params: {
-        MEM_ID: mem_id//////////////////////////////////     
+        MEM_ID: mem_id  
 
       }
     }).then(Response => {
@@ -63,8 +44,7 @@ const ReserveListPage = () => {
 
     });
 
-    //})//auth
-  }, []);
+  }, [location]);
 
 
   //예약 상태에 따른 step bar 변화
