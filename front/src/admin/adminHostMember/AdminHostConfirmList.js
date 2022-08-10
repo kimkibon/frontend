@@ -35,7 +35,7 @@ const AdminHostConfirmList = () => {
             </tr>
           </thead>
 
-          {hostResList[0] !== undefined && hostResList.map((list) => {
+          {hostResList[0] !== undefined ? hostResList.map((list) => {
             return (
               <tbody key={list.MEM_IDX}>
                 <tr align='center' onClick={() => { window.location.href = '/admin/AdminHostConfirmDetail/' + list.MEM_IDX }}>
@@ -46,7 +46,9 @@ const AdminHostConfirmList = () => {
                 </tr>
               </tbody>
             )
-          })}
+          })
+            : <div className="mt-5 mb-5 d-flex justify-content-center"><h4>호스트 전환 요청 회원이 없습니다.</h4></div>
+          }
 
         </Table>
       </div>

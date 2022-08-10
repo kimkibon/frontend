@@ -99,7 +99,11 @@ const MemChange = () => {
                     if (insertHost.HOST_ACCOUNT === '') {
                       alert('계좌번호를 입력해주세요.')
                     } else {
-                      setInsertModal(true);
+                      if (insertFiles[0] === undefined) {
+                        alert('사진을 한 장 이상 입력해주세요.')
+                      } else {
+                        setInsertModal(true);
+                      }
                     }
                   }
                 }
@@ -110,7 +114,6 @@ const MemChange = () => {
       }
     }
   }
-
 
   return (
     <div>
