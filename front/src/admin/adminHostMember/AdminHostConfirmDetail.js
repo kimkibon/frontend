@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import SelectFileList from '../../commons/Files/SelectFileList';
 import Carousel from 'react-bootstrap/Carousel';
 import { Button } from 'react-bootstrap';
@@ -10,6 +10,7 @@ const AdminHostConfirmDetail = () => {
   const [url, setUrl] = useState();
   const [file, setFile] = useState([]);
   const { MEM_IDX } = useParams();
+  const navigate = useNavigate();
 
   const [getHostMem, setGetHostMem] = useState([]);
 
@@ -53,7 +54,7 @@ const AdminHostConfirmDetail = () => {
       .then(Response => {
         setHostConfirm(Response.data);
         alert("호스트 전환이 승인되었습니다.")
-        window.location.href("/admin/adminHostConfirmList")
+        navigate("/admin/adminHostConfirmList")
       })
   }
 
@@ -71,7 +72,7 @@ const AdminHostConfirmDetail = () => {
       .then(Response => {
         setHostDeny(Response.data);
         alert("호스트 전환이 거절되었습니다.")
-        window.location.href("/admin/adminHostConfirmList")
+        navigate("/admin/adminHostConfirmList")
       })
   }
   getHostMem['URL'] = url;
