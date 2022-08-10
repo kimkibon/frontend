@@ -71,7 +71,7 @@ const MemUseListPage = () => {
                 <InsertReviewModal show={modalShow} onHide={() => setModalShow(false)}
                     state={{ 'REVIEW_MEM_ID': mem_id, 'BOARD_NO': boardno, 'RES_IDX': residx }} />
 
-                {resComList[0] !== undefined && resComList.map((list) => {
+                {resComList[0] !== undefined ? resComList.map((list) => {
 
                     const end_date = new Date(list.RES_DATE_END);//예약마지막날짜
                     const after_date = end_date.setDate(end_date.getDate() + 8);//8일 후
@@ -124,7 +124,9 @@ const MemUseListPage = () => {
                         </div>
                     )
 
-                })}
+                })
+                : <div className="mt-5 mb-5 d-flex justify-content-center"><h4>이용내역이 없습니다.</h4></div>
+            }
             </div>
 
         </div>

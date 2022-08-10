@@ -140,7 +140,7 @@ const HostReserveList = () => {
         <hr />
         <HostResRejModal show={modalShow} onHide={() => setModalShow(false)} state={{ 'residx': residx }} />
 
-        {resList[0] !== undefined && resList.map((list) => {
+        {resList[0] !== undefined ? resList.map((list) => {
 
           let resstate = list.RES_LEVEL;
 
@@ -231,6 +231,7 @@ const HostReserveList = () => {
           )
 
         })
+        : <div className="mt-5 mb-5 d-flex justify-content-center"><h4>예약내역이 없습니다.</h4></div>
         }
       </div>
     </div>

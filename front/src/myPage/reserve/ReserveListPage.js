@@ -154,7 +154,7 @@ const ReserveListPage = () => {
       <HostDetailModal show={modalShow} onHide={() => setModalShow(false)} state={{ 'hostId': hostt }}/>
 
 
-      {resList[0] !== undefined && resList.map((list,index) => {
+      {resList[0] !== undefined ? resList.map((list,index) => {
         let resstate = list.RES_LEVEL;
         return (
           <div className="container mt-5 mb-5" key={index}>
@@ -278,6 +278,7 @@ const ReserveListPage = () => {
         )
 
       })
+      : <div className="mt-5 mb-5 d-flex justify-content-center"><h4>예약내역이 없습니다.</h4></div>
       }
       </div>
     </div>

@@ -49,7 +49,7 @@ const HostUseList = () => {
             <hr/>
                 <h3>이용내역</h3>
             <hr/>
-            {resComList[0] !==undefined && resComList.map((list)=>{
+            {resComList[0] !==undefined ? resComList.map((list)=>{
                 
                 return(
                     <div className="container mt-5 mb-5">
@@ -111,7 +111,9 @@ const HostUseList = () => {
                     </div>
                 )
             
-            })}
+            })
+            :<div className="mt-5 mb-5 d-flex justify-content-center"><h4>이용내역이 없습니다.</h4></div>
+        }
             </div>
         </div>
     )
