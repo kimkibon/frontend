@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import SelectFileList from '../../commons/Files/SelectFileList';
 import Carousel from 'react-bootstrap/Carousel';
 import { Button } from 'react-bootstrap';
@@ -12,6 +12,7 @@ const AdminMemberDetail = () => {
   const { MEM_IDX } = useParams();
 
   const [getMem, setGetMem] = useState([]);
+  const navigate = useNavigate();
 
   const MEM_LEVEL = (state) => {
     switch (state) {
@@ -61,6 +62,7 @@ const AdminMemberDetail = () => {
     })
       .then(Response => {
         setMemDenyModify(Response.data);
+        navigate('/admin/adminMemberList');
       })
   }
 
@@ -202,11 +204,11 @@ const AdminMemberDetail = () => {
         <div className="row d-flex justify-content-center align-items-end">
           <div className='col-md-6'>
             <Button className="btn btn-primary " type="button"
-              onClick={adminModifySuccess}>
-              <Link to='/admin/adminMemberList' style={{ textDecoration: "none", color: "white" }}>확인</Link>
+              onClick={()=>adminModifySuccess()}>
+              확인
             </Button> &emsp;&emsp;&emsp;
-            <Button className="btn btn-secondary" type="button">
-              <Link to='/admin/adminMemberList' style={{ textDecoration: "none", color: "white" }}>취소</Link>
+            <Button className="btn btn-secondary" onClick={()=>navigate('/admin/adminMemberList')} type="button">
+              취소
             </Button>
           </div>
         </div>

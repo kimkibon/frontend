@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Table from 'react-bootstrap/Table';
+import { useLocation } from 'react-router-dom';
 
 const AdminHostConfirmList = () => {
 
   const [hostResList, setHostResList] = useState([]); // 전체 회원 리스트 db에서 가져오기 
+  const location = useLocation().pathname
+
 
   useEffect(() => { // 전체 회원 리스트이므로, params 생략
     axios({
@@ -15,7 +18,7 @@ const AdminHostConfirmList = () => {
       .then(Response => {
         setHostResList(Response.data);
       });
-  }, []);
+  }, [location]);
 
   return (
     <div>
