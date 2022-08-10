@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useLocation, useNavigate} from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
+import Auth from '../../login/Auth';
 
 
 //예약취소 모달
@@ -34,7 +35,10 @@ const ReserveCancel =(props) => {
                                     RES_IDX : res_idx
                                 }
                             }).then(Response => {
-                                navigate(-1);
+                                Auth(4, navigate).then(Res => {
+                                    Res.MEM_LEVEL===0 ? navigate('/admin/adminAllResList')
+                                    : navigate('/myPage/ReserveListPage')
+                                  })
                             });
                         }}>
                     확인
