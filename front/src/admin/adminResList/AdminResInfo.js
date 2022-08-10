@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 //예약상태
 const ResState = (state) => {
@@ -20,6 +20,8 @@ const AdminResInfo = () => {
 
     const { RES_IDX } = useParams();
     const [resInfo, setResInfo] = useState([]);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         axios({
@@ -152,7 +154,7 @@ const AdminResInfo = () => {
                 </Link>
                 &nbsp;
                 <button type="button" className="btn btn-primary"
-                    onClick={(e) => { e.preventDefault(); window.location.href = "/admin/adminAllResList" }}>확인</button>
+                    onClick={(e) => { e.preventDefault(); navigate(-1); }}>확인</button>
             </div>
         </div>
 

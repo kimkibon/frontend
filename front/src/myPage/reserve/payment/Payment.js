@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 const Payment = (props) => {
@@ -9,6 +10,7 @@ const Payment = (props) => {
   const booker = props.booker;
   //const phone = props.phone;
   const res_idx = props.res_idx;
+  const navigate = useNavigate();
 
   useEffect(() => {
     const jquery = document.createElement("script");
@@ -75,7 +77,7 @@ const Payment = (props) => {
         }
       }).then(Response => {
 
-        window.location.href = '/myPage/ReserveListPage';
+        navigate('/myPage/ReserveListPage');
       });
 
     } else {

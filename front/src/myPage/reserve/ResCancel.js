@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useLocation} from 'react-router-dom';
+import { useLocation, useNavigate} from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
 
 
@@ -7,6 +7,9 @@ import Modal from 'react-bootstrap/Modal';
 const ReserveCancel =(props) => {
 
     const res_idx = props.state.RES_IDX;
+    const navigate = useNavigate();
+
+
 
     return (
         <Modal
@@ -31,7 +34,7 @@ const ReserveCancel =(props) => {
                                     RES_IDX : res_idx
                                 }
                             }).then(Response => {
-                                window.location.href="/myPage"
+                                navigate(-1);
                             });
                         }}>
                     확인

@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { useNavigate } from 'react-router-dom';
 import { Rating } from 'react-simple-star-rating';
 
 const InsertReviewModal =(props) => {
@@ -9,6 +10,7 @@ const InsertReviewModal =(props) => {
     const mem_id = props.state.REVIEW_MEM_ID;
     const board_no = props.state.BOARD_NO;
     const res_idx = props.state.RES_IDX;
+    const navigate = useNavigate();
   
   
     const [inputs, setInputs] = useState({    
@@ -41,7 +43,7 @@ const InsertReviewModal =(props) => {
             RES_IDX : res_idx
           }
         }).then(Response => {
-            window.location.href="/myPage/memUseListPage"
+            navigate("/myPage/memUseListPage")
         }).catch(error =>{
             alert("별점을 선택해주세요!")
         })

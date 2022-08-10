@@ -1,9 +1,10 @@
 import axios from 'axios';
-import { useLocation} from 'react-router-dom';
+import { useLocation, useNavigate} from 'react-router-dom';
 
 const ReserveConfirm =() => {
 
     const location = useLocation();
+    const navigate = useNavigate();
 
     return (
         axios({
@@ -14,7 +15,7 @@ const ReserveConfirm =() => {
                 RES_IDX : location.state.res_idx
             }
         }).then(Response => {
-            window.location.href="/myPage/ReserveListPage"
+            navigate('/myPage/ReserveListPage');
         })
         
         
