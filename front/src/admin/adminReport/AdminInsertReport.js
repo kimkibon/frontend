@@ -48,8 +48,8 @@ const AdminInsertReport = () => {
       <div> <h3>답변하기</h3>
         <Form onSubmit={adminUpdateReport}>
           <Form.Group controlId="formBasicEmail">
-            <Form.Control type="text" placeholder="답변내용을 등록하세요"
-              onChange={handleChange} name="comment" value={reportUpdate.comment} />
+            <Form.Control as="textarea" placeholder="답변내용을 등록하세요"
+              onChange={handleChange} name="comment" value={reportUpdate.comment} rows="5"/>
           </Form.Group>
 
           <br />

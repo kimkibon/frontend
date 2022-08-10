@@ -97,9 +97,7 @@ const AdminReportDetail = () => {
           <>
             <label htmlFor="exampleTextarea" className="form-label mt-4"><h3>문의답변</h3></label>
             <div className="card border-success mb-3">
-              <div className="card-body">
-                <p className="card-text">{detail.REPORT_COMMENT}</p>
-              </div>
+                <textarea className="form-control" rows="10">{detail.REPORT_COMMENT}</textarea>
             </div>
             <div className='col-lg-12 text-lg-center'>
               <button type="button" className="btn btn-success"

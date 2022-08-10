@@ -103,7 +103,6 @@ const AdminQnaDetail = () => {
             <label htmlFor="exampleTextarea" className="form-label mt-4"><h3>문의답변</h3></label>
             <div className="card border-success mb-3">
               <textarea className="form-control" rows="10">{detail.QNA_COMMENT}
-                
               </textarea>
             </div>
             <div className='col-lg-12 text-lg-center'>
