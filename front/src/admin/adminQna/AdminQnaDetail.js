@@ -58,6 +58,7 @@ const AdminQnaDetail = () => {
   const state = detail.QNA_STATE;
   const navigate = useNavigate();
 
+
   return (
 
 
@@ -101,9 +102,9 @@ const AdminQnaDetail = () => {
           <>
             <label htmlFor="exampleTextarea" className="form-label mt-4"><h3>문의답변</h3></label>
             <div className="card border-success mb-3">
-              <div className="card-body">
-                <p className="card-text">{detail.QNA_COMMENT}</p>
-              </div>
+              <text className="card-body">{detail.QNA_COMMENT}
+                
+              </text>
             </div>
             <div className='col-lg-12 text-lg-center'>
               <button type="button" className="btn btn-success"

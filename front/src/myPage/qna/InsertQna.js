@@ -68,7 +68,7 @@ const InsertQna = ({}) => {
       <Form.Group controlId="formBasicEmail">
         <Form.Label>TITLE</Form.Label>
         <Form.Control type="text" placeholder="제목을 입력하세요"
-        onChange={handleChange} name="title" value={form.title} maxlength="16" />
+        onChange={handleChange} name="title" value={form.title} maxlength="30" />
         {/* onChange는 실행이 될때마다 뭔가가 바꾸니는것 */}
       </Form.Group>
 
