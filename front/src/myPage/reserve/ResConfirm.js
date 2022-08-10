@@ -6,7 +6,6 @@ const ReserveConfirm =() => {
     const location = useLocation();
     const navigate = useNavigate();
 
-    return (
         axios({
             method : 'post' ,
             url : '/GareBnB/mypage/ResConfirm.do' ,
@@ -20,6 +19,6 @@ const ReserveConfirm =() => {
         
         
 
-    )
+    
 }
 export default ReserveConfirm;
