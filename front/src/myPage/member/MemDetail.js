@@ -35,8 +35,7 @@ const MemDetail = () => {
         if (originPw === memDetail.MEM_PW) { // 비밀번호와 입력한 비밀번호가 일치하면 회원 탈퇴 진행
             alert("탈퇴가 완료되었습니다")
             onDeleteMem(memDetail.MEM_ID) // 탈퇴 진행 (레벨 6으로 업데이트)
-            window.location.href = '../index/' // 메인 페이지로 이동 
-
+            window.location.href = '/' // 메인 페이지로 이동 
         } else {
             alert("비밀번호를 다시 확인해주세요")
         }

@@ -53,6 +53,7 @@ const AdminHostConfirmDetail = () => {
       .then(Response => {
         setHostConfirm(Response.data);
         alert("호스트 전환이 승인되었습니다.")
+        window.location.href("/admin/adminHostConfirmList")
       })
   }
 
@@ -70,6 +71,7 @@ const AdminHostConfirmDetail = () => {
       .then(Response => {
         setHostDeny(Response.data);
         alert("호스트 전환이 거절되었습니다.")
+        window.location.href("/admin/adminHostConfirmList")
       })
   }
   getHostMem['URL'] = url;
