@@ -2,12 +2,15 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Table from 'react-bootstrap/Table';
 import { Button } from 'react-bootstrap';
+import { useLocation } from 'react-router-dom';
 
 const AdminMemberList = () => {
 
   const [memList, setMemList] = useState([]); // 전체 회원 리스트 db에서 가져오기 
   const [search, setSearch] = useState(""); // 검색 단어
+  const location = useLocation().pathname
 
+  console.log(location);
   useEffect(() => { // 전체 회원 리스트이므로, params 생략
     axios({
       method: 'post',
@@ -17,7 +20,7 @@ const AdminMemberList = () => {
       .then(Response => {
         setMemList(Response.data);
       });
-  }, []);
+  }, [location]);
 
   const onChangeSearch = (e) => { // 검색 버튼 클릭했을 때 검색 기능
     e.preventDefault();
