@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import ReactDatePicker from 'react-datepicker';
 import { Link } from 'react-router-dom';
-import pets_dark from '../commons/images/pets_dark.jpg';
 import '../commons/style.css'
 import main from '../commons/images/main.jpeg';
 
@@ -85,11 +84,11 @@ const Main = () => {
               />
             </div>
             <div className='col offset-8'>
-              <button className='btn btn-primary'>
-                <Link to='/board' state={state} style={{ textDecoration: "none", color: "white" }}>
+              <Link to='/board' state={state} style={{ textDecoration: "none", color: "white" }}>
+                <button className='btn btn-primary'>
                   Search
-                </Link>
-              </button>
+                </button>
+              </Link>
             </div>
           </div>
         </div>
