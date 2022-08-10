@@ -148,6 +148,14 @@ const AdminHostConfirmDetail = () => {
       </div><br />
 
       <div className="row d-flex justify-content-center align-items-center ">
+        <label className="col-2 col-form-label">소개글</label>
+        <div className='col-6 text-center'>
+          <textarea value={getHostMem.HOST_INTRO} className="form-control" rows="5" readOnly>
+          </textarea></div>
+        <div className='col-1'></div>
+      </div><br />
+
+      <div className="row d-flex justify-content-center align-items-center ">
         <label className="col-2 col-form-label">계좌번호</label>
         <div className='col-2 text-center'>
           <input type='text' value={getHostMem.HOST_BANK} className="form-control" readOnly></input></div>
