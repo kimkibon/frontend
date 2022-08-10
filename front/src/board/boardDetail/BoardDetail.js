@@ -135,7 +135,7 @@ const BoardDetail = () => {
               </div>
 
               <div className="col-md-6 text-end">
-                <h1 className=" display-5 fw-bolder">{boardDetail.BOARD_TITLE} 제목</h1>
+                <h1 className=" display-5 fw-bolder">{boardDetail.BOARD_TITLE}</h1>
                 <div className="small mb-1">{boardDetail.BOARD_ADDR1} {boardDetail.BOARD_ADDR2}</div>
                 <div className="fs-5 mb-5">
                   <span>{boardDetail.BOARD_PRICE}원/1일 [가격]</span>

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { Modal } from 'react-bootstrap';
-import ReactDatePicker from 'react-datepicker';
 import { Link, useNavigate } from 'react-router-dom';
 import Auth from '../../../login/Auth';
 import Address from './Address';
@@ -26,8 +25,7 @@ const HostBoardForm = () => {
     'BOARD_DATE_START': new Date().toISOString().slice(0, 10).replace(/-/g, "/"),  //모달 데이트 피커?
     'BOARD_DATE_END': new Date().toISOString().slice(0, 10).replace(/-/g, "/"),    //모달 데이트 피커 ? 
   });
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+
   const Navigate = useNavigate();
   // 일단 호스트 아이디로 호스트 정보를 가져온다?
   const {
@@ -57,17 +55,7 @@ const HostBoardForm = () => {
     setShowAddrModal(false)
   }
 
-  const onChange = (dates) => {
-    setStartDate(dates[0]);
-    setEndDate(dates[1]);
-    setInsertBoard({
-      ...insertBoard,
-      'BOARD_DATE_START': dates[0].toISOString().slice(0, 10).replace(/-/g, "/"),
-      'BOARD_DATE_END': dates[1].toISOString().slice(0, 10).replace(/-/g, "/")
-    })
-  };
-  //데이트피커 내용이 바뀌면 변수에 저장 
-
+  
   const setItems = (e) => {
     const { name, value } = e.target;
     setInsertBoard({
@@ -145,24 +133,6 @@ const HostBoardForm = () => {
                       value={BOARD_TITLE}
                       onChange={(e) => setItems(e)}
                     />
-                  </div>
-                  <div className='col-sm-3'>
-                    <div className='input-group mb-2'>
-                      <span className="input-group-text">기간 선택</span>
-                    </div>
-                  </div>
-                  <div className='col-sm-9'>
-                    <div className='input-group- mb-4'>
-                      {<ReactDatePicker
-                        className='col-sm-12 btn btn-outline-secondary'
-                        minDate={new Date()}
-                        selected={startDate}
-                        onChange={onChange}
-                        startDate={startDate}
-                        endDate={endDate}
-                        selectsRange
-                      />}
-                    </div>
                   </div>
 
                   <div className='col-sm-6'>

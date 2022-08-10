@@ -41,8 +41,6 @@ const InsertBoard = (props) => {
       //보드 인서트 리턴으로 보드 넘버를 받아옴
     }).then(async Response => {
 
-      console.log(files)
-
       files.map(async (file, index) => {
         
         if(postUrl === '/GareBnB/host/mypage/myboardPut.do'){
@@ -66,8 +64,7 @@ const InsertBoard = (props) => {
     <Modal
       {...props}
     >
-      {    console.log(insertFiles)
-}
+     
       <Modal.Header closeButton>
         <Modal.Title>글 등록 확인</Modal.Title>
       </Modal.Header>
