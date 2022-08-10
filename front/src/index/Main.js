@@ -11,7 +11,7 @@ const Main = () => {
   const [state, setState] = useState({
     'START_DATE': '',
     'END_DATE': '',
-    'CARE_NO': '0',
+    'CARE_NO': '1',
     'BOARD_ADDR1': ''
   });
 
@@ -53,7 +53,7 @@ const Main = () => {
                   type='number'
                   name='CARE_NO'
                   value={state.CARE_NO}
-                  min='0'
+                  min='1'
                   onChange={(e) => setItem(e)}
                 />
                 <span className="input-group-text" id="basic-addon1">마리 이상</span>
