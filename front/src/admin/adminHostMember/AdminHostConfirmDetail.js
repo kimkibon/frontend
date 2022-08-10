@@ -52,7 +52,7 @@ const AdminHostConfirmDetail = () => {
     })
       .then(Response => {
         setHostConfirm(Response.data);
-        alert("승인")
+        alert("호스트 전환이 승인되었습니다.")
       })
   }
 
@@ -69,7 +69,7 @@ const AdminHostConfirmDetail = () => {
     })
       .then(Response => {
         setHostDeny(Response.data);
-        alert("거절")
+        alert("호스트 전환이 거절되었습니다.")
       })
   }
   getHostMem['URL'] = url;

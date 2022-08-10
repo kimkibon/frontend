@@ -110,7 +110,7 @@ const Join = () => {
         if (SameCheckForPW()) {
           if (JoinName !== "") {
             if (JoinPhone !== "") {
-              if (PhoneOK === 1) {
+              if (true) {
                 axios({
                   method: "post",
                   url: "/GareBnB/joinSuccess.do",

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React from 'react'
 import { Button, Modal } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import InsertFiles from '../host/myBoard/component/InsertFiles';
 
 
@@ -8,6 +9,8 @@ const InsertHost = (props) => {
   const insertHost = props.props.insertHost;
   const insertFiles = props.props.insertFiles;
 
+  const navigate = useNavigate();
+  
   //변수 초기 세팅
   const InsertHost = async (e) => {
     e.preventDefault();
@@ -51,6 +54,7 @@ const InsertHost = (props) => {
       params : {
           MEM_IDX : insertHost.MEM_IDX
           }}).then(Response => {
+            navigate('/');
           }).catch(err => {
             console.log(err);
           });
