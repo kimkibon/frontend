@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import ReserveCancel from '../../myPage/reserve/ResCancel';
 
 //예약상태
 const ResState = (state) => {
@@ -22,6 +23,7 @@ const AdminResInfo = () => {
     const [resInfo, setResInfo] = useState([]);
 
     const navigate = useNavigate();
+    const [cancelmodalShow, setCancelmodalShow] = useState(false);
 
     useEffect(() => {
         axios({
@@ -148,10 +150,18 @@ const AdminResInfo = () => {
                 </tbody>
             </table>
             <div className='text-lg-center'>
-                <Link to={'resCancel'} state={{ 'res_idx': resInfo.RES_IDX }}>
-                    {[3, 5].includes(resInfo.RES_LEVEL) && <button type="button" className="btn btn-primary">환불하기</button>}
-                    {[0, 1, 2].includes(resInfo.RES_LEVEL) && <button type="button" className="btn btn-primary">예약취소</button>}
-                </Link>
+                
+            <ReserveCancel show={cancelmodalShow} onHide={() => setCancelmodalShow(false)} state={{ 'RES_IDX': RES_IDX }}/>
+                
+                    {[3, 5].includes(resInfo.RES_LEVEL) && 
+                        <button type="button" className="btn btn-secondary m-1" onClick={()=>{setCancelmodalShow(true)}}>환불하기</button>
+                    }
+
+
+                    {[0, 1, 2].includes(resInfo.RES_LEVEL) &&
+                        <button type="button" className="btn btn-secondary m-1" onClick={()=>{setCancelmodalShow(true)}}>예약취소</button>
+                    }
+              
                 &nbsp;
                 <button type="button" className="btn btn-primary"
                     onClick={(e) => { e.preventDefault(); navigate(-1); }}>확인</button>

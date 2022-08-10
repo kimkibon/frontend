@@ -21,7 +21,7 @@ const ReserveCancel =(props) => {
             <Modal.Header closeButton>
             </Modal.Header>
             <Modal.Body>
-                예약을 취소하시겠습니까?
+                취소하시겠습니까?
             </Modal.Body>
             <Modal.Footer>
                 <button type="button" className="btn btn-secondary "  onClick={props.onHide}>취소</button>
