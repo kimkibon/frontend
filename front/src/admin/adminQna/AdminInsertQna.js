@@ -48,14 +48,14 @@ const AdminInsertQna = () => {
 
     <div className='commentF'>
       <div> <h3>답변하기</h3>
-        <Form onSubmit={adminUpdateQna}>
+        <Form>
           <Form.Group controlId="formBasicEmail">
-            <Form.Control type="text" placeholder="답변내용을 등록하세요"
-              onChange={handleChange} name="comment" value={qnaUpdate.comment} />
+            <Form.Control as="textarea" placeholder="답변내용을 등록하세요"
+              onChange={handleChange} name="comment" value={qnaUpdate.comment} rows="5"/>
           </Form.Group>
 
           <div className='qbutton text-lg-end'>
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="button" onClick={adminUpdateQna}>
               입력하기
             </Button>
           </div>

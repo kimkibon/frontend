@@ -64,7 +64,7 @@ const HostInsertReport = () => {
       <h3> 신고하기 </h3>
       <div>
         {/* 위에 handleSubmit선언했음,, Form이 전송이 되면 실행 */}
-        <Form onSubmit={handleSubmit}>
+        <Form>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>TITLE</Form.Label>
             <Form.Control type="text" placeholder="제목을 입력하세요"
@@ -74,11 +74,11 @@ const HostInsertReport = () => {
 
           <Form.Group controlId="formBasicEmail">
             <Form.Label>QNA Content</Form.Label>
-            <Form.Control type="text" placeholder="문의내용을 입력하세요"
-              onChange={handleChange} name="content" value={form.content} />
+            <Form.Control as="textarea" placeholder="문의내용을 입력하세요"
+              onChange={handleChange} name="content" value={form.content} rows="5" />
           </Form.Group>
-
-          <Button variant="primary" type="submit">
+          <br />
+          <Button variant="primary" type="button" onClick={(e) => {handleSubmit(e)}}>
             입력하기
           </Button>
         </Form>
