@@ -52,6 +52,25 @@ const AdminMemberList = () => {
     }
   }
 
+  const level = (e) => {
+    switch (e) {
+      case 0:
+      return '관리자';
+      case 1:
+      return '호스트';
+      case 2:
+      return '일반';
+      case 3:
+      return '호스트 대기';
+      case 4:
+      return '호스트 거절';
+      case 5:
+      return '정지';
+      case 6:
+      return '탈퇴';
+    }
+  }
+
   return (
     <div className='container'>
       <hr />
@@ -74,10 +93,11 @@ const AdminMemberList = () => {
       <Table striped width="900px" height="30px" className="table table-hover">
         <thead>
           <tr align='center'>
-            <td width="20%">번호(IDX)</td>
-            <td width="20%">이름</td>
-            <td width="30%">아이디</td>
+            <td width="15%">번호(IDX)</td>
+            <td width="15%">이름</td>
+            <td width="20%">아이디</td>
             <td width="30%">휴대폰 번호</td>
+            <td width='20%'>회원 상태</td>
           </tr>
         </thead>
 
@@ -89,6 +109,7 @@ const AdminMemberList = () => {
                 <td>{list.MEM_NAME}</td>
                 <td>{list.MEM_ID}</td>
                 <td>{list.MEM_PHONE}</td>
+                <td>{level(list.MEM_LEVEL)}</td>
               </tr>
             </tbody>
           )
