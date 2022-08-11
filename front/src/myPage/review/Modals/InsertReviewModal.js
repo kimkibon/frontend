@@ -43,7 +43,7 @@ const InsertReviewModal =(props) => {
             RES_IDX : res_idx
           }
         }).then(Response => {
-            navigate("/myPage/memUseListPage")
+            navigate(0)
         }).catch(error =>{
             alert("별점을 선택해주세요!")
         })

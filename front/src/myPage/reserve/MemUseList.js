@@ -51,7 +51,7 @@ const MemUseList = (props) => {
                         </tr>
                         <tr>
                           <td>요청사항</td>
-                          <td>{list.REQ_DETAIL}</td>
+                          <td>{list.RES_REQ_DETAIL}</td>
                         </tr>
                       
                     </table>          
