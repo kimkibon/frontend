@@ -95,10 +95,10 @@ const AdminReportDetail = () => {
       <div>
         {state === 0 ? <AdminInsertReport /> :
           <>
-            <label htmlFor="exampleTextarea" className="form-label mt-4"><h3>문의답변</h3></label>
+            <label htmlFor="exampleTextarea" className="form-label mt-4"><h3>신고답변</h3></label>
             <div className="card border-success mb-3">
-                <textarea className="form-control" rows="6">{detail.REPORT_COMMENT}
-                </textarea>
+                <text className="form-control" rows="5">{detail.REPORT_COMMENT}
+                </text>
             </div>
             <div className='col-lg-12 text-lg-center'>
               <button type="button" className="btn btn-success"
