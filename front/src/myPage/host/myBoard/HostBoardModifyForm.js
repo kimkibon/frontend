@@ -14,8 +14,6 @@ const HostBoardModifyForm = () => {
     const [showAddrModal, setShowAddrModal] = React.useState(false);
     const [insertFiles, setInsertFiles] = useState();
     const [insertBoard, setInsertBoard] = useState(boardDetail);
-    const [startDate, setStartDate] = useState(new Date());
-    const [endDate, setEndDate] = useState(new Date());
     //변경 내용 저장 확인
     // 일단 호스트 아이디로 호스트 정보를 가져온다?
     const {
@@ -32,7 +30,7 @@ const HostBoardModifyForm = () => {
     useEffect(() => {
         setInsertBoard(boardDetail)
         setInsertFiles(file)
-    }, location)
+    }, [location])
 
     //초기값 부여
 
@@ -45,16 +43,6 @@ const HostBoardModifyForm = () => {
         setShowAddrModal(false)
     }
 
-    const onChange = (dates) => {
-        setStartDate(dates[0]);
-        setEndDate(dates[1]);
-        setInsertBoard({
-            ...insertBoard,
-            'BOARD_DATE_START': dates[0].toISOString().slice(0, 10).replace(/-/g, "/"),
-            'BOARD_DATE_END': dates[1].toISOString().slice(0, 10).replace(/-/g, "/")
-        })
-    };
-    //데이트피커 내용이 바뀌면 변수에 저장 
 
     const setItems = (e) => {
         const { name, value } = e.target;
@@ -134,25 +122,7 @@ const HostBoardModifyForm = () => {
                                             onChange={(e) => setItems(e)}
                                         />
                                     </div>
-                                    <div className='col-sm-3'>
-                                        <div className='input-group mb-2'>
-                                            <span className="input-group-text">기간 선택</span>
-                                        </div>
-                                    </div>
-                                    <div className='col-sm-9'>
-                                        <div className='input-group- mb-4'>
-                                            {<ReactDatePicker
-                                                className='col-sm-12 btn btn-outline-secondary'
-                                                minDate={new Date()}
-                                                selected={startDate}
-                                                onChange={onChange}
-                                                startDate={startDate}
-                                                endDate={endDate}
-                                                selectsRange
-                                            />}
-                                        </div>
-                                    </div>
-
+                                    
                                     <div className='col-sm-6'>
                                         <div className='input-group mb-2'>
                                             <span className='input-group-text'>최대 케어링 수</span>

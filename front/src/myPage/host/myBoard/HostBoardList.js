@@ -36,10 +36,10 @@ const HostBoardList = () => {
         </div>
       </div>
       <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        {board[0] !== undefined && board.map(list => {
+        {board[0] !== undefined && board.map((list , index) => {
           {
             return (
-              <div className='col' key={list.BOARD_NO}>
+              <div className='col' key={index}>
                 <AdminBoardList list={list} />
               </div>
             )
